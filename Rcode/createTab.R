@@ -1,6 +1,6 @@
-#' creates basic table containing votes (in percent) and party names, conducts  
+#' Creates basic table containing votes (in percent) and party names, conducts  
 #' sanity checks
-
+#'
 #' @param votes.in.perc votes in percent each party received in the survey 
 #' of interest. Can be set to \code{NA}, if parties are specified that are not 
 #' mentioned in the specific survey (otherwise the \code{parties} argument has 
@@ -8,16 +8,12 @@
 #' @param sample.size number of respondents in survey
 #' @parties vector of same length as 'votes.in.perc' and in the same order
 #' as \code{votes.in.perc}
-
+#'
 #' @return data.frame containing input and absolute number of votes in survey per 
 #' party
-
 #' @keywords survey
-
 #' @seealso \code{\link{get.props}}
-
 #' @export
-
 #' @examples
 #' test.tab <- createTab( party = c(LETTERS[1:9])
 #'        votes.in.perc = c(40.9, 25.4, 14.3, 4.7, 7.5, 1.9, 1.9, 1.3, 2.1)/100, 
@@ -25,7 +21,7 @@
 #' test.tab
 
 createTab <- function(
-
+    
     votes.in.perc, 
     sample.size,
     parties = c("CDU/CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "AfD", 

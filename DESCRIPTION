@@ -1,6 +1,6 @@
-Package: ggplot2
+Package: coalitions
 Type: Package
-Title: An implementation of the Grammar of Graphics
+Title: Coalition probabilities in multi-party democracies
 Version: 0.0.1
 Author: Andreas Bender <bender.at.R@gmail.com>
 Maintainer: Andreas Bender <bender.at.R@gmail.com>
@@ -17,10 +17,9 @@ Imports:
     reshape2,
     MASS
 Suggests:
-    
-Enhances: NA
-License: NA
-URL: NA
-LazyData: NA
+    tables,
+    ggplot2,
+    xtable
+License: GPL (>= 2)
 Collate:
     ''
