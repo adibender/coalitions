@@ -4,8 +4,8 @@ Title: An implementation of the Grammar of Graphics
 Version: 0.0.1
 Author: Andreas Bender <bender.at.R@gmail.com>
 Maintainer: Andreas Bender <bender.at.R@gmail.com>
-Description: An Implementation of a Monte Carlo method to calculate probabilities 
-for a coalition majority based on survey results.
+Description: An Implementation of a Monte Carlo method to calculate
+    probabilities for a coalition majority based on survey results.
 Depends:
     R (>= 2.15),
     stats,
@@ -17,7 +17,10 @@ Imports:
     reshape2,
     MASS
 Suggests:
-Enhances: sp
-License: GPL-2
-URL: https://github.com/adibender/coalitions
-LazyData: true
+    
+Enhances: NA
+License: NA
+URL: NA
+LazyData: NA
+Collate:
+    ''
