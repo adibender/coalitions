@@ -9,12 +9,14 @@ party C and party D).
 
 This R-package will implement the methods described 
 [here (in german)](http://www.stablab.stat.uni-muenchen.de/sites/files/wahlen.pdf).  
-In short, we assume the reported survey results to have a *Multinomial* distribution, which, 
-assuming a un-informative *Dirichlet-Prior* (Jeffrey's prior) yields a Posteriori which is also
-*Dirichlet*. Based on this Posterior we run a *Monte-Carlo simulation*, where we <br/>
+In short, we assume the reported survey results to have a *Multinomial* distribution, 
+which, assuming a un-informative *Dirichlet-Prior* (Jeffrey's prior) yields a 
+Posteriori which is also *Dirichlet*. Based on this Posterior we run a 
+*Monte-Carlo simulation*, where we <br/>
 
     1. sample n election results from the Posterior
-    2. calculate the seat distribution n times (depends on legeslation, Saint-Lague/Scheppers in germany) 
+    2. calculate the seat distribution n times
+    (depends on legeslation, Saint-Lague/Scheppers in germany) 
 
 Based on these steps we can derive the probabilities of a majority for certain 
 coalitions of interest. <br/>
