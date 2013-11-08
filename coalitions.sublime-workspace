@@ -1,0 +1,394 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "{\n	\"target\": \"ltx_compiler\",\n	\"selector\": \"text.tex.latex\",\n	\"osx\":\n	{\n		\"cmd\":\n		[\n			\"latexmk\", \"-f\", \"-quiet\", \"-pdf\",\n			\"-synctex={synctex}\",\n			\"-jobname={pdfname}\",\n			\"-outdir={outdir}\",\n			\"{file}\" \n		],\n		\"path\": \"$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin\",\n		\"file_regex\": \"^(?:W|E|B):\\\\s(.*):([0-9]+)\"\n	},\n	\"windows\":\n	{\n		\"cmd\":\n		[\n			\"latexmk\", \"-f\", \"-quiet\", \"-pdf\",\n			\"-synctex={synctex}\",\n			\"-jobname={pdfname}\",\n			\"-outdir={outdir}\",\n			\"{file}\"\n		],\n		\"path\": \"C:\\\\Program Files\\\\MiKTeX 2.9\\\\miktex\\\\bin\\\\x64\\\\;$PATH\",\n		\"file_regex\": \"^(?:W|E|B):\\\\s(.*):([0-9]+)\"\n	},\n	\"linux\":\n	{\n		\"cmd\":\n		[\n			\"latexmk\", \"-f\", \"-quiet\", \"-pdf\",\n			\"-synctex={synctex}\",\n			\"-jobname={pdfname}\",\n			\"-outdir={outdir}\",\n			\"{file}\" \n		],\n		\"path\": \"$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin\",\n		\"file_regex\": \"^(?:W|E|B):\\\\s(.*):([0-9]+)\"\n	},\n	\"variants\": \n	[\n		{\n			\"name\": \"Clean up Files\", \n			\"target\": \"ltx_clean\"\n		}\n	]\n}",
+			"file": "/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
+			"file_size": 998,
+			"file_write_time": 130279155832587817,
+			"settings":
+			{
+				"buffer_size": 949,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/abhs/Documents/GitHub/Institut/homepage/grm_wise_13.html",
+			"settings":
+			{
+				"buffer_size": 13571,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/README.markdown",
+			"settings":
+			{
+				"buffer_size": 38030,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+	"command_palette":
+	{
+		"height": 185.0,
+		"selected_items":
+		[
+			[
+				"Package Control: LI",
+				"Package Control: List Packages"
+			],
+			[
+				"Syntax Enha",
+				"Set Syntax: Enhanced-R"
+			],
+			[
+				"Package Control: In",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: L",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: Ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: En",
+				"Package Control: Enable Package"
+			],
+			[
+				"Package Control: Di",
+				"Package Control: Disable Package"
+			],
+			[
+				"Package Control:In",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: INst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: Remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: REm",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 386.0
+	},
+	"console":
+	{
+		"height": 362.0,
+		"history":
+		[
+			"ssh ",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": false,
+		"status_bar_visible": true
+	},
+	"file_history":
+	[
+		"/C/Users/abhs/Desktop/Default (Windows).sublime-keymap",
+		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt 4 Regularisierung Lesen.r",
+		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt4 Regularisierung Standardisierung.r",
+		"/C/Users/abhs/Documents/GitHub/Projects/Kohler_Juergen/docu/kohlerJuergen.Rnw",
+		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Wahl.txt",
+		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/lesen.txt",
+		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt4 Regularisierung Parteiwahl ohne Interaktionen.r",
+		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt4 Regularisierung Parteiwahl mit Interaktionen.r",
+		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt4-Regularisierung2.pdf",
+		"/C/Users/abhs/Documents/GitHub/coalitions/Rcode/Namespace",
+		"/C/Users/abhs/Documents/GitHub/coalitions/Rcode/getCoalitionProb.R",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt 4 Regularisierung Lesen.r",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Enhanced-R/Default (Windows).sublime-keymap",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt1.R",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/run_multiple_commands.py",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Enhanced-R.sublime-settings",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Enhanced-R/Enhanced-R.sublime-settings",
+		"/C/Users/abhs/Documents/GitHub/coalitions/DESCRIPTION",
+		"/C/Users/abhs/Documents/GitHub/coalitions/NAMESPACE",
+		"/C/Users/abhs/Documents/GitHub/coalitions/Rcode/createTab.R",
+		"/C/Users/abhs/Documents/GitHub/Projects/Kohler_Juergen/Kohler_Jürgen.odt",
+		"/C/Users/abhs/Documents/GitHub/coalitions/man/createTab.R.Rd",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/SublimeREPL.sublime-settings",
+		"/C/Users/abhs/Documents/GitHub/Enhanced-R/Main.sublime-menu",
+		"/C/Users/abhs/Documents/GitHub/LICENSE",
+		"/C/Users/abhs/Documents/GitHub/Projects/LICENSE",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Side Bar.sublime-settings",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/C/Users/abhs/Documents/GitHub/Institut/.Rhistory",
+		"/C/Users/abhs/Documents/GitHub/Institut/README.md",
+		"/C/Dokumente und Einstellungen/bender/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt1.Rnw",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/CHANGELOG",
+		"/C/Users/abhs/Google Drive/MA/Rcode/simOwnNutri.R",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"lesenbayes",
+			"lesenml"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"lesen.bayes",
+			"lesen.ml"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 949,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								207,
+								207
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/abhs/Documents/GitHub/Institut/homepage/grm_wise_13.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13571,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11463,
+								11463
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7520.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/README.markdown",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 38030,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6803,
+								6803
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 619.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "coalitions.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"sublime.keym",
+				"C:\\Users\\abhs\\AppData\\Roaming\\Sublime Text 3\\Packages\\Default\\Default (Windows).sublime-keymap"
+			],
+			[
+				"blatt4regularis",
+				"Institut\\Lehre\\GRM\\WiSe1314\\Uebung\\Blatt 4 Regularisierung Lesen.r"
+			],
+			[
+				"kohler",
+				"Projects\\Kohler_Juergen\\Kohler_Jürgen.odt"
+			],
+			[
+				"coali",
+				"coalitions\\Rcode\\getCoalitionProb.R"
+			],
+			[
+				"main.sub",
+				"Enhanced-R\\Main.sublime-menu"
+			],
+			[
+				"",
+				"C:\\Users\\abhs\\AppData\\Roaming\\Sublime Text 3\\Packages\\User\\SublimeREPL.sublime-settings"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+		],
+		"width": 479.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 327.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

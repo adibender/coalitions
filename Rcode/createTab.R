@@ -21,7 +21,7 @@
 #' test.tab
 
 createTab <- function(
-    
+
     votes.in.perc, 
     sample.size,
     parties = c("CDU/CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "AfD", 
