@@ -7,33 +7,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "{\n	\"target\": \"ltx_compiler\",\n	\"selector\": \"text.tex.latex\",\n	\"osx\":\n	{\n		\"cmd\":\n		[\n			\"latexmk\", \"-f\", \"-quiet\", \"-pdf\",\n			\"-synctex={synctex}\",\n			\"-jobname={pdfname}\",\n			\"-outdir={outdir}\",\n			\"{file}\" \n		],\n		\"path\": \"$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin\",\n		\"file_regex\": \"^(?:W|E|B):\\\\s(.*):([0-9]+)\"\n	},\n	\"windows\":\n	{\n		\"cmd\":\n		[\n			\"latexmk\", \"-f\", \"-quiet\", \"-pdf\",\n			\"-synctex={synctex}\",\n			\"-jobname={pdfname}\",\n			\"-outdir={outdir}\",\n			\"{file}\"\n		],\n		\"path\": \"C:\\\\Program Files\\\\MiKTeX 2.9\\\\miktex\\\\bin\\\\x64\\\\;$PATH\",\n		\"file_regex\": \"^(?:W|E|B):\\\\s(.*):([0-9]+)\"\n	},\n	\"linux\":\n	{\n		\"cmd\":\n		[\n			\"latexmk\", \"-f\", \"-quiet\", \"-pdf\",\n			\"-synctex={synctex}\",\n			\"-jobname={pdfname}\",\n			\"-outdir={outdir}\",\n			\"{file}\" \n		],\n		\"path\": \"$PATH:/usr/texbin:/usr/local/bin:/opt/local/bin\",\n		\"file_regex\": \"^(?:W|E|B):\\\\s(.*):([0-9]+)\"\n	},\n	\"variants\": \n	[\n		{\n			\"name\": \"Clean up Files\", \n			\"target\": \"ltx_clean\"\n		}\n	]\n}",
-			"file": "/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
-			"file_size": 998,
-			"file_write_time": 130279155832587817,
-			"settings":
-			{
-				"buffer_size": 949,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/abhs/Documents/GitHub/Institut/homepage/grm_wise_13.html",
-			"settings":
-			{
-				"buffer_size": 13571,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/README.markdown",
-			"settings":
-			{
-				"buffer_size": 38030,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
 	"command_palette":
@@ -128,6 +101,13 @@
 	},
 	"file_history":
 	[
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/README.markdown",
+		"/C/Users/abhs/Documents/GitHub/Institut/homepage/grm_wise_13.html",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
+		"/C/Users/abhs/Documents/GitHub/coalitions/.gitignore",
+		"/C/Users/abhs/Documents/GitHub/Institut/.gitignore",
+		"/C/Users/abhs/Documents/GitHub/Projects/.gitignore",
+		"/C/Users/abhs/Documents/GitHub/coalitions/coalitions.sublime-project",
 		"/C/Users/abhs/Desktop/Default (Windows).sublime-keymap",
 		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt 4 Regularisierung Lesen.r",
 		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt4 Regularisierung Standardisierung.r",
@@ -165,7 +145,6 @@
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/CHANGELOG",
 		"/C/Users/abhs/Google Drive/MA/Rcode/simOwnNutri.R",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings"
 	],
 	"find":
@@ -205,92 +184,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 949,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								207,
-								207
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Users/abhs/Documents/GitHub/Institut/homepage/grm_wise_13.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13571,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11463,
-								11463
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7520.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/README.markdown",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 38030,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6803,
-								6803
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 619.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -365,11 +260,23 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"P",
+				"C:\\Users\\abhs\\Documents\\GitHub\\Projects\\Projects.sublime-project"
+			],
+			[
+				"coal",
+				"C:\\Users\\abhs\\Documents\\GitHub\\coalitions\\coalitions.sublime-project"
+			],
+			[
+				"Ins",
+				"C:\\Users\\abhs\\Documents\\GitHub\\Institut\\Institut.sublime-project"
+			]
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{
