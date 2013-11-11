@@ -1,0 +1,47 @@
+\name{sls}
+\alias{sls}
+\title{Seat Distribution by Sainte-Lague/Scheppers
+calculates number of seats for the respective parties that have received more
+than 5\% of votes (according to the method of Sainte-Lague/Schepers)
+see http://www.wahlrecht.de/verfahren/rangmasszahlen.html}
+\usage{
+  sls(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05)
+}
+\arguments{
+  \item{survey}{results of a survey as data.frame
+  containing party names and votes}
+
+  \item{seats}{number of seats in parliament. Defaults to
+  598 (seats in german parliament)}
+
+  \item{hurdle}{the percentage of votes that must be
+  reached to get seats in parliament. Defaults to 0.05
+  (hurdle for german parliament)}
+
+  \item{epsilon}{the percentages of votes in survey must
+  add up to 1, this allows for some numerical imprecission.
+  Defaults to 10e-6.}
+}
+\value{
+  data.frame containing parties above the hurdle and the
+  respective seats/percentages after redistribution via
+  Sainte-Lague/Scheppers
+}
+\description{
+  Seat Distribution by Sainte-Lague/Scheppers calculates
+  number of seats for the respective parties that have
+  received more than 5\% of votes (according to the method
+  of Sainte-Lague/Schepers) see
+  http://www.wahlrecht.de/verfahren/rangmasszahlen.html
+}
+\examples{
+test.tab <- createTab( party = c(LETTERS[1:9])
+       votes.in.perc = c(40.9, 25.4, 14.3, 4.7, 7.5, 1.9, 1.9, 1.3, 2.1)/100,
+       sample.size = 1006)
+test.tab
+sls(test.tab)
+}
+\seealso{
+  \code{\link{hn}} for distribution by Hare/Niemeyer.
+}
+

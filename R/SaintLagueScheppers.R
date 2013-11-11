@@ -11,7 +11,7 @@
 #' @param epsilon the percentages of votes in survey must add up to 1, 
 #' this allows for some numerical imprecission. Defaults to 10e-6.
 
-#' @ return data.frame containing parties above the hurdle and the respective 
+#' @return data.frame containing parties above the hurdle and the respective 
 #' seats/percentages after redistribution via Sainte-Lague/Scheppers
 
 #' @seealso \code{\link{hn}} for distribution by Hare/Niemeyer.

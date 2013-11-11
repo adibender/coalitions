@@ -22,4 +22,15 @@ Suggests:
     xtable
 License: GPL (>= 2)
 Collate:
-    ''
+    'createTab.R'
+    'dataHandlingFunctions.R'
+    'DHondt.R'
+    'drawElectionsFromPosterior.R'
+    'getCoalitionProb.R'
+    'getEntryProbabilities.R'
+    'getLentVote.R'
+    'getProps.R'
+    'getSeatDistribution.R'
+    'plotFunctions.R'
+    'SaintLagueScheppers.R'
+    'tablesFunctions.R'

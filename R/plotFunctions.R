@@ -1,6 +1,3 @@
-############## plot 
-## plot function for course of coalition probabilities for various percentages 
-# of lent votes
 ggLent <- function(lent.vote.mat, coalition.order = NULL, coalition.addon = NULL, 
         coalition.colors) {
     

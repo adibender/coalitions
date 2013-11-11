@@ -1,4 +1,3 @@
-## apply sls() to each random dirichlet elections
 getSeatDistribution <- function(dirichlet.draws, survey, distrib.fun = sls, 
         sample.size = NULL, ...) {
     
