@@ -1,41 +1,46 @@
-#### functions to obtain pooled results
+#' Read surveys from csv file
 
-getSurveys <- function(path.to.surveys, party.order = NULL, ...) {
+#' @param path.to.surveys character. absolute or relative path to a file containing 
+#' survey results, that can be read by \code{\link{read.table}}
+#' @param date.var character. name of the column containing date on which survey was conducted
+#' defaults to \code{"date"}
+#' @param institute.var character. name of the column containing the name of the 
+#' institute that contained the survey 
+#' @param parties.var character. name of the column containing the name of the 
+#' parties for which voter preferences have been obtained
+#' @param date.format format of the \code{date.var} variable. Defaults to 
+#' \code{%d.%m.%Y}
+#' @param party.order optional reordering of parties and factor levels. Defaults
+#' to \code{NULL}, no factor level reordering.
+#' @param ... additional arguments passed to \code{link{read.table}}
+
+#' @return data.frame with properly formated surveys (optionaly with 
+#' factor levels reordered)
+
+#' @keywords survey
+#' @seealso \code{\link{selectSurveys}}
+#' @export
+
+getSurveys <- function(path.to.surveys, date.var = "date", 
+    institute.var = "institute", parties.var = "party", 
+    date.format = "%d.%m.%Y", party.order = NULL, ...) {
     
     require(plyr)
     require(zoo)
     
-    surveys <- read.csv2(path.to.surveys, na.strings = "")
-    surveys$Datum <- as.Date(surveys$Datum, format = "%d.%m.%Y")
-    surveys$Institut <- gsub(" ", "", surveys$Institut)
-    surveys <- colwise(na.locf)(surveys)
-    surveys$Institut <- factor(surveys$Institut)
+    surveys <- read.csv(path.to.surveys, ...)
+    surveys[[date.var]] <- as.Date(surveys[[date.var]], format = date.format)
+    surveys[[institute.var]] <- gsub(" ", "", surveys[[institute.var]])
+    surveys <- colwise(na.locf)(surveys) ##TODO: this must be omitted
+    surveys[[institute.var]] <- factor(surveys[[institute.var]])
     
     ## reorder parties
-    if( is.null(party.order) ) party.order <- unique(surveys$Partei)
+    if( is.null(party.order) ) party.order <- unique(surveys[[party.var]])
     
-    surveys$Partei <- factor(surveys$Partei, levels = party.order )
+    surveys[[party.var]] <- factor(surveys[[party.var]], levels = party.order)
     
-    surveys
+    return(surveys)
 }
-
-selectSurveys <- function(surveys, n.surveys = 3) {
-    
-    ## unique dates per Institute, 
-    unique.dates <- unique(surveys[, c("Institut", "Datum")])
-    recent.dates <- sort(unique.dates$Datum, 
-            partial = n.surveys)[nrow(unique.dates):(nrow(unique.dates) - 
-                        n.surveys + 1)] 
-    
-    most.recent <- surveys[surveys$Datum %in% recent.dates, ]
-    if( length(u.i <- unique(most.rechent$Institut))  > 1 ) {
-        most.recent <- most.recent[most.recent$Institut == u.i[length(u.i)], ]
-    }
-    
-    most.recent
-    
-}
-
 
 poolSurveys <- function(surveys, n.surveys = 3) {
     

@@ -6,8 +6,7 @@
 #' mentioned in the specific survey (otherwise the \code{parties} argument has 
 #' to be modified)
 #' @param sample.size number of respondents in survey
-#' @parties vector of same length as 'votes.in.perc' and in the same order
-#' as \code{votes.in.perc}
+#' @param parties vector of same length and in the same orderas \code{votes.in.perc}
 #'
 #' @return data.frame containing input and absolute number of votes in survey per 
 #' party

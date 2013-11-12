@@ -1,2 +1,4 @@
 export(createTab)
+export(getSurveys)
+export(selectSurveys)
 export(sls)

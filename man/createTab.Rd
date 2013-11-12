@@ -15,6 +15,9 @@ sanity checks}
   has to be modified)}
 
   \item{sample.size}{number of respondents in survey}
+
+  \item{parties}{vector of same length and in the same
+  orderas \code{votes.in.perc}}
 }
 \value{
   data.frame containing input and absolute number of votes

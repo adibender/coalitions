@@ -23,7 +23,6 @@ Suggests:
 License: GPL (>= 2)
 Collate:
     'createTab.R'
-    'dataHandlingFunctions.R'
     'DHondt.R'
     'drawElectionsFromPosterior.R'
     'getCoalitionProb.R'
@@ -34,3 +33,5 @@ Collate:
     'plotFunctions.R'
     'SaintLagueScheppers.R'
     'tablesFunctions.R'
+    'getSurveys.R'
+    'selectSurveys.R'
