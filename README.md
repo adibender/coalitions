@@ -25,6 +25,4 @@ coalitions of interest. <br/>
 
 <h3>Note:</h3>
 
-This package is in development and might not work until otherwise noted here. 
-
-Test
+This package is in development and might not work until otherwise noted here.
