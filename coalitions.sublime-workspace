@@ -3,29 +3,31 @@
 	{
 		"selected_items":
 		[
+			[
+				"a",
+				"a	Tag"
+			],
+			[
+				"Blatt4",
+				"Blatt4 Regularisierung Parteiwahl ohne Interaktionen.r"
+			],
+			[
+				"Reli",
+				"Religion_Rest"
+			],
+			[
+				"instit",
+				"institute.var"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "Today: @started(13-11-12 22:04)\n--- ✄ -----------------------\n ☐ finish roxygen documentation\n ☐ upload documentation to GitHub\n ☐ create @examples \n\n RCode: @started(13-11-12 22:06)\n--- ✄ -----------------------\n\n\n",
-			"file": "/C/Users/abhs/Documents/GitHub/coalitions.todo",
-			"file_size": 0,
-			"file_write_time": 130287638510968155,
+			"file": "/C/Users/abhs/Documents/GitHub/Institut/Lehre/Lehre.todo",
 			"settings":
 			{
-				"buffer_size": 215,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "\n\ngetSurveys <- function(path.to.surveys, party.order = NULL, ...) {\n    \n    require(plyr)\n    require(zoo)\n    \n    surveys <- read.csv2(path.to.surveys, na.strings = \"\")\n    surveys$Datum <- as.Date(surveys$Datum, format = \"%d.%m.%Y\")\n    surveys$Institut <- gsub(\" \", \"\", surveys$Institut)\n    surveys <- colwise(na.locf)(surveys)\n    surveys$Institut <- factor(surveys$Institut)\n    \n    ## reorder parties\n    if( is.null(party.order) ) party.order <- unique(surveys$Partei)\n    \n    surveys$Partei <- factor(surveys$Partei, levels = party.order )\n    \n    surveys\n}\n\nselectSurveys <- function(surveys, n.surveys = 3) {\n    \n    ## unique dates per Institute, \n    unique.dates <- unique(surveys[, c(\"Institut\", \"Datum\")])\n    recent.dates <- sort(unique.dates$Datum, \n            partial = n.surveys)[nrow(unique.dates):(nrow(unique.dates) - \n                        n.surveys + 1)] \n    \n    most.recent <- surveys[surveys$Datum %in% recent.dates, ]\n    if( length(u.i <- unique(most.rechent$Institut))  > 1 ) {\n        most.recent <- most.recent[most.recent$Institut == u.i[length(u.i)], ]\n    }\n    \n    most.recent\n    \n}\n\n\npoolSurveys <- function(surveys, n.surveys = 3) {\n    \n    recent.surveys <- selectSurveys(surveys, n.surveys = n.surveys)\n    recent.surveys$Anteil <- recent.surveys$Anteil/100 * recent.surveys$Befragte\n    pooled.surveys <- aggregate(Anteil ~ Partei, sum, data = recent.surveys)\n    n <- sum(aggregate(Befragte ~ Institut, unique, data = recent.surveys)$Befragte)\n    \n    pooled.surveys$Anteil <- pooled.surveys$Anteil/n\n    pooled.surveys\n    createTab(votes.in.perc = pooled.surveys$Anteil, sample.size = n, \n            parties = pooled.surveys$Partei)\n    \n}\n\npoolSurveys2 <- function(recent.surveys) {\n    \n    recent.surveys$Anteil <- recent.surveys$Anteil/100 * recent.surveys$Befragte\n    pooled.surveys <- aggregate(Anteil ~ Partei, sum, data = recent.surveys)\n    n <- sum(aggregate(Befragte ~ Institut, unique, data = recent.surveys)$Befragte)\n    \n    pooled.surveys$Anteil <- pooled.surveys$Anteil/n * 100\n    pooled.surveys$Institut <- paste(unique(recent.surveys$Institut), collapse = \", \")\n    pooled.surveys$Befragte <- n\n    pooled.surveys$Datum <- max(recent.surveys$Datum)\n    pooled.surveys[, c(\"Institut\", \"Datum\", \"Befragte\", \"Partei\", \"Anteil\")]\n    \n}\n\nsurveysToPooledSurveys <- function(surveys, \n        institutes = c(\"Emnid\", \"FGW\", \"Forsa\", \"Infratest\")) {\n     \n    surveys.list <- selectSurveys2(surveys, institutes = institutes)    \n    ps.list <- lapply(surveys.list, poolSurveys2)\n    \n    ps <- do.call(rbind, ps.list)\n    \n    ps\n    \n}\n\n\n\n#### function that calculate results for all institute/display them to html\nlatestSurveys <- function(surveys) {\n    \n    date.newest <- aggregate(Datum ~ Institut, max, data = surveys)\n    ia.newest <- with(date.newest, interaction(Datum, Institut))\n    ia.results <- with(surveys, interaction(Datum, Institut))\n    newest.results <- surveys[ia.results %in% ia.newest, ]\n    dcast(newest.results, Partei ~ Institut+Datum+Befragte, mean, \n            subset = .(Datum %in% date.newest$Datum), value.var = \"Anteil\")\n    \n}\n\nupdateUsedSurveys <- function(\n        party.order = NULL,\n        surveys.file = \"../data/sonntagsfrageProjektion.csv\", \n        latest.file = \"../data/lastUpdates.Rds\") {\n    \n    surveys <- getSurveys(surveys.file, party.order = party.order)\n    latest <- aggregate(Datum ~ Institut, max, data = surveys)\n    saveRDS(latest, latest.file)\n    \n    Sys.chmod(c(latest.file), \n            mode = \"0774\", use_umask = FALSE)\n    \n}\n\n\n\n############################## new with 4 institutes \n\nlastSurveys <- function(surveys) {\n    \n    date.newest <- aggregate(Datum ~ Institut, max, data = surveys)\n    ia.newest <- with(date.newest, interaction(Datum, Institut))\n    ia.results <- with(surveys, interaction(Datum, Institut))\n    newest.results <- surveys[ia.results %in% ia.newest, ]\n    \n    newest.results\n    \n}\n\nselectSurveys2 <- function(surveys, \n        institutes = c(\"Emnid\", \"FGW\", \"Forsa\", \"Infratest\")) {\n    \n    survs <- droplevels(subset(surveys, Institut %in% institutes))\n    viable <- TRUE\n    surveys.list <- list()\n    \n    while( viable ){\n        \n        last.surveys <- lastSurveys(survs)\n        if( !(all(unique(last.surveys$Institut) %in% institutes))) \n            stop(\"Wrong institutes\")\n        else surveys.list <- c(surveys.list, list(last.surveys))\n        \n        survs <- survs[survs$Datum != max(survs$Datum), ]\n        \n        if( !(all(institutes %in% unique(survs$Institut))) ) {\n            viable <- FALSE\n        }\n        \n    } \n    \n    surveys.list\n}\n\n\n\nwriteProbsToCSV <- function(\n        coalition.results.file, \n        coalition.results.file.ur,\n        entry.results.file, \n        pooled.coalition.file, \n        pooled.coalition.file.ur,\n        pooled.entry.file, \n        pooled.surveys.file,\n        results.path = \"../results/\", \n        ...)  {\n    \n    write.table(readRDS(coalition.results.file), \n            paste0(results.path, \n                    tools::file_path_sans_ext(basename(coalition.results.file)), \n                    \".csv\"), ...) \n    write.table(readRDS(coalition.results.file.ur), \n            paste0(results.path, \n                    tools::file_path_sans_ext(basename(coalition.results.file.ur)), \n                    \".csv\"), ...)\n    write.table(readRDS(entry.results.file), \n            paste0(results.path, \n                    tools::file_path_sans_ext(basename(entry.results.file)), \n                    \".csv\"), ...)\n    write.table(readRDS(pooled.coalition.file), \n            paste0(results.path, \n                    tools::file_path_sans_ext(basename(pooled.coalition.file)), \n                    \".csv\"), ...)\n    write.table(readRDS(pooled.coalition.file.ur), \n            paste0(results.path, \n                    tools::file_path_sans_ext(basename(pooled.coalition.file.ur)), \n                    \".csv\"), ...)\n    write.table(readRDS(pooled.entry.file), \n            paste0(results.path, \n                    tools::file_path_sans_ext(basename(pooled.entry.file)), \n                    \".csv\"), ...)\n    write.table(readRDS(pooled.surveys.file), \n            paste0(results.path, \n                    tools::file_path_sans_ext(basename(pooled.surveys.file)), \n                    \".csv\"), ...)\n}\n",
-			"file": "R/dataHandlingFunctions.R",
-			"file_size": 6563,
-			"file_write_time": 130286696633015746,
-			"settings":
-			{
-				"buffer_size": 6335,
+				"buffer_size": 527,
 				"line_ending": "Windows"
 			}
 		}
@@ -36,6 +38,30 @@
 		"height": 375.0,
 		"selected_items":
 		[
+			[
+				"Rch",
+				"R: Choose Application"
+			],
+			[
+				"R",
+				"File: Reveal"
+			],
+			[
+				"Rc",
+				"R: Choose Application"
+			],
+			[
+				"key u",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"enh",
+				"Set Syntax: Enhanced-R"
+			],
+			[
+				"rd",
+				"Set Syntax: Rd (R Documentation)"
+			],
 			[
 				"Package Control: En",
 				"Package Control: Enable Package"
@@ -51,10 +77,6 @@
 			[
 				"snippet com",
 				"Snippet: Comment"
-			],
-			[
-				"R",
-				"R: Choose Application"
 			],
 			[
 				"Rd",
@@ -163,23 +185,45 @@
 	},
 	"file_history":
 	[
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/C/Users/abhs/Documents/GitHub/coalitions.todo",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung5/Blatt5.r",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt5.pdf",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung4/Blatt4 Regularisierung Parteiwahl ohne Interaktionen.r",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung4/Blatt4 Regularisierung Standardisierung.r",
+		"/C/Users/abhs/Documents/GitHub/Institut/homepage/unterlagen/grm13/Blatt4_Wahl_Interaktionen.r",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/HTML/ahref.sublime-snippet",
+		"/C/Users/abhs/Documents/GitHub/Institut/homepage/grm_wise_13.html",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung4/Blatt 4 Regularisierung Lesen.r",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/NOTES.txt",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung5/Blatt5.pdf",
 		"/C/Users/abhs/Documents/GitHub/coalitions/R/createTab.R",
+		"/C/Users/abhs/Documents/GitHub/coalitions/README.md",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/getSurveys.R",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/selectSurveys.R",
+		"/C/Users/abhs/Documents/GitHub/coalitions/DESCRIPTION",
+		"/C/Users/abhs/Documents/GitHub/coalitions/NAMESPACE",
+		"/C/Users/abhs/Documents/GitHub/coalitions/man/sls.Rd",
+		"/C/Program Files/R/R-3.0.2/etc/Rprofile.site",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/plotFunctions.R",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/tablesFunctions.R",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Rd/comment.sublime-snippet",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Rd/return.sublime-snippet",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/README.md",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Installed Packages/AdvancedNewFile.sublime-package",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SublimeREPL/config/R/Default.sublime-commands",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SublimeREPL/config/R/Main.sublime-menu",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Rd/comment.sublime-snippet",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Rd/param.sublime-snippet",
 		"/C/Program Files/Sublime Text 3/Packages/R.sublime-package",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/SublimeREPL.sublime-settings",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Enhanced-R.sublime-settings",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLint.sublime-settings",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/README.markdown",
-		"/C/Users/abhs/Documents/GitHub/Institut/homepage/grm_wise_13.html",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
 		"/C/Users/abhs/Documents/GitHub/coalitions/.gitignore",
 		"/C/Users/abhs/Documents/GitHub/Institut/.gitignore",
@@ -198,13 +242,9 @@
 		"/C/Users/abhs/Documents/GitHub/coalitions/Rcode/getCoalitionProb.R",
 		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt 4 Regularisierung Lesen.r",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Enhanced-R/Default (Windows).sublime-keymap",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt1.R",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/run_multiple_commands.py",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Enhanced-R/Enhanced-R.sublime-settings",
-		"/C/Users/abhs/Documents/GitHub/coalitions/DESCRIPTION",
-		"/C/Users/abhs/Documents/GitHub/coalitions/NAMESPACE",
 		"/C/Users/abhs/Documents/GitHub/coalitions/Rcode/createTab.R",
 		"/C/Users/abhs/Documents/GitHub/Projects/Kohler_Juergen/Kohler_Jürgen.odt",
 		"/C/Users/abhs/Documents/GitHub/coalitions/man/createTab.R.Rd",
@@ -222,7 +262,7 @@
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -236,6 +276,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"python",
+			"hello",
+			"tabTrigger",
+			"institute",
+			"\\\\",
+			"Institut",
+			"]] ",
+			"Datum",
+			"n.surveys",
+			"ctrl+d",
+			"n.surveys",
+			"Partei",
+			"time.format",
+			"Institut",
+			"python",
+			"hello",
 			"python",
 			"hello",
 			"python",
@@ -261,24 +317,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/abhs/Documents/GitHub/coalitions.todo",
+					"file": "/C/Users/abhs/Documents/GitHub/Institut/Lehre/Lehre.todo",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 215,
+						"buffer_size": 527,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								148,
-								148
+								259,
+								259
 							]
 						],
 						"settings":
@@ -394,146 +450,13 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "R/dataHandlingFunctions.R",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6335,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/Enhanced-R/support/Enhanced-R.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -565,7 +488,7 @@
 	"project": "coalitions.sublime-project",
 	"replace":
 	{
-		"height": 66.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -639,7 +562,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 327.0,
+	"side_bar_width": 340.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

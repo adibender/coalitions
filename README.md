@@ -24,4 +24,4 @@ coalitions of interest. <br/>
 
 
 <h3>Note:</h3>
-This package is in development and will not work until otherwise noted here.
+This package is in development and **will not work** until otherwise noted here.
