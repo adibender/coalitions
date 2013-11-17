@@ -1,3 +1,8 @@
+#' Calculate seat distribution from draws from posterior
+
+#' @param dirichlet.draws M
+#' @param survey The 
+
 getSeatDistribution <- function(dirichlet.draws, survey, distrib.fun = sls, 
         sample.size = NULL, ...) {
     

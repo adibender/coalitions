@@ -1,4 +1,24 @@
-getCoalitionProbability <- function(seat.tab, coalition, superior, majority = 300) {
+#' Calculates coalition probability for one coalition given seat distribution
+
+#' @param seat.tab \code{data.frame} containing seat.distributions from simulations
+#' @param coalition the coalition of interest
+#' @param superior Superior coalition to \code{coalition}. If not \code{NA}
+#' majority for coalition is considered only if there is no majority for 
+#' \code{superior} coalition.
+#' @param majority Number of seats required for majority in parliament. 
+#' Defaults to 300 (required number of seats in german parliament).
+
+#' @return Probability for majority of \code{coalition}.
+
+#' @seealso \code{\link{}}
+
+#' @export
+
+#' @examples 
+#' 
+
+getCoalitionProbability <- function(seat.tab, coalition, superior, 
+    majority = 300) {
     
     ind.coalition <- sapply(seat.tab, function(z) {
                 sum(z$seats[z$party %in% coalition]) >= majority
@@ -24,8 +44,8 @@ getCoalitionProbability <- function(seat.tab, coalition, superior, majority = 30
 }
 
 
-getCoalitionProbs <- function(seat.tabs, coalitions, superior.coalitions, 
-        majority = 300) {
+getCoalitionProbabilities <- function(seat.tabs, coalitions, 
+    superior.coalitions, majority = 300) {
     
     coal.probs <- sapply(seq_along(coalitions), function(z) {
                 getCoalitionProbability(seat.tabs, coalitions[[z]], 

@@ -16,6 +16,7 @@ Imports:
     gtable (>= 0.1.1),
     reshape2,
     MASS
+    MCMCpack
 Suggests:
     tables,
     ggplot2,

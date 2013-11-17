@@ -1,10 +1,25 @@
 # TODO: Function name changed (consider in functions that depend on this one)
-drawElectionsFromPosterior <- function(survey, simulations, seed = NULL, prior = NULL) {
+
+#' Draw random numbers from posterior distribution
+#' 
+#' @param survey survey object as returned by \code{createTab} or \code{getSurveys}
+#' @param nsim number of simulations
+#' @param seed sets seed
+#' @param prior optional prior information. Defaults to 1/2 (Jeffrey's prior). 
+
+#' @return \code{data.frame} containing random draws from dirichlet distribution
+#' which can be interpreted as election results.
+#' @keywords draw, simulate
+#' @seealso \code{\link{createTab}} \code{\link{getSurveys}}
+#' @export
+#' @examples 
+#' 
+
+
+drawElectionsFromPosterior <- function(survey, n.sim, seed = NULL, prior = NULL) {
     
     ## for rdirichlet
     require(MCMCpack)
-    # simulieren von anteilen
-    # rdirichlet ruft rgamma auf mit rate = 1    
     
     ## calculate posteriori
     if( is.null(prior) ) {
@@ -20,7 +35,7 @@ drawElectionsFromPosterior <- function(survey, simulations, seed = NULL, prior =
     
     ## draw n.sim random dirichlet numbers/vectors with concentration weights alpha
     if( !is.null(seed) ) set.seed(seed)
-    rn <- as.data.frame(rdirichlet(simulations, alpha = alpha))
+    rn <- as.data.frame(rdirichlet(nsim, alpha = alpha))
     colnames(rn) <- survey$party  
     
     rn

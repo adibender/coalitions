@@ -3,31 +3,23 @@
 	{
 		"selected_items":
 		[
-			[
-				"a",
-				"a	Tag"
-			],
-			[
-				"Blatt4",
-				"Blatt4 Regularisierung Parteiwahl ohne Interaktionen.r"
-			],
-			[
-				"Reli",
-				"Religion_Rest"
-			],
-			[
-				"instit",
-				"institute.var"
-			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "/C/Users/abhs/Documents/GitHub/Institut/Lehre/Lehre.todo",
+			"file": "R/drawElectionsFromPosterior.R",
 			"settings":
 			{
-				"buffer_size": 527,
+				"buffer_size": 1276,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "R/createTab.R",
+			"settings":
+			{
+				"buffer_size": 1687,
 				"line_ending": "Windows"
 			}
 		}
@@ -39,127 +31,115 @@
 		"selected_items":
 		[
 			[
-				"Rch",
-				"R: Choose Application"
-			],
-			[
-				"R",
-				"File: Reveal"
-			],
-			[
-				"Rc",
-				"R: Choose Application"
-			],
-			[
-				"key u",
-				"Preferences: Key Bindings - User"
-			],
-			[
-				"enh",
-				"Set Syntax: Enhanced-R"
-			],
-			[
-				"rd",
-				"Set Syntax: Rd (R Documentation)"
-			],
-			[
-				"Package Control: En",
-				"Package Control: Enable Package"
-			],
-			[
-				"rev",
-				"File: Reveal"
-			],
-			[
-				"insta",
-				"Package Control: Install Package"
-			],
-			[
-				"snippet com",
-				"Snippet: Comment"
-			],
-			[
-				"Rd",
-				"Set Syntax: Rd (R Documentation)"
-			],
-			[
-				"settings",
-				"Preferences: Settings - User"
-			],
-			[
 				"R c",
 				"R: Choose Application"
 			],
 			[
-				"sublime sett",
-				"Preferences: SublimeLint Settings – User"
+				"Setting",
+				"Preferences: Settings - User"
 			],
 			[
-				"Remo",
-				"Package Control: Remove Package"
+				"REPL",
+				"SublimeREPL: R"
 			],
 			[
-				"Package Control: Re",
-				"Package Control: Remove Package"
-			],
-			[
-				"pa upg",
+				"up",
 				"Package Control: Upgrade Package"
 			],
 			[
-				"Package Control: LI",
-				"Package Control: List Packages"
+				"File:se",
+				"File: Search Files"
 			],
 			[
-				"Syntax Enha",
+				"Syntax R",
+				"Set Syntax: R"
+			],
+			[
+				"Repl",
+				"R: Choose Application"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"repl R",
+				"SublimeREPL: R"
+			],
+			[
+				"Filerentee",
+				"File: Open In Browser - Testing Server"
+			],
+			[
+				"syntax enha",
 				"Set Syntax: Enhanced-R"
 			],
 			[
-				"Package Control: In",
+				"Snippet: env",
+				"Snippet: #!/usr/bin/env"
+			],
+			[
+				"enhanc",
+				"Set Syntax: Enhanced-R"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"mini",
+				"View: Toggle Minimap"
+			],
+			[
+				"minim",
+				"View: Toggle Minimap"
+			],
+			[
+				"toogle sid",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"sidebar",
+				"Side Bar: Refresh"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"Package Control: i",
 				"Package Control: Install Package"
 			],
 			[
-				"Package Control: L",
-				"Package Control: List Packages"
-			],
-			[
-				"Package Control: Ins",
+				"Package Control:in",
 				"Package Control: Install Package"
-			],
-			[
-				"Package Control: Di",
-				"Package Control: Disable Package"
-			],
-			[
-				"Package Control:In",
-				"Package Control: Install Package"
-			],
-			[
-				"Package Control: INst",
-				"Package Control: Install Package"
-			],
-			[
-				"Package Control: Rem",
-				"Package Control: Remove Package"
-			],
-			[
-				"Package Control: Remo",
-				"Package Control: Remove Package"
-			],
-			[
-				"Package Control: REm",
-				"Package Control: Remove Package"
 			],
 			[
 				"Package Control: ",
-				"Package Control: Upgrade/Overwrite All Packages"
+				"Package Control: Install Package"
 			],
 			[
 				"Package Control: ins",
 				"Package Control: Install Package"
 			],
 			[
-				"Package Control: in",
+				"Package Control: In",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: INs",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Ins",
 				"Package Control: Install Package"
 			]
 		],
@@ -167,10 +147,9 @@
 	},
 	"console":
 	{
-		"height": 362.0,
+		"height": 126.0,
 		"history":
 		[
-			"ssh ",
 			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
 		]
 	},
@@ -179,94 +158,55 @@
 		"menu_visible": true,
 		"show_minimap": false,
 		"show_open_files": false,
-		"show_tabs": true,
+		"show_tabs": false,
 		"side_bar_visible": false,
-		"status_bar_visible": true
+		"status_bar_visible": false
 	},
 	"file_history":
 	[
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
-		"/C/Users/abhs/Documents/GitHub/coalitions.todo",
-		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung5/Blatt5.r",
-		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt5.pdf",
-		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung4/Blatt4 Regularisierung Parteiwahl ohne Interaktionen.r",
-		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung4/Blatt4 Regularisierung Standardisierung.r",
-		"/C/Users/abhs/Documents/GitHub/Institut/homepage/unterlagen/grm13/Blatt4_Wahl_Interaktionen.r",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/HTML/ahref.sublime-snippet",
-		"/C/Users/abhs/Documents/GitHub/Institut/homepage/grm_wise_13.html",
-		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung4/Blatt 4 Regularisierung Lesen.r",
-		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/NOTES.txt",
-		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung5/Blatt5.pdf",
-		"/C/Users/abhs/Documents/GitHub/coalitions/R/createTab.R",
-		"/C/Users/abhs/Documents/GitHub/coalitions/README.md",
-		"/C/Users/abhs/Documents/GitHub/coalitions/R/getSurveys.R",
-		"/C/Users/abhs/Documents/GitHub/coalitions/R/selectSurveys.R",
 		"/C/Users/abhs/Documents/GitHub/coalitions/DESCRIPTION",
-		"/C/Users/abhs/Documents/GitHub/coalitions/NAMESPACE",
-		"/C/Users/abhs/Documents/GitHub/coalitions/man/sls.Rd",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/getSeatDistribution.R",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/getCoalitionProbability.R",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/getProps.R",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/getLentVote.R",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/getEntryProbabilities.R",
+		"/C/Users/abhs/Documents/GitHub/coalitions/R/DHondt.R",
+		"/C/Users/abhs/Documents/GitHub/Institut/homepage/Kolloquium/kolloquium.html",
+		"/C/Users/abhs/Documents/GitHub/Institut/homepage/unterlagen/grm13/Blatt3_Lsg.R",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/testsnippet.sublime-snippet",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/HTML/trentry_kolloq.sublime-snippet",
+		"/C/Users/abhs/Documents/GitHub/Institut/homepage/Kolloquium/geplant.html",
+		"/C/Users/abhs/Documents/GitHub/Institut/README.md",
+		"/C/Users/abhs/Documents/GitHub/Institut/_project",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung4/Blatt4 Regularisierung Parteiwahl ohne Interaktionen.r",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Program Files/R/R-3.0.2/etc/Rprofile.site",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/C/Users/abhs/Documents/GitHub/coalitions/R/plotFunctions.R",
-		"/C/Users/abhs/Documents/GitHub/coalitions/R/tablesFunctions.R",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Rd/comment.sublime-snippet",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Rd/return.sublime-snippet",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/README.md",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Installed Packages/AdvancedNewFile.sublime-package",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SublimeREPL/config/R/Default.sublime-commands",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SublimeREPL/config/R/Main.sublime-menu",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Rd/param.sublime-snippet",
-		"/C/Program Files/Sublime Text 3/Packages/R.sublime-package",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/SublimeREPL.sublime-settings",
 		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Enhanced-R.sublime-settings",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLint.sublime-settings",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXTools/README.markdown",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeX.sublime-build",
-		"/C/Users/abhs/Documents/GitHub/coalitions/.gitignore",
-		"/C/Users/abhs/Documents/GitHub/Institut/.gitignore",
-		"/C/Users/abhs/Documents/GitHub/Projects/.gitignore",
-		"/C/Users/abhs/Documents/GitHub/coalitions/coalitions.sublime-project",
-		"/C/Users/abhs/Desktop/Default (Windows).sublime-keymap",
-		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt 4 Regularisierung Lesen.r",
-		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt4 Regularisierung Standardisierung.r",
-		"/C/Users/abhs/Documents/GitHub/Projects/Kohler_Juergen/docu/kohlerJuergen.Rnw",
-		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Wahl.txt",
-		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/lesen.txt",
-		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt4 Regularisierung Parteiwahl ohne Interaktionen.r",
-		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt4 Regularisierung Parteiwahl mit Interaktionen.r",
-		"/C/Users/abhs/AppData/Local/Temp/Rar$DRa0.761/Blatt4-Regularisierung2.pdf",
-		"/C/Users/abhs/Documents/GitHub/coalitions/Rcode/Namespace",
-		"/C/Users/abhs/Documents/GitHub/coalitions/Rcode/getCoalitionProb.R",
-		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt 4 Regularisierung Lesen.r",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Enhanced-R/Default (Windows).sublime-keymap",
-		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt1.R",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/run_multiple_commands.py",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/Enhanced-R/Enhanced-R.sublime-settings",
-		"/C/Users/abhs/Documents/GitHub/coalitions/Rcode/createTab.R",
-		"/C/Users/abhs/Documents/GitHub/Projects/Kohler_Juergen/Kohler_Jürgen.odt",
-		"/C/Users/abhs/Documents/GitHub/coalitions/man/createTab.R.Rd",
-		"/C/Users/abhs/Documents/GitHub/Enhanced-R/Main.sublime-menu",
-		"/C/Users/abhs/Documents/GitHub/LICENSE",
-		"/C/Users/abhs/Documents/GitHub/Projects/LICENSE",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Side Bar.sublime-settings",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
-		"/C/Users/abhs/Documents/GitHub/Institut/.Rhistory",
-		"/C/Users/abhs/Documents/GitHub/Institut/README.md",
-		"/C/Dokumente und Einstellungen/bender/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt1.Rnw",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/SideBarEnhancements/CHANGELOG",
-		"/C/Users/abhs/Google Drive/MA/Rcode/simOwnNutri.R",
-		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings"
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/R/require.sublime-snippet",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/R/library.sublime-snippet",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt1_Lsg.Rnw",
+		"/C/Users/abhs/AppData/Roaming/Sublime Text 3/Packages/User/R/source.sublime-snippet",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung4/Blatt4 Regularisierung Standardisierung.r",
+		"/C/Users/abhs/Documents/GitHub/Institut/homepage/index.html",
+		"/C/Users/abhs/Documents/GitHub/Institut/homepage/Kolloquium/vergangene.html",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Uebung4/Blatt4 Regularisierung Parteiwahl mit Interaktionen.r",
+		"/C/Users/abhs/Documents/GitHub/Institut/Lehre/GRM/WiSe1314/Uebung/Blatt2.R",
+		"/C/eclipse/eclipse.ini",
+		"/C/Users/abhs/Documents/GitHub/Institut/Institut.sublime-project",
+		"/Z/bin/Data/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/Z/bin/Data/Packages/SideBarEnhancements/CHANGELOG",
+		"/Z/bin/Data/Packages/LaTeXTools/LaTeXTools Preferences.sublime-settings"
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
-		"height": 95.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -276,28 +216,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"python",
+			"simulations",
 			"hello",
-			"tabTrigger",
-			"institute",
-			"\\\\",
-			"Institut",
-			"]] ",
-			"Datum",
-			"n.surveys",
-			"ctrl+d",
-			"n.surveys",
-			"Partei",
-			"time.format",
-			"Institut",
+			"ctrl",
 			"python",
-			"hello",
-			"python",
-			"hello",
-			"python",
-			"hello",
-			"lesenbayes",
-			"lesenml"
+			"remove",
+			"weights",
+			"remove",
+			"xtest",
+			"xseq",
+			"head",
+			"shuttle",
+			"ü",
+			"<br>"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -305,8 +236,8 @@
 		"regex": false,
 		"replace_history":
 		[
-			"lesen.bayes",
-			"lesen.ml"
+			"&uuml;",
+			"<br/>"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -317,24 +248,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/abhs/Documents/GitHub/Institut/Lehre/Lehre.todo",
+					"file": "R/drawElectionsFromPosterior.R",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 527,
+						"buffer_size": 1276,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								259,
-								259
+								302,
+								302
 							]
 						],
 						"settings":
@@ -443,7 +374,142 @@
 							},
 							"codeintel_tooltips": "popup",
 							"sublime_auto_complete": true,
-							"syntax": "Packages/PlainTasks/PlainTasks.tmLanguage"
+							"syntax": "Packages/Enhanced-R/support/Enhanced-R.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "R/createTab.R",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1687,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								888,
+								888
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Enhanced-R/support/Enhanced-R.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -452,15 +518,20 @@
 					"type": "text"
 				}
 			]
+		},
+		{
+			"sheets":
+			[
+			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 27.0
 	},
 	"input":
 	{
-		"height": 36.0
+		"height": 37.0
 	},
 	"layout":
 	{
@@ -471,11 +542,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -484,11 +562,15 @@
 			1.0
 		]
 	},
-	"menu_visible": true,
+	"menu_visible": false,
+	"output.exec":
+	{
+		"height": 102.0
+	},
 	"project": "coalitions.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 66.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -497,32 +579,32 @@
 		"selected_items":
 		[
 			[
-				"sublimerepl",
-				"C:\\Users\\abhs\\AppData\\Roaming\\Sublime Text 3\\Packages\\SublimeREPL\\SublimeREPL.sublime-settings"
+				"getlen",
+				"R\\getLentVote.R"
 			],
 			[
-				"sublime.keym",
-				"C:\\Users\\abhs\\AppData\\Roaming\\Sublime Text 3\\Packages\\Default\\Default (Windows).sublime-keymap"
+				"blat",
+				"homepage\\unterlagen\\grm13\\Blatt3_Lsg.R"
 			],
 			[
-				"blatt4regularis",
-				"Institut\\Lehre\\GRM\\WiSe1314\\Uebung\\Blatt 4 Regularisierung Lesen.r"
-			],
-			[
-				"kohler",
-				"Projects\\Kohler_Juergen\\Kohler_Jürgen.odt"
-			],
-			[
-				"coali",
-				"coalitions\\Rcode\\getCoalitionProb.R"
-			],
-			[
-				"main.sub",
-				"Enhanced-R\\Main.sublime-menu"
-			],
-			[
-				"",
+				"repl",
 				"C:\\Users\\abhs\\AppData\\Roaming\\Sublime Text 3\\Packages\\User\\SublimeREPL.sublime-settings"
+			],
+			[
+				"stand",
+				"Lehre\\GRM\\WiSe1314\\Uebung\\Uebung4\\Blatt4 Regularisierung Standardisierung.r"
+			],
+			[
+				"mitinter",
+				"Lehre\\GRM\\WiSe1314\\Uebung\\Uebung4\\Blatt4 Regularisierung Parteiwahl mit Interaktionen.r"
+			],
+			[
+				"ohne",
+				"Lehre\\GRM\\WiSe1314\\Uebung\\Uebung4\\Blatt4 Regularisierung Parteiwahl ohne Interaktionen.r"
+			],
+			[
+				"ohn",
+				"Lehre\\GRM\\WiSe1314\\Uebung\\Uebung4\\Blatt4 Regularisierung Parteiwahl ohne Interaktionen.r"
 			]
 		],
 		"width": 0.0
@@ -533,36 +615,48 @@
 		"selected_items":
 		[
 			[
-				"P",
-				"C:\\Users\\abhs\\Documents\\GitHub\\Projects\\Projects.sublime-project"
+				"Proj",
+				"C:\\Users\\abhs\\Documents\\GitHub\\Projects\\Projects.sublime-workspace"
 			],
 			[
-				"coal",
+				"u",
+				"C:\\Users\\abhs\\AppData\\Roaming\\Sublime Text 3\\Packages\\User\\User.sublime-project"
+			],
+			[
+				"co",
 				"C:\\Users\\abhs\\Documents\\GitHub\\coalitions\\coalitions.sublime-project"
 			],
 			[
-				"Ins",
-				"C:\\Users\\abhs\\Documents\\GitHub\\Institut\\Institut.sublime-project"
+				"gi",
+				"C:\\Users\\abhs\\Documents\\GitHub\\GitHub.sublime-project"
+			],
+			[
+				"p",
+				"C:\\Users\\abhs\\Documents\\GitHub\\Projects\\Projects.sublime-project"
+			],
+			[
+				"Pr",
+				"C:\\Users\\abhs\\Documents\\GitHub\\Projects\\Projects.sublime-project"
 			]
 		],
 		"width": 380.0
 	},
 	"select_symbol":
 	{
-		"height": 375.0,
+		"height": 0.0,
 		"selected_items":
 		[
 		],
-		"width": 479.0
+		"width": 0.0
 	},
 	"settings":
 	{
 	},
 	"show_minimap": true,
-	"show_open_files": false,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 340.0,
+	"side_bar_width": 242.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
