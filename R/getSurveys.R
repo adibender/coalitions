@@ -8,8 +8,7 @@
 #' institute that contained the survey 
 #' @param parties.var character. name of the column containing the name of the 
 #' parties for which voter preferences have been obtained
-#' @param date.format format of the \code{date.var} variable. Defaults to 
-#' \code{%d.%m.%Y}
+#' @param date.format format of the \code{date.var} variable.
 #' @param party.order optional reordering of parties and factor levels. Defaults
 #' to \code{NULL}, no factor level reordering.
 #' @param ... additional arguments passed to \code{link{read.table}}
@@ -24,9 +23,6 @@
 getSurveys <- function(path.to.surveys, date.var = "date", 
     institute.var = "institute", parties.var = "party", 
     date.format = "%d.%m.%Y", party.order = NULL, ...) {
-    
-    require(plyr)
-    require(zoo)
     
     surveys <- read.csv(path.to.surveys, ...)
     surveys[[date.var]] <- as.Date(surveys[[date.var]], format = date.format)

@@ -11,12 +11,13 @@ Depends:
     stats,
     methods
 Imports:
-    plyr (>= 1.7.1),
+    plyr,
     grid,
-    gtable (>= 0.1.1),
+    gtable,
     reshape2,
-    MASS
-    MCMCpack
+    MASS,
+    MCMCpack,
+    zoo
 Suggests:
     tables,
     ggplot2,
@@ -26,7 +27,6 @@ Collate:
     'createTab.R'
     'DHondt.R'
     'drawElectionsFromPosterior.R'
-    'getCoalitionProb.R'
     'getEntryProbabilities.R'
     'getLentVote.R'
     'getProps.R'
@@ -36,3 +36,4 @@ Collate:
     'tablesFunctions.R'
     'getSurveys.R'
     'selectSurveys.R'
+    'getCoalitionProbability.R'

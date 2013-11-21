@@ -12,9 +12,6 @@
 
 #' @export
 
-#' @examples 
-#' 
-
 getEntryProbabilities <- function(dirichlet.draws, hurdle = 0.05) {
     
     colSums(dirichlet.draws >= hurdle)/nrow(dirichlet.draws)

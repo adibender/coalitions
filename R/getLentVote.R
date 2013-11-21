@@ -14,9 +14,6 @@
 
 #' @export
 
-#' @examples 
-#' 
-
 lentVotesRn <- function(rn.mat, lent, from = "CDU/CSU", to = "FDP") {
     
     if( lent != 0) {

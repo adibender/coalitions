@@ -14,9 +14,6 @@
 
 #' @export
 
-#' @examples 
-#' 
-
 getCoalitionProbability <- function(seat.tab, coalition, superior, 
     majority = 300) {
     

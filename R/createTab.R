@@ -7,17 +7,14 @@
 #' to be modified)
 #' @param sample.size number of respondents in survey
 #' @param parties vector of same length and in the same orderas \code{votes.in.perc}
-#'
+#' @param epsilon \code{votes.in.perc} should add up to one. This parameter controls 
+#' the maximal numerical divergence allowed.
+
 #' @return data.frame containing input and absolute number of votes in survey per 
 #' party
 #' @keywords survey
 #' @seealso \code{\link{get.props}}
 #' @export
-#' @examples
-#' test.tab <- createTab( party = c(LETTERS[1:9])
-#'        votes.in.perc = c(40.9, 25.4, 14.3, 4.7, 7.5, 1.9, 1.9, 1.3, 2.1)/100, 
-#'        sample.size = 1006)
-#' test.tab
 
 createTab <- function(
 

@@ -24,7 +24,7 @@
   preferences have been obtained}
 
   \item{date.format}{format of the \code{date.var}
-  variable. Defaults to \code{%d.%m.%Y}}
+  variable.}
 
   \item{party.order}{optional reordering of parties and
   factor levels. Defaults to \code{NULL}, no factor level

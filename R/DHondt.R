@@ -13,21 +13,13 @@
 #' @return data.frame containing parties above the hurdle and the respective 
 #' seats/percentages after redistribution via Sainte-Lague/Scheppers
 
-#' @seealso \code{\link{hn}}, \code{\link{sls}}
+#' @seealso \code{\link{sls}}
 
 #' @export
 
-#' @examples
-#' test.tab <- createTab( party = c(LETTERS[1:9])
-#'        votes.in.perc = c(40.9, 25.4, 14.3, 4.7, 7.5, 1.9, 1.9, 1.3, 2.1)/100, 
-#'        sample.size = 1006)
-#' test.tab
-#' dHondt(test.tab)
 
 dHondt <- function(survey, hurdle = 0.04, seats = 183, epsilon = 1e-6) {
-    
-    require(reshape2)
-    
+
     #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "Sonstige"
     survey <- get.props(survey, hurdle = hurdle)
     

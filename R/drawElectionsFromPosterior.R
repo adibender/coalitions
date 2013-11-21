@@ -12,14 +12,9 @@
 #' @keywords draw, simulate
 #' @seealso \code{\link{createTab}} \code{\link{getSurveys}}
 #' @export
-#' @examples 
-#' 
 
 
-drawElectionsFromPosterior <- function(survey, n.sim, seed = NULL, prior = NULL) {
-    
-    ## for rdirichlet
-    require(MCMCpack)
+drawElectionsFromPosterior <- function(survey, nsim, seed = NULL, prior = NULL) {
     
     ## calculate posteriori
     if( is.null(prior) ) {

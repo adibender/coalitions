@@ -34,14 +34,7 @@ see http://www.wahlrecht.de/verfahren/rangmasszahlen.html}
   of Sainte-Lague/Schepers) see
   http://www.wahlrecht.de/verfahren/rangmasszahlen.html
 }
-\examples{
-test.tab <- createTab( party = c(LETTERS[1:9])
-       votes.in.perc = c(40.9, 25.4, 14.3, 4.7, 7.5, 1.9, 1.9, 1.3, 2.1)/100,
-       sample.size = 1006)
-test.tab
-sls(test.tab)
-}
 \seealso{
-  \code{\link{hn}} for distribution by Hare/Niemeyer.
+  \code{\link{dHondt}}
 }
 
