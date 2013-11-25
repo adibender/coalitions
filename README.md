@@ -27,6 +27,13 @@ Posterior which is also *Dirichlet*. Based on this Posterior we run a
 Based on these steps we can derive the probabilities of a majority for certain 
 coalitions of interest. <br/>
 
+<a name="NOTE">NOTE</a>
+====
+
+As of now, only basic functionality described in the [example](#example) below
+has been tested. Further functionality, which provides
+convenience wrappers for doing all the steps described below at once and also 
+for multiple institutes, will be added soon. 
 
 
 <a name="example">Basic example</a>
