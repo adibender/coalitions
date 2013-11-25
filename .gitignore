@@ -219,3 +219,9 @@ pip-log.txt
 #################
 *.sublime-project
 *.sublime-workspace
+
+#################
+## folders 
+#################
+
+testPackage/
