@@ -5,7 +5,7 @@
 #' were based on.
 #' @param distrib.fun Function to calculate seat distribution. Defaults to 
 #' \code{\link{sls}} (Sainte-Lague/Scheppers). 
-#' @param sample.size Number of individuals participating in the \code{survey}.
+#' @param samplesize Number of individuals participating in the \code{survey}.
 #' @param ... Further arguments passed to \code{distrib.fun}.
 
 #' @return \code{list} containing seat distributions for each simulation in 
@@ -20,14 +20,14 @@
 
 
 
-getSeatDistribution <- function(dirichlet.draws, survey, distrib.fun = sls, 
-        sample.size = NULL, ...) {
+get_seat_distribution <- function(dirichlet.draws, survey, distrib.fun = sls, 
+        samplesize = NULL, ...) {
     
-    if( is.null(sample.size) ) sample.size <- sum(survey$votes)
+    if( is.null(samplesize) ) samplesize <- sum(survey$votes)
     sim.surveys <- lapply(seq_len(nrow(dirichlet.draws)), function(z) {
                 
                 survey$votes.in.perc <- as.numeric(dirichlet.draws[z, ])
-                survey$votes <- survey$votes.in.perc * sample.size
+                survey$votes <- survey$votes.in.perc * samplesize
                 survey
                 
             })

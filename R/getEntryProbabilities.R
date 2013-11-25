@@ -12,14 +12,14 @@
 
 #' @export
 
-getEntryProbabilities <- function(dirichlet.draws, hurdle = 0.05) {
+get_entryprobability <- function(dirichlet.draws, hurdle = 0.05) {
     
     colSums(dirichlet.draws >= hurdle)/nrow(dirichlet.draws)
     
 }
 
 
-getLentEntryProbabilities <- function(dirichlet.draws, hurdle = 0.05, 
+get_lent_entryprobabilities <- function(dirichlet.draws, hurdle = 0.05, 
 	max.percent.lent = 10, from, to) {
     
     lent.vec <- 0:max.percent.lent / 100

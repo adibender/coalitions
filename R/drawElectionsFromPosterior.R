@@ -2,7 +2,7 @@
 
 #' Draw random numbers from posterior distribution
 #' 
-#' @param survey survey object as returned by \code{createTab} or \code{getSurveys}
+#' @param survey survey object as returned by \code{as_survey} or \code{getSurveys}
 #' @param nsim number of simulations
 #' @param seed sets seed
 #' @param prior optional prior information. Defaults to 1/2 (Jeffrey's prior). 
@@ -10,11 +10,11 @@
 #' @return \code{data.frame} containing random draws from dirichlet distribution
 #' which can be interpreted as election results.
 #' @keywords draw, simulate
-#' @seealso \code{\link{createTab}} \code{\link{getSurveys}}
+#' @seealso \code{\link{as_survey}} \code{\link{getSurveys}}
 #' @export
 
 
-drawElectionsFromPosterior <- function(survey, nsim, seed = NULL, prior = NULL) {
+draw_from_posterior <- function(survey, nsim, seed = NULL, prior = NULL) {
     
     ## calculate posteriori
     if( is.null(prior) ) {
@@ -35,4 +35,4 @@ drawElectionsFromPosterior <- function(survey, nsim, seed = NULL, prior = NULL) 
     
     rn
     
-}
+}-s

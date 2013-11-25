@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title><a name="introduction">coalitions</a></title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+table {
+      margin-left:auto; 
+      margin-right:auto;
+      
+}
+
+thead tr th {
+			background-color: #575757;
+			padding:  20px 10px;
+			color: #fff;
+			font-weight: bold;
+			border-right: 2px solid #333;
+			text-transform: uppercase;
+			text-align:center;
+}
+
+td {
+			margin: 0;
+			padding: 10px 20px; /* abstand vertikal und horizontal zw. zellen */
+			border: 1px dotted #f5f5f5;
+		}
+		
+		
+		th {
+			font-weight: normal;
+			text-transform: uppercase;
+		}
+		
+		thead tr th {
+			background-color: #575757;
+			padding:  20px 10px;
+			color: #fff;
+			font-weight: bold;
+			border-right: 2px solid #333;
+			text-transform: uppercase;
+			text-align:center;
+		}
+		
+		tfoot tr th, tfoot tr td {
+			background-color: transparent;
+			padding:  20px 10px;
+			color: #ccc;
+			border-top: 1px solid #ccc;
+		}
+		
+		tbody tr th {
+			padding: 10px 10px;
+			border-bottom: 1px dotted #FFFFB3;
+		}
+		
+		tr { 
+			background-color: #FDB462; /*color table heading*/
+		}
+		tr.odd {
+			background-color: #FFFFB3;
+		}
+		
+		tr:hover {
+		}
+		
+		tr:hover td, tr:hover td a, tr:hover th a {
+			color: #a10000;
+		}
+		
+		td:hover {
+		}
+
+		tr:hover th a:hover {
+			background-color: #F7FBEF;
+			border-bottom: 2px solid #86C200;
+		}
+		
+
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', 
+   Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1><a name="introduction">coalitions</a></h1>
+
+<p>During election period in multi-party democracies media often reports survey 
+results as percentages of respondents who would vote for a certain party, 
+which results in headlines similar to &ldquo;Party A and party B have narrow majority&rdquo;, 
+based on sum of their respective vote counts compared to other coalitions (e.g. 
+party C and party D). </p>
+
+<p>This R-package will implement the methods described 
+<a href= "http://www.stablab.stat.uni-muenchen.de/sites/files/wahlen.pdf)"> 
+here (in German)</a>. 
+In short, we assume the reported survey results to have a <em>Multinomial</em> distribution, 
+which, assuming a not-informative <em>Dirichlet-Prior</em> (Jeffrey&#39;s prior) yields a 
+Posterior which is also <em>Dirichlet</em>. Based on this Posterior we run a 
+<em>Monte-Carlo simulation</em>, where we <br/></p>
+
+<pre><code>1. sample n election results from the Posterior
+2. calculate the seat distribution n times
+</code></pre>
+
+<p>Based on these steps we can derive the probabilities of a majority for certain 
+coalitions of interest. <br/></p>
+
+<h1><a name="example">Basic example</a></h1>
+
+<p>Here&#39;s an example based on a survey by the <em>Forsa</em> from the 05.06.2013 with 2508
+respondents. Results are shown in the table beneath</p>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+
+<!-- Sat Nov 23 17:14:04 2013 -->
+
+<TABLE border=1>
+<CAPTION ALIGN="bottom"> Results of a Forsa survey released on the fifth 
+    of June 2013 </CAPTION>
+<TR> <TH>  </TH> <TH> party </TH> <TH> votes </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> CDU/CSU </TD> <TD align="right"> 41.00 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD> SPD </TD> <TD align="right"> 24.00 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD> GRUENE </TD> <TD align="right"> 13.00 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD> FDP </TD> <TD align="right"> 4.00 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> LINKE </TD> <TD align="right"> 8.00 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD> PIRATEN </TD> <TD align="right"> 3.00 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD> AfD </TD> <TD align="right"> 3.00 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD> Others </TD> <TD align="right"> 4.00 </TD> </TR>
+   </TABLE>
+
+<p>Let&#39;s say we want to know the probability for a seat-majority in the parliament 
+for two opposing coalitions, <em>CDU/CSU-FDP</em> on the one and <em>SPD-GRUENE-LINKE</em> on 
+the other hand, assuming the survey can be viewed as a simple random sample of 
+eligible voters. Simple addition of the votes in percent the respective parties 
+received obviously doesn&#39;t contain much information. Both coalitions in consideration
+would get 45% of the votes (41 + 4 and 24 + 13 + 8 respectively) in this example, 
+but that doesn&#39;t tell us much about the probability for the majority of seats in 
+the parliament, since one has to factor in <a name="issues"/></p>
+
+<ol>
+<li>The threshold of votes for a party to be able to enter the parliament in the 
+first place (5% in Germany).</li>
+<li>The number of votes redistributed (the more parties fail to jump over the 5%<br/>
+hurdle and the closer they are to it, the more votes are redistributed).</li>
+<li>The fact that the survey is an (ideally random) sample of voters a thus 
+insecurity about the &ldquo;real&rdquo; preferences needs to be taken into account.</li>
+<li>The specific rules of seat distribution (given a specific vote count, 
+e.g. <a href="http://www.wahlrecht.de/verfahren/stlague12.html" target="_blank">
+Sainte-Laguë/Scheppers</a> in Germany).</li>
+</ol>
+
+<p>On request of the German ZEIT magazine the 
+<a href="http://www.stablab.stat.uni-muenchen.de/index" target = "_blank">
+Statistical Consulting Unit
+</a> at the <a href="http://www.stat.uni-muenchen.de/index_e.html" target="_blank">
+Departement of Statistics, Munich</a> developed a method that takes all of the points 
+mentioned above into consideration to derive probabilities for the coalitions of 
+interest.</p>
+
+<p>As mentioned in the <a href="#introduction">introduction</a>, our approach is based on a 
+<em>Bayesian</em> formulation of election/survey results and we use <em>Monte Carlo</em> 
+simulations for an approximation of the posterior distribution of the probability 
+for a seat majority.</p>
+
+<p>Thus, assuming a <em>Multinomial</em> distribution of the survey results and using 
+a non-informative <em>conjugate Dirichlet</em> as the <em>Prior</em>, the <em>Posterior</em> is also a 
+<em>Dirichlet</em> </p>
+
+<p>\[\begin{equation}
+    Dir(n_1 + &frac12;, n_2 + &frac12;, &hellip;, n_k + &frac12;)
+\end{equation}
+\]</p>
+
+<p>Where \(n_i\) are the votes received by party \(i\), \(i = 1,&hellip;,k\).</p>
+
+<p>Thus picking up the <a href="#example">example</a> above we get this <em>Posterior</em>:</p>
+
+<pre><code class="r">posterior &lt;- forsa$votes/100 * 2508 + 1/2
+names(posterior) &lt;- forsa$party
+posterior
+</code></pre>
+
+<pre><code>## CDU/CSU     SPD  GRUENE     FDP   LINKE PIRATEN     AfD  Others 
+## 1028.78  602.42  326.54  100.82  201.14   75.74   75.74  100.82
+</code></pre>
+
+<p>Note that we use the actual sample size from the survey, because this controls the 
+variance when drawing random number from the <em>Dirichlet</em> distribution.</p>
+
+<p>A random sample from the <em>posterior</em> can be drawn with the 
+<code>rdirichlet</code> function from the <strong>MCMCpack</strong> library</p>
+
+<pre><code class="r">library(MCMCpack)
+sample_1 &lt;- rdirichlet(n = 1, alpha = posterior)
+colnames(sample_1) &lt;- names(posterior)
+sample_1
+</code></pre>
+
+<pre><code>##      CDU/CSU   SPD GRUENE     FDP  LINKE PIRATEN     AfD  Others
+## [1,]  0.4255 0.229 0.1306 0.04111 0.0802 0.02624 0.02931 0.03802
+</code></pre>
+
+<p>By considering such a draw  an election outcome we can calculate the percentage of 
+votes each party receives after dropping parties with less than 
+5% of the votes and redistributing these votes. Using Saint-Lague/Scheppers we can 
+than calculate the seat-distribution for every such draw. This is a little 
+cumbersome, therefore this packages provides functions to do so in a more coherent 
+fashion. </p>
+
+<p>Let&#39;s again consider the above <a href="#example">example</a>: </p>
+
+<p>First we create an survey object from the survey results: </p>
+
+<pre><code class="r">forsa &lt;- as_survey(votes.in.perc = c(0.41, 0.24, 0.13, 0.04, 0.08, 0.03, 0.03, 
+    0.04), samplesize = 2508, parties = c(&quot;CDU/CSU&quot;, &quot;SPD&quot;, &quot;GRUENE&quot;, &quot;FDP&quot;, 
+    &quot;LINKE&quot;, &quot;PIRATEN&quot;, &quot;AfD&quot;, &quot;Others&quot;))
+forsa
+</code></pre>
+
+<pre><code>##     party votes.in.perc   votes
+## 1 CDU/CSU          0.41 1028.28
+## 2     SPD          0.24  601.92
+## 3  GRUENE          0.13  326.04
+## 4     FDP          0.04  100.32
+## 5   LINKE          0.08  200.64
+## 6 PIRATEN          0.03   75.24
+## 7     AfD          0.03   75.24
+## 8  Others          0.04  100.32
+</code></pre>
+
+<p><code>as_survey</code> calculates vote count from votes in percent and performs some 
+sanity checks, such that number of parties equals number of entered percentages 
+and votes in percent add up to \(1\).</p>
+
+<p>Given the survey (which can be an actual survey result or a random sample from 
+the <em>Posterior</em>) we can calculate the </p>
+
+<pre><code class="r">result &lt;- redistribute(forsa, hurdle = 0.05)
+result  ## votes in percent after redistribution
+</code></pre>
+
+<pre><code>##     party votes.in.perc  votes
+## 1 CDU/CSU       0.47674 1028.3
+## 2     SPD       0.27907  601.9
+## 3  GRUENE       0.15116  326.0
+## 5   LINKE       0.09302  200.6
+</code></pre>
+
+<pre><code class="r">seats &lt;- sls(result, seats = 598)  ## calculate seat distribution in parliament via Sainte-Lague/Scheppers
+seats
+</code></pre>
+
+<pre><code>##     party votes.in.perc  votes seats
+## 1 CDU/CSU       0.47674 1028.3   285
+## 2  GRUENE       0.15116  326.0    90
+## 3   LINKE       0.09302  200.6    56
+## 4     SPD       0.27907  601.9   167
+</code></pre>
+
+<pre><code class="r">
+sum(seats$seats[seats$party != &quot;CDU/CSU&quot;])
+</code></pre>
+
+<pre><code>## [1] 313
+</code></pre>
+
+<p>In this case, if the survey did reflect the actual preferences in the population, the 
+coalition of <em>SPD-GRUENE-LINKE</em> would get the seats needed for 
+a majority (300). But we don&#39;t know that and need to take random sample deviation 
+into account. Therefore instead of using the actual survey we determine the posterior 
+as described above and draw 10000 election results from the posterior: </p>
+
+<pre><code class="r">dirichlet.draws &lt;- draw_from_posterior(survey = forsa, nsim = 10000, seed = 123, 
+    prior = NULL)
+head(dirichlet.draws)
+</code></pre>
+
+<pre><code>##   CDU/CSU    SPD GRUENE     FDP   LINKE PIRATEN     AfD  Others
+## 1  0.4053 0.2533 0.1188 0.04076 0.09052 0.03180 0.02594 0.03360
+## 2  0.4146 0.2371 0.1294 0.03938 0.07488 0.03374 0.03206 0.03874
+## 3  0.4182 0.2463 0.1270 0.04105 0.07325 0.02702 0.02711 0.04009
+## 4  0.4050 0.2380 0.1356 0.04267 0.08291 0.02970 0.03091 0.03517
+## 5  0.4083 0.2390 0.1392 0.03573 0.08250 0.02708 0.02979 0.03839
+## 6  0.4166 0.2469 0.1247 0.03465 0.07536 0.03129 0.03187 0.03868
+</code></pre>
+
+<p>The prior defaults to Jeffrey&#39;s prior, but it&#39;s up to the user to plug in 
+other prior information. For example one could use the (weighted) results of 
+prior surveys as prior information. </p>
+
+<p>Now we can for example calculate the probabilities of jumping over the 5% hurdle, 
+given survey results, for each of the parties in the survey</p>
+
+<pre><code class="r">get_entry_probability(dirichlet.draws)
+</code></pre>
+
+<pre><code>## CDU/CSU     SPD  GRUENE     FDP   LINKE PIRATEN     AfD  Others 
+##  1.0000  1.0000  1.0000  0.0095  1.0000  0.0000  0.0000  0.0089
+</code></pre>
+
+<p>or calculate the seat distribution for each of the draws and determine the 
+probabilities for a seat-majority for the coalitions of interest</p>
+
+<pre><code class="r">seat.distributions &lt;- get_seat_distribution(dirichlet.draws, survey = forsa, 
+    distrib.fun = sls)
+seat.distributions[1:2]
+</code></pre>
+
+<pre><code>## [[1]]
+##     party votes.in.perc  votes seats
+## 1 CDU/CSU        0.4670 1016.4   279
+## 2  GRUENE        0.1369  298.0    82
+## 3   LINKE        0.1043  227.0    62
+## 4     SPD        0.2918  635.2   175
+## 
+## [[2]]
+##     party votes.in.perc  votes seats
+## 1 CDU/CSU       0.48435 1039.9   290
+## 2  GRUENE       0.15117  324.6    90
+## 3   LINKE       0.08746  187.8    52
+## 4     SPD       0.27702  594.8   166
+</code></pre>
+
+<pre><code class="r">length(seat.distributions)
+</code></pre>
+
+<pre><code>## [1] 10000
+</code></pre>
+
+<pre><code class="r">
+## coalition probability CDU/CSU-FDP
+get_coalition_probability(seat.distributions, coalition = c(&quot;CDU/CSU&quot;, &quot;FDP&quot;))
+</code></pre>
+
+<pre><code>## [1] 0.018
+</code></pre>
+
+<pre><code class="r">## coalition probability SPD-GRUENE-LINKE
+get_coalition_probability(seat.distributions, coalition = c(&quot;SPD&quot;, &quot;GRUENE&quot;, 
+    &quot;LINKE&quot;))
+</code></pre>
+
+<pre><code>## [1] 0.9755
+</code></pre>
+
+</body>
+
+</html>

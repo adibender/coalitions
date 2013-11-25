@@ -1,6 +1,6 @@
 ## creates list with probs for each institute (and different percentages of lent 
 # votes)
-createTabByInstitute <- function(results, seed, simulations = 1e5, max.lent = 10,
+as_surveyByInstitute <- function(results, seed, simulations = 1e5, max.lent = 10,
         coalitions = NULL, superior.coalitions = NULL, ...) {
     
     results$Anteil <- results$Anteil/100
@@ -9,7 +9,7 @@ createTabByInstitute <- function(results, seed, simulations = 1e5, max.lent = 10
     sub.list <- split(sub, sub$Institut)
     befragte <- sapply(sub.list, function(z) unique(z$Befragte))
     tab.list <- lapply(sub.list, function(z) 
-                createTab(z$Anteil, unique(z$Befragte), z$Partei))
+                as_survey(z$Anteil, unique(z$Befragte), z$Partei))
     
     lv.list <- lapply(seq_along(tab.list), function(z) 
                 lentVoteMat(tab.list[[z]], unique(sub.list[[z]]$Befragte), 
@@ -26,9 +26,9 @@ createTabByInstitute <- function(results, seed, simulations = 1e5, max.lent = 10
     
 }
 
-#createTabByInstitute(results, 123, 100, 10)
+#as_surveyByInstitute(results, 123, 100, 10)
 
-createTabByDate <- function(results, seed, simulations = 1e5, 
+as_surveyByDate <- function(results, seed, simulations = 1e5, 
         coalitions = NULL, superior.coalitions = NULL, 
         ...) {
     
@@ -36,7 +36,7 @@ createTabByDate <- function(results, seed, simulations = 1e5,
     survey.list <- split(results, f = results$Datum)
     befragte <- sapply(survey.list, function(z) unique(z[, "Befragte"]))
     tab.list <- lapply(survey.list, function(z) 
-                createTab(z$Anteil, unique(z$Befragte), z$Partei))
+                as_survey(z$Anteil, unique(z$Befragte), z$Partei))
     
     lv.list <- lapply(seq_along(tab.list), function(z) 
                 lentVoteMat(tab.list[[z]], befragte[z], 
@@ -53,12 +53,12 @@ createTabByDate <- function(results, seed, simulations = 1e5,
     
 }
 
-createTabByDateAndInstitute <- function(results, seed, simulations = 1e5, 
+as_surveyByDateAndInstitute <- function(results, seed, simulations = 1e5, 
         coalitions = NULL, superior.coalitions = NULL, ...){
     
     inst.list <- split(results, f = results$Institut)
     names(inst.list) <- levels(results$Institut)
-    tab.list <- lapply(inst.list, createTabByDate, seed = seed, 
+    tab.list <- lapply(inst.list, as_surveyByDate, seed = seed, 
             simulations = simulations, coalitions = coalitions, 
             superior.coalitions = superior.coalitions, ...)
     m.list <- melt(tab.list, id.vars = c("Datum", "Koalition", "variable"), 

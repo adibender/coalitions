@@ -47,7 +47,7 @@ poolSurveys <- function(surveys, n.surveys = 3) {
     
     pooled.surveys$Anteil <- pooled.surveys$Anteil/n
     pooled.surveys
-    createTab(votes.in.perc = pooled.surveys$Anteil, sample.size = n, 
+    as_survey(votes.in.perc = pooled.surveys$Anteil, samplesize = n, 
             parties = pooled.surveys$Partei)
     
 }

@@ -14,7 +14,7 @@
 
 #' @export
 
-lentVotesRn <- function(rn.mat, lent, from = "CDU/CSU", to = "FDP") {
+lent_votes_rn <- function(rn.mat, lent, from = "CDU/CSU", to = "FDP") {
     
     if( lent != 0) {
         lent.pp <- rn.mat[, from] * lent

@@ -14,14 +14,14 @@
 
 #' @export
 
-getCoalitionProbability <- function(seat.tab, coalition, superior, 
+get_coalition_probability <- function(seat.tab, coalition, superior = NULL, 
     majority = 300) {
     
     ind.coalition <- sapply(seat.tab, function(z) {
                 sum(z$seats[z$party %in% coalition]) >= majority
             })
     
-    if( !any(is.na(superior)) ) {
+    if( !any(is.null(superior)) ) {
         
         ind.sup.list <- lapply(superior, function(superior.coalition) {
                     sapply(seat.tab, function(z) {
@@ -41,11 +41,11 @@ getCoalitionProbability <- function(seat.tab, coalition, superior,
 }
 
 
-getCoalitionProbabilities <- function(seat.tabs, coalitions, 
+get_coalition_probabilities <- function(seat.tabs, coalitions, 
     superior.coalitions, majority = 300) {
     
     coal.probs <- sapply(seq_along(coalitions), function(z) {
-                getCoalitionProbability(seat.tabs, coalitions[[z]], 
+                get_coalition_probability(seat.tabs, coalitions[[z]], 
                         superior.coalitions[[z]], majority = majority)
             })  
     names(coal.probs) <- sapply(coalitions, paste0, collapse = "-")
@@ -55,7 +55,7 @@ getCoalitionProbabilities <- function(seat.tabs, coalitions,
 }
 
 
-getLentVoteCoalitionProbs <- function(dirichlet.draws, survey,  
+get_lentvote_probabilities <- function(dirichlet.draws, survey,  
         coalitions, majority = 300, max.percent.lent = 10, 
         distrib.fun = sls,
         superior.coalitions = NULL) {
@@ -64,7 +64,7 @@ getLentVoteCoalitionProbs <- function(dirichlet.draws, survey,
         superior.coalitions <- as.list(rep(NA, length(coalitions)))
     
     
-    survey.tab <- createTab(survey$Anteil/100, unique(survey$Befragte), 
+    survey.tab <- as_survey(survey$Anteil/100, unique(survey$Befragte), 
             survey$Partei)
     
     votes.lent <- 0:max.percent.lent / 100# vektor zu betrachtender anteile 

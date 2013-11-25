@@ -22,6 +22,5 @@ Posterior which is also *Dirichlet*. Based on this Posterior we run a
 Based on these steps we can derive the probabilities of a majority for certain 
 coalitions of interest. <br/>
 
-
 <h3>Note:</h3>
 This package is in development and **will not work** until otherwise noted here.

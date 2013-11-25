@@ -21,7 +21,7 @@
 dHondt <- function(survey, hurdle = 0.04, seats = 183, epsilon = 1e-6) {
 
     #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "Sonstige"
-    survey <- get.props(survey, hurdle = hurdle)
+    survey <- redistribute(survey, hurdle = hurdle)
     
     # check for data validity
     if( abs(sum(survey$votes.in.perc) - 1) > epsilon  ) 
