@@ -29,7 +29,6 @@ Collate:
     'drawElectionsFromPosterior.R'
     'getEntryProbabilities.R'
     'getLentVote.R'
-    'getProps.R'
     'getSeatDistribution.R'
     'plotFunctions.R'
     'SaintLagueScheppers.R'
@@ -37,3 +36,4 @@ Collate:
     'getSurveys.R'
     'selectSurveys.R'
     'getCoalitionProbability.R'
+    'redistribute.R'

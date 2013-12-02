@@ -12,7 +12,7 @@
 
 #' @seealso \code{\link{drawElectionsFromPosterior}}
 
-#' @export
+
 
 lent_votes_rn <- function(rn.mat, lent, from = "CDU/CSU", to = "FDP") {
     

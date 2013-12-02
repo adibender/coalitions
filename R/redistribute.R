@@ -11,6 +11,9 @@
 
 #' @seealso \code{\link{as_survey}}, \code{\link{sls}}
 
+#' @export
+
+
 redistribute <- function(survey, hurdle = 0.05) {
 
     survey <- survey[survey$votes.in.perc >= hurdle & survey$party != "Others", ]

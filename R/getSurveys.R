@@ -18,7 +18,7 @@
 
 #' @keywords survey
 #' @seealso \code{\link{selectSurveys}}
-#' @export
+
 
 getSurveys <- function(path.to.surveys, date.var = "date", 
     institute.var = "institute", parties.var = "party", 

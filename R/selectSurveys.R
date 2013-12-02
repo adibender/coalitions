@@ -6,7 +6,6 @@
 #' @return \code{data.frame} containing \code{n} most recent surveys. 
 #' @keywords survey, select
 #' @seealso \code{\link{getSurveys}}
-#' @export
 
 selectSurveys <- function(surveys, n = 3) {
     

@@ -1,0 +1,38 @@
+\name{as_survey}
+\alias{as_survey}
+\title{Creates basic table containing votes (in percent) and party names, conducts
+sanity checks}
+\usage{
+  as_survey(votes.in.perc, samplesize,
+    parties = c("CDU/CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "AfD", "FW", "Sonstige"),
+    epsilon = 1e-05)
+}
+\arguments{
+  \item{votes.in.perc}{votes in percent each party received
+  in the survey of interest. Can be set to \code{NA}, if
+  parties are specified that are not mentioned in the
+  specific survey (otherwise the \code{parties} argument
+  has to be modified)}
+
+  \item{samplesize}{number of respondents in survey}
+
+  \item{parties}{vector of same length and in the same
+  orderas \code{votes.in.perc}}
+
+  \item{epsilon}{\code{votes.in.perc} should add up to one.
+  This parameter controls the maximal numerical divergence
+  allowed.}
+}
+\value{
+  data.frame containing input and absolute number of votes
+  in survey per party
+}
+\description{
+  Creates basic table containing votes (in percent) and
+  party names, conducts sanity checks
+}
+\seealso{
+  \code{\link{redistribute}}
+}
+\keyword{survey}
+
