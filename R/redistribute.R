@@ -1,5 +1,5 @@
 #' Calculate percentage of votes/seats after excluding parties with 
-#' \code{votes < 0.05}
+#' \code{votes < hurdle}
 
 #' @param survey table containing votes and votes in percent (as created e.g. by 
 #' \code{\link{as_survey}})
