@@ -180,6 +180,8 @@ hr {
 </head>
 
 <body>
+<!-- add link to css -->
+
 <h1><a name="introduction">coalitions</a></h1>
 
 <p>During election period in multi-party democracies media often reports survey 
@@ -210,7 +212,7 @@ respondents. Results are shown in the table beneath</p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
-<!-- Mon Dec 02 15:54:19 2013 -->
+<!-- Mon Dec 02 16:03:16 2013 -->
 
 <TABLE border=1>
 <CAPTION ALIGN="bottom"> Results of a Forsa survey released on the fifth 
@@ -372,15 +374,16 @@ as described above and draw 10000 election results from the posterior: </p>
 
 <pre><code class="r">dirichlet.draws &lt;- draw_from_posterior(survey = forsa, nsim = 10000, seed = 123, 
     prior = NULL)
+head(dirichlet.draws)
 </code></pre>
 
-<pre><code>## Error: Objekt &#39;s&#39; nicht gefunden
-</code></pre>
-
-<pre><code class="r">head(dirichlet.draws)
-</code></pre>
-
-<pre><code>## Error: Objekt &#39;dirichlet.draws&#39; nicht gefunden
+<pre><code>##   CDU/CSU    SPD GRUENE     FDP   LINKE PIRATEN     AfD  Others
+## 1  0.4053 0.2533 0.1188 0.04076 0.09052 0.03180 0.02594 0.03360
+## 2  0.4146 0.2371 0.1294 0.03938 0.07488 0.03374 0.03206 0.03874
+## 3  0.4182 0.2463 0.1270 0.04105 0.07325 0.02702 0.02711 0.04009
+## 4  0.4050 0.2380 0.1356 0.04267 0.08291 0.02970 0.03091 0.03517
+## 5  0.4083 0.2390 0.1392 0.03573 0.08250 0.02708 0.02979 0.03839
+## 6  0.4166 0.2469 0.1247 0.03465 0.07536 0.03129 0.03187 0.03868
 </code></pre>
 
 <p>The prior defaults to Jeffrey&#39;s prior, but it&#39;s up to the user to plug in 
@@ -393,7 +396,8 @@ given survey results, for each of the parties in the survey</p>
 <pre><code class="r">get_entryprobability(dirichlet.draws)
 </code></pre>
 
-<pre><code>## Error: Objekt &#39;dirichlet.draws&#39; nicht gefunden
+<pre><code>## CDU/CSU     SPD  GRUENE     FDP   LINKE PIRATEN     AfD  Others 
+##  1.0000  1.0000  1.0000  0.0095  1.0000  0.0000  0.0000  0.0089
 </code></pre>
 
 <p>or calculate the seat distribution for each of the draws and determine the 

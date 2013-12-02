@@ -1,3 +1,6 @@
+<!-- add link to css -->
+
+
 
 
 
@@ -36,7 +39,7 @@ Here's an example based on a survey by the *Forsa* from the 05.06.2013 with 2508
 respondents. Results are shown in the table beneath
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Dec 02 15:54:19 2013 -->
+<!-- Mon Dec 02 16:03:16 2013 -->
 <TABLE border=1>
 <CAPTION ALIGN="bottom"> Results of a Forsa survey released on the fifth 
 	of June 2013 </CAPTION>
@@ -219,18 +222,17 @@ as described above and draw 10000 election results from the posterior:
 ```r
 dirichlet.draws <- draw_from_posterior(survey = forsa, nsim = 10000, seed = 123, 
     prior = NULL)
-```
-
-```
-## Error: Objekt 's' nicht gefunden
-```
-
-```r
 head(dirichlet.draws)
 ```
 
 ```
-## Error: Objekt 'dirichlet.draws' nicht gefunden
+##   CDU/CSU    SPD GRUENE     FDP   LINKE PIRATEN     AfD  Others
+## 1  0.4053 0.2533 0.1188 0.04076 0.09052 0.03180 0.02594 0.03360
+## 2  0.4146 0.2371 0.1294 0.03938 0.07488 0.03374 0.03206 0.03874
+## 3  0.4182 0.2463 0.1270 0.04105 0.07325 0.02702 0.02711 0.04009
+## 4  0.4050 0.2380 0.1356 0.04267 0.08291 0.02970 0.03091 0.03517
+## 5  0.4083 0.2390 0.1392 0.03573 0.08250 0.02708 0.02979 0.03839
+## 6  0.4166 0.2469 0.1247 0.03465 0.07536 0.03129 0.03187 0.03868
 ```
 
 
@@ -247,7 +249,8 @@ get_entryprobability(dirichlet.draws)
 ```
 
 ```
-## Error: Objekt 'dirichlet.draws' nicht gefunden
+## CDU/CSU     SPD  GRUENE     FDP   LINKE PIRATEN     AfD  Others 
+##  1.0000  1.0000  1.0000  0.0095  1.0000  0.0000  0.0000  0.0089
 ```
 
 
