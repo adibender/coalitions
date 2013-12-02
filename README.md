@@ -27,13 +27,6 @@ Posterior which is also *Dirichlet*. Based on this Posterior we run a
 Based on these steps we can derive the probabilities of a majority for certain 
 coalitions of interest. <br/>
 
-<a name="NOTE">NOTE</a>
-====
-
-As of now, only basic functionality described in the [example](#example) below
-has been tested. Further functionality, which provides
-convenience wrappers for doing all the steps described below at once and also 
-for multiple institutes, will be added soon. 
 
 
 <a name="example">Basic example</a>
@@ -43,10 +36,10 @@ Here's an example based on a survey by the *Forsa* from the 05.06.2013 with 2508
 respondents. Results are shown in the table beneath
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Nov 23 17:14:04 2013 -->
+<!-- Mon Dec 02 15:54:19 2013 -->
 <TABLE border=1>
 <CAPTION ALIGN="bottom"> Results of a Forsa survey released on the fifth 
-	of June 2013 </CAPTION>
+  of June 2013 </CAPTION>
 <TR> <TH>  </TH> <TH> party </TH> <TH> votes </TH>  </TR>
   <TR> <TD align="right"> 1 </TD> <TD> CDU/CSU </TD> <TD align="right"> 41.00 </TD> </TR>
   <TR> <TD align="right"> 2 </TD> <TD> SPD </TD> <TD align="right"> 24.00 </TD> </TR>
@@ -70,13 +63,13 @@ the parliament, since one has to factor in <a name="issues"/>
 
 1. The threshold of votes for a party to be able to enter the parliament in the 
 first place (5% in Germany).
-2. The number of votes redistributed (the more parties fail to jump over the 5% 	
-	hurdle and the closer they are to it, the more votes are redistributed).
+2. The number of votes redistributed (the more parties fail to jump over the 5%   
+  hurdle and the closer they are to it, the more votes are redistributed).
 3. The fact that the survey is an (ideally random) sample of voters a thus 
-	insecurity about the "real" preferences needs to be taken into account.
+  insecurity about the "real" preferences needs to be taken into account.
 4. The specific rules of seat distribution (given a specific vote count, 
-	e.g. <a href="http://www.wahlrecht.de/verfahren/stlague12.html" target="_blank">
-	Sainte-Laguë/Scheppers</a> in Germany).
+  e.g. <a href="http://www.wahlrecht.de/verfahren/stlague12.html" target="_blank">
+  Sainte-Laguë/Scheppers</a> in Germany).
 
 
 On request of the German ZEIT magazine the 
@@ -107,6 +100,8 @@ Thus picking up the [example](#example) above we get this *Posterior*:
 
 
 ```r
+forsa <- data.frame(party = c("CDU/CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", 
+    "AfD", "Others"), votes = c(41, 24, 13, 4, 8, 3, 3, 4))
 posterior <- forsa$votes/100 * 2508 + 1/2
 names(posterior) <- forsa$party
 posterior
@@ -133,8 +128,8 @@ sample_1
 ```
 
 ```
-##      CDU/CSU   SPD GRUENE     FDP  LINKE PIRATEN     AfD  Others
-## [1,]  0.4255 0.229 0.1306 0.04111 0.0802 0.02624 0.02931 0.03802
+##      CDU/CSU    SPD GRUENE     FDP   LINKE PIRATEN     AfD  Others
+## [1,]  0.4081 0.2461 0.1278 0.03496 0.07915 0.03108 0.03627 0.03656
 ```
 
 
@@ -224,17 +219,18 @@ as described above and draw 10000 election results from the posterior:
 ```r
 dirichlet.draws <- draw_from_posterior(survey = forsa, nsim = 10000, seed = 123, 
     prior = NULL)
+```
+
+```
+## Error: Objekt 's' nicht gefunden
+```
+
+```r
 head(dirichlet.draws)
 ```
 
 ```
-##   CDU/CSU    SPD GRUENE     FDP   LINKE PIRATEN     AfD  Others
-## 1  0.4053 0.2533 0.1188 0.04076 0.09052 0.03180 0.02594 0.03360
-## 2  0.4146 0.2371 0.1294 0.03938 0.07488 0.03374 0.03206 0.03874
-## 3  0.4182 0.2463 0.1270 0.04105 0.07325 0.02702 0.02711 0.04009
-## 4  0.4050 0.2380 0.1356 0.04267 0.08291 0.02970 0.03091 0.03517
-## 5  0.4083 0.2390 0.1392 0.03573 0.08250 0.02708 0.02979 0.03839
-## 6  0.4166 0.2469 0.1247 0.03465 0.07536 0.03129 0.03187 0.03868
+## Error: Objekt 'dirichlet.draws' nicht gefunden
 ```
 
 
@@ -247,12 +243,11 @@ given survey results, for each of the parties in the survey
 
 
 ```r
-get_entry_probability(dirichlet.draws)
+get_entryprobability(dirichlet.draws)
 ```
 
 ```
-## CDU/CSU     SPD  GRUENE     FDP   LINKE PIRATEN     AfD  Others 
-##  1.0000  1.0000  1.0000  0.0095  1.0000  0.0000  0.0000  0.0089
+## Error: Objekt 'dirichlet.draws' nicht gefunden
 ```
 
 
@@ -309,6 +304,14 @@ get_coalition_probability(seat.distributions, coalition = c("SPD", "GRUENE",
 ```
 ## [1] 0.9755
 ```
+
+
+Thus, given the [example](#example), the probability of a seat-majority for 
+*CDU/CSU-FDP* wasn't very big in June, although this changed during the course of 
+the respective campaigns. See 
+<a href="http://www.stablab.stat.uni-muenchen.de/Koalitionen2013" target="_blank">
+here</a> for development of respective coalition probabilities in 
+the period before the German election in 2012.
 
 
 

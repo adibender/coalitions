@@ -35,4 +35,4 @@ draw_from_posterior <- function(survey, nsim, seed = NULL, prior = NULL) {
     
     rn
     
-}-s
+}

@@ -9,14 +9,14 @@ Description: An Implementation of a Monte Carlo method to calculate
 Depends:
     R (>= 2.15),
     stats,
-    methods
+    methods,
+    reshape2,
+    MCMCpack
 Imports:
     plyr,
     grid,
     gtable,
-    reshape2,
     MASS,
-    MCMCpack,
     zoo
 Suggests:
     tables,

@@ -56,83 +56,8 @@ body, td {
    margin: 8px;
 }
 
-table {
-      margin-left:auto; 
-      margin-right:auto;
-      
-}
-
-thead tr th {
-			background-color: #575757;
-			padding:  20px 10px;
-			color: #fff;
-			font-weight: bold;
-			border-right: 2px solid #333;
-			text-transform: uppercase;
-			text-align:center;
-}
-
-td {
-			margin: 0;
-			padding: 10px 20px; /* abstand vertikal und horizontal zw. zellen */
-			border: 1px dotted #f5f5f5;
-		}
-		
-		
-		th {
-			font-weight: normal;
-			text-transform: uppercase;
-		}
-		
-		thead tr th {
-			background-color: #575757;
-			padding:  20px 10px;
-			color: #fff;
-			font-weight: bold;
-			border-right: 2px solid #333;
-			text-transform: uppercase;
-			text-align:center;
-		}
-		
-		tfoot tr th, tfoot tr td {
-			background-color: transparent;
-			padding:  20px 10px;
-			color: #ccc;
-			border-top: 1px solid #ccc;
-		}
-		
-		tbody tr th {
-			padding: 10px 10px;
-			border-bottom: 1px dotted #FFFFB3;
-		}
-		
-		tr { 
-			background-color: #FDB462; /*color table heading*/
-		}
-		tr.odd {
-			background-color: #FFFFB3;
-		}
-		
-		tr:hover {
-		}
-		
-		tr:hover td, tr:hover td a, tr:hover th a {
-			color: #a10000;
-		}
-		
-		td:hover {
-		}
-
-		tr:hover th a:hover {
-			background-color: #F7FBEF;
-			border-bottom: 2px solid #86C200;
-		}
-		
-
-
 tt, code, pre {
-   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', 
-   Consolas, Monaco, monospace;
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
 }
 
 h1 { 
@@ -285,7 +210,7 @@ respondents. Results are shown in the table beneath</p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 
-<!-- Sat Nov 23 17:14:04 2013 -->
+<!-- Mon Dec 02 15:54:19 2013 -->
 
 <TABLE border=1>
 <CAPTION ALIGN="bottom"> Results of a Forsa survey released on the fifth 
@@ -348,7 +273,9 @@ a non-informative <em>conjugate Dirichlet</em> as the <em>Prior</em>, the <em>Po
 
 <p>Thus picking up the <a href="#example">example</a> above we get this <em>Posterior</em>:</p>
 
-<pre><code class="r">posterior &lt;- forsa$votes/100 * 2508 + 1/2
+<pre><code class="r">forsa &lt;- data.frame(party = c(&quot;CDU/CSU&quot;, &quot;SPD&quot;, &quot;GRUENE&quot;, &quot;FDP&quot;, &quot;LINKE&quot;, &quot;PIRATEN&quot;, 
+    &quot;AfD&quot;, &quot;Others&quot;), votes = c(41, 24, 13, 4, 8, 3, 3, 4))
+posterior &lt;- forsa$votes/100 * 2508 + 1/2
 names(posterior) &lt;- forsa$party
 posterior
 </code></pre>
@@ -369,8 +296,8 @@ colnames(sample_1) &lt;- names(posterior)
 sample_1
 </code></pre>
 
-<pre><code>##      CDU/CSU   SPD GRUENE     FDP  LINKE PIRATEN     AfD  Others
-## [1,]  0.4255 0.229 0.1306 0.04111 0.0802 0.02624 0.02931 0.03802
+<pre><code>##      CDU/CSU    SPD GRUENE     FDP   LINKE PIRATEN     AfD  Others
+## [1,]  0.4081 0.2461 0.1278 0.03496 0.07915 0.03108 0.03627 0.03656
 </code></pre>
 
 <p>By considering such a draw  an election outcome we can calculate the percentage of 
@@ -445,16 +372,15 @@ as described above and draw 10000 election results from the posterior: </p>
 
 <pre><code class="r">dirichlet.draws &lt;- draw_from_posterior(survey = forsa, nsim = 10000, seed = 123, 
     prior = NULL)
-head(dirichlet.draws)
 </code></pre>
 
-<pre><code>##   CDU/CSU    SPD GRUENE     FDP   LINKE PIRATEN     AfD  Others
-## 1  0.4053 0.2533 0.1188 0.04076 0.09052 0.03180 0.02594 0.03360
-## 2  0.4146 0.2371 0.1294 0.03938 0.07488 0.03374 0.03206 0.03874
-## 3  0.4182 0.2463 0.1270 0.04105 0.07325 0.02702 0.02711 0.04009
-## 4  0.4050 0.2380 0.1356 0.04267 0.08291 0.02970 0.03091 0.03517
-## 5  0.4083 0.2390 0.1392 0.03573 0.08250 0.02708 0.02979 0.03839
-## 6  0.4166 0.2469 0.1247 0.03465 0.07536 0.03129 0.03187 0.03868
+<pre><code>## Error: Objekt &#39;s&#39; nicht gefunden
+</code></pre>
+
+<pre><code class="r">head(dirichlet.draws)
+</code></pre>
+
+<pre><code>## Error: Objekt &#39;dirichlet.draws&#39; nicht gefunden
 </code></pre>
 
 <p>The prior defaults to Jeffrey&#39;s prior, but it&#39;s up to the user to plug in 
@@ -464,11 +390,10 @@ prior surveys as prior information. </p>
 <p>Now we can for example calculate the probabilities of jumping over the 5% hurdle, 
 given survey results, for each of the parties in the survey</p>
 
-<pre><code class="r">get_entry_probability(dirichlet.draws)
+<pre><code class="r">get_entryprobability(dirichlet.draws)
 </code></pre>
 
-<pre><code>## CDU/CSU     SPD  GRUENE     FDP   LINKE PIRATEN     AfD  Others 
-##  1.0000  1.0000  1.0000  0.0095  1.0000  0.0000  0.0000  0.0089
+<pre><code>## Error: Objekt &#39;dirichlet.draws&#39; nicht gefunden
 </code></pre>
 
 <p>or calculate the seat distribution for each of the draws and determine the 
@@ -515,6 +440,13 @@ get_coalition_probability(seat.distributions, coalition = c(&quot;SPD&quot;, &qu
 
 <pre><code>## [1] 0.9755
 </code></pre>
+
+<p>Thus, given the <a href="#example">example</a>, the probability of a seat-majority for 
+<em>CDU/CSU-FDP</em> wasn&#39;t very big in June, although this changed during the course of 
+the respective campaigns. See 
+<a href="http://www.stablab.stat.uni-muenchen.de/Koalitionen2013" target="_blank">
+here</a> for development of respective coalition probabilities in 
+the period before the German election in 2012.</p>
 
 </body>
 
