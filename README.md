@@ -1,4 +1,4 @@
-<!-- add link to css -->
+<link rel="stylesheet" href="wahlen.css">
 
 
 
@@ -39,7 +39,7 @@ Here's an example based on a survey by the *Forsa* from the 05.06.2013 with 2508
 respondents. Results are shown in the table beneath
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Dec 02 16:08:03 2013 -->
+<!-- Mon Dec 02 22:10:01 2013 -->
 <TABLE border=1>
 <CAPTION ALIGN="bottom"> Results of a Forsa survey released on the fifth 
 	of June 2013 </CAPTION>
@@ -131,8 +131,8 @@ sample_1
 ```
 
 ```
-##      CDU/CSU    SPD GRUENE    FDP   LINKE PIRATEN     AfD  Others
-## [1,]  0.4166 0.2507 0.1363 0.0369 0.06794 0.02785 0.02297 0.04075
+##      CDU/CSU   SPD GRUENE     FDP  LINKE PIRATEN     AfD  Others
+## [1,]  0.4255 0.229 0.1306 0.04111 0.0802 0.02624 0.02931 0.03802
 ```
 
 
