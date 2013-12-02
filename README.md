@@ -6,9 +6,8 @@
 
 
 
-
-<a name="introduction">coalitions</a>
-==========
+<a name="introduction"></a>
+# coalitions
 
 During election period in multi-party democracies media often reports survey 
 results as percentages of respondents who would vote for a certain party, 
@@ -24,22 +23,53 @@ which, assuming a not-informative *Dirichlet-Prior* (Jeffrey's prior) yields a
 Posterior which is also *Dirichlet*. Based on this Posterior we run a 
 *Monte-Carlo simulation*, where we <br/>
 
-    1. sample n election results from the Posterior
-    2. calculate the seat distribution n times
+1. sample n election results from the Posterior
+2. calculate the seat distribution n times
 
 Based on these steps we can derive the probabilities of a majority for certain 
 coalitions of interest. <br/>
 
 
+<a name="news"></a> 
+## News
 
-<a name="example">Basic example</a>
-===
+- First installable Version online (01.12.2013)
+	basic functionality and example provided, further functionality and 
+	code that reproduces results for German election 2013 will follow. 
+
+
+<a name="installation"></a>
+## Installation
+As of now the package is only available at GitHub. You can install it by 
+typing 
+
+
+```r
+library(devtools)
+install_git("https://github.com/adibender/coalitions")
+```
+
+
+
+<a name="Contact"></a>
+# Contact
+If you experience any problems with the functionality provided in this package
+don't hesitate to 
+<a href="mailto:bender.at.R@gmail.com?subject=coalitions" "email me">email me</a> 
+or raise an issue on GitHub.
+
+
+
+
+<a name="example"></a>
+# Basic example
+
 
 Here's an example based on a survey by the *Forsa* from the 05.06.2013 with 2508
 respondents. Results are shown in the table beneath
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Dec 02 22:10:01 2013 -->
+<!-- Mon Dec 02 22:36:29 2013 -->
 <TABLE border=1>
 <CAPTION ALIGN="bottom"> Results of a Forsa survey released on the fifth 
 	of June 2013 </CAPTION>
@@ -65,7 +95,7 @@ but that doesn't tell us much about the probability for the majority of seats in
 the parliament, since one has to factor in <a name="issues"/>
 
 1. The threshold of votes for a party to be able to enter the parliament in the 
-first place (5% in Germany).
+	first place (5% in Germany).
 2. The number of votes redistributed (the more parties fail to jump over the 5% 	
 	hurdle and the closer they are to it, the more votes are redistributed).
 3. The fact that the survey is an (ideally random) sample of voters a thus 
