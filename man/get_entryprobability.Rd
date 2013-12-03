@@ -7,14 +7,11 @@
 \arguments{
   \item{dirichlet.draws}{Matrix or data frame containing
   draws from the posterior (see
-  \code{\link{drawElectionsFromPosterior}}).}
+  \code{\link{draw_from_posterior}}).}
 
   \item{hurdle}{the percentage of votes that must be
   reached to get seats in parliament. Defaults to 0.05
   (hurdle for german parliament).}
-
-  \item{max.percent.lent,}{from, to see
-  \code{\link{lentVotesRn}}.}
 }
 \value{
   Vector of (named) entry probabilities.
@@ -23,7 +20,6 @@
   Get probabilities to enter the parliament.
 }
 \seealso{
-  \code{\link{drawElectionsFromPosterior}},
-  \code{\link{lentVotesRn}}
+  \code{\link{draw_from_posterior}}
 }
 

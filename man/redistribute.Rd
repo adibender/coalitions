@@ -1,7 +1,7 @@
 \name{redistribute}
 \alias{redistribute}
 \title{Calculate percentage of votes/seats after excluding parties with
-\code{votes < 0.05}}
+\code{votes < hurdle}}
 \usage{
   redistribute(survey, hurdle = 0.05)
 }
@@ -15,7 +15,7 @@
 }
 \description{
   Calculate percentage of votes/seats after excluding
-  parties with \code{votes < 0.05}
+  parties with \code{votes < hurdle}
 }
 \seealso{
   \code{\link{as_survey}}, \code{\link{sls}}

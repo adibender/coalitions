@@ -1,36 +1,34 @@
 \name{dHondt}
 \alias{dHondt}
-\title{Seat Distribution by D'Hondt
-calculates number of seats for the respective parties that have received more
-than 5\% of votes (according to the method of D'Hondt)}
+\title{Seat Distribution by D'Hondt}
 \usage{
   dHondt(survey, hurdle = 0.04, seats = 183,
     epsilon = 1e-06)
 }
 \arguments{
-  \item{survey}{results of a survey as data.frame
-  containing party names and votes}
+  \item{survey}{Results of a survey as data.frame
+  containing party names and votes.}
 
-  \item{seats}{number of seats in parliament. Defaults to
-  183 (seats in austrian parliament)}
+  \item{seats}{Number of seats in parliament. Defaults to
+  183 (seats in austrian parliament).}
 
-  \item{hurdle}{the percentage of votes that must be
+  \item{hurdle}{The percentage of votes that must be
   reached to get seats in parliament. Defaults to 0.04
-  (hurdle for austrian parliament)}
+  (hurdle for austrian parliament).}
 
-  \item{epsilon}{the percentages of votes in survey must
+  \item{epsilon}{The percentages of votes in survey must
   add up to 1, this allows for some numerical imprecission.
   Defaults to 10e-6.}
 }
 \value{
-  data.frame containing parties above the hurdle and the
-  respective seats/percentages after redistribution via
-  Sainte-Lague/Scheppers
+  A \code{data.frame} containing parties above the hurdle
+  and the respective seats/percentages after redistribution
+  via D'Hondt
 }
 \description{
-  Seat Distribution by D'Hondt calculates number of seats
-  for the respective parties that have received more than
-  5\% of votes (according to the method of D'Hondt)
+  Calculates number of seats for the respective parties
+  that have received more than \code{hurdle} percent of
+  votes (according to the method of D'Hondt)
 }
 \seealso{
   \code{\link{sls}}

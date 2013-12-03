@@ -1,18 +1,19 @@
 #' Seat Distribution by Sainte-Lague/Scheppers
-#' calculates number of seats for the respective parties that have received more 
-#' than 5\% of votes (according to the method of Sainte-Lague/Schepers)
-#' see http://www.wahlrecht.de/verfahren/rangmasszahlen.html
+#' 
+#' Calculates number of seats for the respective parties that have received more 
+#' than 5\% of votes (according to the method of Sainte-Lague/Schepers,
+#' see http://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 
-#' @param survey results of a survey as data.frame containing party names and votes
-#' @param seats number of seats in parliament. Defaults to 598 (seats in german 
-#' parliament)
-#' @param hurdle the percentage of votes that must be reached to get seats in 
-#' parliament. Defaults to 0.05 (hurdle for german parliament)
-#' @param epsilon the percentages of votes in survey must add up to 1, 
+#' @param survey Results of a survey as data.frame containing party names and votes.
+#' @param seats Number of seats in parliament. Defaults to 598 (seats in german 
+#' parliament).
+#' @param hurdle The percentage of votes that must be reached to get seats in 
+#'  parliament. Defaults to 0.05 (hurdle for german parliament).
+#' @param epsilon The percentages of votes in survey must add up to 1, 
 #' this allows for some numerical imprecission. Defaults to 10e-6.
 
-#' @return data.frame containing parties above the hurdle and the respective 
-#' seats/percentages after redistribution via Sainte-Lague/Scheppers
+#' @return A \code{data.frame} containing parties above the hurdle and the respective 
+#' seats/percentages after redistribution via Sainte-Lague/Scheppers.
 
 #' @seealso \code{\link{dHondt}}
 

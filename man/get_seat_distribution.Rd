@@ -30,8 +30,8 @@
   Calculate seat distribution from draws from posterior
 }
 \seealso{
-  \code{\link{drawElectionsFromPosterior}},
-  \code{\link{sls}}, \code{\link{dHondt}}
+  \code{\link{draw_from_posterior}}, \code{\link{sls}},
+  \code{\link{dHondt}}
 }
 \keyword{distribution}
 \keyword{seat}

@@ -29,6 +29,11 @@ Posterior which is also *Dirichlet*. Based on this Posterior we run a
 Based on these steps we can derive the probabilities of a majority for certain 
 coalitions of interest. <br/>
 
+The methods implemented here were used to report results of the German election 
+in 2012 by [ZEIT online](http://www.zeit.de/politik/deutschland/2013-08/wahlistik-2)
+and by the [Statistical Consulting Unit](http://www.stablab.stat.uni-muenchen.de/Koalitionen2013)
+at the Departement of Statistics (Munich).
+
 
 <a name="news"></a> 
 ## News
@@ -50,6 +55,9 @@ install_git("https://github.com/adibender/coalitions")
 ```
 
 
+NOTE: This will only work, if you have a version of Git installed. On Windows 
+machines you might also need to add Git binary folder to your PATH variable.
+
 
 <a name="Contact"></a>
 # Contact
@@ -69,7 +77,7 @@ Here's an example based on a survey by the *Forsa* from the 05.06.2013 with 2508
 respondents. Results are shown in the table beneath
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Dec 02 22:36:29 2013 -->
+<!-- Tue Dec 03 00:49:35 2013 -->
 <TABLE border=1>
 <CAPTION ALIGN="bottom"> Results of a Forsa survey released on the fifth 
 	of June 2013 </CAPTION>

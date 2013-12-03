@@ -1,38 +1,34 @@
 \name{sls}
 \alias{sls}
-\title{Seat Distribution by Sainte-Lague/Scheppers
-calculates number of seats for the respective parties that have received more
-than 5\% of votes (according to the method of Sainte-Lague/Schepers)
-see http://www.wahlrecht.de/verfahren/rangmasszahlen.html}
+\title{Seat Distribution by Sainte-Lague/Scheppers}
 \usage{
   sls(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05)
 }
 \arguments{
-  \item{survey}{results of a survey as data.frame
-  containing party names and votes}
+  \item{survey}{Results of a survey as data.frame
+  containing party names and votes.}
 
-  \item{seats}{number of seats in parliament. Defaults to
-  598 (seats in german parliament)}
+  \item{seats}{Number of seats in parliament. Defaults to
+  598 (seats in german parliament).}
 
-  \item{hurdle}{the percentage of votes that must be
+  \item{hurdle}{The percentage of votes that must be
   reached to get seats in parliament. Defaults to 0.05
-  (hurdle for german parliament)}
+  (hurdle for german parliament).}
 
-  \item{epsilon}{the percentages of votes in survey must
+  \item{epsilon}{The percentages of votes in survey must
   add up to 1, this allows for some numerical imprecission.
   Defaults to 10e-6.}
 }
 \value{
-  data.frame containing parties above the hurdle and the
-  respective seats/percentages after redistribution via
-  Sainte-Lague/Scheppers
+  A \code{data.frame} containing parties above the hurdle
+  and the respective seats/percentages after redistribution
+  via Sainte-Lague/Scheppers.
 }
 \description{
-  Seat Distribution by Sainte-Lague/Scheppers calculates
-  number of seats for the respective parties that have
-  received more than 5\% of votes (according to the method
-  of Sainte-Lague/Schepers) see
-  http://www.wahlrecht.de/verfahren/rangmasszahlen.html
+  Calculates number of seats for the respective parties
+  that have received more than 5\% of votes (according to
+  the method of Sainte-Lague/Schepers, see
+  http://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 }
 \seealso{
   \code{\link{dHondt}}

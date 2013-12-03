@@ -10,7 +10,7 @@
 
 #' @return Probability for majority of \code{coalition}.
 
-#' @seealso \code{\link{}}
+#' @seealso \code{\link{get_entryprobability}}
 
 #' @export
 

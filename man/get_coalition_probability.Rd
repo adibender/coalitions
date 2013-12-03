@@ -28,6 +28,6 @@
   seat distribution
 }
 \seealso{
-  \code{\link{}}
+  \code{\link{get_entryprobability}}
 }
 

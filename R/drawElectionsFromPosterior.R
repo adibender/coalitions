@@ -10,7 +10,7 @@
 #' @return \code{data.frame} containing random draws from dirichlet distribution
 #' which can be interpreted as election results.
 #' @keywords draw, simulate
-#' @seealso \code{\link{as_survey}} \code{\link{getSurveys}}
+#' @seealso \code{\link{as_survey}}
 #' @export
 
 

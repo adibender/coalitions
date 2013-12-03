@@ -25,7 +25,7 @@
   Draw random numbers from posterior distribution
 }
 \seealso{
-  \code{\link{as_survey}} \code{\link{getSurveys}}
+  \code{\link{as_survey}}
 }
 \keyword{draw,}
 \keyword{simulate}

@@ -11,9 +11,9 @@ Depends:
     stats,
     methods,
     reshape2,
-    MCMCpack
+    MCMCpack,
+    plyr
 Imports:
-    plyr,
     grid,
     gtable,
     MASS,
@@ -24,16 +24,11 @@ Suggests:
     xtable
 License: GPL (>= 2)
 Collate:
-    'createTab.R'
     'DHondt.R'
     'drawElectionsFromPosterior.R'
     'getEntryProbabilities.R'
-    'getLentVote.R'
     'getSeatDistribution.R'
-    'plotFunctions.R'
     'SaintLagueScheppers.R'
-    'tablesFunctions.R'
-    'getSurveys.R'
-    'selectSurveys.R'
     'getCoalitionProbability.R'
     'redistribute.R'
+    'asSurvey.R'

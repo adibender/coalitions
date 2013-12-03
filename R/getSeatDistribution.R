@@ -13,7 +13,7 @@
 
 #' @keywords seat distribution
 
-#' @seealso \code{\link{drawElectionsFromPosterior}}, \code{\link{sls}}, 
+#' @seealso \code{\link{draw_from_posterior}}, \code{\link{sls}}, 
 #' \code{\link{dHondt}}
 
 #' @export
