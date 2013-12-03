@@ -16,7 +16,7 @@ based on sum of their respective vote counts compared to other coalitions (e.g.
 party C and party D). 
 
 This R-package will implement the methods described 
-<a href= "http://www.stablab.stat.uni-muenchen.de/sites/files/wahlen.pdf)"> 
+<a href= "http://www.stablab.stat.uni-muenchen.de/sites/files/wahlen.pdf"> 
 here (in German)</a>. 
 In short, we assume the reported survey results to have a *Multinomial* distribution, 
 which, assuming a not-informative *Dirichlet-Prior* (Jeffrey's prior) yields a 
@@ -77,7 +77,7 @@ Here's an example based on a survey by the *Forsa* from the 05.06.2013 with 2508
 respondents. Results are shown in the table beneath
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Tue Dec 03 00:49:35 2013 -->
+<!-- Tue Dec 03 01:24:24 2013 -->
 <TABLE border=1>
 <CAPTION ALIGN="bottom"> Results of a Forsa survey released on the fifth 
 	of June 2013 </CAPTION>
