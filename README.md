@@ -19,8 +19,8 @@ This R-package will implement the methods described
 <a href= "http://www.stablab.stat.uni-muenchen.de/sites/files/wahlen.pdf"> 
 here (in German)</a>. 
 In short, we assume the reported survey results to have a *Multinomial* distribution, 
-which, assuming a not-informative *Dirichlet-Prior* (Jeffrey's prior) yields a 
-Posterior which is also *Dirichlet*. Based on this Posterior we run a 
+which, assuming a not-informative *Dirichlet-Prior* (Jeffrey's prior), 
+yields a Posterior which is also *Dirichlet*. Based on this Posterior we run a
 *Monte-Carlo simulation*, where we <br/>
 
 1. sample n election results from the Posterior
@@ -38,9 +38,7 @@ at the Departement of Statistics (Munich).
 <a name="news"></a> 
 ## News
 
-- First installable Version online (01.12.2013)
-	basic functionality and example provided, further functionality and 
-	code that reproduces results for German election 2013 will follow. 
+- First installable Version online (01.12.2013).
 
 
 <a name="installation"></a>
@@ -73,8 +71,7 @@ or raise an issue on GitHub.
 # Basic example
 
 
-Here's an example based on a survey by the *Forsa* from the 05.06.2013 with 2508
-respondents. Results are shown in the table beneath
+Here's an example based on a survey by the *Forsa* from the 05.06.2013 with 2508 respondents. Results are shown in the table beneath
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 <!-- Tue Dec 03 01:24:24 2013 -->
@@ -130,7 +127,8 @@ Thus, assuming a *Multinomial* distribution of the survey results and using
 a non-informative *conjugate Dirichlet* as the *Prior*, the *Posterior* is also a 
 *Dirichlet* 
 
-\[\begin{equation}
+\[
+\begin{equation}
     Dir(n_1 + 1/2, n_2 + 1/2, ..., n_k + 1/2)
 \end{equation}
 \]
