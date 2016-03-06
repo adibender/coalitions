@@ -1,27 +1,18 @@
 Package: coalitions
 Type: Package
 Title: Coalition probabilities in multi-party democracies
-Version: 0.0.1
+Version: 0.0.2
 Author: Andreas Bender <bender.at.R@gmail.com>
 Maintainer: Andreas Bender <bender.at.R@gmail.com>
 Description: An Implementation of a Monte Carlo method to calculate
     probabilities for a coalition majority based on survey results.
 Depends:
-    R (>= 2.15),
-    stats,
-    methods,
-    reshape2,
-    MCMCpack,
-    plyr
+    R (>= 3.1.0)
 Imports:
-    grid,
-    gtable,
-    MASS,
-    zoo
+    reshape2,
+    gtools
 Suggests:
-    tables,
-    ggplot2,
-    xtable
+    testthat
 License: GPL (>= 2)
 Collate:
     'DHondt.R'
@@ -32,3 +23,4 @@ Collate:
     'getCoalitionProbability.R'
     'redistribute.R'
     'asSurvey.R'
+RoxygenNote: 5.0.1

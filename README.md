@@ -127,11 +127,11 @@ Thus, assuming a *Multinomial* distribution of the survey results and using
 a non-informative *conjugate Dirichlet* as the *Prior*, the *Posterior* is also a 
 *Dirichlet* 
 
-\[
+$$
 \begin{equation}
     Dir(n_1 + 1/2, n_2 + 1/2, ..., n_k + 1/2)
 \end{equation}
-\]
+$$
 
 Where $n_i$ are the votes received by party $i$, $i = 1,...,k$.
 

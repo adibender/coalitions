@@ -228,3 +228,4 @@ pip-log.txt
 #################
 
 testPackage/
+.Rproj.user
