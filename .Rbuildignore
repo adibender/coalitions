@@ -5,3 +5,6 @@ data/electionDE2012.RData
 ^data/\.dropbox\.attr$
 ^tests/\.dropbox\.attr$
 ^tests/testthat/\.dropbox\.attr$
+^\.travis\.yml$
+^codecov\.yml$
+^data-raw$

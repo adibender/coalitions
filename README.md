@@ -1,14 +1,11 @@
-<link rel="stylesheet" href="wahlen.css">
+# coalitions
 
-
-
-
-
+[![Travis-CI Build Status](https://travis-ci.org/adibender/coalitions.svg?branch=master)](https://travis-ci.org/adibender/coalitions)
+[![Coverage Status](https://img.shields.io/codecov/c/github/adibender/coalitions/master.svg)](https://codecov.io/github/adibender/coalitions?branch=master)
 
 
 <a name="introduction"></a>
-# coalitions
-
+## Introduction
 During election period in multi-party democracies media often reports survey 
 results as percentages of respondents who would vote for a certain party, 
 which results in headlines similar to "Party A and party B have narrow majority", 
@@ -47,7 +44,7 @@ devtools::install_github("adibender/coalitions")
 
 
 <a name="Contact"></a>
-# Contact
+## Contact
 If you experience any problems with the functionality provided in this package
 don't hesitate to 
 <a href="mailto:bender.at.R@gmail.com?subject=coalitions" "email me">email me</a> 
@@ -57,7 +54,7 @@ or raise an issue on GitHub.
 
 
 <a name="example"></a>
-# Basic example
+## Basic example
 
 
 Here's an example based on a survey by the *Forsa* from the 05.06.2013 with 2508 respondents. Results are shown in the table beneath
