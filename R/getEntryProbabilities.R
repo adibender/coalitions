@@ -1,19 +1,16 @@
 #' Get probabilities to enter the parliament. 
-
+#' 
 #' @param dirichlet.draws Matrix or data frame containing draws from 
 #' the posterior (see \code{\link{draw_from_posterior}}).
 #' @param hurdle the percentage of votes that must be reached to get seats in 
 #' parliament. Defaults to 0.05 (hurdle for german parliament).
-
 #' @return Vector of (named) entry probabilities.
-
-#' @seealso \code{\link{draw_from_posterior}}
-
 #' @export
-
+#' @seealso \code{\link{draw_from_posterior}}
+#' 
 get_entryprobability <- function(dirichlet.draws, hurdle = 0.05) {
     
-    colSums(dirichlet.draws >= hurdle)/nrow(dirichlet.draws)
+  colSums(dirichlet.draws >= hurdle)/nrow(dirichlet.draws)
     
 }
 

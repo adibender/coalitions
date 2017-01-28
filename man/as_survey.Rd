@@ -2,10 +2,7 @@
 % Please edit documentation in R/asSurvey.R
 \name{as_survey}
 \alias{as_survey}
-\title{Creates basic survey table from votes in percent
-This functions takes votes in percent (per party) obtained from a survey, 
-and returns a table containing votes (in percent) and party names. Conducts  
-sanity checks along the way, such as checking that percentages add up to 1.}
+\title{Creates basic survey table from votes in percent}
 \usage{
 as_survey(votes.in.perc, samplesize, parties = c("CDU/CSU", "SPD", "GRUENE",
   "FDP", "LINKE", "PIRATEN", "AfD", "FW", "Sonstige"), epsilon = 1e-05)
@@ -18,7 +15,7 @@ to be modified).}
 
 \item{samplesize}{Number of respondents in survey.}
 
-\item{parties}{Vector of same length and in the same orderas \code{votes.in.perc}}
+\item{parties}{Vector of same length and in the same order as \code{votes.in.perc}}
 
 \item{epsilon}{The parameter \code{votes.in.perc} should add up to one. 
 This parameter controls the maximal numerical divergence allowed.}
@@ -28,10 +25,16 @@ A \code{data.frame} containing input and absolute number of votes
 in survey per party.
 }
 \description{
-Creates basic survey table from votes in percent
 This functions takes votes in percent (per party) obtained from a survey, 
 and returns a table containing votes (in percent) and party names. Conducts  
 sanity checks along the way, such as checking that percentages add up to 1.
+}
+\examples{
+forsa <- as_survey(
+ votes.in.perc = c(0.41, 0.24, 0.13, 0.04, 0.08, 0.03, 0.03, 0.04),
+ samplesize    = 2508,
+ parties       = c("CDU/CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "AfD", "Others"))
+forsa 
 }
 \seealso{
 \code{\link{redistribute}}

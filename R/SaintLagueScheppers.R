@@ -3,7 +3,7 @@
 #' Calculates number of seats for the respective parties that have received more 
 #' than 5\% of votes (according to the method of Sainte-Lague/Schepers,
 #' see http://www.wahlrecht.de/verfahren/rangmasszahlen.html).
-
+#' 
 #' @param survey Results of a survey as data.frame containing party names and votes.
 #' @param seats Number of seats in parliament. Defaults to 598 (seats in german 
 #' parliament).

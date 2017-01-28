@@ -1,5 +1,5 @@
 #' Creates basic survey table from votes in percent
-
+#' 
 #' This functions takes votes in percent (per party) obtained from a survey, 
 #' and returns a table containing votes (in percent) and party names. Conducts  
 #' sanity checks along the way, such as checking that percentages add up to 1.
@@ -9,12 +9,18 @@
 #'  mentioned in the specific survey (otherwise the \code{parties} argument has 
 #'  to be modified).
 #' @param samplesize Number of respondents in survey.
-#' @param parties Vector of same length and in the same orderas \code{votes.in.perc}
+#' @param parties Vector of same length and in the same order as \code{votes.in.perc}
 #' @param epsilon The parameter \code{votes.in.perc} should add up to one. 
 #' This parameter controls the maximal numerical divergence allowed.
 
 #' @return A \code{data.frame} containing input and absolute number of votes 
 #' in survey per party.
+#' @examples 
+#' forsa <- as_survey(
+#'  votes.in.perc = c(0.41, 0.24, 0.13, 0.04, 0.08, 0.03, 0.03, 0.04),
+#'  samplesize    = 2508,
+#'  parties       = c("CDU/CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "AfD", "Others"))
+#' forsa 
 #' @keywords survey
 #' @seealso \code{\link{redistribute}}
 #' @export

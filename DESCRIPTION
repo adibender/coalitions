@@ -1,7 +1,7 @@
 Package: coalitions
 Type: Package
 Title: Coalition probabilities in multi-party democracies
-Version: 0.0.201
+Version: 0.0.202
 Author: Andreas Bender <bender.at.R@gmail.com>
 Maintainer: Andreas Bender <bender.at.R@gmail.com>
 Description: An Implementation of a Monte Carlo method to calculate

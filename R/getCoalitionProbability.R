@@ -7,48 +7,48 @@
 #' \code{superior} coalition.
 #' @param majority Number of seats required for majority in parliament.
 #' Defaults to 300 (required number of seats in german parliament).
-#' @seealso \code{\link{get_entryprobability}}
 #' @importFrom reshape2 melt
-#' @export
 #' @return Probability for majority of \code{coalition}.
+#' @export
+#' @seealso \code{\link{get_entryprobability}}
 
 get_coalition_probability <- function(seat.tab, coalition, superior = NULL,
-    majority = 300) {
+  majority = 300) {
 
-    ind.coalition <- sapply(seat.tab, function(z) {
-                sum(z$seats[z$party %in% coalition]) >= majority
-            })
+  ind.coalition <- sapply(seat.tab, function(z) {
+    sum(z$seats[z$party %in% coalition]) >= majority
+  })
 
-    if( !any(is.null(superior)) ) {
+  if( !any(is.null(superior)) ) {
 
-        ind.sup.list <- lapply(superior, function(superior.coalition) {
-                    sapply(seat.tab, function(z) {
-                                sum(z$seats[z$party %in% superior.coalition]) >=
-                                        majority
-                            })
-                })
-    }
-    else{
-        ind.sup.list <- list(rep(FALSE, length(ind.coalition)))
-    }
+    ind.sup.list <- lapply(superior, function(superior.coalition) {
+      sapply(seat.tab, function(z) {
+        sum(z$seats[z$party %in% superior.coalition]) >=
+        majority
+      })
+    })
+  }
+  else{
+    ind.sup.list <- list(rep(FALSE, length(ind.coalition)))
+  }
 
-    ind.sup <- Reduce("|", ind.sup.list)
+  ind.sup <- Reduce("|", ind.sup.list)
 
-    mean(ind.coalition & !(ind.sup))
+  mean(ind.coalition & !(ind.sup))
 
 }
 
 
 get_coalition_probabilities <- function(seat.tabs, coalitions,
-    superior.coalitions, majority = 300) {
+  superior.coalitions, majority = 300) {
 
-    coal.probs <- sapply(seq_along(coalitions), function(z) {
-                get_coalition_probability(seat.tabs, coalitions[[z]],
-                        superior.coalitions[[z]], majority = majority)
-            })
-    names(coal.probs) <- sapply(coalitions, paste0, collapse = "-")
+  coal.probs <- sapply(seq_along(coalitions), function(z) {
+    get_coalition_probability(seat.tabs, coalitions[[z]],
+      superior.coalitions[[z]], majority = majority)
+  })
+  names(coal.probs) <- sapply(coalitions, paste0, collapse = "-")
 
-    coal.probs
+  coal.probs
 
 }
 
