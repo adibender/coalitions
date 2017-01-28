@@ -32,13 +32,7 @@ coalitions of interest. <br/>
 The methods implemented here were used to report results of the German election 
 in 2012 by [ZEIT online](http://www.zeit.de/politik/deutschland/2013-08/wahlistik-2)
 and by the [Statistical Consulting Unit](http://www.stablab.stat.uni-muenchen.de/Koalitionen2013)
-at the Departement of Statistics (Munich).
-
-
-<a name="news"></a> 
-## News
-
-- First installable Version online (01.12.2013).
+at the Department of Statistics (Munich).
 
 
 <a name="installation"></a>
@@ -48,13 +42,8 @@ typing
 
 
 ```r
-library(devtools)
-install_git("https://github.com/adibender/coalitions")
+devtools::install_github("adibender/coalitions")
 ```
-
-
-NOTE: This will only work, if you have a version of Git installed. On Windows 
-machines you might also need to add Git binary folder to your PATH variable.
 
 
 <a name="Contact"></a>
@@ -113,7 +102,7 @@ the parliament, since one has to factor in <a name="issues"/>
 On request of the German ZEIT magazine the 
 <a href="http://www.stablab.stat.uni-muenchen.de/index" target = "_blank">
 Statistical Consulting Unit
-</a> at the <a href="http://www.stat.uni-muenchen.de/index_e.html" target="_blank">
+</a> at the <a href="http://www.statistik.uni-muenchen.de/index.html" target="_blank">
 Departement of Statistics, Munich</a> developed a method that takes all of the points 
 mentioned above into consideration to derive probabilities for the coalitions of 
 interest.
@@ -128,9 +117,7 @@ a non-informative *conjugate Dirichlet* as the *Prior*, the *Posterior* is also 
 *Dirichlet* 
 
 $$
-\begin{equation}
-    Dir(n_1 + 1/2, n_2 + 1/2, ..., n_k + 1/2)
-\end{equation}
+Dir(n_1 + 1/2, n_2 + 1/2, ..., n_k + 1/2)
 $$
 
 Where $n_i$ are the votes received by party $i$, $i = 1,...,k$.
@@ -176,10 +163,10 @@ By considering such a draw  an election outcome we can calculate the percentage 
 votes each party receives after dropping parties with less than 
 5% of the votes and redistributing these votes. Using Saint-Lague/Scheppers we can 
 than calculate the seat-distribution for every such draw. This is a little 
-cumbersome, therefore this packages provides functions to do so in a more coherent 
-fashion. 
+cumbersome, therefore this packages provides functions that facilitate these 
+calculations. 
 
-Let's again consider the above [example](#example): 
+Again consider the above [example](#example): 
 
 First we create an survey object from the survey results: 
 
@@ -205,11 +192,10 @@ forsa
 
 
 `as_survey` calculates vote count from votes in percent and performs some 
-sanity checks, such that number of parties equals number of entered percentages 
-and votes in percent add up to $1$.
+sanity checks, such that number of parties equals number of entered percentages and votes in percent add up to 1.
 
 Given the survey (which can be an actual survey result or a random sample from 
-the *Posterior*) we can calculate the 
+the *Posterior*) we can calculate the redistributed vote percentage after applying the 5% hurdle:
 
 
 ```r
@@ -224,6 +210,11 @@ result  ## votes in percent after redistribution
 ## 3  GRUENE       0.15116  326.0
 ## 5   LINKE       0.09302  200.6
 ```
+
+We see that the Percentage of votes awarded to CDU/CSU after redistribution 
+rises from 41% to almost 48%. 
+
+And lastly, calculate the number of seats awarded to the remaining parties according to Saint-Lague/Scheppers (`sls`):
 
 ```r
 seats <- sls(result, seats = 598)  ## calculate seat distribution in parliament via Sainte-Lague/Scheppers
@@ -250,9 +241,10 @@ sum(seats$seats[seats$party != "CDU/CSU"])
 
 In this case, if the survey did reflect the actual preferences in the population, the 
 coalition of *SPD-GRUENE-LINKE* would get the seats needed for 
-a majority (300). But we don't know that and need to take random sample deviation 
-into account. Therefore instead of using the actual survey we determine the posterior 
-as described above and draw 10000 election results from the posterior: 
+a majority (300). 
+
+To take into account the uncertainty of the survey, instead of using the actual survey results, we determine the posterior as described above and 
+draw 10000 election results from the posterior:
 
 
 ```r

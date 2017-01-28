@@ -1,7 +1,7 @@
-coalitions.sublime-workspace
-coalitions.sublime-project
-testPackage
-testPackage/*
 ^.*\.Rproj$
 ^\.Rproj\.user$
 data/electionDE2012.RData
+^\.dropbox\.attr$
+^data/\.dropbox\.attr$
+^tests/\.dropbox\.attr$
+^tests/testthat/\.dropbox\.attr$
