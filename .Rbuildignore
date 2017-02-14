@@ -8,3 +8,4 @@ data/electionDE2012.RData
 ^\.travis\.yml$
 ^codecov\.yml$
 ^data-raw$
+^sandbox$
