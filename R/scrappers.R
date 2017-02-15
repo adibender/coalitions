@@ -1,7 +1,7 @@
 # @Author: andreas.bender@stat.uni-muenchen.de
 # @Date:   2017-02-14 13:41:16
 # @Last Modified by:   andreas.bender@stat.uni-muenchen.de
-# @Last Modified time: 2017-02-14 16:02:15
+# @Last Modified time: 2017-02-15 14:19:07
 
 
 
@@ -34,7 +34,8 @@ sanitize_colnames <- function(df) {
 #' 
 #' Scrapes survey tables and perfroms sanitization to output tidy data 
 #' @rdname scrape
-#' @import rvest lubridate dplyr
+#' @import rvest dplyr
+#' @importFrom lubridate dmy year month
 #' @importFrom xml2 read_html
 #' @export
 scrape_wahlrecht <- function(adress = "http://www.wahlrecht.de/umfragen/emnid.htm") {
@@ -74,8 +75,10 @@ scrape_wahlrecht <- function(adress = "http://www.wahlrecht.de/umfragen/emnid.ht
 #' Scrapes table and performs some sanitization to output tidy data
 #' 
 #' @param adress http-Adress from which tables should be scraped
-#' @import magrittr rvest dplyr lubridate
+#' @import magrittr rvest dplyr
+#' @importFrom lubridate dmy year month
 #' @importFrom xml2 read_html
+#' @importFrom stats setNames
 #' @export
 #' @rdname scrape
 #' @examples 

@@ -38,9 +38,27 @@ get_coalition_probability <- function(seat.tab, coalition, superior = NULL,
 
 }
 
-
-get_coalition_probabilities <- function(seat.tabs, coalitions,
-  superior.coalitions, majority = 300) {
+#' Calculate coalition probabilities
+#' 
+#' Given a list containing simulated seats obtained per party
+#' 
+#' @param seat.tabs A list of data frames containing simulated seat distributions. 
+#' @param coalitions A list of coaltions for which coalition probabilities should 
+#' be calculated. Each list entry must be a vector of party names. Those names 
+#' need to correspond to the names in \code{seat.tabs}.
+#' @param superior.coalitions A list similar to \code{coalitions} and of the 
+#' same length. Coalition probabilities for coalitions in \code{coalitions} list 
+#' will be calculated excluding times where respective entry in 
+#' \code{superior.coalitions} is also possible.
+#' @inheritParams get_coalition_probability
+#' @return Probabilities for majority for specified coalitions.
+#' @export
+#' @seealso get_seat_distribution
+get_coalition_probabilities <- function(
+  seat.tabs, 
+  coalitions,
+  superior.coalitions, 
+  majority = 300) {
 
   coal.probs <- sapply(seq_along(coalitions), function(z) {
     get_coalition_probability(seat.tabs, coalitions[[z]],
