@@ -13,6 +13,7 @@
 ## folders 
 #################
 data-raw/
+sandbox/
 
 ## Rstudio
 .Rproj.user
