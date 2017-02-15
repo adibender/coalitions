@@ -31,4 +31,9 @@ will be calculated excluding times where respective entry in
 Given  data frame containing results from different surveys (one  survey 
 per row), returns the provided data frame plus specified coalition probabilities.
 }
+\examples{
+library(dplyr)
+tab <- scrape_wahlrecht() \%>\% slice(1:3)
+cprob_tab(tab, nsim=100)
+}
 

@@ -61,7 +61,7 @@ cprob_tab <- function(
 	mc.cores=10L,
 	...) {
 
-	assert_data_frame(row, all.missing=FALSE, min.cols=3, nrows=1)
+	assert_data_frame(survey.df, all.missing=FALSE, min.cols=3, min.rows=1)
 	assert_number(nsim, lower=1, na.ok=FALSE, finite=TRUE)
 	assert_list(coalitions, types="character", any.missing=FALSE, min.len=1, 
 		unique=TRUE)
