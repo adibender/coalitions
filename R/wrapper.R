@@ -50,7 +50,7 @@ cprob_row <- function(
 #' @examples 
 #' library(dplyr)
 #' tab <- scrape_wahlrecht() %>% slice(1:3)
-#' cprob_tab(tab, nsim=100)
+#' cprob_tab(tab, nsim=100, mc.cores=1L)
 #' @export
 cprob_tab <- function(
 	survey.df, 
@@ -76,6 +76,9 @@ cprob_tab <- function(
 			superior.coalitions=superior.coalitions, 
 		mc.cores=mc.cores)
 
-	bind_cols(survey.df, bind_rows(cprobs))
+	probs <- left_join(survey.df, bind_rows(cprobs))
+	colnames(probs) <- gsub("-", "_", colnames(probs), fixed=TRUE)
+
+	return(probs)
 
 }

@@ -27,5 +27,5 @@ test_that("Sainte-Lague/Scheppers works correctly", {
 	expect_is(seats <- sls(redistribute(forsa), seats = 598), "data.frame")
 	expect_equal(nrow(seats), 4)
 	expect_equal(ncol(seats), 4)
-	expect_identical(seats$seats, c(285L, 90L, 56L, 167L))
+	expect_identical(seats$seats, c(285L, 167L, 90L, 56L))
 })
