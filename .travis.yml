@@ -2,13 +2,13 @@
 
 language: r
 sudo: false
+warnings_are_errors: false
 cache: packages
 r:
   - release
 
 r_github_packages:
   - jimhester/covr
-  - adibender/ldatools
 
 after_success:
   - Rscript -e 'covr::codecov()'

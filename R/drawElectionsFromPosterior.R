@@ -4,13 +4,13 @@
 #' @param nsim number of simulations
 #' @param seed sets seed
 #' @param prior optional prior information. Defaults to 1/2 (Jeffrey's prior).
-
+#' @importFrom gtools rdirichlet
+#' 
 #' @return \code{data.frame} containing random draws from dirichlet distribution
 #' which can be interpreted as election results.
+#' @export
 #' @keywords draw, simulate
 #' @seealso \code{\link{as_survey}}
-#' @importFrom gtools rdirichlet
-#' @export
 
 draw_from_posterior <- function(survey, nsim, seed = NULL, prior = NULL) {
 
