@@ -14,11 +14,14 @@
 #################
 data-raw/
 sandbox/
+cache/
+figure/
 
 ## Rstudio
 .Rproj.user
 *Rproj
+.Rhistory
+*.Rhistory
 
 ## Dropbox
 *.dropbox.attr
-
