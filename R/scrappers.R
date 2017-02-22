@@ -1,7 +1,7 @@
 # @Author: andreas.bender@stat.uni-muenchen.de
 # @Date:   2017-02-14 13:41:16
 # @Last Modified by:   andreas.bender@stat.uni-muenchen.de
-# @Last Modified time: 2017-02-15 14:19:07
+# @Last Modified time: 2017-02-22 12:30:29
 
 
 
@@ -31,8 +31,8 @@ sanitize_colnames <- function(df) {
 
 
 #' scrape surveys from wahlrecht.de
-#' 
-#' Scrapes survey tables and perfroms sanitization to output tidy data 
+#'
+#' Scrapes survey tables and perfroms sanitization to output tidy data
 #' @rdname scrape
 #' @import rvest dplyr
 #' @importFrom lubridate dmy year month
@@ -40,11 +40,22 @@ sanitize_colnames <- function(df) {
 #' @export
 scrape_wahlrecht <- function(adress = "http://www.wahlrecht.de/umfragen/emnid.htm") {
 
-	atab <- read_html(adress) %>% 
-		html_nodes("table") %>% .[[2]] %>% 
+	atab <- read_html(adress) %>%
+		html_nodes("table") %>% .[[2]] %>%
 		html_table(fill=TRUE)
 
-	atab <- atab[-1:-3,]
+	if(adress == "http://www.wahlrecht.de/umfragen/politbarometer/stimmung.htm") {
+		adress2 <- sub("/stimmung", "", adress)
+		atab2 <- read_html(adress2) %>% 
+			html_nodes("table") %>% .[[2]] %>% 
+			html_table(fill=TRUE) %>% 
+			select(Befragte)
+		ind.row.remove <- -1:-2
+	} else {
+		ind.row.remove <- -1:-3
+	}
+
+	atab <- atab[ind.row.remove,]
 	atab <- atab[-nrow(atab), ]
 	ind.empty <- sapply(atab, function(z) all(z==""))
 	atab <- atab[, !ind.empty]
@@ -66,14 +77,14 @@ scrape_wahlrecht <- function(adress = "http://www.wahlrecht.de/umfragen/emnid.ht
 		month = month(Datum))
 
 	return(sanitize_colnames(atab))
-	
+
 }
 
 
 #' Scrape tables from whalumfragen.de
-#' 
+#'
 #' Scrapes table and performs some sanitization to output tidy data
-#' 
+#'
 #' @param adress http-Adress from which tables should be scraped
 #' @import magrittr rvest dplyr
 #' @importFrom lubridate dmy year month
@@ -81,33 +92,35 @@ scrape_wahlrecht <- function(adress = "http://www.wahlrecht.de/umfragen/emnid.ht
 #' @importFrom stats setNames
 #' @export
 #' @rdname scrape
-#' @examples 
+#' @examples
 #'library(dplyr)
 #'library(tidyr)
 #'library(plotly)
 #'library(ggplot2)
 #'theme_set(theme_bw())
 #'tab <- scrape_wahlumfragen()
-#'ltab <- gather(tab, Partei, Prozent, CDU:SONSTIGE) %>% 
+#'ltab <- gather(tab, Partei, Prozent, CDU:SONSTIGE) %>%
 #'	filter(YEAR >= 2016, INSTITUT %in% c("Allensbach", "Emnid", "Forsa", "INSA"))
 #'
 #'gg.umfragen <- ggplot(ltab, aes(x=DATUM, y=Prozent)) +
-#'	geom_point(aes(col=Partei), size=0.5) + 
-#'	geom_path(aes(col=Partei)) + 
+#'	geom_point(aes(col=Partei), size=0.5) +
+#'	geom_path(aes(col=Partei)) +
 #'	facet_wrap(~INSTITUT)
 #'gg.umfragen
-
 #'ggplotly(gg.umfragen)
 #'
 scrape_wahlumfragen <- function(
 	adress="http://www.wahlumfragen.org/bundestagswahl/wahlumfragen_bundestagswahl.php") {
 
 
-	atab <- read_html(adress) %>% 
-		html_nodes("table") %>% .[[5]] %>% 
-		html_table(fill=TRUE) %>% 
-		select(-Kommentar) %>% 
-		rename_(.dots=setNames("Veröffentlichung", "Datum"))
+	atab <- read_html(adress) %>%
+		html_nodes("table") %>% .[[5]] %>%
+		html_table(fill=TRUE) %>%
+		select(-Kommentar)
+	colnames(atab) <- gsub("ö", "oe", colnames(atab))
+	colnames(atab) <- gsub("ä", "ae", colnames(atab))
+	colnames(atab) <- gsub("ü", "ue", colnames(atab))
+	atab <- rename(atab, Datum=Veroeffentlichung)
 
 	# transform percentage string to numerics
 	atab[, 2:9] <- apply(atab[, 2:9], 2, sanitize_percent)

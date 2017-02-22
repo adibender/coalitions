@@ -25,12 +25,12 @@ library(plotly)
 library(ggplot2)
 theme_set(theme_bw())
 tab <- scrape_wahlumfragen()
-ltab <- gather(tab, Partei, Prozent, CDU:SONSTIGE) \%>\% 
+ltab <- gather(tab, Partei, Prozent, CDU:SONSTIGE) \%>\%
 filter(YEAR >= 2016, INSTITUT \%in\% c("Allensbach", "Emnid", "Forsa", "INSA"))
 
 gg.umfragen <- ggplot(ltab, aes(x=DATUM, y=Prozent)) +
-geom_point(aes(col=Partei), size=0.5) + 
-geom_path(aes(col=Partei)) + 
+geom_point(aes(col=Partei), size=0.5) +
+geom_path(aes(col=Partei)) +
 facet_wrap(~INSTITUT)
 gg.umfragen
 ggplotly(gg.umfragen)
