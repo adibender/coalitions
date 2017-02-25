@@ -27,4 +27,3 @@ Draw random numbers from posterior distribution
 }
 \keyword{draw,}
 \keyword{simulate}
-

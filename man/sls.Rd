@@ -30,4 +30,3 @@ see http://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 \seealso{
 \code{\link{dHondt}}
 }
-
