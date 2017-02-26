@@ -24,7 +24,7 @@ were based on.}
 
 \item{...}{Further arguments passed to \code{distrib.fun}.}
 
-\item{mc.cores}{Number of cores to be used in parallel. 
+\item{mc.cores}{Number of cores to be used in parallel.
 See \code{\link[parallel]{mclapply}}.}
 }
 \value{
