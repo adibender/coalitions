@@ -13,7 +13,6 @@
 #' @keywords seat distribution
 #' @seealso \code{\link{draw_from_posterior}}, \code{\link{sls}}, 
 #' \code{\link{dHondt}}
-
 get_seat_distribution <- function(dirichlet.draws, survey, distrib.fun = sls, 
   samplesize = NULL, ...) {
   
@@ -30,6 +29,34 @@ get_seat_distribution <- function(dirichlet.draws, survey, distrib.fun = sls,
   sim.results <- lapply(sim.surveys, distrib.fun, ...)
   
     ## return results
+  sim.results
+  
+}
+
+
+#' @rdname get_seat_distribution
+#' @param mc.cores Number of cores to be used in parallel. 
+#' See \code{\link[parallel]{mclapply}}.
+get_seats <- function(
+  dirichlet.draws, 
+  survey, 
+  mc.cores    = 1,
+  distrib.fun = sls,
+  samplesize  = NULL, ...) {
+  
+  if( is.null(samplesize) ) samplesize <- sum(survey$VOTES)
+  
+    sim.surveys <- mclapply(seq_len(nrow(dirichlet.draws)), function(z) {
+      survey$PERCENT <- as.numeric(dirichlet.draws[z, ])
+      survey$VOTES <- survey$PERCENT * samplesize
+      survey
+      
+    }, mc.cores=mc.cores)
+  
+  ## calculate seat distribution for each simulation
+  sim.results <- mclapply(sim.surveys, distrib.fun, ..., mc.cores=mc.cores)
+  
+  ## return results
   sim.results
   
 }

@@ -1,7 +1,7 @@
 Package: coalitions
 Type: Package
 Title: Coalition probabilities in multi-party democracies
-Version: 0.0.422
+Version: 0.0.533
 Authors@R: person("Andreas", "Bender", , "andreas.bender@stat.uni-muenchen.de", role = c("aut", "cre"))
 Description: An Implementation of a Monte Carlo method to calculate
     probabilities for a coalition majority based on survey results.
@@ -11,12 +11,12 @@ Imports:
     magrittr,
     checkmate,
     reshape2,
-    gtools, 
+    gtools,
     lubridate,
     stringr,
-    dplyr, 
+    dplyr,
     tidyr,
-    rvest, 
+    rvest,
     xml2,
     ggplot2,
     plotly
@@ -24,4 +24,4 @@ Suggests:
     testthat,
     covr
 License: MIT + file LICENSE
-RoxygenNote: 6.0.1
+RoxygenNote: 5.0.1

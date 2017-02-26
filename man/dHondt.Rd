@@ -29,3 +29,4 @@ than \code{hurdle} percent of votes (according to the method of D'Hondt)
 \seealso{
 \code{\link{sls}}
 }
+

@@ -2,10 +2,13 @@
 % Please edit documentation in R/getCoalitionProbability.R
 \name{get_coalition_probability}
 \alias{get_coalition_probability}
+\alias{get_probability}
 \title{Calculates coalition probability for one coalition given seat distribution}
 \usage{
 get_coalition_probability(seat.tab, coalition, superior = NULL,
   majority = 300)
+
+get_probability(seat.tab, coalition, superior = NULL, majority = 300)
 }
 \arguments{
 \item{seat.tab}{\code{data.frame} containing seat.distributions from simulations}
@@ -28,3 +31,4 @@ Calculates coalition probability for one coalition given seat distribution
 \seealso{
 \code{\link{get_entryprobability}}
 }
+

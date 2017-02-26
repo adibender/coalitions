@@ -22,3 +22,4 @@ Get probabilities to enter the parliament.
 \seealso{
 \code{\link{draw_from_posterior}}
 }
+

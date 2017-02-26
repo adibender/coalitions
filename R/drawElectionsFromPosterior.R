@@ -15,22 +15,47 @@
 draw_from_posterior <- function(survey, nsim, seed = NULL, prior = NULL) {
 
     ## calculate posteriori
-    if( is.null(prior) ) {
-        prior <- rep(0.5, nrow(survey))
-    }
+  if(is.null(prior)) {
+    prior <- rep(0.5, nrow(survey))
+  } else {
+    if(length(prior) != nrow(survey))
+      stop("length of prior weights and number of observations differ")
+  }
 
-    else {
-        if( length(prior) != nrow(survey) )
-            stop("length of prior weights and number of observations differ")
-    }
-
-    alpha <- survey$votes + prior
+  alpha <- survey$votes + prior
 
     ## draw n.sim random dirichlet numbers/vectors with concentration weights alpha
-    if( !is.null(seed) ) set.seed(seed)
+  if(!is.null(seed)) set.seed(seed)
     rn <- as.data.frame(rdirichlet(nsim, alpha = alpha))
-    colnames(rn) <- survey$party
+  colnames(rn) <- survey$party
 
-    rn
+  rn
+
+}
+
+#' @rdname draw_from_posterior
+#' @inheritParams draw_from_posterior
+#' @export
+draw_posterior <- function(
+  survey, 
+  nsim, 
+  seed = NULL, 
+  prior = NULL) {
+
+  ## set seed if provided
+  if(!is.null(seed)) set.seed(seed)
+    ## calculate posteriori
+  if(is.null(prior)) {
+    prior <- rep(0.5, nrow(survey))
+  } else {
+    if(length(prior) != nrow(survey))
+      stop("length of prior weights and number of observations differ")
+  }
+    
+  ## draw n.sim random dirichlet numbers/vectors with concentration weights alpha
+  draws <- rdirichlet(nsim, alpha = survey$VOTES + prior)
+  colnames(draws) <- survey$PARTY
+
+  return(draws)
 
 }

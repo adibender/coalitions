@@ -2,9 +2,12 @@
 % Please edit documentation in R/drawElectionsFromPosterior.R
 \name{draw_from_posterior}
 \alias{draw_from_posterior}
+\alias{draw_posterior}
 \title{Draw random numbers from posterior distribution}
 \usage{
 draw_from_posterior(survey, nsim, seed = NULL, prior = NULL)
+
+draw_posterior(survey, nsim, seed = NULL, prior = NULL)
 }
 \arguments{
 \item{survey}{survey object as returned by \code{as_survey} or \code{getSurveys}}
@@ -27,3 +30,4 @@ Draw random numbers from posterior distribution
 }
 \keyword{draw,}
 \keyword{simulate}
+

@@ -158,8 +158,8 @@ scrape_wahlumfragen <- function(
 #' the data into long format with one row per party. 
 #' @inheritParams scrape_wahlrecht
 #' @param surveys A data frame with one survey per row.  
-#' @import checkmate
-#' @importFrom tidyr gather
+#' @import checkmate magrittr
+#' @importFrom tidyr gather nest
 #' @return Data frame in long format
 #' @export
 #' @examples
@@ -177,6 +177,7 @@ collapse_parties <- function(
 	surveys <- gather(surveys, PARTY, PERCENT, one_of(av.parties)) %>% 
 		arrange(desc(DATUM))
 
-	return(mutate(surveys, PARTY = factor(PARTY, levels=parties)))
+	surveys %<>% mutate(VOTES = PERCENT/100 * BEFRAGTE) %>% 
+		nest(PARTY:VOTES, .key="survey")
 
 }

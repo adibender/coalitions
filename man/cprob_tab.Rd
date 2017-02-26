@@ -36,3 +36,4 @@ library(dplyr)
 tab <- scrape_wahlrecht() \%>\% slice(1:3)
 cprob_tab(tab, nsim=100, mc.cores=1L)
 }
+

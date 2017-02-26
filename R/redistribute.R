@@ -17,3 +17,14 @@ redistribute <- function(survey, hurdle = 0.05) {
 	survey
 	
 }
+
+#' @rdname redistribute
+#' @inheritParams redistribute
+redistribute2 <- function(survey, hurdle = 0.05) {
+
+	survey <- survey[survey$PERCENT >= hurdle & survey$PARTY != "SONSTIGE", ]
+	survey$PERCENT <- survey$VOTES/sum(survey$VOTES)
+	
+	survey
+	
+}

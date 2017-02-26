@@ -2,10 +2,13 @@
 % Please edit documentation in R/getCoalitionProbability.R
 \name{get_coalition_probabilities}
 \alias{get_coalition_probabilities}
+\alias{get_probabilities}
 \title{Calculate coalition probabilities}
 \usage{
 get_coalition_probabilities(seat.tabs, coalitions, superior.coalitions,
   majority = 300)
+
+get_probabilities(seat.tabs, coalitions, superior.coalitions, majority = 300)
 }
 \arguments{
 \item{seat.tabs}{A list of data frames containing simulated seat distributions.}
@@ -31,3 +34,4 @@ Given a list containing simulated seats obtained per party
 \seealso{
 get_seat_distribution
 }
+
