@@ -5,13 +5,17 @@
 \alias{scrape_wahlumfragen}
 \title{scrape surveys from wahlrecht.de}
 \usage{
-scrape_wahlrecht(adress = "http://www.wahlrecht.de/umfragen/emnid.htm")
+scrape_wahlrecht(adress = "http://www.wahlrecht.de/umfragen/emnid.htm",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+  "SONSTIGE"))
 
 
   scrape_wahlumfragen(adress = "http://www.wahlumfragen.org/bundestagswahl/wahlumfragen_bundestagswahl.php")
 }
 \arguments{
 \item{adress}{http-Adress from which tables should be scraped}
+
+\item{parties}{A character vector containing names of parties to collapse.}
 }
 \description{
 Scrapes survey tables and perfroms sanitization to output tidy data
@@ -19,21 +23,6 @@ Scrapes survey tables and perfroms sanitization to output tidy data
 Scrapes table and performs some sanitization to output tidy data
 }
 \examples{
-library(dplyr)
-library(tidyr)
-library(plotly)
-library(ggplot2)
-theme_set(theme_bw())
 tab <- scrape_wahlumfragen()
-ltab <- gather(tab, Partei, Prozent, CDU:SONSTIGE) \%>\%
-filter(YEAR >= 2016, INSTITUT \%in\% c("Allensbach", "Emnid", "Forsa", "INSA"))
-
-gg.umfragen <- ggplot(ltab, aes(x=DATUM, y=Prozent)) +
-geom_point(aes(col=Partei), size=0.5) +
-geom_path(aes(col=Partei)) +
-facet_wrap(~INSTITUT)
-gg.umfragen
-ggplotly(gg.umfragen)
-
+head(tab)
 }
-

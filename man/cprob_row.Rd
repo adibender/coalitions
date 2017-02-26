@@ -33,4 +33,3 @@ Defaults to 300 (required number of seats in german parliament).}
 Given one row from a data frame containing results of surveys (one  survey 
 per row), returns specified coalition probabilities
 }
-

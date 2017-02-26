@@ -28,4 +28,3 @@ Calculates coalition probability for one coalition given seat distribution
 \seealso{
 \code{\link{get_entryprobability}}
 }
-
