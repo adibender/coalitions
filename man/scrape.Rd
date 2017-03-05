@@ -26,4 +26,3 @@ Scrapes table and performs some sanitization to output tidy data
 tab <- scrape_wahlumfragen()
 head(tab)
 }
-

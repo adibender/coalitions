@@ -37,6 +37,8 @@ get_seat_distribution <- function(dirichlet.draws, survey, distrib.fun = sls,
 #' @rdname get_seat_distribution
 #' @param mc.cores Number of cores to be used in parallel.
 #' See \code{\link[parallel]{mclapply}}.
+#' @importFrom dplyr bind_rows
+#' @export 
 get_seats <- function(
   dirichlet.draws, 
   survey, 
@@ -57,6 +59,6 @@ get_seats <- function(
   sim.results <- mclapply(sim.surveys, distrib.fun, ..., mc.cores=mc.cores)
   
   ## return results
-  sim.results
+  bind_rows(sim.results)
   
 }

@@ -23,4 +23,3 @@ the data into long format with one row per party.
 emnid <- scrape_wahlrecht()
 emnid.long <- collapse_parties(emnid)
 }
-

@@ -34,4 +34,3 @@ Given a list containing simulated seats obtained per party
 \seealso{
 get_seat_distribution
 }
-

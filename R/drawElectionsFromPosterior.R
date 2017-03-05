@@ -35,6 +35,7 @@ draw_from_posterior <- function(survey, nsim, seed = NULL, prior = NULL) {
 
 #' @rdname draw_from_posterior
 #' @inheritParams draw_from_posterior
+#' @importFrom dplyr tbl_df
 #' @export
 draw_posterior <- function(
   survey, 
@@ -56,6 +57,6 @@ draw_posterior <- function(
   draws <- rdirichlet(nsim, alpha = survey$VOTES + prior)
   colnames(draws) <- survey$PARTY
 
-  return(draws)
+  return(tbl_df(draws))
 
 }

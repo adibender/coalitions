@@ -13,4 +13,3 @@ to numerics b/c of special characters}
 \description{
 Sanitize character vectors containing percentages
 }
-

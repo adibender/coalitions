@@ -26,4 +26,3 @@ Calculate percentage of votes/seats after excluding parties with
 }
 \keyword{hurdle}
 \keyword{survey,}
-

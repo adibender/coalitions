@@ -13,4 +13,3 @@ to be sanitized.}
 \description{
 Sanitize column names
 }
-

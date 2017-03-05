@@ -40,4 +40,3 @@ Calculate seat distribution from draws from posterior
 }
 \keyword{distribution}
 \keyword{seat}
-
