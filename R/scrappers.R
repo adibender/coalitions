@@ -14,16 +14,35 @@ sanitize_percent <- function(vec) {
 
 }
 
+#' Sanitze character vector 
+#' 
+#' Substitute all german "Umlaute"
+#' @param x A character vector. 
+sanitize_strings <- function(x) {
+
+	# lower case letters 
+	x <- gsub("\u00f6", "oe", x)
+	x <- gsub("\u00fc", "ue", x)
+	x <- gsub("\u00e4", "ae", x)
+	# upper case letters 
+	x <- gsub("\u00d6", "Oe", x)
+	x <- gsub("\u00dc", "Ue", x)
+	x <- gsub("\u00c4", "Ae", x)
+
+	return(x)
+
+}
+
 #' Sanitize column names 
 #' 
 #' @param df A data frame with party names with special characters that need 
 #' to be sanitized.
 sanitize_colnames <- function(df) {
 
-	cdf <- toupper(colnames(df))
+	cdf <- colnames(df)
+	cdf <- toupper(sanitize_strings(cdf))
 	cdf <- sub("CDU/CSU", "CDU", cdf)
-	cdf <- sub("GRÜNE", "GRUENE", cdf)
-	cdf <- sub("Grünen", "GRUENE", cdf)
+	cdf <- sub("GRUENEN", "GRUENE", cdf)
 
 	colnames(df) <- cdf
 
@@ -71,16 +90,17 @@ scrape_wahlrecht <- function(
 		ind.row.remove <- -1:-3
 	}
 
-	atab           <- atab[ind.row.remove,]
+	atab           <- atab[ind.row.remove, ]
 	atab           <- atab[-nrow(atab), ]
+	colnames(atab) <- c("Datum", colnames(atab)[-1])
 	ind.empty      <- sapply(atab, function(z) all(z==""))
 	atab           <- atab[, !ind.empty]
-	colnames(atab) <- c("Datum", colnames(atab)[-1])
+
 	atab <- sanitize_colnames(atab)
 	parties <- colnames(atab)[colnames(atab) %in% parties]
 	# transform percentage string to numerics
-	atab[, parties] <- apply(atab[, parties], 2,  gsub,  pattern=" %",replacement="", fixed=TRUE)
-	atab[, parties] <- apply(atab[, parties], 2,  gsub,  pattern="," ,replacement=".", fixed=TRUE)
+	atab[, parties] <- apply(atab[, parties], 2,  gsub,  pattern=" %", replacement="", fixed=TRUE)
+	atab[, parties] <- apply(atab[, parties], 2,  gsub,  pattern="," , replacement=".", fixed=TRUE)
 	atab[, parties] <- apply(atab[, parties], 2,  as.numeric)
 
 	atab <-  mutate(atab, DATUM = dmy(DATUM))
@@ -94,7 +114,7 @@ scrape_wahlrecht <- function(
 	} else {
 		## remove special characters from BEFRAGTE column, transform to numeric
 		atab$BEFRAGTE <- gsub("?", "", atab$BEFRAGTE, fixed=TRUE)
-		atab$BEFRAGTE <- gsub("≈", "", atab$BEFRAGTE, fixed=TRUE)
+		atab$BEFRAGTE <- gsub("\u2248", "", atab$BEFRAGTE, fixed=TRUE)
 		atab$BEFRAGTE <- gsub(".", "", atab$BEFRAGTE, fixed=TRUE)
 		atab$BEFRAGTE <- as.numeric(atab$BEFRAGTE)
 	}
@@ -134,9 +154,7 @@ scrape_wahlumfragen <- function(
 		html_nodes("table") %>% .[[5]] %>%
 		html_table(fill=TRUE) %>%
 		select(-Kommentar)
-	colnames(atab) <- gsub("ö", "oe", colnames(atab))
-	colnames(atab) <- gsub("ä", "ae", colnames(atab))
-	colnames(atab) <- gsub("ü", "ue", colnames(atab))
+	colnames(atab) <- sanitize_strings(colnames(atab))
 	atab <- rename(atab, Datum=Veroeffentlichung)
 
 	# transform percentage string to numerics
