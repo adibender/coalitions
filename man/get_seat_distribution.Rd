@@ -2,9 +2,13 @@
 % Please edit documentation in R/getSeatDistribution.R
 \name{get_seat_distribution}
 \alias{get_seat_distribution}
+\alias{get_seats}
 \title{Calculate seat distribution from draws from posterior}
 \usage{
 get_seat_distribution(dirichlet.draws, survey, distrib.fun = sls,
+  samplesize = NULL, ...)
+
+get_seats(dirichlet.draws, survey, mc.cores = 1, distrib.fun = sls,
   samplesize = NULL, ...)
 }
 \arguments{
@@ -19,6 +23,9 @@ were based on.}
 \item{samplesize}{Number of individuals participating in the \code{survey}.}
 
 \item{...}{Further arguments passed to \code{distrib.fun}.}
+
+\item{mc.cores}{Number of cores to be used in parallel.
+See \code{\link[parallel]{mclapply}}.}
 }
 \value{
 \code{list} containing seat distributions for each simulation in 

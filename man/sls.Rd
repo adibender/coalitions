@@ -2,9 +2,12 @@
 % Please edit documentation in R/SaintLagueScheppers.R
 \name{sls}
 \alias{sls}
+\alias{sls2}
 \title{Seat Distribution by Sainte-Lague/Scheppers}
 \usage{
 sls(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05)
+
+sls2(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05)
 }
 \arguments{
 \item{survey}{Results of a survey as data.frame containing party names and votes.}

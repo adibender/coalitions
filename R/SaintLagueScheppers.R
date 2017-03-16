@@ -45,3 +45,34 @@ sls <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
     survey
     
 }
+
+#' @rdname sls 
+#' @inheritParams sls
+sls2 <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
+    
+    #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "others"
+    survey <- redistribute2(survey, hurdle = hurdle)
+    
+    # check for data validity
+    if( abs(sum(survey$PERCENT) - 1) > epsilon  ) 
+        stop("wrong percentages provided in sls() function")
+    
+    divisor.mat <- sum(survey$VOTES)/vapply(survey$VOTES, "/", numeric(599),
+        seq(0.5, 598.5, by = 1))
+    colnames(divisor.mat) <- survey$PARTY
+    
+    m.mat <- melt(divisor.mat, id.vars = "party")
+    m.mat <- m.mat[rank(m.mat$value, ties.method = "random") <= seats, ]
+    rle.seats <- rle(as.character(m.mat$Var2))
+    seat.mat <- bind_cols(list(PARTY = rle.seats$values, SEATS = rle.seats$lengths))
+    
+    if( nrow(seat.mat) != nrow(survey) ) 
+        stop ("Wrong number of parties after seat distribution")
+    if( sum(seat.mat$SEATS) != seats ) 
+        stop(paste("Number of seats distributed not equal to", seats))
+    
+    survey <- left_join(survey, seat.mat, by = "PARTY")
+    
+    survey
+    
+}
