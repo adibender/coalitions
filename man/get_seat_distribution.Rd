@@ -8,8 +8,8 @@
 get_seat_distribution(dirichlet.draws, survey, distrib.fun = sls,
   samplesize = NULL, ...)
 
-get_seats(dirichlet.draws, survey, mc.cores = 1, distrib.fun = sls,
-  samplesize = NULL, ...)
+get_seats(dirichlet.draws, survey, mc.cores = 1, distrib.fun = sls2,
+  samplesize = NULL, id = "sim", ...)
 }
 \arguments{
 \item{dirichlet.draws}{Matrix containing random draws from posterior.}

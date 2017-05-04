@@ -54,24 +54,24 @@ sls2 <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
     survey <- redistribute2(survey, hurdle = hurdle)
     
     # check for data validity
-    if( abs(sum(survey$PERCENT) - 1) > epsilon  ) 
+    if( abs(sum(survey$percent) - 1) > epsilon  ) 
         stop("wrong percentages provided in sls() function")
     
-    divisor.mat <- sum(survey$VOTES)/vapply(survey$VOTES, "/", numeric(599),
+    divisor.mat <- sum(survey$votes)/vapply(survey$votes, "/", numeric(599),
         seq(0.5, 598.5, by = 1))
-    colnames(divisor.mat) <- survey$PARTY
+    colnames(divisor.mat) <- survey$party
     
     m.mat <- melt(divisor.mat, id.vars = "party")
     m.mat <- m.mat[rank(m.mat$value, ties.method = "random") <= seats, ]
     rle.seats <- rle(as.character(m.mat$Var2))
-    seat.mat <- bind_cols(list(PARTY = rle.seats$values, SEATS = rle.seats$lengths))
+    seat.mat <- bind_cols(list(party = rle.seats$values, seats = rle.seats$lengths))
     
     if( nrow(seat.mat) != nrow(survey) ) 
         stop ("Wrong number of parties after seat distribution")
-    if( sum(seat.mat$SEATS) != seats ) 
+    if( sum(seat.mat$seats) != seats ) 
         stop(paste("Number of seats distributed not equal to", seats))
     
-    survey <- left_join(survey, seat.mat, by = "PARTY")
+    survey <- left_join(survey, seat.mat, by = "party")
     
     survey
     

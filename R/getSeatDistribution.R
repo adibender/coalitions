@@ -13,7 +13,10 @@
 #' @keywords seat distribution
 #' @seealso \code{\link{draw_from_posterior}}, \code{\link{sls}}, 
 #' \code{\link{dHondt}}
-get_seat_distribution <- function(dirichlet.draws, survey, distrib.fun = sls, 
+get_seat_distribution <- function(
+  dirichlet.draws, 
+  survey, 
+  distrib.fun = sls, 
   samplesize = NULL, ...) {
   
   if( is.null(samplesize) ) samplesize <- sum(survey$votes)
@@ -43,20 +46,21 @@ get_seats <- function(
   dirichlet.draws, 
   survey, 
   mc.cores    = 1,
-  distrib.fun = sls,
-  samplesize  = NULL, ...) {
+  distrib.fun = sls2,
+  samplesize  = NULL, 
+  id = "sim", ...) {
   
-  if( is.null(samplesize) ) samplesize <- sum(survey$VOTES)
+  if( is.null(samplesize) ) samplesize <- sum(survey$votes)
   
-    sim.surveys <- mclapply(seq_len(nrow(dirichlet.draws)), function(z) {
-      survey$PERCENT <- as.numeric(dirichlet.draws[z, ])
-      survey$VOTES <- survey$PERCENT * samplesize
-      survey
-      
-    }, mc.cores=mc.cores)
+    sim.surveys <- mclapply(seq_len(nrow(dirichlet.draws)), 
+      function(z) {
+        survey$percent <- as.numeric(dirichlet.draws[z, ]) 
+        survey$votes   <- survey$percent * samplesize 
+        survey 
+      }, mc.cores=mc.cores)
   
   ## calculate seat distribution for each simulation
-  sim.results <- mclapply(sim.surveys, distrib.fun, ..., mc.cores=mc.cores)
+  sim.results <- map_dfr(sim.surveys, distrib.fun, .id=id, ...)
   
   ## return results
   bind_rows(sim.results)

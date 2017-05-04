@@ -46,14 +46,14 @@ get_probability <- function(
   majority = 300) {
 
   ind.coalition <- sapply(seat.tab, function(z) {
-    sum(z$SEATS[z$PARTY %in% coalition]) >= majority
+    sum(z$seats[z$party %in% coalition]) >= majority
   })
 
   if( !any(is.null(superior)) ) {
 
     ind.sup.list <- lapply(superior, function(superior.coalition) {
       sapply(seat.tab, function(z) {
-        sum(z$SEATS[z$PARTY %in% superior.coalition]) >=
+        sum(z$seats[z$party %in% superior.coalition]) >=
         majority
       })
     })

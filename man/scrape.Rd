@@ -3,7 +3,7 @@
 \name{scrape_wahlrecht}
 \alias{scrape_wahlrecht}
 \alias{scrape_wahlumfragen}
-\title{scrape surveys from wahlrecht.de}
+\title{Scrape surveys from wahlrecht.de}
 \usage{
 scrape_wahlrecht(adress = "http://www.wahlrecht.de/umfragen/emnid.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
@@ -16,6 +16,8 @@ scrape_wahlrecht(adress = "http://www.wahlrecht.de/umfragen/emnid.htm",
 \item{adress}{http-Adress from which tables should be scraped}
 
 \item{parties}{A character vector containing names of parties to collapse.}
+
+\item{adress}{http-Adress from which tables should be scraped}
 }
 \description{
 Scrapes survey tables and perfroms sanitization to output tidy data
