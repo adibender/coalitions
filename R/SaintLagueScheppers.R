@@ -48,6 +48,7 @@ sls <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
 
 #' @rdname sls 
 #' @inheritParams sls
+#' @export
 sls2 <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
     
     #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "others"
