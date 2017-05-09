@@ -1,0 +1,145 @@
+---
+title: "Workflow"
+author: "Andreas Bender"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  fig.align  = "center",
+  fig.width  = 4,
+  fig.height = 4,
+  crop       = TRUE)
+```
+
+
+```{r message=FALSE}
+library(magrittr)
+library(tidyr)
+library(purrr)
+library(dplyr)
+library(coalitions)
+```
+
+
+In this vignette we demonstrate the basic workflow using the most recent 
+emnid survey. 
+
+## Overview
+This package calculates coalition probabilities in multi-party systems. To this 
+end we provide some convenience functions, the most important of which are listed
+below: 
+
+- `scrape_wahlrecht`: A wrapper function that download the most current 
+survey results from http://www.wahlrecht.de/
+- `collapse_parties`: Transforms information on percentages received by individual
+parties in long format and stores them inside a nested tibble (see `tidyr::nest`)
+- `draw_posterior`: Draws `nsim` samples from the posterior distribution 
+(i.e. `nsim` simulated election results based on provided survey)
+- `get_seats`: Obtain seat distributions for each simulation (see also `?sls`)
+- `have_majority`: Given a list of coalitions of interest, caclulates if the 
+respective coalition would have enough seats for a majority
+- `calculate_probs`: Given majority tables obtained from `have_majority`, calculates the probabilities for the respective coalitions to have enough 
+seats for a majority
+
+## Read in data 
+```{r}
+# one line per survey (party information in wide format)
+emnid <- scrape_wahlrecht() %>% slice(1:6) 
+emnid %>% select(-start, -end)
+```
+
+## Collapse survey data
+After applying `collapse_parties` we still have one row per survey, 
+but information on parties and percentage of votes they received is 
+stored in a long format in a separate column (see `?tidyr::nest`):
+
+```{r}
+elong <- collapse_parties(emnid)
+head(elong)
+elong %>% slice(1) %>% select(survey) %>% unnest()
+```
+
+## Simulate elections
+Based on each survey we can now simulate `nsim` elections by drawing from the 
+Dirichlet distribution 
+
+```{r}
+elong %<>% mutate(draws = map(survey, draw_posterior, nsim=10))
+elong %>% select(datum, survey, draws)
+# each row is one election simulation
+elong %>% slice(1) %>% select(draws) %>% unnest()
+```
+
+
+## Calculate seat distribution
+Given the simulated elections, we can calculate the number of seats each 
+party obtained. To do so wee need to have a function that knows how to 
+redistribute seats for the particular election. In Germany for example, 
+seats are distributed according to the system of Sainte-Lague-Scheppers, which 
+is implemented in `?sls`. 
+
+This makes this package easily extensible to other 
+multi-party systems, as you only need to provide a function that redistributes
+seats based on percentages obtained by the various parties and provide that 
+function to the `distrib.fun` argument of the `get_seats` function: 
+
+
+```{r}
+elong %<>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls2))
+elong %>% select(datum, survey, draws, seats)
+## sim column indicates simulated elections (rows in draws column)
+elong %>% slice(1) %>% select(seats) %>% unnest()
+```
+
+In the above example, given the latest survey, CDU/CSU would have 225 seats 
+in the first simulation, 223 seats in the second simulation, etc.
+
+
+## Calculate majorities
+The next step is to define coalitions of interest, then calculate in what 
+percentage of the simulations the coalition would obtain enough seats for 
+a majority. 
+
+Below, each list element defines one coalition of interest (one party 
+could potentially obtain absolute majority on their own):
+
+```{r}
+coalitions <- list(
+	c("cdu"), 
+	c("cdu", "fdp"), 
+	c("cdu", "fdp", "gruene"), 
+	c("spd"), 
+	c("spd", "linke"), 
+	c("spd", "linke", "gruene"))
+
+elong %<>% mutate(majorities = map(seats, have_majority, coalitions=coalitions))
+elong %>% select(datum, draws, seats, majorities)
+# The majorities table for each date will have 1 row per simulation
+# and one column per coalition
+elong %>% slice(1) %>% select(majorities) %>% unnest()
+```
+
+
+## Calculate coalition probabilities
+
+The last step is to calculate the coalition probabilities (note that 
+by default we exclude "superior" coalitions, i.e. if "cdu/csu" have a majority
+on their own, this simulation will not be counted to the simulation with 
+majority for "cdu/csu" and "fdp", see example in `?calculate_probs`): 
+
+```{r}
+elong %<>% mutate(probabilities = map(majorities, calculate_probs, 
+	coalitions=coalitions))
+elong %>% select(datum, majorities, probabilities)
+# one row per coalition
+elong %>% slice(1) %>% select(probabilities) %>% unnest()
+```
+
