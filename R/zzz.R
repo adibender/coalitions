@@ -5,7 +5,7 @@
 			c("Datum", "Kommentar", ",", ".", "Veroeffentlichung", "BEFRAGTE", "DATUM", 
 				"PARTY", "PERCENT", "V1", "V11", "V12", "ZEITRAUM", "total", "VOTES",
 				"party", "percent", "datum", "votes", "befragte", "survey", "draws", 
-				"seats", "probabilities", "sim", "seats", "zeitraum"))
+				"seats", "probabilities", "sim", "seats", "zeitraum", "majority"))
 	}
 
 	invisible()
