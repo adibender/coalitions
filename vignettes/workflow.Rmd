@@ -115,10 +115,13 @@ could potentially obtain absolute majority on their own):
 coalitions <- list(
 	c("cdu"), 
 	c("cdu", "fdp"), 
+	c("cdu", "gruene"),
 	c("cdu", "fdp", "gruene"), 
 	c("spd"), 
 	c("spd", "linke"), 
+	c("spd", "gruene"),
 	c("spd", "linke", "gruene"))
+
 
 elong %<>% mutate(majorities = map(seats, have_majority, coalitions=coalitions))
 elong %>% select(datum, draws, seats, majorities)
