@@ -5,16 +5,16 @@
 #' @param seats_tab A table containing information on how many seats each party
 #' obtained. 
 #' @inheritParams calculate_prob
-#' @param majority The number of seats needed to obtain majority. 
+#' @param seats_majority The number of seats needed to obtain majority. 
 has_majority <- function(
   seats_tab, 
   coalition, 
-  majority = 300L) {
+  seats_majority = 300L) {
 
   seats_tab %>% 
     filter(party %in% coalition) %>%
     group_by(sim) %>% 
-    summarize(majority = sum(seats) >= majority) %>% 
+    summarize(majority = sum(seats) >= seats_majority) %>% 
     select(majority)
 
 }
@@ -36,7 +36,7 @@ have_majority <- function(
     c("spd"), 
     c("spd", "linke"), 
     c("spd", "linke", "gruene")), 
-  majority = 300L, 
+  seats_majority = 300L, 
   collapse = "_") {
 
   assert_data_frame(seats_tab, types=c("character", "numeric"), any.missing=FALSE,
@@ -44,7 +44,7 @@ have_majority <- function(
   check_subset(c("party", "seats"), names(seats_tab))
   assert_list(coalitions, types="character", any.missing=FALSE, min.len=1, 
     unique=TRUE)
-  assert_number(majority, finite=TRUE)
+  assert_number(seats_majority, finite=TRUE)
 
   coalitions %<>% map(sort)
 
@@ -52,7 +52,7 @@ have_majority <- function(
     coalitions, 
     has_majority, 
     seats_tab = seats_tab,
-    majority  = majority)
+    seats_majority  = seats_majority)
   colnames(majority_df) <- paste_coalitions(coalitions, collapse=collapse)
 
   majority_df 
@@ -215,14 +215,15 @@ get_probs <- function(
     c("spd", "linke", "gruene")), 
   nsim        = 1e5,
   distrib.fun = sls2,
-  majority    = 300L) {
+  seats_majority    = 300L) {
 
   x %>% 
     mutate(
       draws = map(survey, draw_posterior, nsim=nsim),
       seats = map2(draws, survey, get_seats, distrib.fun=distrib.fun),
-      majority = map(seats, have_majority, coalitons=coalitions, majority=majority),
-      probabilities = map(majority, calculate_probs, coalitions=coalitions))
+      majority = map(seats, have_majority, coalitions=coalitions, 
+        seats_majority=seats_majority),
+      probabilities = map(majority, calculate_probs, coalitions=coalitions)) %>%
     select(probabilities)
 
 }

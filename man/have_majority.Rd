@@ -6,7 +6,7 @@
 \usage{
 have_majority(seats_tab, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
   "fdp", "gruene"), c("spd"), c("spd", "linke"), c("spd", "linke", "gruene")),
-  majority = 300L, collapse = "_")
+  seats_majority = 300L, collapse = "_")
 }
 \arguments{
 \item{seats_tab}{A data frame cotaining number of seats obtained by a party. 
@@ -16,7 +16,7 @@ Must have columns \code{party} and \code{seats}.}
 be calculated. Each list entry must be a vector of party names. Those names 
 need to correspond to the names in \code{majority_df}.}
 
-\item{majority}{The number of seats needed to obtain majority.}
+\item{seats_majority}{The number of seats needed to obtain majority.}
 
 \item{collapse}{an optional character string to separate the results.  Not
     \code{\link{NA_character_}}.}

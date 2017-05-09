@@ -6,7 +6,7 @@
 \usage{
 get_probs(x, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu", "fdp",
   "gruene"), c("spd"), c("spd", "linke"), c("spd", "linke", "gruene")),
-  nsim = 1e+05, distrib.fun = sls2, majority = 300L)
+  nsim = 1e+05, distrib.fun = sls2, seats_majority = 300L)
 }
 \arguments{
 \item{x}{A table containing one row per survey and survey information in 
@@ -21,7 +21,7 @@ need to correspond to the names in \code{majority_df}.}
 \item{distrib.fun}{Function to calculate seat distribution. Defaults to 
 \code{\link{sls}} (Sainte-Lague/Scheppers).}
 
-\item{majority}{The number of seats needed to obtain majority.}
+\item{seats_majority}{The number of seats needed to obtain majority.}
 }
 \description{
 Wrapper for calculation of coalition probabilities from survey

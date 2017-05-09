@@ -4,7 +4,7 @@
 \alias{has_majority}
 \title{Does a coalition have a majority}
 \usage{
-has_majority(seats_tab, coalition, majority = 300L)
+has_majority(seats_tab, coalition, seats_majority = 300L)
 }
 \arguments{
 \item{seats_tab}{A table containing information on how many seats each party
@@ -13,7 +13,7 @@ obtained.}
 \item{coalition}{The coaliton of interest for which superior coalitions 
 will be obtained by \code{\link[coalitions]{get_superior}}.}
 
-\item{majority}{The number of seats needed to obtain majority.}
+\item{seats_majority}{The number of seats needed to obtain majority.}
 }
 \description{
 Does a coalition have a majority
