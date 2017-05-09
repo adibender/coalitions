@@ -143,3 +143,12 @@ elong %>% select(datum, majorities, probabilities)
 elong %>% slice(1) %>% select(probabilities) %>% unnest()
 ```
 
+
+## Wrapper
+There is a wrapper function that directly returns probabilities: 
+
+```{r}
+elong <- collapse_parties(emnid)
+elong %>% get_probs(nsim=10) %>% unnest()
+```
+
