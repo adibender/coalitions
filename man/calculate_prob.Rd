@@ -10,14 +10,14 @@ calculate_prob(majority_df, coalition, exclude_superior = TRUE, ...)
 \item{majority_df}{A data frame containing logical values indicating 
 if the coalitions (columns) have a majority (rows).}
 
+\item{coalition}{The coaliton of interest for which superior coalitions 
+will be obtained by \code{\link[coalitions]{get_superior}}.}
+
 \item{exclude_superior}{Logical. If \code{TRUE}, superior coalitions will 
 be excluded, otherwise total coalition probabilities will be returned. 
 Usually it makes sense to exclude superior coalitions.}
 
-\item{...}{Further arguments passed to \code{link[coalitions]{get_superior}}}
-
-\item{coaltion}{The coaliton of interest for which superior coalitions 
-will be obtained by \code{\link[coalitions]{get_superior}}.}
+\item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}
 }
 \description{
 Given a table with simulations in the rows and coalitions in the columns, 
@@ -26,9 +26,9 @@ by default excluding superior coalitions first
 }
 \examples{
 test_df <- data.frame(
- cdu            = c(rep(F, 9), T),
- cdu_fdp        = c(rep(F, 8), T, T),
- cdu_fdp_gruene = c(T, T, rep(F, 6), T, T))
+ cdu            = c(rep(FALSE, 9), TRUE),
+ cdu_fdp        = c(rep(FALSE, 8), TRUE, TRUE),
+ cdu_fdp_gruene = c(TRUE, TRUE, rep(FALSE, 6), TRUE, TRUE))
 calculate_prob(test_df, "cdu_fdp_gruene") # exclude_superior defaults to TRUE
 calculate_prob(test_df, "cdu_fdp_gruene", exclude_superior=FALSE)
 }

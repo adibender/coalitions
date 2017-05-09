@@ -2,7 +2,10 @@
 
 #' Does a coalition have a majority 
 #' 
-#' @param seats_tab A 
+#' @param seats_tab A table containing information on how many seats each party
+#' obtained. 
+#' @inheritParams calculate_prob
+#' @param majority The number of seats needed to obtain majority. 
 has_majority <- function(
   seats_tab, 
   coalition, 
@@ -18,7 +21,8 @@ has_majority <- function(
 
 
 #' Do coalitions have a majority
-#'  
+#' @inheritParams has_majority 
+#' @inheritParams paste_coalitions
 #' @inheritParams calculate_probs
 #' @param seats_tab A data frame cotaining number of seats obtained by a party. 
 #' Must have columns \code{party} and \code{seats}. 
@@ -58,6 +62,7 @@ have_majority <- function(
 #' Transform list of coalitions to vector by combining party names 
 #' 
 #' @inheritParams calculate_probs
+#' @inheritParams base::paste
 #' @importFrom purrr map
 paste_coalitions <- function(coalitions, collapse="_") {
 
@@ -74,19 +79,19 @@ paste_coalitions <- function(coalitions, collapse="_") {
 #' 
 #' @param majority_df A data frame containing logical values indicating 
 #' if the coalitions (columns) have a majority (rows). 
-#' @param coaltion The coaliton of interest for which superior coalitions 
+#' @param coalition The coaliton of interest for which superior coalitions 
 #' will be obtained by \code{\link[coalitions]{get_superior}}. 
 #' @param exclude_superior Logical. If \code{TRUE}, superior coalitions will 
 #' be excluded, otherwise total coalition probabilities will be returned. 
 #' Usually it makes sense to exclude superior coalitions. 
-#' @param ... Further arguments passed to \code{link[coalitions]{get_superior}}
+#' @param ... Further arguments passed to \code{\link[coalitions]{get_superior}}
 #' @import dplyr checkmate
 #' @importFrom magrittr "%<>%"
 #' @examples
 #'test_df <- data.frame(
-#'  cdu            = c(rep(F, 9), T),
-#'  cdu_fdp        = c(rep(F, 8), T, T),
-#'  cdu_fdp_gruene = c(T, T, rep(F, 6), T, T))
+#'  cdu            = c(rep(FALSE, 9), TRUE),
+#'  cdu_fdp        = c(rep(FALSE, 8), TRUE, TRUE),
+#'  cdu_fdp_gruene = c(TRUE, TRUE, rep(FALSE, 6), TRUE, TRUE))
 #' calculate_prob(test_df, "cdu_fdp_gruene") # exclude_superior defaults to TRUE
 #' calculate_prob(test_df, "cdu_fdp_gruene", exclude_superior=FALSE)
 #' @export
@@ -121,9 +126,9 @@ calculate_prob <- function(
 #' @seealso \code{\link[coalitions]{calculate_prob}}
 #' @examples
 #' test_df <- data.frame(
-#'  cdu            = c(rep(F, 9), T),
-#'  cdu_fdp        = c(rep(F, 8), T, T),
-#'  cdu_fdp_gruene = c(T, T, rep(F, 6), T, T))
+#'  cdu            = c(rep(FALSE, 9), TRUE),
+#'  cdu_fdp        = c(rep(FALSE, 8), TRUE, TRUE),
+#'  cdu_fdp_gruene = c(TRUE, TRUE, rep(FALSE, 6), TRUE, TRUE))
 #' calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"))
 #' calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"), exclude_superior=FALSE)
 #' @export 
@@ -151,12 +156,6 @@ calculate_probs <- function(
 #' Remove rows from table for which superior coalitions possible
 #' 
 #' @inherit calculate_prob
-#' @examples 
-#'test_df <- data.frame(
-#'  cdu            = c(rep(F, 9), T),
-#'  cdu_fdp        = c(rep(F, 8), T, T),
-#'  cdu_fdp_gruene = c(T, T, rep(F, 6), T, T))
-#' filter_superior(test_df, "cdu_fdp_gruene")
 #' @seealso \code{\link[coalitions]{get_superior}}
 filter_superior <- function(majority_df, coalition, ...) {
 
@@ -182,7 +181,6 @@ filter_superior <- function(majority_df, coalition, ...) {
 #' @importFrom utils combn
 #' @importFrom stringr str_split
 #' @seealso stringr str_split
-#' @examples get_superior("cdu_fdp_gruene")
 get_superior <- function(
   string,
   pattern  = "_",
@@ -196,7 +194,16 @@ get_superior <- function(
 
 }
 
-
+#' Wrapper for calculation of coalition probabilities from survey 
+#' 
+#' @inheritParams draw_posterior
+#' @inheritParams get_seats
+#' @inheritParams has_majority
+#' @inherit calculate_probs
+#' @param x A table containing one row per survey and survey information in 
+#' long format in a separate column named \code{survey}.
+#' @importFrom purrr map map2
+#' @export
 get_probs <- function(
   x, 
   coalitions = list(

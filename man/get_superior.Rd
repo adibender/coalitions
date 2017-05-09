@@ -31,9 +31,6 @@ obtained by splitting \code{string} to one string.}
 \description{
 Extract superior coalitions from coalition string or vector
 }
-\examples{
-get_superior("cdu_fdp_gruene")
-}
 \seealso{
 stringr str_split
 }

@@ -8,7 +8,7 @@
   scrape_wahlrecht_api(adress = "http://www.wahlrecht.de/umfragen/bundesweite.xml")
 }
 \arguments{
-\item{adress}{http-Adress from which tables should be scraped}
+\item{adress}{http-Adress from which tables should be scraped.}
 }
 \description{
 Imports most recent election surveys via wahlrecht.de api

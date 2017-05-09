@@ -54,7 +54,7 @@ sanitize_colnames <- function(df) {
 #'
 #' Scrapes survey tables and perfroms sanitization to output tidy data
 #' @rdname scrape
-#' @param adress http-Adress from which tables should be scraped
+#' @param adress http-Adress from which tables should be scraped.
 #' @param parties A character vector containing names of parties to collapse.
 #' @import rvest dplyr magrittr
 #' @importFrom lubridate dmy
@@ -137,7 +137,6 @@ scrape_wahlrecht <- function(
 #'
 #' Scrapes table and performs some sanitization to output tidy data
 #'
-#' @param adress http-Adress from which tables should be scraped
 #' @import magrittr rvest dplyr
 #' @importFrom lubridate dmy year month
 #' @importFrom xml2 read_html

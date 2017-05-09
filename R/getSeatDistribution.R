@@ -40,6 +40,7 @@ get_seat_distribution <- function(
 #' @rdname get_seat_distribution
 #' @param mc.cores Number of cores to be used in parallel.
 #' See \code{\link[parallel]{mclapply}}.
+#' @inheritParams purrr:::map_dfr
 #' @importFrom dplyr bind_rows
 #' @importFrom purrr map_dfr
 #' @importFrom parallel mclapply
@@ -50,7 +51,7 @@ get_seats <- function(
   mc.cores    = 1,
   distrib.fun = sls2,
   samplesize  = NULL, 
-  id = "sim", ...) {
+  .id = "sim", ...) {
   
   if( is.null(samplesize) ) samplesize <- sum(survey$votes)
   
@@ -62,7 +63,7 @@ get_seats <- function(
       }, mc.cores=mc.cores)
   
   ## calculate seat distribution for each simulation
-  sim.results <- map_dfr(sim.surveys, distrib.fun, .id=id, ...)
+  sim.results <- map_dfr(sim.surveys, distrib.fun, .id=.id, ...)
   
   ## return results
   bind_rows(sim.results)

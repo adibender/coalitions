@@ -18,16 +18,16 @@ need to correspond to the names in \code{majority_df}.}
 be excluded, otherwise total coalition probabilities will be returned. 
 Usually it makes sense to exclude superior coalitions.}
 
-\item{...}{Further arguments passed to \code{link[coalitions]{get_superior}}}
+\item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}
 }
 \description{
 Calculate coalition probabilities for multiple coalitions
 }
 \examples{
 test_df <- data.frame(
- cdu            = c(rep(F, 9), T),
- cdu_fdp        = c(rep(F, 8), T, T),
- cdu_fdp_gruene = c(T, T, rep(F, 6), T, T))
+ cdu            = c(rep(FALSE, 9), TRUE),
+ cdu_fdp        = c(rep(FALSE, 8), TRUE, TRUE),
+ cdu_fdp_gruene = c(TRUE, TRUE, rep(FALSE, 6), TRUE, TRUE))
 calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"))
 calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"), exclude_superior=FALSE)
 }

@@ -13,11 +13,9 @@ scrape_wahlrecht(adress = "http://www.wahlrecht.de/umfragen/emnid.htm",
   scrape_wahlumfragen(adress = "http://www.wahlumfragen.org/bundestagswahl/wahlumfragen_bundestagswahl.php")
 }
 \arguments{
-\item{adress}{http-Adress from which tables should be scraped}
+\item{adress}{http-Adress from which tables should be scraped.}
 
 \item{parties}{A character vector containing names of parties to collapse.}
-
-\item{adress}{http-Adress from which tables should be scraped}
 }
 \description{
 Scrapes survey tables and perfroms sanitization to output tidy data
