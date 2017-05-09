@@ -24,12 +24,12 @@ Usually it makes sense to exclude superior coalitions.}
 Calculate coalition probabilities for multiple coalitions
 }
 \examples{
-#'test_df <- data.frame(
+test_df <- data.frame(
  cdu            = c(rep(F, 9), T),
  cdu_fdp        = c(rep(F, 8), T, T),
  cdu_fdp_gruene = c(T, T, rep(F, 6), T, T))
-calculate_probs(test_df, list("cdu", "cdu_fdp", cdu_fdp_gruene")
-calculate_probs(test_df, list("cdu", "cdu_fdp", cdu_fdp_gruene", exclude_superior=FALSE)
+calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"))
+calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"), exclude_superior=FALSE)
 }
 \seealso{
 \code{\link[coalitions]{calculate_prob}}

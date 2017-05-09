@@ -4,13 +4,17 @@
 \alias{have_majority}
 \title{Do coalitions have a majority}
 \usage{
-have_majority(seats_tab, coalitons = list(c("cdu"), c("cdu", "fdp"), c("cdu",
+have_majority(seats_tab, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
   "fdp", "gruene"), c("spd"), c("spd", "linke"), c("spd", "linke", "gruene")),
   majority = 300L, collapse = "_")
 }
 \arguments{
 \item{seats_tab}{A data frame cotaining number of seats obtained by a party. 
 Must have columns \code{party} and \code{seats}.}
+
+\item{coalitions}{A list of coaltions for which coalition probabilities should 
+be calculated. Each list entry must be a vector of party names. Those names 
+need to correspond to the names in \code{majority_df}.}
 }
 \description{
 Do coalitions have a majority

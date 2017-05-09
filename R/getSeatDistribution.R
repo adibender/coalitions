@@ -41,6 +41,8 @@ get_seat_distribution <- function(
 #' @param mc.cores Number of cores to be used in parallel.
 #' See \code{\link[parallel]{mclapply}}.
 #' @importFrom dplyr bind_rows
+#' @importFrom purrr map_dfr
+#' @importFrom parallel mclapply
 #' @export 
 get_seats <- function(
   dirichlet.draws, 

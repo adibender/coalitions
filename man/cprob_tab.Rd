@@ -4,10 +4,10 @@
 \alias{cprob_tab}
 \title{Coalition probabilities based on survey results}
 \usage{
-cprob_tab(survey.df, nsim = 10000L, coalitions = list("CDU", c("CDU",
-  "FDP"), c("CDU", "FDP", "GRUENE"), "SPD", c("SPD", "LINKE"), c("SPD", "LINKE",
-  "GRUENE")), superior.coalitions = list("", "CDU", c("CDU", "FDP"), "",
-  "SPD", c("SPD", "LINKE")), mc.cores = 10L, ...)
+cprob_tab(survey.df, nsim = 10000L, coalitions = list(c("CDU"), c("CDU",
+  "FDP"), c("CDU", "FDP", "GRUENE"), c("SPD"), c("SPD", "LINKE"), c("SPD",
+  "LINKE", "GRUENE")), superior.coalitions = list(c(""), c("CDU"), c("CDU",
+  "FDP"), c(""), c("SPD"), c("SPD", "LINKE")), mc.cores = 10L, ...)
 }
 \arguments{
 \item{survey.df}{A data frame containing survey results (one survey per row).}
@@ -30,9 +30,4 @@ will be calculated excluding times where respective entry in
 \description{
 Given  data frame containing results from different surveys (one  survey 
 per row), returns the provided data frame plus specified coalition probabilities.
-}
-\examples{
-library(dplyr)
-tab <- scrape_wahlrecht() \%>\% slice(1:3)
-cprob_tab(tab, nsim=100, mc.cores=1L)
 }

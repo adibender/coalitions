@@ -25,7 +25,7 @@ has_majority <- function(
 #' @export
 have_majority <- function(
   seats_tab, 
-  coalitons = list(
+  coalitions = list(
     c("cdu"), 
     c("cdu", "fdp"), 
     c("cdu", "fdp", "gruene"), 
@@ -61,7 +61,7 @@ have_majority <- function(
 #' @importFrom purrr map
 paste_coalitions <- function(coalitions, collapse="_") {
 
-  coalitions %>% map(sort) %>% map(paste, collapse=collapse)
+  coalitions %>% map(sort) %>% map(paste, collapse=collapse) %>% unlist()
 
 }
 
@@ -106,7 +106,7 @@ calculate_prob <- function(
     majority_df %<>% filter_superior(coalition, ...)
   }
 
-  majority_df %>% summarize_at(coalition, funs(sum(.)/n_all))
+  majority_df %>% summarize_at(coalition, funs(sum(.)/n_all*100))
 
 }
 
@@ -117,14 +117,15 @@ calculate_prob <- function(
 #' be calculated. Each list entry must be a vector of party names. Those names 
 #' need to correspond to the names in \code{majority_df}.
 #' @importFrom purrr map_dfc
+#' @importFrom tidyr gather
 #' @seealso \code{\link[coalitions]{calculate_prob}}
 #' @examples
-#' #'test_df <- data.frame(
+#' test_df <- data.frame(
 #'  cdu            = c(rep(F, 9), T),
 #'  cdu_fdp        = c(rep(F, 8), T, T),
 #'  cdu_fdp_gruene = c(T, T, rep(F, 6), T, T))
-#' calculate_probs(test_df, list("cdu", "cdu_fdp", cdu_fdp_gruene")
-#' calculate_probs(test_df, list("cdu", "cdu_fdp", cdu_fdp_gruene", exclude_superior=FALSE)
+#' calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"))
+#' calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"), exclude_superior=FALSE)
 #' @export 
 calculate_probs <- function(
   majority_df, 
@@ -141,8 +142,8 @@ calculate_probs <- function(
   coalitions %>% map_dfc(
     .f               = calculate_prob,
     majority_df      = majority_df,
-    exclude_superior = exclude_superior, 
-    ...)
+    exclude_superior = exclude_superior, ...) %>%
+    gather("coalition", "probability", one_of(coalitions))
 
 }
 
@@ -192,5 +193,29 @@ get_superior <- function(
     map(combn, x=party_list, simplify=FALSE) %>% 
     flatten() %>% 
     map_chr(paste, collapse = collapse)
+
+}
+
+
+get_probs <- function(
+  x, 
+  coalitions = list(
+    c("cdu"), 
+    c("cdu", "fdp"), 
+    c("cdu", "fdp", "gruene"), 
+    c("spd"), 
+    c("spd", "linke"), 
+    c("spd", "linke", "gruene")), 
+  nsim        = 1e5,
+  distrib.fun = sls2,
+  majority    = 300L) {
+
+  x %>% 
+    mutate(
+      draws = map(survey, draw_posterior, nsim=nsim),
+      seats = map2(draws, survey, get_seats, distrib.fun=distrib.fun),
+      majority = map(seats, have_majority, coalitons=coalitions, majority=majority),
+      probabilities = map(majority, calculate_probs, coalitions=coalitions))
+    select(probabilities)
 
 }
