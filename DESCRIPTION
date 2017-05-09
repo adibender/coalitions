@@ -23,7 +23,10 @@ Imports:
     ggplot2
 Suggests:
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
 Encoding: UTF-8
 License: MIT + file LICENSE
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr
