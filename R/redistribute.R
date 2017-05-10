@@ -5,13 +5,15 @@
 #' \code{\link{as_survey}})
 #' @param hurdle the percentage of votes that must be reached to get seats in 
 #' parliament. Defaults to 0.05 (hurdle for german parliament)
+#' @param others Name under which parties far below the \code{hurdle} are 
+#' summarized. 
 #' @export
 #' @keywords survey, hurdle
 #' @seealso \code{\link{as_survey}}, \code{\link{sls}}
 
-redistribute <- function(survey, hurdle = 0.05) {
+redistribute <- function(survey, hurdle = 0.05, others = "Others") {
 
-	survey <- survey[survey$votes.in.perc >= hurdle & survey$party != "Others", ]
+	survey <- survey[survey$votes.in.perc >= hurdle & survey$party != others, ]
 	survey$votes.in.perc <- survey$votes/sum(survey$votes)
 	
 	survey
@@ -20,9 +22,9 @@ redistribute <- function(survey, hurdle = 0.05) {
 
 #' @rdname redistribute
 #' @inheritParams redistribute
-redistribute2 <- function(survey, hurdle = 0.05) {
+redistribute2 <- function(survey, hurdle = 0.05, others="sonstige") {
 
-	survey <- survey[survey$percent >= hurdle & survey$party != "sonstige", ]
+	survey <- survey[survey$percent >= hurdle & survey$party != others, ]
 	survey$percent <- survey$votes/sum(survey$votes)
 	
 	survey

@@ -4,11 +4,10 @@
 #' than 5\% of votes (according to the method of Sainte-Lague/Schepers,
 #' see http://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 #' 
+#' @inheritParams redistribute
 #' @param survey Results of a survey as data.frame containing party names and votes.
 #' @param seats Number of seats in parliament. Defaults to 598 (seats in german 
 #' parliament).
-#' @param hurdle The percentage of votes that must be reached to get seats in 
-#'  parliament. Defaults to 0.05 (hurdle for german parliament).
 #' @param epsilon The percentages of votes in survey must add up to 1, 
 #' this allows for some numerical imprecission. Defaults to 10e-6.
 #' @return A \code{data.frame} containing parties above the hurdle and the respective 
@@ -17,10 +16,15 @@
 #' @importFrom reshape2 melt
 #' @export
 #' @seealso \code{\link{dHondt}}
-sls <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
+sls <- function(
+    survey, 
+    seats   = 598,
+    hurdle  = 0.05,
+    epsilon = 10e-6,
+    others  = "Others") {
     
     #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "others"
-    survey <- redistribute(survey, hurdle = hurdle)
+    survey <- redistribute(survey, hurdle = hurdle, others=others)
     
     # check for data validity
     if( abs(sum(survey$votes.in.perc) - 1) > epsilon  ) 
@@ -49,10 +53,15 @@ sls <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
 #' @rdname sls 
 #' @inheritParams sls
 #' @export
-sls2 <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
+sls2 <- function(
+    survey, 
+    seats = 598, 
+    hurdle = 0.05, 
+    epsilon = 10e-6, 
+    others = "sonstige") {
     
     #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "others"
-    survey <- redistribute2(survey, hurdle = hurdle)
+    survey <- redistribute2(survey, hurdle = hurdle, others=others)
     
     # check for data validity
     if( abs(sum(survey$percent) - 1) > epsilon  ) 
@@ -74,6 +83,6 @@ sls2 <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
     
     survey <- left_join(survey, seat.mat, by = "party")
     
-    survey
+    survey %>% select(-percent, -votes)
     
 }
