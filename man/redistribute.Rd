@@ -2,13 +2,10 @@
 % Please edit documentation in R/redistribute.R
 \name{redistribute}
 \alias{redistribute}
-\alias{redistribute2}
 \title{Calculate percentage of votes/seats after excluding parties with 
 \code{votes < hurdle}}
 \usage{
-redistribute(survey, hurdle = 0.05, others = "Others")
-
-redistribute2(survey, hurdle = 0.05, others = "sonstige")
+redistribute(survey, hurdle = 0.05, others = "sonstige")
 }
 \arguments{
 \item{survey}{table containing votes and votes in percent (as created e.g. by 

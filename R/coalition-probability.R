@@ -214,7 +214,7 @@ get_probs <- function(
     c("spd", "linke"), 
     c("spd", "linke", "gruene")), 
   nsim        = 1e5,
-  distrib.fun = sls2,
+  distrib.fun = sls,
   seats_majority    = 300L) {
 
   x %>% 

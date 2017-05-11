@@ -31,7 +31,7 @@ test_that("workflow stable", {
 	expect_equal(colnames(survey$draws[[1]]), survey$survey[[1]]$party)
 
 	## add seats after redistribution
-	survey %<>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls2))
+	survey %<>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls))
 	expect_data_frame(survey, nrows=1, ncols=7)
 	expect_equal(
 		colnames(survey),

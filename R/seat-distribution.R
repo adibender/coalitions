@@ -49,7 +49,7 @@ get_seats <- function(
   dirichlet.draws, 
   survey, 
   mc.cores    = 1,
-  distrib.fun = sls2,
+  distrib.fun = sls,
   samplesize  = NULL, 
   .id = "sim", ...) {
   

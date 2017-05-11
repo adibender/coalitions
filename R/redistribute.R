@@ -10,19 +10,7 @@
 #' @export
 #' @keywords survey, hurdle
 #' @seealso \code{\link{as_survey}}, \code{\link{sls}}
-
-redistribute <- function(survey, hurdle = 0.05, others = "Others") {
-
-	survey <- survey[survey$votes.in.perc >= hurdle & survey$party != others, ]
-	survey$votes.in.perc <- survey$votes/sum(survey$votes)
-	
-	survey
-	
-}
-
-#' @rdname redistribute
-#' @inheritParams redistribute
-redistribute2 <- function(survey, hurdle = 0.05, others="sonstige") {
+redistribute <- function(survey, hurdle = 0.05, others="sonstige") {
 
 	survey <- survey[survey$percent >= hurdle & survey$party != others, ]
 	survey$percent <- survey$votes/sum(survey$votes)

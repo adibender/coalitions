@@ -93,7 +93,7 @@ function to the `distrib.fun` argument of the `get_seats` function:
 
 
 ```{r}
-elong %<>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls2))
+elong %<>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls))
 elong %>% select(datum, survey, draws, seats)
 ## sim column indicates simulated elections (rows in draws column)
 elong %>% slice(1) %>% select(seats) %>% unnest()
