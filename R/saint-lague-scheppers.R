@@ -46,6 +46,9 @@ sls <- function(
 
   survey <- left_join(survey, seat.mat, by = "party")
 
-  survey %>% select(-percent, -votes)
+  # survey %>% select(-percent, -votes)
+  survey$percent <- survey$votes <- NULL
+
+  survey
 
 }
