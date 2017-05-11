@@ -54,7 +54,7 @@ sanitize_colnames <- function(df) {
 #'
 #' Scrapes survey tables and perfroms sanitization to output tidy data
 #' @rdname scrape
-#' @param adress http-Adress from which tables should be scraped.
+#' @param address http-address from which tables should be scraped.
 #' @param parties A character vector containing names of parties to collapse.
 #' @import rvest dplyr magrittr
 #' @importFrom lubridate dmy
@@ -62,18 +62,18 @@ sanitize_colnames <- function(df) {
 #' @importFrom stringr str_sub
 #' @export
 scrape_wahlrecht <- function(
-	adress = "http://www.wahlrecht.de/umfragen/emnid.htm", 
+	address = "http://www.wahlrecht.de/umfragen/emnid.htm", 
 	parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD", 
 		"SONSTIGE")) {
 
-	atab <- read_html(adress) %>%
+	atab <- read_html(address) %>%
 		html_nodes("table") %>% .[[2]] %>%
 		html_table(fill=TRUE)
 
-	if(adress == "http://www.wahlrecht.de/umfragen/politbarometer/stimmung.htm") {
+	if(address == "http://www.wahlrecht.de/umfragen/politbarometer/stimmung.htm") {
 		
-		adress2 <- sub("/stimmung", "", adress)
-		atab2 <- read_html(adress2) %>% 
+		address2 <- sub("/stimmung", "", address)
+		atab2 <- read_html(address2) %>% 
 			html_nodes("table") %>% .[[2]] %>% 
 			html_table(fill=TRUE) %>% 
 			slice(c(-1:-3, -n()))
@@ -82,10 +82,11 @@ scrape_wahlrecht <- function(
 		atab2 %<>%	select(V1, V11, V12) %>% 
 			transmute(
 				datum    = dmy(V1),
-				befragte = as.numeric(V11), 
+				befragte = sub(".", "", V11, fixed=TRUE),
+				befragte = as.numeric(befragte), 
 				zeitraum = V12)
 		ind.row.remove <- -1:-2
-	} else if(adress == "http://www.wahlrecht.de/umfragen/gms.htm") {
+	} else if(address == "http://www.wahlrecht.de/umfragen/gms.htm") {
 		ind.row.remove <- -1:-4
 	} else  {
 		ind.row.remove <- -1:-3
@@ -106,9 +107,9 @@ scrape_wahlrecht <- function(
 
 	atab <-  mutate(atab, datum = dmy(datum))
 
-	if(adress == "http://www.wahlrecht.de/umfragen/politbarometer/stimmung.htm") {
+	if(address == "http://www.wahlrecht.de/umfragen/politbarometer/stimmung.htm") {
 		atab <- left_join(atab, atab2)
-	} else if(adress == "http://www.wahlrecht.de/umfragen/gms.htm") {
+	} else if(address == "http://www.wahlrecht.de/umfragen/gms.htm") {
 		atab %<>% mutate(
 			befragte = str_sub(befragte, 5, 9),
 			befragte = as.numeric(befragte))
