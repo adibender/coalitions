@@ -7,7 +7,8 @@
 \usage{
 draw_from_posterior(survey, nsim, seed = NULL, prior = NULL)
 
-draw_posterior(survey, nsim, seed = NULL, prior = NULL)
+draw_posterior(survey, nsim = 10000, seed = as.numeric(now()),
+  prior = NULL)
 }
 \arguments{
 \item{survey}{survey object as returned by \code{as_survey} or \code{getSurveys}}

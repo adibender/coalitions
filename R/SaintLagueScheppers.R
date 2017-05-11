@@ -4,11 +4,10 @@
 #' than 5\% of votes (according to the method of Sainte-Lague/Schepers,
 #' see http://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 #' 
+#' @inheritParams redistribute
 #' @param survey Results of a survey as data.frame containing party names and votes.
 #' @param seats Number of seats in parliament. Defaults to 598 (seats in german 
 #' parliament).
-#' @param hurdle The percentage of votes that must be reached to get seats in 
-#'  parliament. Defaults to 0.05 (hurdle for german parliament).
 #' @param epsilon The percentages of votes in survey must add up to 1, 
 #' this allows for some numerical imprecission. Defaults to 10e-6.
 #' @return A \code{data.frame} containing parties above the hurdle and the respective 
@@ -17,10 +16,15 @@
 #' @importFrom reshape2 melt
 #' @export
 #' @seealso \code{\link{dHondt}}
-sls <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
+sls <- function(
+    survey, 
+    seats   = 598,
+    hurdle  = 0.05,
+    epsilon = 10e-6,
+    others  = "Others") {
     
     #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "others"
-    survey <- redistribute(survey, hurdle = hurdle)
+    survey <- redistribute(survey, hurdle = hurdle, others=others)
     
     # check for data validity
     if( abs(sum(survey$votes.in.perc) - 1) > epsilon  ) 
@@ -48,31 +52,37 @@ sls <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
 
 #' @rdname sls 
 #' @inheritParams sls
-sls2 <- function(survey, seats = 598, hurdle = 0.05, epsilon = 10e-6) {
+#' @export
+sls2 <- function(
+    survey, 
+    seats = 598, 
+    hurdle = 0.05, 
+    epsilon = 10e-6, 
+    others = "sonstige") {
     
     #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "others"
-    survey <- redistribute2(survey, hurdle = hurdle)
+    survey <- redistribute2(survey, hurdle = hurdle, others=others)
     
     # check for data validity
-    if( abs(sum(survey$PERCENT) - 1) > epsilon  ) 
+    if( abs(sum(survey$percent) - 1) > epsilon  ) 
         stop("wrong percentages provided in sls() function")
     
-    divisor.mat <- sum(survey$VOTES)/vapply(survey$VOTES, "/", numeric(599),
+    divisor.mat <- sum(survey$votes)/vapply(survey$votes, "/", numeric(599),
         seq(0.5, 598.5, by = 1))
-    colnames(divisor.mat) <- survey$PARTY
+    colnames(divisor.mat) <- survey$party
     
     m.mat <- melt(divisor.mat, id.vars = "party")
     m.mat <- m.mat[rank(m.mat$value, ties.method = "random") <= seats, ]
     rle.seats <- rle(as.character(m.mat$Var2))
-    seat.mat <- bind_cols(list(PARTY = rle.seats$values, SEATS = rle.seats$lengths))
+    seat.mat <- bind_cols(list(party = rle.seats$values, seats = rle.seats$lengths))
     
     if( nrow(seat.mat) != nrow(survey) ) 
         stop ("Wrong number of parties after seat distribution")
-    if( sum(seat.mat$SEATS) != seats ) 
+    if( sum(seat.mat$seats) != seats ) 
         stop(paste("Number of seats distributed not equal to", seats))
     
-    survey <- left_join(survey, seat.mat, by = "PARTY")
+    survey <- left_join(survey, seat.mat, by = "party")
     
-    survey
+    survey %>% select(-percent, -votes)
     
 }

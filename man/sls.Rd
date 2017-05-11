@@ -5,9 +5,11 @@
 \alias{sls2}
 \title{Seat Distribution by Sainte-Lague/Scheppers}
 \usage{
-sls(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05)
+sls(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05,
+  others = "Others")
 
-sls2(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05)
+sls2(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05,
+  others = "sonstige")
 }
 \arguments{
 \item{survey}{Results of a survey as data.frame containing party names and votes.}
@@ -15,11 +17,14 @@ sls2(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05)
 \item{seats}{Number of seats in parliament. Defaults to 598 (seats in german 
 parliament).}
 
-\item{hurdle}{The percentage of votes that must be reached to get seats in 
-parliament. Defaults to 0.05 (hurdle for german parliament).}
+\item{hurdle}{the percentage of votes that must be reached to get seats in 
+parliament. Defaults to 0.05 (hurdle for german parliament)}
 
 \item{epsilon}{The percentages of votes in survey must add up to 1, 
 this allows for some numerical imprecission. Defaults to 10e-6.}
+
+\item{others}{Name under which parties far below the \code{hurdle} are 
+summarized.}
 }
 \value{
 A \code{data.frame} containing parties above the hurdle and the respective 

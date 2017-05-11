@@ -36,11 +36,12 @@ draw_from_posterior <- function(survey, nsim, seed = NULL, prior = NULL) {
 #' @rdname draw_from_posterior
 #' @inheritParams draw_from_posterior
 #' @importFrom dplyr tbl_df
+#' @importFrom lubridate now
 #' @export
 draw_posterior <- function(
   survey, 
-  nsim, 
-  seed = NULL, 
+  nsim  = 1e4,
+  seed  = as.numeric(now()),
   prior = NULL) {
 
   ## set seed if provided
@@ -54,8 +55,8 @@ draw_posterior <- function(
   }
     
   ## draw n.sim random dirichlet numbers/vectors with concentration weights alpha
-  draws <- rdirichlet(nsim, alpha = survey$VOTES + prior)
-  colnames(draws) <- survey$PARTY
+  draws <- rdirichlet(nsim, alpha = survey$votes + prior)
+  colnames(draws) <- survey$party
 
   return(tbl_df(draws))
 
