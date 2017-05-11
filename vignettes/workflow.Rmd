@@ -41,7 +41,7 @@ below:
 survey results from http://www.wahlrecht.de/
 - `collapse_parties`: Transforms information on percentages received by individual
 parties in long format and stores them inside a nested tibble (see `tidyr::nest`)
-- `draw_posterior`: Draws `nsim` samples from the posterior distribution 
+- `draw_from_posterior`: Draws `nsim` samples from the posterior distribution 
 (i.e. `nsim` simulated election results based on provided survey)
 - `get_seats`: Obtain seat distributions for each simulation (see also `?sls`)
 - `have_majority`: Given a list of coalitions of interest, caclulates if the 
@@ -72,7 +72,7 @@ Based on each survey we can now simulate `nsim` elections by drawing from the
 Dirichlet distribution 
 
 ```{r}
-elong %<>% mutate(draws = map(survey, draw_posterior, nsim=10))
+elong %<>% mutate(draws = map(survey, draw_from_posterior, nsim=10))
 elong %>% select(datum, survey, draws)
 # each row is one election simulation
 elong %>% slice(1) %>% select(draws) %>% unnest()

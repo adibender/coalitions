@@ -196,7 +196,7 @@ get_superior <- function(
 
 #' Wrapper for calculation of coalition probabilities from survey 
 #' 
-#' @inheritParams draw_posterior
+#' @inheritParams draw_from_posterior
 #' @inheritParams get_seats
 #' @inheritParams has_majority
 #' @inherit calculate_probs
@@ -219,7 +219,7 @@ get_probs <- function(
 
   x %>% 
     mutate(
-      draws = map(survey, draw_posterior, nsim=nsim),
+      draws = map(survey, draw_from_posterior, nsim=nsim),
       seats = map2(draws, survey, get_seats, distrib.fun=distrib.fun),
       majority = map(seats, have_majority, coalitions=coalitions, 
         seats_majority=seats_majority),

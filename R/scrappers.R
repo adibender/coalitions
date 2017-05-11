@@ -1,4 +1,3 @@
-
 #' Sanitize character vectors containing percentages
 #' 
 #' @param vec Character vector containg percentages that can not be transformed 
@@ -134,43 +133,6 @@ scrape_wahlrecht <- function(
 }
 
 
-#' Scrape tables from whalumfragen.de
-#'
-#' Scrapes table and performs some sanitization to output tidy data
-#'
-#' @import magrittr rvest dplyr
-#' @importFrom lubridate dmy year month
-#' @importFrom xml2 read_html
-#' @importFrom stats setNames
-#' @export
-#' @rdname scrape
-#' @examples
-#' tab <- scrape_wahlumfragen()
-#' head(tab)
-scrape_wahlumfragen <- function(
-	adress="http://www.wahlumfragen.org/bundestagswahl/wahlumfragen_bundestagswahl.php") {
-
-
-	atab <- read_html(adress) %>%
-		html_nodes("table") %>% .[[5]] %>%
-		html_table(fill=TRUE) %>%
-		select(-Kommentar)
-	colnames(atab) <- sanitize_strings(colnames(atab))
-	atab <- rename(atab, Datum=Veroeffentlichung)
-
-	# transform percentage string to numerics
-	atab[, 2:9] <- apply(atab[, 2:9], 2, sanitize_percent)
-
-	atab %<>% mutate(
-		Datum = dmy(Datum),
-		Year  = year(Datum),
-		month = month(Datum))
-
-
-	sanitize_colnames(atab)
-
-}
-
 #' Transform surveys in long format
 #' 
 #' Given a data frame containing multiple surveys (one row per survey), transforms 
@@ -202,14 +164,14 @@ collapse_parties <- function(
 }
 
 
-#' Imports most recent election surveys via wahlrecht.de api
-#' @inheritParams scrape_wahlrecht
-#' @importFrom XML xmlToDataFrame xmlParse
-scrape_wahlrecht_api <- function(
-	adress="http://www.wahlrecht.de/umfragen/bundesweite.xml") {
+# #' Imports most recent election surveys via wahlrecht.de api
+# #' @inheritParams scrape_wahlrecht
+# #' @importFrom XML xmlToDataFrame xmlParse
+# scrape_wahlrecht_api <- function(
+# 	adress="http://www.wahlrecht.de/umfragen/bundesweite.xml") {
 
-	xml.df <- xmlToDataFrame(xmlParse(adress))
+# 	xml.df <- xmlToDataFrame(xmlParse(adress))
 
-	return(xml.df)
+# 	return(xml.df)
 
-}
+# }

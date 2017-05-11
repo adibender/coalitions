@@ -22,7 +22,7 @@ test_that("workflow stable", {
 	expect_equal(colnames(survey$survey[[1]]), c("party", "percent", "votes"))
 
 	## add draws 
-	survey %<>% mutate(draws = map(survey, draw_posterior, nsim=10, seed=123))
+	survey %<>% mutate(draws = map(survey, draw_from_posterior, nsim=10, seed=123))
 	expect_data_frame(survey, nrows = 1, ncols=6)
 	expect_equal(
 		colnames(survey), 
