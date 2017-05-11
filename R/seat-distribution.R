@@ -7,43 +7,17 @@
 #' \code{\link{sls}} (Sainte-Lague/Scheppers). 
 #' @param samplesize Number of individuals participating in the \code{survey}.
 #' @param ... Further arguments passed to \code{distrib.fun}.
-#' @return \code{list} containing seat distributions for each simulation in 
-#' \code{dirichlet.draws}
-#' @export
-#' @keywords seat distribution
-#' @seealso \code{\link{draw_from_posterior}}, \code{\link{sls}}, 
-#' \code{\link{dHondt}}
-get_seat_distribution <- function(
-  dirichlet.draws, 
-  survey, 
-  distrib.fun = sls, 
-  samplesize = NULL, ...) {
-  
-  if( is.null(samplesize) ) samplesize <- sum(survey$votes)
-    sim.surveys <- lapply(seq_len(nrow(dirichlet.draws)), function(z) {
-      
-      survey$votes.in.perc <- as.numeric(dirichlet.draws[z, ])
-      survey$votes <- survey$votes.in.perc * samplesize
-      survey
-      
-    })
-  
-    ## calculate seat distribution for each simulation
-  sim.results <- lapply(sim.surveys, distrib.fun, ...)
-  
-    ## return results
-  sim.results
-  
-}
-
-
-#' @rdname get_seat_distribution
 #' @param mc.cores Number of cores to be used in parallel.
 #' See \code{\link[parallel]{mclapply}}.
 #' @inheritParams purrr:::map_dfr
 #' @importFrom dplyr bind_rows
 #' @importFrom purrr map_dfr
 #' @importFrom parallel mclapply
+#' @return \code{list} containing seat distributions for each simulation in 
+#' \code{dirichlet.draws}
+#' @keywords seat distribution
+#' @seealso \code{\link{draw_from_posterior}}, \code{\link{sls}}, 
+#' \code{\link{dHondt}}
 #' @export 
 get_seats <- function(
   dirichlet.draws, 
