@@ -34,5 +34,18 @@ test_that("Sainte-Lague/Scheppers works correctly", {
 		nrows=4, ncols=2)
 	expect_subset(colnames(seats), c("party", "seats"))
 	expect_identical(seats$seats, c(285L, 167L, 90L, 56L))
+
+})
+
+
+context("Draw from posterior")
+test_that("Sainte-Lague/Scheppers works correctly", {
+	forsa <- as_survey(
+		percent    = c(0.41, 0.24, 0.13, 0.04, 0.08, 0.03, 0.03, 0.04),
+		samplesize = 2508,
+		parties    = c("cdu", "spd", "gruene", "fdp", "linke", "piraten", "afd", "sonstige"))
+	draws <- draw_from_posterior(forsa, nsim=10)
+	expect_data_frame(draws, nrow=10, ncol=8)
+	expect_error(draw_from_posterior(forsa, nsim=10, prior=c(0.5, 0.5, 0.5, 0.5)))
 	
 })
