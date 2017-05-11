@@ -9,13 +9,23 @@
 #' for individual parties (that add up to 100) and sample size of survey. 
 #' @param ... Further arguments passed to \code{draw_from_posterior}
 #' @import checkmate
-#' 
 cprob_row <- function(
 	row, 
-	nsim=10000L, 
-	coalitions = list("CDU", c("CDU", "FDP"), c("CDU", "FDP", "GRUENE"), 
-		"SPD", c("SPD", "LINKE"), c("SPD", "LINKE", "GRUENE")),
-	superior.coalitions = list("", "CDU", c("CDU", "FDP"), "", "SPD", c("SPD", "LINKE")),
+	nsim       = 10000L,
+	coalitions = list(
+		c("CDU"), 
+		c("CDU", "FDP"), 
+		c("CDU", "FDP", "GRUENE"), 
+		c("SPD"), 
+		c("SPD", "LINKE"), 
+		c("SPD", "LINKE", "GRUENE")),
+	superior.coalitions = list(
+		c(""), 
+		c("CDU"), 
+		c("CDU", "FDP"), 
+		c(""), 
+		c("SPD"), 
+		c("SPD", "LINKE")),
 	majority = 300L,
 	...) {
 
@@ -47,17 +57,24 @@ cprob_row <- function(
 #' @inheritParams cprob_row
 #' @param mc.cores Number of cores used for calculations.
 #' @import checkmate parallel magrittr dplyr
-#' @examples 
-#' library(dplyr)
-#' tab <- scrape_wahlrecht() %>% slice(1:3)
-#' cprob_tab(tab, nsim=100, mc.cores=1L)
 #' @export
 cprob_tab <- function(
 	survey.df, 
-	nsim=10000L, 
-	coalitions = list("CDU", c("CDU", "FDP"), c("CDU", "FDP", "GRUENE"), 
-		"SPD", c("SPD", "LINKE"), c("SPD", "LINKE", "GRUENE")),
-	superior.coalitions = list("", "CDU", c("CDU", "FDP"), "", "SPD", c("SPD", "LINKE")),
+	nsim       = 10000L,
+	coalitions = list(
+		c("CDU"), 
+		c("CDU", "FDP"), 
+		c("CDU", "FDP", "GRUENE"), 
+		c("SPD"), 
+		c("SPD", "LINKE"), 
+		c("SPD", "LINKE", "GRUENE")),
+	superior.coalitions = list(
+		c(""), 
+		c("CDU"), 
+		c("CDU", "FDP"), 
+		c(""), 
+		c("SPD"), 
+		c("SPD", "LINKE")),
 	mc.cores=10L,
 	...) {
 
@@ -68,8 +85,7 @@ cprob_tab <- function(
 	assert_list(superior.coalitions, types="character", any.missing=FALSE, 
 		min.len=1)
 
-	survey.df %<>% 
-		mutate(id=row_number()) 
+	survey.df %<>% mutate(id=row_number())
 	cprobs <- mclapply(
 		split(survey.df, f=survey.df$id), 
 		cprob_row, nsim=nsim, coalitions=coalitions, 

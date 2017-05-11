@@ -38,36 +38,6 @@ get_coalition_probability <- function(seat.tab, coalition, superior = NULL,
 
 }
 
-#' @rdname get_coalition_probability
-get_probability <- function(
-  seat.tab, 
-  coalition, 
-  superior = NULL,
-  majority = 300) {
-
-  ind.coalition <- sapply(seat.tab, function(z) {
-    sum(z$SEATS[z$PARTY %in% coalition]) >= majority
-  })
-
-  if( !any(is.null(superior)) ) {
-
-    ind.sup.list <- lapply(superior, function(superior.coalition) {
-      sapply(seat.tab, function(z) {
-        sum(z$SEATS[z$PARTY %in% superior.coalition]) >=
-        majority
-      })
-    })
-  }
-  else{
-    ind.sup.list <- list(rep(FALSE, length(ind.coalition)))
-  }
-
-  ind.sup <- Reduce("|", ind.sup.list)
-
-  mean(ind.coalition & !(ind.sup))
-
-}
-
 
 #' Calculate coalition probabilities
 #' 
@@ -113,8 +83,8 @@ get_probabilities <- function(
       superior.coalitions[[z]], majority = majority)
   })
   tibble(
-    COALITION   = sapply(coalitions, paste0, collapse          = "-"),
-    SUPERIOR    = sapply(superior.coalitions, paste0, collapse = "-"),
+    COALITION   = sapply(coalitions          , paste0, collapse = "-"),
+    SUPERIOR    = sapply(superior.coalitions , paste0, collapse = "-"),
     PROBABILITY = coal.probs)
 
 }

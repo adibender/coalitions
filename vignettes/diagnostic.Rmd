@@ -1,0 +1,58 @@
+---
+title: "Diagnostic"
+author: "Andreas Bender"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{diagnostic}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  fig.align  = "center",
+  fig.width  = 4,
+  fig.height = 4,
+  crop       = TRUE)
+```
+
+
+```{r message=FALSE}
+library(magrittr)
+library(tidyr)
+library(purrr)
+library(dplyr)
+library(coalitions)
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+```{r}
+temp <- scrape_wahlrecht() %>% slice(1) %>% collapse_parties() %>% unnest()
+temp$befragte <- 1000
+temp %<>% 
+	mutate(
+		percent = c(36, 28, 7, 6, 9, 9, 5), 
+		votes   = befragte * percent/100) %>%
+	nest(party:votes, .key=survey)
+draws <- map(temp$survey, draw_posterior, nsim=1e4) %>% flatten_df()
+draws_long <- gather(draws, party, percent, cdu:sonstige) %>% 
+	group_by(party) %>% 
+	mutate(sim = row_number()) %>% ungroup()
+ggplot(draws_long, aes(x=party, y=percent)) + 
+	geom_boxplot() + 
+	geom_hline(yintercept = 0.05, lty=2, col=2)
+
+## chains 
+ggplot(draws_long, aes(x=sim, y=percent)) + 
+	geom_path() + 
+	geom_hline(yintercept = 0.05, lty=2, col=2) + 
+	facet_wrap(~party)
+
+draws_long %>% 
+	group_by(party) %>% 
+	summarize(entryprob = sum(percent >= 0.05)/n())
+```

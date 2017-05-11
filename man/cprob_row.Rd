@@ -4,10 +4,10 @@
 \alias{cprob_row}
 \title{Coalition probabilities based on one survey}
 \usage{
-cprob_row(row, nsim = 10000L, coalitions = list("CDU", c("CDU", "FDP"),
-  c("CDU", "FDP", "GRUENE"), "SPD", c("SPD", "LINKE"), c("SPD", "LINKE",
-  "GRUENE")), superior.coalitions = list("", "CDU", c("CDU", "FDP"), "",
-  "SPD", c("SPD", "LINKE")), majority = 300L, ...)
+cprob_row(row, nsim = 10000L, coalitions = list(c("CDU"), c("CDU", "FDP"),
+  c("CDU", "FDP", "GRUENE"), c("SPD"), c("SPD", "LINKE"), c("SPD", "LINKE",
+  "GRUENE")), superior.coalitions = list(c(""), c("CDU"), c("CDU", "FDP"),
+  c(""), c("SPD"), c("SPD", "LINKE")), majority = 300L, ...)
 }
 \arguments{
 \item{row}{A single row of a data frame. Should contain percentages of votes 

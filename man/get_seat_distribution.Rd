@@ -8,8 +8,8 @@
 get_seat_distribution(dirichlet.draws, survey, distrib.fun = sls,
   samplesize = NULL, ...)
 
-get_seats(dirichlet.draws, survey, mc.cores = 1, distrib.fun = sls,
-  samplesize = NULL, ...)
+get_seats(dirichlet.draws, survey, mc.cores = 1, distrib.fun = sls2,
+  samplesize = NULL, .id = "sim", ...)
 }
 \arguments{
 \item{dirichlet.draws}{Matrix containing random draws from posterior.}
@@ -26,6 +26,9 @@ were based on.}
 
 \item{mc.cores}{Number of cores to be used in parallel.
 See \code{\link[parallel]{mclapply}}.}
+
+\item{.id}{If not \code{NULL} a variable with this name will be created
+giving either the name or the index of the data frame.}
 }
 \value{
 \code{list} containing seat distributions for each simulation in 

@@ -6,9 +6,9 @@
 \title{Calculate percentage of votes/seats after excluding parties with 
 \code{votes < hurdle}}
 \usage{
-redistribute(survey, hurdle = 0.05)
+redistribute(survey, hurdle = 0.05, others = "Others")
 
-redistribute2(survey, hurdle = 0.05)
+redistribute2(survey, hurdle = 0.05, others = "sonstige")
 }
 \arguments{
 \item{survey}{table containing votes and votes in percent (as created e.g. by 
@@ -16,6 +16,9 @@ redistribute2(survey, hurdle = 0.05)
 
 \item{hurdle}{the percentage of votes that must be reached to get seats in 
 parliament. Defaults to 0.05 (hurdle for german parliament)}
+
+\item{others}{Name under which parties far below the \code{hurdle} are 
+summarized.}
 }
 \description{
 Calculate percentage of votes/seats after excluding parties with 
