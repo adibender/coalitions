@@ -5,7 +5,7 @@
 \title{Calculate percentage of votes/seats after excluding parties with 
 \code{votes < hurdle}}
 \usage{
-redistribute(survey, hurdle = 0.05, others = "sonstige")
+redistribute(survey, hurdle = 0.05, others = "sonstige", epsilon = 1e-05)
 }
 \arguments{
 \item{survey}{table containing votes and votes in percent (as created e.g. by 

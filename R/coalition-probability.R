@@ -213,14 +213,49 @@ get_probs <- function(
     c("spd"), 
     c("spd", "linke"), 
     c("spd", "linke", "gruene")), 
-  nsim        = 1e5,
-  distrib.fun = sls,
-  seats_majority    = 300L) {
+  nsim           = 1e5,
+  distrib.fun    = sls,
+  seats_majority = 300L,
+  mc.cores       = 1L) {
 
+  # draws <- map(x[["survey"]], draw_from_posterior, nsim=nsim)
+  # seats <- map2(draws, x[["survey"]], get_seats, distrib.fun=distrib.fun)
+  # majority <- map(seats, have_majority, coalitions=coalitions, seats_majority=seats_majority)
+  # map(majority, calculate_probs, coalitions=coalitions)
   x %>% 
     mutate(
       draws = map(survey, draw_from_posterior, nsim=nsim),
-      seats = map2(draws, survey, get_seats, distrib.fun=distrib.fun),
+      seats = map2(draws, survey, get_seats, distrib.fun=distrib.fun, mc.cores=mc.cores),
+      majority = map(seats, have_majority, coalitions=coalitions, 
+        seats_majority=seats_majority),
+      probabilities = map(majority, calculate_probs, coalitions=coalitions)) %>%
+    select(probabilities)
+
+}
+
+#' @inherit get_probs
+get_probs2 <- function(
+  x, 
+  coalitions = list(
+    c("cdu"), 
+    c("cdu", "fdp"), 
+    c("cdu", "fdp", "gruene"), 
+    c("spd"), 
+    c("spd", "linke"), 
+    c("spd", "linke", "gruene")), 
+  nsim           = 1e5,
+  distrib.fun    = sls2,
+  seats_majority = 300L,
+  mc.cores       = 1L) {
+
+  # draws <- map(x[["survey"]], draw_from_posterior, nsim=nsim)
+  # seats <- map2(draws, x[["survey"]], get_seats, distrib.fun=distrib.fun)
+  # majority <- map(seats, have_majority, coalitions=coalitions, seats_majority=seats_majority)
+  # map(majority, calculate_probs, coalitions=coalitions)
+  x %>% 
+    mutate(
+      draws = map(survey, draw_from_posterior, nsim=nsim),
+      seats = map2(draws, survey, get_seats2, distrib.fun=distrib.fun, mc.cores=mc.cores),
       majority = map(seats, have_majority, coalitions=coalitions, 
         seats_majority=seats_majority),
       probabilities = map(majority, calculate_probs, coalitions=coalitions)) %>%

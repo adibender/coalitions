@@ -24,31 +24,48 @@ sls <- function(
   others  = "sonstige") {
 
     #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "others"
-  survey <- redistribute(survey, hurdle = hurdle, others=others)
+  survey <- redistribute(survey, hurdle = hurdle, others=others, epsilon=epsilon)
 
-    # check for data validity
-  if( abs(sum(survey$percent) - 1) > epsilon  ) 
-    stop("wrong percentages provided in sls() function")
-
-  divisor.mat <- sum(survey$votes)/vapply(survey$votes, "/", numeric(599),
-    seq(0.5, 598.5, by = 1))
+  div_vec <- seq(0.5, seats + 0.5, by = 1)
+  divisor.mat <- sum(survey$votes)/vapply(survey$votes, "/", numeric(599), div_vec)
   colnames(divisor.mat) <- survey$party
 
-  m.mat <- melt(divisor.mat, id.vars = "party")
-  m.mat <- m.mat[rank(m.mat$value, ties.method = "random") <= seats, ]
-  rle.seats <- rle(as.character(m.mat$Var2))
-  seat.mat <- bind_cols(list(party = rle.seats$values, seats = rle.seats$lengths))
+  m.mat <- melt(divisor.mat, id.vars = "party", as.is=TRUE, value.name="seats")
+  m.mat <- m.mat[rank(m.mat$seats, ties.method = "random") <= seats, ]
+  rle.seats <- rle(m.mat$Var2)
+  seat.mat <- bind_cols(rle.seats[2:1])
+  colnames(seat.mat) <- c("party","seats")
 
   if( nrow(seat.mat) != nrow(survey) ) 
     stop ("Wrong number of parties after seat distribution")
   if( sum(seat.mat$seats) != seats ) 
     stop(paste("Number of seats distributed not equal to", seats))
 
-  survey <- left_join(survey, seat.mat, by = "party")
+  seat.mat
 
-  # survey %>% select(-percent, -votes)
-  survey$percent <- survey$votes <- NULL
+}
 
-  survey
+#' @inherit sls
+sls2 <- function(
+  votes,
+  parties, 
+  seats   = 598) {
+
+  # div_vec <- seq(0.5, seats + 0.5, by = 1)
+  # div_vec <- 0.5:(seats+0.5)
+  # n1 <- seats+1
+  divisor.mat <- sum(votes)/t(div_mat[seq_along(votes), ]*votes)
+  colnames(divisor.mat) <- parties
+
+  m.mat <- melt(divisor.mat, as.is=TRUE, value.name="seats")
+  m.mat <- m.mat[rank(m.mat$seats, ties.method = "random") <= seats, ]
+  rle.seats <- rle(m.mat$Var2)
+  # seat.mat <- bind_cols(rle.seats[2:1])
+  # colnames(seat.mat) <- c("party","seats")
+
+  if( sum(rle.seats$length) != seats ) 
+    stop(paste("Number of seats distributed not equal to", seats))
+
+  rle.seats$length
 
 }
