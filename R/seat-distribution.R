@@ -53,7 +53,6 @@ get_seats2 <- function(
   .id         = "sim",
   hurdle      = 0.05,
   others      = "sonstige",
-  mc.cores    = 1,
   ... ) {
 
     if( is.null(samplesize) ) samplesize <- sum(survey$votes)
