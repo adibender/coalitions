@@ -18,3 +18,12 @@ expect_data_frame(head(scrape_wahlrecht(hp.vec[5])), ncols=13, nrows=6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[6])), ncols=11, nrows=6)
 
 })
+
+
+context("Transform to long format") 
+test_that("Collapse parties works correctly", {
+	surveys <- scrape_wahlrecht("http://www.wahlrecht.de/umfragen/gms.htm")[1,]
+	surveys[, 5] <- NA	
+	expect_data_frame(cp <- collapse_parties(surveys), nrows=1, ncols=5)
+})
+
