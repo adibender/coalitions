@@ -32,6 +32,15 @@ sanitize_strings <- function(x) {
 
 }
 
+#' Extract numericals from string or character
+#' 
+#' Removes all characters that are not in [0-9]. 
+#' 
+#' @param x A character vector.
+extract_num <- function(x) {
+	as.numeric(gsub("[^0-9]", "", x))
+}
+
 #' Sanitize column names 
 #' 
 #' @param df A data frame with party names with special characters that need 
@@ -72,46 +81,35 @@ scrape_wahlrecht <- function(
 	if(address == "http://www.wahlrecht.de/umfragen/politbarometer.htm") {
 		colnames(atab) <- atab[2, ]
 		ind.row.remove <- -1:-3
-	} else if(address == "http://www.wahlrecht.de/umfragen/gms.htm") {
+	} else if (address == "http://www.wahlrecht.de/umfragen/gms.htm" | 
+		address == "http://www.wahlrecht.de/umfragen/insa.htm") {
 		ind.row.remove <- -1:-4
-	} else  {
+	} else { 
 		ind.row.remove <- -1:-3
 	}
 
 	atab           <- atab[ind.row.remove, ]
 	atab           <- atab[-nrow(atab), ]
 	colnames(atab) <- c("Datum", colnames(atab)[-1])
-	ind.empty      <- sapply(atab, function(z) all(z==""))
+	ind.empty      <- sapply(atab, function(z) all(z=="")) |
+		sapply(colnames(atab), function(z) z=="")
 	atab           <- atab[, !ind.empty]
 
 	atab <- sanitize_colnames(atab)
 	parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
 	# transform percentage string to numerics
-	atab[, parties] <- apply(atab[, parties], 2,  gsub,  pattern=" %", replacement="", fixed=TRUE)
-	atab[, parties] <- apply(atab[, parties], 2,  gsub,  pattern="," , replacement=".", fixed=TRUE)
-	atab[, parties] <- apply(atab[, parties], 2,  as.numeric)
-
-	atab <-  mutate(atab, datum = dmy(datum))
-
-	if(address == "http://www.wahlrecht.de/umfragen/politbarometer/stimmung.htm") {
-		atab <- left_join(atab, atab2)
-	} else if(address == "http://www.wahlrecht.de/umfragen/gms.htm") {
-		atab %<>% mutate(
-			befragte = str_sub(befragte, 5, 9),
-			befragte = as.numeric(befragte))
-	} else {
-		## remove special characters from befragte column, transform to numeric
-		atab$befragte <- gsub("?", "", atab$befragte, fixed=TRUE)
-		atab$befragte <- gsub("\u2248", "", atab$befragte, fixed=TRUE)
-		atab$befragte <- gsub(".", "", atab$befragte, fixed=TRUE)
-		atab$befragte <- as.numeric(atab$befragte)
+	atab %<>% mutate_at(c(parties, "befragte"), extract_num)
+	if(address == "http://www.wahlrecht.de/umfragen/allensbach.htm") {
+		atab %<>% mutate_at(parties, funs(./10))
 	}
 
+	atab %<>% mutate(datum = dmy(datum))
 	atab %<>% mutate(
 		start = dmy(paste0(str_sub(zeitraum, 1, 6), str_sub(datum, 1, 4))),
 		end   = dmy(paste0(str_sub(zeitraum, 8, 13), str_sub(datum, 1, 4))))
 
-	atab %<>% mutate(total = rowSums(atab[, parties], na.rm=TRUE)) %>% 
+	atab %<>% 
+		mutate(total = rowSums(atab[, parties], na.rm=TRUE)) %>% 
 		filter(total==100, !is.na(befragte), !is.na(datum)) %>% 
 		select(one_of(c("datum", "start", "end", parties, "befragte")))
 
