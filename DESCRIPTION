@@ -10,7 +10,6 @@ Depends:
 Imports:
     checkmate,
     gtools,
-    XML,
     rvest,
     xml2,
     reshape2,
