@@ -6,14 +6,12 @@
 #' @param distrib.fun Function to calculate seat distribution. Defaults to 
 #' \code{\link{sls}} (Sainte-Lague/Scheppers). 
 #' @param samplesize Number of individuals participating in the \code{survey}.
+#' @param hurdle The percentage which has to be reached to enter the 
+#' parliament. 
+#' @param others A character indicating the 
 #' @param ... Further arguments passed to \code{distrib.fun}.
-#' @param mc.cores Number of cores to be used in parallel.
-#' See \code{\link[parallel]{mclapply}}.
-#' @inheritParams purrr:::map_dfr
-#' @importFrom dplyr bind_rows
-#' @importFrom purrr map_dfr
-#' @importFrom parallel mclapply
-#' @return \code{list} containing seat distributions for each simulation in 
+#' @import checkmate dplyr 
+#' @return A data frame containing seat distributions for each simulation in 
 #' \code{dirichlet.draws}
 #' @keywords seat distribution
 #' @seealso \code{\link{draw_from_posterior}}, \code{\link{sls}}, 
@@ -22,50 +20,27 @@
 get_seats <- function(
   dirichlet.draws, 
   survey, 
-  mc.cores    = 1,
   distrib.fun = sls,
-  samplesize  = NULL, 
-  .id = "sim", ...) {
-  
-  if( is.null(samplesize) ) samplesize <- sum(survey$votes)
-
-  percent_mat <- as.matrix(dirichlet.draws)
-  votes_mat <- percent_mat * samplesize
-  sim.surveys <- mclapply(seq_len(nrow(percent_mat)), 
-    function(z) {
-      survey$percent <- percent_mat[z, ]
-      survey$votes   <- votes_mat[z, ]
-      survey 
-    }, mc.cores=mc.cores)
-  
-  ## calculate seat distribution for each simulation
- map_dfr(sim.surveys, distrib.fun, .id=.id)
-  
-}
-
-
-#' @inherit get_seats
-get_seats2 <- function(
-  dirichlet.draws, 
-  survey, 
-  distrib.fun = sls2,
   samplesize  = NULL,
-  .id         = "sim",
   hurdle      = 0.05,
   others      = "sonstige",
   ... ) {
 
-    if( is.null(samplesize) ) samplesize <- sum(survey$votes)
+  assert_data_frame(dirichlet.draws, any.missing=FALSE, min.rows=1, min.cols=2)
+  assert_number(hurdle, lower=0, upper=1)
+  assert_string(others, min.chars=1)
 
-    dirichlet.draws %>% 
-      mutate(sim = row_number()) %>% 
-      gather(party, percent, cdu:sonstige) %>% 
-      arrange(sim) %>% 
-      mutate(votes = percent * samplesize) %>% 
-      filter(party != others & percent >= hurdle) %>% 
-      group_by(sim) %>% 
-      mutate(seats = distrib.fun(votes, party)) %>% 
-      ungroup() %>% 
-      select(sim, party, seats)
+  if( is.null(samplesize) ) samplesize <- sum(survey$votes)
+
+  dirichlet.draws %>% 
+    mutate(sim = row_number()) %>% 
+    gather(party, percent, cdu:sonstige) %>% 
+    arrange(sim) %>% 
+    mutate(votes = percent * samplesize) %>% 
+    filter(party != others & percent >= hurdle) %>% 
+    group_by(sim) %>% 
+    mutate(seats = distrib.fun(votes, party, ...)) %>% 
+    ungroup() %>% 
+    select(sim, party, seats)
 
 }
