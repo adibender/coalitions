@@ -6,6 +6,9 @@
 \usage{
 initialize(path = "./")
 }
+\arguments{
+\item{path}{A path to the folder in which data base should be initialized.}
+}
 \description{
 Initial dowload and data base creation
 }

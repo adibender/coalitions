@@ -4,7 +4,7 @@
 		utils::globalVariables(c(
 			"V1", "V11", "V12", "befragte", "datum", "party", "percent", 
 			"probabilities", "seats", "sim", "survey", "total", "votes", "zeitraum", 
-			".", "majority", "draws"))
+			".", "majority", "draws", "institute", "address"))
 	}
 
 	invisible()

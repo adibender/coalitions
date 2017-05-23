@@ -7,6 +7,8 @@
 #' parliament. Defaults to 0.05 (hurdle for german parliament)
 #' @param others Name under which parties far below the \code{hurdle} are 
 #' summarized. 
+#' @param epsilon Percentages should add up to 1. If they do not, within accuracy
+#' of \code{epsilon}, an error is thrown.
 #' @keywords survey, hurdle
 #' @seealso \code{\link{as_survey}}, \code{\link{sls}}
 #' @export

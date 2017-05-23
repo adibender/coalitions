@@ -6,6 +6,10 @@
 \usage{
 get_meta(surveys_df)
 }
+\arguments{
+\item{surveys_df}{A data frame containing surveys from different survey 
+institutes.}
+}
 \description{
 Extract "meta" information from survey data base
 }

@@ -30,10 +30,10 @@ test_that("Sainte-Lague/Scheppers works correctly", {
 		percent    = c(0.41, 0.24, 0.13, 0.04, 0.08, 0.03, 0.03, 0.04),
 		samplesize = 2508,
 		parties    = c("cdu", "spd", "gruene", "fdp", "linke", "piraten", "afd", "sonstige"))
-	expect_data_frame(seats <- sls(redistribute(forsa), seats = 598), 
-		nrows=4, ncols=2)
-	expect_subset(colnames(seats), c("party", "seats"))
-	expect_identical(seats$seats, c(285L, 167L, 90L, 56L))
+	red_forsa <- redistribute(forsa)
+	expect_numeric(seats <- sls(red_forsa$votes, red_forsa$party, n_seats = 598), 
+		len=4, any.missing=FALSE)
+	expect_identical(seats, c(285L, 167L, 90L, 56L))
 
 })
 

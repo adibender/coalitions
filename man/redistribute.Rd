@@ -16,6 +16,9 @@ parliament. Defaults to 0.05 (hurdle for german parliament)}
 
 \item{others}{Name under which parties far below the \code{hurdle} are 
 summarized.}
+
+\item{epsilon}{Percentages should add up to 1. If they do not, within accuracy
+of \code{epsilon}, an error is thrown.}
 }
 \description{
 Calculate percentage of votes/seats after excluding parties with 

@@ -4,8 +4,8 @@
 \alias{get_seats}
 \title{Calculate seat distribution from draws from posterior}
 \usage{
-get_seats(dirichlet.draws, survey, mc.cores = 1, distrib.fun = sls,
-  samplesize = NULL, .id = "sim", ...)
+get_seats(dirichlet.draws, survey, distrib.fun = sls, samplesize = NULL,
+  hurdle = 0.05, others = "sonstige", ...)
 }
 \arguments{
 \item{dirichlet.draws}{Matrix containing random draws from posterior.}
@@ -13,21 +13,20 @@ get_seats(dirichlet.draws, survey, mc.cores = 1, distrib.fun = sls,
 \item{survey}{The actual survey results on which \code{dirichlet.draws}
 were based on.}
 
-\item{mc.cores}{Number of cores to be used in parallel.
-See \code{\link[parallel]{mclapply}}.}
-
 \item{distrib.fun}{Function to calculate seat distribution. Defaults to 
 \code{\link{sls}} (Sainte-Lague/Scheppers).}
 
 \item{samplesize}{Number of individuals participating in the \code{survey}.}
 
-\item{.id}{If not \code{NULL} a variable with this name will be created
-giving either the name or the index of the data frame.}
+\item{hurdle}{The percentage which has to be reached to enter the 
+parliament.}
+
+\item{others}{A character indicating the}
 
 \item{...}{Further arguments passed to \code{distrib.fun}.}
 }
 \value{
-\code{list} containing seat distributions for each simulation in 
+A data frame containing seat distributions for each simulation in 
 \code{dirichlet.draws}
 }
 \description{

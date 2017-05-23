@@ -4,27 +4,19 @@
 \alias{sls}
 \title{Seat Distribution by Sainte-Lague/Scheppers}
 \usage{
-sls(survey, seats = 598, hurdle = 0.05, epsilon = 1e-05,
-  others = "sonstige")
+sls(votes, parties, n_seats = 598L)
 }
 \arguments{
-\item{survey}{Results of a survey as data.frame containing party names and votes.}
+\item{votes}{A numeric vector giving the redistributes votes}
 
-\item{seats}{Number of seats in parliament. Defaults to 598 (seats in german 
-parliament).}
+\item{parties}{A character vector indicating the names of parties with 
+respective \code{votes}.}
 
-\item{hurdle}{the percentage of votes that must be reached to get seats in 
-parliament. Defaults to 0.05 (hurdle for german parliament)}
-
-\item{epsilon}{The percentages of votes in survey must add up to 1, 
-this allows for some numerical imprecission. Defaults to 10e-6.}
-
-\item{others}{Name under which parties far below the \code{hurdle} are 
-summarized.}
+\item{n_seats}{The total number of seats that can be assigned to the different 
+parties.}
 }
 \value{
-A \code{data.frame} containing parties above the hurdle and the respective 
-seats/percentages after redistribution via Sainte-Lague/Scheppers.
+A numeric vector giving the number of seats each party obtained.
 }
 \description{
 Calculates number of seats for the respective parties that have received more 
