@@ -17,9 +17,9 @@ Imports:
     magrittr,
     lubridate,
     stringr,
-    purrr,
+    purrr (> 0.2.2),
     tidyr,
-    dplyr,
+    dplyr (> 0.5.0),
 Suggests:
     ggplot2,
     testthat,
