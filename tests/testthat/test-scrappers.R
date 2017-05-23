@@ -7,10 +7,8 @@ hp.vec <- c(
 	"forsa"          = "http://www.wahlrecht.de/umfragen/forsa.htm",
 	"forschGrWahlen" = "http://www.wahlrecht.de/umfragen/politbarometer.htm",
 	"gms"            = "http://www.wahlrecht.de/umfragen/gms.htm",
-	"infratest"      = "http://www.wahlrecht.de/umfragen/dimap.htm")
-
-cnames <- c("datum", "start", "end", "cdu", "spd", "gruene", "fdp", "linke", 
-	"afd", "sonstige")
+	"infratest"      = "http://www.wahlrecht.de/umfragen/dimap.htm", 
+	"insa"           =  "http://www.wahlrecht.de/umfragen/insa.htm")
 
 expect_data_frame(head(scrape_wahlrecht(hp.vec[1])), ncols=11, nrows=6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[2])), ncols=11, nrows=6)

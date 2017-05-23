@@ -34,8 +34,7 @@ sanitize_strings <- function(x) {
 
 #' Extract numericals from string or character
 #' 
-#' Removes all characters that are not in [0-9]. 
-#' 
+#' Removes all characters that are not in [0-9].
 #' @param x A character vector.
 extract_num <- function(x) {
 	as.numeric(gsub("[^0-9]", "", x))
