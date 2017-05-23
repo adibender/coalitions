@@ -9,3 +9,4 @@ data/electionDE2012.RData
 ^codecov\.yml$
 ^data-raw$
 ^sandbox$
+^appveyor\.yml$

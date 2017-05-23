@@ -2,27 +2,17 @@
 % Please edit documentation in R/scrappers.R
 \name{scrape_wahlrecht}
 \alias{scrape_wahlrecht}
-\alias{scrape_wahlumfragen}
-\title{scrape surveys from wahlrecht.de}
+\title{Scrape surveys from wahlrecht.de}
 \usage{
-scrape_wahlrecht(adress = "http://www.wahlrecht.de/umfragen/emnid.htm",
+scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/emnid.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
   "SONSTIGE"))
-
-
-  scrape_wahlumfragen(adress = "http://www.wahlumfragen.org/bundestagswahl/wahlumfragen_bundestagswahl.php")
 }
 \arguments{
-\item{adress}{http-Adress from which tables should be scraped}
+\item{address}{http-address from which tables should be scraped.}
 
 \item{parties}{A character vector containing names of parties to collapse.}
 }
 \description{
 Scrapes survey tables and perfroms sanitization to output tidy data
-
-Scrapes table and performs some sanitization to output tidy data
-}
-\examples{
-tab <- scrape_wahlumfragen()
-head(tab)
 }

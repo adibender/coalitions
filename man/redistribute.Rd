@@ -2,13 +2,10 @@
 % Please edit documentation in R/redistribute.R
 \name{redistribute}
 \alias{redistribute}
-\alias{redistribute2}
 \title{Calculate percentage of votes/seats after excluding parties with 
 \code{votes < hurdle}}
 \usage{
-redistribute(survey, hurdle = 0.05)
-
-redistribute2(survey, hurdle = 0.05)
+redistribute(survey, hurdle = 0.05, others = "sonstige", epsilon = 1e-05)
 }
 \arguments{
 \item{survey}{table containing votes and votes in percent (as created e.g. by 
@@ -16,6 +13,12 @@ redistribute2(survey, hurdle = 0.05)
 
 \item{hurdle}{the percentage of votes that must be reached to get seats in 
 parliament. Defaults to 0.05 (hurdle for german parliament)}
+
+\item{others}{Name under which parties far below the \code{hurdle} are 
+summarized.}
+
+\item{epsilon}{Percentages should add up to 1. If they do not, within accuracy
+of \code{epsilon}, an error is thrown.}
 }
 \description{
 Calculate percentage of votes/seats after excluding parties with 
