@@ -69,22 +69,9 @@ scrape_wahlrecht <- function(
 		html_nodes("table") %>% .[[2]] %>%
 		html_table(fill=TRUE)
 
-	if(address == "http://www.wahlrecht.de/umfragen/politbarometer/stimmung.htm") {
-		
-		address2 <- sub("/stimmung", "", address)
-		atab2 <- read_html(address2) %>% 
-			html_nodes("table") %>% .[[2]] %>% 
-			html_table(fill=TRUE) %>% 
-			slice(c(-1:-3, -n()))
-		# rename to avoid X11 error in package check 
-		colnames(atab2) <- sub("X", "V", colnames(atab2))
-		atab2 %<>%	select(V1, V11, V12) %>% 
-			transmute(
-				datum    = dmy(V1),
-				befragte = sub(".", "", V11, fixed=TRUE),
-				befragte = as.numeric(befragte), 
-				zeitraum = V12)
-		ind.row.remove <- -1:-2
+	if(address == "http://www.wahlrecht.de/umfragen/politbarometer.htm") {
+		colnames(atab) <- atab[2, ]
+		ind.row.remove <- -1:-3
 	} else if(address == "http://www.wahlrecht.de/umfragen/gms.htm") {
 		ind.row.remove <- -1:-4
 	} else  {
@@ -162,16 +149,3 @@ collapse_parties <- function(
 		nest(party:votes, .key="survey")
 
 }
-
-
-# #' Imports most recent election surveys via wahlrecht.de api
-# #' @inheritParams scrape_wahlrecht
-# #' @importFrom XML xmlToDataFrame xmlParse
-# scrape_wahlrecht_api <- function(
-# 	adress="http://www.wahlrecht.de/umfragen/bundesweite.xml") {
-
-# 	xml.df <- xmlToDataFrame(xmlParse(adress))
-
-# 	return(xml.df)
-
-# }
