@@ -3,10 +3,7 @@
 *.sublime-project
 *.sublime-workspace
 
-## .Rbuildignore
-.Rbuildignore
 ## folders 
-data-raw/
 sandbox/
 cache/
 figure/
