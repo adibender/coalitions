@@ -72,7 +72,7 @@ Based on each survey we can now simulate `nsim` elections by drawing from the
 Dirichlet distribution 
 
 ```{r}
-elong %<>% mutate(draws = map(survey, draw_from_posterior, nsim=10))
+elong %<>% mutate(draws = map(survey, draw_from_posterior, nsim=10, correction=0.005))
 elong %>% select(datum, survey, draws)
 # each row is one election simulation
 elong %>% slice(1) %>% select(draws) %>% unnest()

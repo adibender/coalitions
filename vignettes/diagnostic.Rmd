@@ -38,11 +38,14 @@ temp %<>%
 		percent  = c(36, 28, 7, 6, 9, 9, 5),
 		votes    = befragte * percent/100) %>%
 	nest(party:votes, .key=survey)
-draws <- map(temp$survey, draw_from_posterior, nsim=1e4) %>% flatten_df()
+draws <- map(temp$survey, draw_from_posterior, nsim=1e4, correction=0.01) %>% 
+	flatten_df()
 draws_long <- gather(draws, party, percent, cdu:sonstige) %>% 
 	group_by(party) %>% 
 	mutate(sim = row_number()) %>% ungroup()
 ```
+
+
 
 ```{r, fig.width=6, fig.height=6}
 ggplot(draws_long, aes(x=party, y=percent)) + 
