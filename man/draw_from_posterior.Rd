@@ -5,7 +5,7 @@
 \title{Draw random numbers from posterior distribution}
 \usage{
 draw_from_posterior(survey, nsim = 10000, seed = as.numeric(now()),
-  prior = NULL)
+  prior = NULL, correction = NULL)
 }
 \arguments{
 \item{survey}{survey object as returned by \code{as_survey} or \code{getSurveys}}
@@ -15,6 +15,12 @@ draw_from_posterior(survey, nsim = 10000, seed = as.numeric(now()),
 \item{seed}{sets seed}
 
 \item{prior}{optional prior information. Defaults to 1/2 (Jeffrey's prior).}
+
+\item{correction}{A positiv number. If not \code{NULL}, each sample from the 
+dirichlet distribution will be additionally "corrected" by a random number 
+from U(-1*correction, 1*correction). This can be used to introduce extra 
+variation which might be usefull due to rounding errors from reported survey 
+results (or add an aditional source of variation in general).}
 }
 \value{
 \code{data.frame} containing random draws from dirichlet distribution
