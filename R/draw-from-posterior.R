@@ -44,6 +44,15 @@ draw_from_posterior <- function(
       nrow = nrow(draws), ncol = ncol(draws))
     draws_correction = draws_correction - rowMeans(draws_correction)
     draws <- draws + draws_correction
+
+    if (any(ind.mat <- draws < 0)) {
+      draws <- draws[!(rowSums(ind.mat) > 0), , drop=FALSE]
+      warning(paste0(
+        "Some drawn percentages were smaller than 0.\n ", 
+        "The value of the correction may be to large.\n ", 
+        "Draws with negative percentages will be excluded, which 
+        may leed to bias."))
+    }
   } 
 
 
