@@ -123,8 +123,9 @@ scrape_wahlrecht <- function(
 #' the data into long format with one row per party. 
 #' @inheritParams scrape_wahlrecht
 #' @param surveys A data frame with one survey per row.  
-#' @import checkmate magrittr
+#' @import checkmate magrittr dplyr
 #' @importFrom tidyr gather nest
+#' @importFrom purrr compose
 #' @return Data frame in long format
 #' @export
 #' @examples
@@ -135,14 +136,15 @@ collapse_parties <- function(
 	parties = c("cdu", "spd", "gruene", "fdp", "linke", "piraten", "fw", "afd", 
 		"sonstige")) {
 
-	assert_data_frame(surveys, min.rows=1, min.cols=3, all.missing=FALSE)
+	assert_data_frame(surveys, min.rows=1, min.cols=3)
 	assert_character(parties, any.missing=FALSE, min.len=2, unique=TRUE)
-	av.parties <- colnames(surveys)[colnames(surveys) %in% parties]
 
+	surveys %<>% select_if(compose("!", all, is.na))
+	av.parties <- colnames(surveys)[colnames(surveys) %in% parties]
 	surveys <- gather(surveys, party, percent, one_of(av.parties)) %>% 
 		arrange(desc(datum))
 
-	surveys %<>% mutate(votes = percent/100 * befragte) %>% 
+	surveys %>% mutate(votes = percent/100 * befragte) %>% 
 		nest(party:votes, .key="survey")
 
 }
