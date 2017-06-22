@@ -30,6 +30,8 @@ test_that("workflow stable", {
 	expect_data_frame(survey$draws[[1]], nrows=10, ncols=7)
 	expect_equal(colnames(survey$draws[[1]]), survey$survey[[1]]$party)
 
+	expect_warning(draw_from_posterior(survey$survey[[1]], nsim=10, correction=0.5))
+
 	## add seats after redistribution
 	survey %<>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls))
 	expect_data_frame(survey, nrows=1, ncols=7)
