@@ -1,2 +1,4 @@
-# Auto detect text files and perform LF normalization
-* -crlf
+* text=auto
+data/* binary
+src/* text=lf
+R/* text=lf
