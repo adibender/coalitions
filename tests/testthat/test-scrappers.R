@@ -27,3 +27,16 @@ test_that("Collapse parties works correctly", {
 	expect_data_frame(cp <- collapse_parties(surveys), nrows=1, ncols=5)
 })
 
+context("No missing values in percent columns")
+test_that("GMS tables correct", {
+	
+	gms <- get_surveys() %>%
+		filter(institute == "gms") %>%
+		unnest() %>%
+		filter(datum == "2017-06-01") %>%
+		unnest()
+	expect_identical(sum(gms$percent), 100)
+	expect_false(any(is.na(gms$percent)))
+
+})
+
