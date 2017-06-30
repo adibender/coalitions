@@ -145,6 +145,7 @@ collapse_parties <- function(
 		arrange(desc(datum))
 
 	surveys %>% mutate(votes = percent/100 * befragte) %>% 
+		filter(!is.na(percent)) %>% 
 		nest(party:votes, .key="survey")
 
 }
