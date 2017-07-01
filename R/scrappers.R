@@ -141,11 +141,11 @@ collapse_parties <- function(
 
 	surveys %<>% select_if(compose("!", all, is.na))
 	av.parties <- colnames(surveys)[colnames(surveys) %in% parties]
-	surveys <- gather(surveys, party, percent, cdu:sonstige) %>% 
+	surveys <- gather(surveys, party, percent, select_vars(names(surveys),one_of(av.parties))) %>% 
 		arrange(desc(datum))
 
 	surveys %>% mutate(votes = percent/100 * befragte) %>% 
 		filter(!is.na(percent)) %>% 
+	  as_tibble() %>%
 		nest(party:votes, .key="survey")
-
 }
