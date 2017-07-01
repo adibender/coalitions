@@ -141,7 +141,7 @@ collapse_parties <- function(
 
 	surveys %<>% select_if(compose("!", all, is.na))
 	av.parties <- colnames(surveys)[colnames(surveys) %in% parties]
-	surveys <- gather(surveys, party, percent, one_of(av.parties)) %>% 
+	surveys <- gather(surveys, party, percent, cdu:sonstige) %>% 
 		arrange(desc(datum))
 
 	surveys %>% mutate(votes = percent/100 * befragte) %>% 
