@@ -104,7 +104,7 @@ get_eligible <- function(
 
   surveys %>% filter(institute %in% institutes) %>% 
     unnest(surveys) %>% 
-    filter(datum >= last_date - period) %>%
+    filter(datum >= last_date - period & datum <= last_date) %>%
     group_by(institute) %>% 
     filter(datum == max(datum))
 
