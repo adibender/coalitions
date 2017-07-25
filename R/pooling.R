@@ -55,26 +55,26 @@ effective_samplesize <- function(
 }
 
 
-#' @inherit effective_samplesize
-#' @importFrom stats optim
-optim_eff <- function(size, share, corr) {
-  max.start <- rep(1/length(size), length(size)-1)
-  opt_res <- optim(
-    max.start, 
-    function(x) {
-      -effective_samplesize(
-        size   = size,
-        share  = share,
-        corr   = corr,
-        weights = c(x,1-sum(x)))
-    }, 
-    method = "L-BFGS-B",
-    lower  = rep(0, length(size)-1),
-    upper  = rep(1, length(size)-1))
+# #' @inherit effective_samplesize
+# #' @importFrom stats optim
+# optim_eff <- function(size, share, corr) {
+#   max.start <- rep(1/length(size), length(size)-1)
+#   opt_res <- optim(
+#     max.start, 
+#     function(x) {
+#       -effective_samplesize(
+#         size   = size,
+#         share  = share,
+#         corr   = corr,
+#         weights = c(x,1-sum(x)))
+#     }, 
+#     method = "L-BFGS-B",
+#     lower  = rep(0, length(size)-1),
+#     upper  = rep(1, length(size)-1))
 
-  -opt_res$value
+#   -opt_res$value
   
-}
+# }
 
 
 
