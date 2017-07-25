@@ -52,7 +52,7 @@ update_surveys <- function(
 	meta_update <- anti_join(meta_new, meta_old)
 
 	new_df %>% unnest() %>% semi_join(meta_update) %>% 
-		mutate(probs = get_probs(., nsim=10))
+		mutate(probs = get_probabilities(., nsim=10))
 
 }
 

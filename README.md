@@ -7,7 +7,7 @@
 ## Overview 
 The package offers functions that calculate coalition probabilities 
 in multi-party elections, based on a survey results. 
-It offerst two main functions:
+It offers two main functions:
 
 - `get_surveys`: Scrapes surveys on German Bundestag elections from [wahlrecht.de](http://www.wahlrecht.de)
 - `get_probs`: Calculates coalition probabilities based on provided survey results. 

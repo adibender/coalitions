@@ -68,7 +68,7 @@ test_that("workflow stable", {
 
 	## wrapper
 	survey <- scrape_wahlrecht() %>% slice(1) %>% collapse_parties
-	probs <- get_probs(survey, nsim=10)
+	probs <- get_probabilities(survey, nsim=10)
 	expect_data_frame(probs, nrows=1, ncols=1)
 	expect_equal(colnames(probs), "probabilities")
 	expect_data_frame(probs$probabilities[[1]], nrows=6, ncols=2)

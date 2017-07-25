@@ -204,7 +204,7 @@ get_superior <- function(
 #' long format in a separate column named \code{survey}.
 #' @importFrom purrr map map2
 #' @export
-get_probs <- function(
+get_probabilities <- function(
   x, 
   coalitions = list(
     c("cdu"), 
@@ -219,10 +219,13 @@ get_probs <- function(
   
   x %>% 
     mutate(
-      draws = map(survey, draw_from_posterior, nsim=nsim),
-      seats = map2(draws, survey, get_seats, distrib.fun=distrib.fun),
-      majority = map(seats, have_majority, coalitions=coalitions, 
-        seats_majority=seats_majority),
+      draws    = map(survey, draw_from_posterior, nsim      = nsim),
+      seats    = map2(draws, survey, get_seats, distrib.fun = distrib.fun),
+      majority = map(
+        seats, 
+        have_majority, 
+        coalitions     = coalitions,
+        seats_majority = seats_majority),
       probabilities = map(majority, calculate_probs, coalitions=coalitions)) %>%
     select(probabilities)
 
