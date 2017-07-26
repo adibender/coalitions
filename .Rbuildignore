@@ -10,3 +10,4 @@ data/electionDE2012.RData
 ^data-raw$
 ^sandbox$
 ^appveyor\.yml$
+^\.mailmap$
