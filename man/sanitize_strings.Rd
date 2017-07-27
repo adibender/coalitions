@@ -12,3 +12,4 @@ sanitize_strings(x)
 \description{
 Substitute all german "Umlaute"
 }
+\keyword{internal}

@@ -31,3 +31,4 @@ Given a specified time window (defaults to current day - 14 days).
 calculate the effective sample size of the pooled sample over multiple 
 institutes.
 }
+\keyword{internal}

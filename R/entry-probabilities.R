@@ -5,9 +5,9 @@
 #' @param hurdle the percentage of votes that must be reached to get seats in 
 #' parliament. Defaults to 0.05 (hurdle for german parliament).
 #' @return Vector of (named) entry probabilities.
-#' @export
 #' @seealso \code{\link{draw_from_posterior}}
-#' 
+#' @keywords internal
+#' @export
 get_entryprobability <- function(dirichlet.draws, hurdle = 0.05) {
     
   colSums(dirichlet.draws >= hurdle)/nrow(dirichlet.draws)

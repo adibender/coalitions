@@ -6,6 +6,7 @@
 #' obtained. 
 #' @inheritParams calculate_prob
 #' @param seats_majority The number of seats needed to obtain majority. 
+#' @keywords internal
 has_majority <- function(
   seats_tab, 
   coalition, 
@@ -66,6 +67,7 @@ have_majority <- function(
 #' @inheritParams calculate_probs
 #' @inheritParams base::paste
 #' @importFrom purrr map
+#' @keywords internal
 paste_coalitions <- function(coalitions, collapse="_") {
 
   coalitions %>% map(sort) %>% map(paste, collapse=collapse) %>% unlist()
@@ -161,6 +163,7 @@ calculate_probs <- function(
 #' 
 #' @inherit calculate_prob
 #' @seealso \code{\link[coalitions]{get_superior}}
+#' @keywords internal
 filter_superior <- function(majority_df, coalition, ...) {
 
     superior       <- get_superior(coalition, ...)
@@ -185,6 +188,7 @@ filter_superior <- function(majority_df, coalition, ...) {
 #' @importFrom utils combn
 #' @importFrom stringr str_split
 #' @seealso stringr str_split
+#' @keywords internal
 get_superior <- function(
   string,
   pattern  = "_",

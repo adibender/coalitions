@@ -163,16 +163,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 10 x 7
 ##          cdu       spd     gruene        fdp      linke        afd
 ##        &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-##  1 0.3866309 0.2571468 0.07468461 0.08144271 0.09215422 0.06720231
-##  2 0.3736241 0.2661663 0.08559975 0.07451706 0.08961519 0.06954215
-##  3 0.3585021 0.2736486 0.08651282 0.07195225 0.08801357 0.07882016
-##  4 0.3651763 0.2670033 0.07699055 0.07745144 0.08834824 0.08613915
-##  5 0.3819904 0.2595631 0.07826840 0.07535248 0.09279285 0.07802071
-##  6 0.3910751 0.2410287 0.08805413 0.06338518 0.09739469 0.08555212
-##  7 0.3921429 0.2446776 0.07674063 0.07451124 0.09186834 0.07999668
-##  8 0.3865743 0.2446804 0.07403173 0.07415406 0.09298724 0.08726427
-##  9 0.3764433 0.2552434 0.08384205 0.07313775 0.09127839 0.08315747
-## 10 0.3696751 0.2417991 0.09016686 0.08074264 0.09099347 0.08265365
+##  1 0.3852622 0.2452470 0.08237497 0.08564195 0.09449698 0.07298414
+##  2 0.3812478 0.2611123 0.07676932 0.07506941 0.09323518 0.07617457
+##  3 0.3961782 0.2508300 0.07444981 0.06802002 0.09142902 0.08069958
+##  4 0.3925844 0.2469351 0.07928879 0.07382352 0.08742028 0.08306836
+##  5 0.3716591 0.2408656 0.07441803 0.08360968 0.09860564 0.09045794
+##  6 0.3651045 0.2570533 0.08095136 0.09596624 0.09177370 0.07197204
+##  7 0.3773421 0.2523169 0.08160869 0.09142469 0.08154894 0.07931541
+##  8 0.3805701 0.2438148 0.07520861 0.08294625 0.10387065 0.08276685
+##  9 0.3829143 0.2376833 0.08266703 0.08646124 0.08509433 0.08008395
+## 10 0.3647567 0.2539257 0.08002839 0.08052502 0.09728836 0.07919359
 ## # ... with 1 more variables: sonstige &lt;dbl&gt;</code></pre>
 </div>
 <div id="calculate-seat-distribution" class="section level2">
@@ -186,25 +186,25 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 ##        datum           survey             draws             seats
 ##       &lt;date&gt;           &lt;list&gt;            &lt;list&gt;            &lt;list&gt;
 ## 1 2017-07-22 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
-## 2 2017-07-15 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [59 x 3]&gt;
+## 2 2017-07-15 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
 ## 3 2017-07-08 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
 ## 4 2017-07-01 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
-## 5 2017-06-24 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [59 x 3]&gt;
+## 5 2017-06-24 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
 ## 6 2017-06-17 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## sim column indicates simulated elections (rows in draws column)
 elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(seats) %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 60 x 3
 ##      sim  party seats
 ##    &lt;int&gt;  &lt;chr&gt; &lt;int&gt;
-##  1     1    cdu   241
-##  2     1    spd   160
-##  3     1 gruene    47
-##  4     1    fdp    51
-##  5     1  linke    57
-##  6     1    afd    42
-##  7     2    cdu   233
-##  8     2    spd   166
-##  9     2 gruene    53
+##  1     1    cdu   239
+##  2     1    spd   152
+##  3     1 gruene    51
+##  4     1    fdp    53
+##  5     1  linke    58
+##  6     1    afd    45
+##  7     2    cdu   236
+##  8     2    spd   162
+##  9     2 gruene    48
 ## 10     2    fdp    47
 ## # ... with 50 more rows</code></pre>
 <p>In the above example, given the latest survey, CDU/CSU would have 225 seats in the first simulation, 223 seats in the second simulation, etc.</p>
@@ -231,10 +231,10 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 ##        datum             draws             seats        majorities
 ##       &lt;date&gt;            &lt;list&gt;            &lt;list&gt;            &lt;list&gt;
 ## 1 2017-07-22 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
-## 2 2017-07-15 &lt;tibble [10 x 7]&gt; &lt;tibble [59 x 3]&gt; &lt;tibble [10 x 8]&gt;
+## 2 2017-07-15 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
 ## 3 2017-07-08 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
 ## 4 2017-07-01 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
-## 5 2017-06-24 &lt;tibble [10 x 7]&gt; &lt;tibble [59 x 3]&gt; &lt;tibble [10 x 8]&gt;
+## 5 2017-06-24 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
 ## 6 2017-06-17 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The majorities table for each date will have 1 row per simulation</span>
 <span class="co"># and one column per coalition</span>
@@ -294,14 +294,14 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="../reference/get_
 ##           coalition probability
 ##               &lt;chr&gt;       &lt;dbl&gt;
 ##  1              cdu           0
-##  2          cdu_fdp           0
-##  3   cdu_fdp_gruene         100
+##  2          cdu_fdp          10
+##  3   cdu_fdp_gruene          90
 ##  4              spd           0
 ##  5        linke_spd           0
 ##  6 gruene_linke_spd           0
 ##  7              cdu           0
-##  8          cdu_fdp           0
-##  9   cdu_fdp_gruene         100
+##  8          cdu_fdp          10
+##  9   cdu_fdp_gruene          90
 ## 10              spd           0
 ## # ... with 26 more rows</code></pre>
 </div>

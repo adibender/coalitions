@@ -2,6 +2,7 @@
 #' 
 #' @param vec Character vector containg percentages that can not be transformed 
 #' to numerics b/c of special characters
+#' @keywords internal
 sanitize_percent <- function(vec) {
 
 	vec <- gsub(" %", "",  vec, fixed=TRUE)
@@ -17,6 +18,7 @@ sanitize_percent <- function(vec) {
 #' 
 #' Substitute all german "Umlaute"
 #' @param x A character vector. 
+#' @keywords internal
 sanitize_strings <- function(x) {
 
 	# lower case letters 
@@ -36,6 +38,7 @@ sanitize_strings <- function(x) {
 #' 
 #' Removes all characters that are not in [0-9].
 #' @param x A character vector.
+#' @keywords internal
 extract_num <- function(x) {
 	as.numeric(gsub("[^0-9]", "", x))
 }
@@ -44,6 +47,7 @@ extract_num <- function(x) {
 #' 
 #' @param df A data frame with party names with special characters that need 
 #' to be sanitized.
+#' @keywords internal
 sanitize_colnames <- function(df) {
 
 	cdf <- colnames(df)
@@ -127,10 +131,10 @@ scrape_wahlrecht <- function(
 #' @importFrom tidyr gather nest
 #' @importFrom purrr compose
 #' @return Data frame in long format
-#' @export
 #' @examples
 #' emnid <- scrape_wahlrecht()
 #' emnid.long <- collapse_parties(emnid)
+#' @export
 collapse_parties <- function(
 	surveys, 
 	parties = c("cdu", "spd", "gruene", "fdp", "linke", "piraten", "fw", "afd", 

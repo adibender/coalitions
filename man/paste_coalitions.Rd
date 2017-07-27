@@ -17,3 +17,4 @@ need to correspond to the names in \code{majority_df}.}
 \description{
 Transform list of coalitions to vector by combining party names
 }
+\keyword{internal}

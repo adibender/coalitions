@@ -13,3 +13,4 @@ pooling as returned by \code{get_eligible}.}
 \description{
 Total number of survey participants from surveys elligible for pooling.
 }
+\keyword{internal}

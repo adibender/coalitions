@@ -21,3 +21,4 @@ Defaults to 0.5.}
 This is the work horse function that calculates the effective sample size. 
 Should usually not be called by the user directly.
 }
+\keyword{internal}
