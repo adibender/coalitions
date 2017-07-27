@@ -13,3 +13,4 @@ data/electionDE2012.RData
 ^\.mailmap$
 ^docs$
 ^CODE_OF_CONDUCT\.md$
+^favicon\.ico$
