@@ -77,10 +77,8 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magrittr)
 <span class="kw">library</span>(tidyr)
 <span class="kw">library</span>(purrr)
-<span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## Warning: Installed Rcpp (0.12.12) different from Rcpp used to build dplyr (0.12.11).
-## Please reinstall dplyr to avoid random crashes or undefined behavior.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(coalitions)</code></pre></div>
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(coalitions)</code></pre></div>
 <p>In this vignette we demonstrate the basic workflow using the most recent emnid survey.</p>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
@@ -165,16 +163,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 10 x 7
 ##          cdu       spd     gruene        fdp      linke        afd
 ##        &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-##  1 0.3786999 0.2568651 0.08400958 0.08160463 0.08525350 0.07699451
-##  2 0.3657646 0.2724531 0.07901004 0.07493077 0.08008047 0.08840173
-##  3 0.3795010 0.2502211 0.08045053 0.07620655 0.08947398 0.08316706
-##  4 0.3718863 0.2481470 0.08473377 0.08861011 0.08782506 0.07765593
-##  5 0.3811487 0.2564617 0.07614780 0.08074728 0.09020863 0.07786583
-##  6 0.3788528 0.2421410 0.07750435 0.08199287 0.08798716 0.09438864
-##  7 0.3767009 0.2491272 0.07154483 0.08022790 0.09370573 0.08920036
-##  8 0.3820968 0.2486110 0.08015811 0.07736577 0.09625755 0.08053779
-##  9 0.3613257 0.2530430 0.08121106 0.08502827 0.09727146 0.08704827
-## 10 0.3897056 0.2445914 0.08904171 0.07254598 0.08788933 0.08092956
+##  1 0.3866309 0.2571468 0.07468461 0.08144271 0.09215422 0.06720231
+##  2 0.3736241 0.2661663 0.08559975 0.07451706 0.08961519 0.06954215
+##  3 0.3585021 0.2736486 0.08651282 0.07195225 0.08801357 0.07882016
+##  4 0.3651763 0.2670033 0.07699055 0.07745144 0.08834824 0.08613915
+##  5 0.3819904 0.2595631 0.07826840 0.07535248 0.09279285 0.07802071
+##  6 0.3910751 0.2410287 0.08805413 0.06338518 0.09739469 0.08555212
+##  7 0.3921429 0.2446776 0.07674063 0.07451124 0.09186834 0.07999668
+##  8 0.3865743 0.2446804 0.07403173 0.07415406 0.09298724 0.08726427
+##  9 0.3764433 0.2552434 0.08384205 0.07313775 0.09127839 0.08315747
+## 10 0.3696751 0.2417991 0.09016686 0.08074264 0.09099347 0.08265365
 ## # ... with 1 more variables: sonstige &lt;dbl&gt;</code></pre>
 </div>
 <div id="calculate-seat-distribution" class="section level2">
@@ -188,25 +186,25 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 ##        datum           survey             draws             seats
 ##       &lt;date&gt;           &lt;list&gt;            &lt;list&gt;            &lt;list&gt;
 ## 1 2017-07-22 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
-## 2 2017-07-15 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
+## 2 2017-07-15 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [59 x 3]&gt;
 ## 3 2017-07-08 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
 ## 4 2017-07-01 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
-## 5 2017-06-24 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
+## 5 2017-06-24 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [59 x 3]&gt;
 ## 6 2017-06-17 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## sim column indicates simulated elections (rows in draws column)
 elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(seats) %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 60 x 3
 ##      sim  party seats
 ##    &lt;int&gt;  &lt;chr&gt; &lt;int&gt;
-##  1     1    cdu   235
-##  2     1    spd   159
-##  3     1 gruene    52
+##  1     1    cdu   241
+##  2     1    spd   160
+##  3     1 gruene    47
 ##  4     1    fdp    51
-##  5     1  linke    53
-##  6     1    afd    48
-##  7     2    cdu   228
-##  8     2    spd   169
-##  9     2 gruene    49
+##  5     1  linke    57
+##  6     1    afd    42
+##  7     2    cdu   233
+##  8     2    spd   166
+##  9     2 gruene    53
 ## 10     2    fdp    47
 ## # ... with 50 more rows</code></pre>
 <p>In the above example, given the latest survey, CDU/CSU would have 225 seats in the first simulation, 223 seats in the second simulation, etc.</p>
@@ -233,10 +231,10 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 ##        datum             draws             seats        majorities
 ##       &lt;date&gt;            &lt;list&gt;            &lt;list&gt;            &lt;list&gt;
 ## 1 2017-07-22 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
-## 2 2017-07-15 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
+## 2 2017-07-15 &lt;tibble [10 x 7]&gt; &lt;tibble [59 x 3]&gt; &lt;tibble [10 x 8]&gt;
 ## 3 2017-07-08 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
 ## 4 2017-07-01 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
-## 5 2017-06-24 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
+## 5 2017-06-24 &lt;tibble [10 x 7]&gt; &lt;tibble [59 x 3]&gt; &lt;tibble [10 x 8]&gt;
 ## 6 2017-06-17 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The majorities table for each date will have 1 row per simulation</span>
 <span class="co"># and one column per coalition</span>
@@ -296,14 +294,14 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="../reference/get_
 ##           coalition probability
 ##               &lt;chr&gt;       &lt;dbl&gt;
 ##  1              cdu           0
-##  2          cdu_fdp          10
-##  3   cdu_fdp_gruene          90
+##  2          cdu_fdp           0
+##  3   cdu_fdp_gruene         100
 ##  4              spd           0
 ##  5        linke_spd           0
 ##  6 gruene_linke_spd           0
 ##  7              cdu           0
-##  8          cdu_fdp          10
-##  9   cdu_fdp_gruene          90
+##  8          cdu_fdp           0
+##  9   cdu_fdp_gruene         100
 ## 10              spd           0
 ## # ... with 26 more rows</code></pre>
 </div>
