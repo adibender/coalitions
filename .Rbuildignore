@@ -12,3 +12,4 @@ data/electionDE2012.RData
 ^appveyor\.yml$
 ^\.mailmap$
 ^docs$
+^CODE_OF_CONDUCT\.md$

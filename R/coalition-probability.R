@@ -6,6 +6,7 @@
 #' obtained. 
 #' @inheritParams calculate_prob
 #' @param seats_majority The number of seats needed to obtain majority. 
+#' @keywords internal
 has_majority <- function(
   seats_tab, 
   coalition, 
@@ -26,6 +27,8 @@ has_majority <- function(
 #' @inheritParams calculate_probs
 #' @param seats_tab A data frame cotaining number of seats obtained by a party. 
 #' Must have columns \code{party} and \code{seats}. 
+#' @importFrom purrr map
+#' @importFrom dplyr bind_cols
 #' @export
 have_majority <- function(
   seats_tab, 
@@ -48,11 +51,11 @@ have_majority <- function(
 
   coalitions %<>% map(sort)
 
-  majority_df <- map_dfc(
+  majority_df <- map(
     coalitions, 
     has_majority, 
     seats_tab = seats_tab,
-    seats_majority  = seats_majority)
+    seats_majority  = seats_majority) %>% bind_cols()
   colnames(majority_df) <- paste_coalitions(coalitions, collapse=collapse)
 
   majority_df 
@@ -64,6 +67,7 @@ have_majority <- function(
 #' @inheritParams calculate_probs
 #' @inheritParams base::paste
 #' @importFrom purrr map
+#' @keywords internal
 paste_coalitions <- function(coalitions, collapse="_") {
 
   coalitions %>% map(sort) %>% map(paste, collapse=collapse) %>% unlist()
@@ -121,7 +125,8 @@ calculate_prob <- function(
 #' @param coalitions A list of coaltions for which coalition probabilities should 
 #' be calculated. Each list entry must be a vector of party names. Those names 
 #' need to correspond to the names in \code{majority_df}.
-#' @importFrom purrr map_dfc
+#' @importFrom dplyr bind_cols
+#' @importFrom purrr map
 #' @importFrom tidyr gather
 #' @seealso \code{\link[coalitions]{calculate_prob}}
 #' @examples
@@ -144,10 +149,11 @@ calculate_probs <- function(
   assert_flag(exclude_superior)
 
   coalitions %<>% paste_coalitions()
-  coalitions %>% map_dfc(
-    .f               = calculate_prob,
-    majority_df      = majority_df,
-    exclude_superior = exclude_superior, ...) %>%
+  coalitions %>% map(
+      .f               = calculate_prob,
+      majority_df      = majority_df,
+      exclude_superior = exclude_superior, ...) %>%
+    bind_cols() %>% 
     gather("coalition", "probability", one_of(coalitions))
 
 }
@@ -157,6 +163,7 @@ calculate_probs <- function(
 #' 
 #' @inherit calculate_prob
 #' @seealso \code{\link[coalitions]{get_superior}}
+#' @keywords internal
 filter_superior <- function(majority_df, coalition, ...) {
 
     superior       <- get_superior(coalition, ...)
@@ -181,6 +188,7 @@ filter_superior <- function(majority_df, coalition, ...) {
 #' @importFrom utils combn
 #' @importFrom stringr str_split
 #' @seealso stringr str_split
+#' @keywords internal
 get_superior <- function(
   string,
   pattern  = "_",

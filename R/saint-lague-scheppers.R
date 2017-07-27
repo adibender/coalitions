@@ -20,6 +20,7 @@ sls <- function(
   parties, 
   n_seats   = 598L) {
 
+  ## attention: div_mat is an internal object. see data_raw/internals.R
   divisor.mat <- sum(votes)/t(div_mat[seq_along(votes), ]*votes)
   colnames(divisor.mat) <- parties
 

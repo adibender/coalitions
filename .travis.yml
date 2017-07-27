@@ -8,8 +8,5 @@ r:
   - devel
   - release
 
-r_github_packages:
-  - tidyverse/purrr
-
 after_success:
   - Rscript -e 'covr::codecov(line_exclusions="R/zzz.R", type="all")'

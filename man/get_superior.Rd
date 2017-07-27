@@ -34,3 +34,4 @@ Extract superior coalitions from coalition string or vector
 \seealso{
 stringr str_split
 }
+\keyword{internal}

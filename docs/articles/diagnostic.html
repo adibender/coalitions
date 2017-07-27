@@ -77,10 +77,8 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magrittr)
 <span class="kw">library</span>(tidyr)
 <span class="kw">library</span>(purrr)
-<span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## Warning: Installed Rcpp (0.12.12) different from Rcpp used to build dplyr (0.12.11).
-## Please reinstall dplyr to avoid random crashes or undefined behavior.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(coalitions)
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(coalitions)
 <span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme_get">theme_set</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>())</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>() %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()
@@ -103,7 +101,7 @@ draws_long &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rd
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(draws_long, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x=</span>sim, <span class="dt">y=</span>percent)) +<span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_path</a></span>() +<span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_abline">geom_hline</a></span>(<span class="dt">yintercept =</span> <span class="fl">0.05</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="dv">2</span>) +<span class="st"> </span>
-<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(~party)</code></pre></div>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(~party, <span class="dt">nrow=</span><span class="dv">2</span>)</code></pre></div>
 <p><img src="diagnostic_files/figure-html/unnamed-chunk-4-2.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">draws_long %&gt;%<span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(party) %&gt;%<span class="st"> </span>
@@ -113,10 +111,10 @@ draws_long &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rd
 ##      &lt;chr&gt;     &lt;dbl&gt;
 ## 1      afd    1.0000
 ## 2      cdu    1.0000
-## 3      fdp    0.8760
-## 4   gruene    0.9852
+## 3      fdp    0.8619
+## 4   gruene    0.9847
 ## 5    linke    1.0000
-## 6 sonstige    0.5027
+## 6 sonstige    0.5141
 ## 7      spd    1.0000</code></pre>
 </div>
   </div>

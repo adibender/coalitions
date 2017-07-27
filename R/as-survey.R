@@ -20,8 +20,8 @@
 #'  samplesize = 2508,
 #'  parties    = c("cdu/csu", "spd", "gruene", "fdp", "linke", "piraten", "afd", "others"))
 #' forsa 
-#' @keywords survey
 #' @seealso \code{\link{redistribute}}
+#' @keywords internal
 #' @export
 as_survey <- function(
 

@@ -15,7 +15,6 @@
 #' @export
 #' @return A \code{data.frame} containing parties above the hurdle and the respective
 #' seats/percentages after redistribution via D'Hondt
-
 dHondt <- function(survey, hurdle = 0.04, seats = 183, epsilon = 1e-6) {
 
     #get votes.in.perc after excluding parties with votes.in.perc < 0.05 and "Sonstige"

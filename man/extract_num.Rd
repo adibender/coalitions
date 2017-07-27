@@ -12,3 +12,4 @@ extract_num(x)
 \description{
 Removes all characters that are not in [0-9].
 }
+\keyword{internal}

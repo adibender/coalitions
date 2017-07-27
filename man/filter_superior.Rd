@@ -21,3 +21,4 @@ Remove rows from table for which superior coalitions possible
 \seealso{
 \code{\link[coalitions]{get_superior}}
 }
+\keyword{internal}

@@ -39,4 +39,4 @@ forsa
 \seealso{
 \code{\link{redistribute}}
 }
-\keyword{survey}
+\keyword{internal}

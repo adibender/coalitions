@@ -4,6 +4,7 @@
 #' @import dplyr
 #' @importFrom magrittr "%<>%"
 #' @importFrom tidyr nest unnest
+#' @keywords internal
 initialize <- function(path="./") {
 
 	assert_directory(path)
@@ -32,6 +33,7 @@ initialize <- function(path="./") {
 #' institutes. 
 #' @importFrom dplyr select
 #' @importFrom tidyr unnest
+#' @keywords internal
 #' @export
 get_meta <- function(surveys_df) {
 
@@ -66,7 +68,7 @@ get_surveys <- function() {
 	institutes_df %>% 
 		mutate(
 			surveys = map(address, scrape_wahlrecht), 
-			surveys = map(surveys, collapse_parties)) %>%
+			surveys = map(.x=surveys, collapse_parties)) %>%
 		select(-address)
 
 }

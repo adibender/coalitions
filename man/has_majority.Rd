@@ -18,3 +18,4 @@ will be obtained by \code{\link[coalitions]{get_superior}}.}
 \description{
 Does a coalition have a majority
 }
+\keyword{internal}

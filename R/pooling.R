@@ -9,6 +9,7 @@
 #' @param corr Assumed correlation between surveys (of different institutes). 
 #' Defaults to 0.5.
 #' @param weights Additional weights for individual surveys. 
+#' @keywords internal
 effective_samplesize <- function(
   size, 
   share, 
@@ -91,6 +92,7 @@ effective_samplesize <- function(
 #' @param period See \code{last_date} argument.
 #' @import dplyr checkmate
 #' @importFrom magrittr "%<>%"
+#' @keywords internal
 get_eligible <- function(
   surveys, 
   institutes   = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
@@ -120,6 +122,7 @@ get_eligible <- function(
 #' @inherit get_eligible
 #' @inheritParams effective_samplesize
 #' @importFrom tidyr unnest
+#' @keywords internal 
 get_pooled <- function(
   surveys, 
   last_date  = Sys.Date(),
@@ -218,7 +221,7 @@ pool_surveys <- function(
       befragte  = Neff,
       percent   = votes/nall*100,
       votes     = percent/100 * Neff) %>%
-    select(institute, datum, start, end, befragte, party, percent, votes)
+    select(one_of("institute", "datum", "start", "end", "befragte", "party", "percent", "votes"))
 
 }
 
@@ -227,6 +230,7 @@ pool_surveys <- function(
 #' 
 #' @param eligible_df A data frame containing surveys that should be used for 
 #' pooling as returned by \code{get_eligible}.
+#' @keywords internal
 get_n <- function(eligible_df) {
 
   eligible_df %>% 
