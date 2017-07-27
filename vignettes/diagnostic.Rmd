@@ -20,7 +20,7 @@ opts_chunk$set(
 ```
 
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(magrittr)
 library(tidyr)
 library(purrr)
@@ -56,7 +56,7 @@ ggplot(draws_long, aes(x=party, y=percent)) +
 ggplot(draws_long, aes(x=sim, y=percent)) + 
 	geom_path() + 
 	geom_hline(yintercept = 0.05, lty=2, col=2) + 
-	facet_wrap(~party)
+	facet_wrap(~party, nrow=2)
 
 draws_long %>% 
 	group_by(party) %>% 

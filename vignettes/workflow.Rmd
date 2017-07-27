@@ -20,7 +20,7 @@ opts_chunk$set(
 ```
 
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(magrittr)
 library(tidyr)
 library(purrr)
@@ -152,6 +152,6 @@ There is a wrapper function that directly returns probabilities:
 
 ```{r}
 elong <- collapse_parties(emnid)
-elong %>% get_probs(nsim=10) %>% unnest()
+elong %>% get_probabilities(nsim=10) %>% unnest()
 ```
 
