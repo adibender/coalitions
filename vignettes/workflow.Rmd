@@ -20,7 +20,7 @@ opts_chunk$set(
 ```
 
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(magrittr)
 library(tidyr)
 library(purrr)

@@ -11,3 +11,4 @@ data/electionDE2012.RData
 ^sandbox$
 ^appveyor\.yml$
 ^\.mailmap$
+^docs$
