@@ -104,7 +104,7 @@ get_eligible <- function(
 
   surveys %>% filter(institute %in% institutes) %>% 
     unnest(surveys) %>% 
-    filter(datum <= last_date - period) %>%
+    filter(datum >= last_date - period & datum <= last_date) %>%
     group_by(institute) %>% 
     filter(datum == max(datum))
 
@@ -212,7 +212,7 @@ pool_surveys <- function(
   svotes %>%
     mutate(
       institute = "pooled",
-      datum     = Sys.Date(),
+      datum     = last_date,
       start     = unique(pooled_df$from),
       end       = unique(pooled_df$to),
       befragte  = Neff,
