@@ -2,7 +2,7 @@
 	
 	if(getRversion() >= "2.5.1") {
 		utils::globalVariables(c(
-			"befragte", "datum", "party", "percent", 
+			"befragte", "datum", "party", "percent", "cdu", "sonstige", "surveys",
 			"probabilities", "seats", "sim", "survey", "total", "votes", "zeitraum", 
 			".", "majority", "draws", "institute", "address"))
 	}
