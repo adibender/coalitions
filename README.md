@@ -94,8 +94,8 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##          coalition probability
     ##              <chr>       <dbl>
     ## 1              cdu        0.00
-    ## 2          cdu_fdp       53.97
-    ## 3   cdu_fdp_gruene       46.03
+    ## 2          cdu_fdp       53.77
+    ## 3   cdu_fdp_gruene       46.23
     ## 4              spd        0.00
     ## 5        linke_spd        0.00
     ## 6 gruene_linke_spd        0.00
