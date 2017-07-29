@@ -121,6 +121,40 @@ scrape_wahlrecht <- function(
 }
 
 
+
+#' Scrape surveys from all survey institutes
+#' 
+#' @import dplyr
+#' @importFrom purrr map
+#' @export
+get_surveys <- function() {
+
+	institutes_df %>% 
+		mutate(
+			surveys = map(address, scrape_wahlrecht), 
+			surveys = map(.x=surveys, collapse_parties)) %>%
+		select(-address)
+
+}
+
+
+#' Extract "meta" information from survey data base
+#' 
+#' @param surveys_df A data frame containing surveys from different survey 
+#' institutes as returned by \code{\link{get_surveys}}. 
+#' @importFrom dplyr select
+#' @importFrom tidyr unnest
+#' @keywords internal
+#' @export
+get_meta <- function(surveys_df) {
+
+	surveys_df %>% 
+		unnest() %>% 
+		select(institute, datum:befragte)
+
+}
+
+
 #' Transform surveys in long format
 #' 
 #' Given a data frame containing multiple surveys (one row per survey), transforms 
