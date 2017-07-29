@@ -1,0 +1,185 @@
+---
+title: "KOALA"
+author: "Andreas Bender"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(knitr)
+library(kableExtra)
+opts_chunk$set(
+  fig.align = "center",
+  echo = FALSE, 
+  message=FALSE)
+library(magrittr)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(stringr)
+library(coalitions)
+```
+
+
+# Koalitionsanalysen zur Bundestagswahl 2017
+
+Kurz vor der Bundestagswahl am 24. September 2017 steigt wieder das Interesse 
+an Wahlberichterstattung. Von Interesse ist insbesondere, welche Parteien 
+die Regierungskoalition stellen werden und ob es die kleinen Parteien in 
+den Bundestag schaffen. Dabei werden üblicherweise einfach die Anteile der 
+einzelnen Parteien in den Umfragen zur sogenannten *Sonntagsfrage* betrachet: 
+
+> "Welche Partei würden sie wählen, wenn nächsten Sonntag Bundestagswahl wäre?"
+
+Diese einfache Betrachtung ist allerdings oft irreführend und uninformativ. 
+In Zusammenarbeit mit [ZEIT ONLINE](http://www.zeit.de/serie/wahlistik) hat das 
+[Statistische Beratungslabor (StaBLab) der LMU](http://www.stablab.stat.uni-muenchen.de/index.html) 
+deshalb 2013 ein Verfahren entwickelt, dass eine genauere und aussagekräftigere 
+Interpretation von Umfragen erlaubt. Auch zur Bundestagswahl 2017 gibt es wieder
+unsere [\#KOALA](http://koala.stat.uni-muenchen.de/). 
+
+- Detailierte Auswertungen gibt es in unserem [interaktiven Tool](http://koala.stat.uni-muenchen.de/)
+- Für aktuelle Updates folgt unserem [Twitter feed](https://twitter.com/KOALA_LMU)
+
+
+## Warum reicht es nicht die Anteile zu betrachten?
+```{r calcProbs}
+forsa_13 <- as_survey(
+    percent    = c(.40, .26, .10, .05, .09, .02, .04, .04),
+    samplesize = 1995,
+    parties    = c("cdu", "spd", "gruene", "fdp", "linke", "piraten", "afd", "sonstige"))
+probs_13 <- forsa_13 %>% 
+    draw_from_posterior(correction = 0.005) %>% 
+    get_seats(survey=forsa_13) %>% 
+    have_majority(
+        coalitions = list(
+            c("cdu"), c("cdu", "fdp"), c("cdu", "gruene"), c("cdu", "fdp", "gruene"),
+            c("spd"), c("spd", "linke"), c("spd", "linke", "gruene"))) %>% 
+    calculate_probs(
+        coalitions = list(
+            c("cdu"), c("cdu", "fdp"), c("cdu", "gruene"), c("cdu", "fdp", "gruene"),
+            c("spd"), c("spd", "linke"), c("spd", "linke", "gruene")))
+```
+
+
+Die untere Tabelle zeigt die letzte Forsa Umfrage vor der Bundestagswahl 2013: 
+
+```{r results="asis"}
+forsa_13[, 1:2] %>% 
+  select(Partei=party, Anteil=percent) %>% 
+  mutate(Anteil = str_pad(paste0(Anteil * 100, "%"), 3)) %>% 
+  kable(
+    caption = "Forsa Umfrage vom 20.September 2013", 
+    format="html",
+    align=c("l", "r")) %>% 
+  kable_styling(bootstrap_options=c("striped", "hover", "responsive"), full_width=FALSE)
+```
+
+Betrachtet man einfach die Anteile, kommt die FDP in den Bundestag und 
+Schwarz-Gelb hätte nicht genügen Stimmen für eine Mehrheit. 
+
+> Warum ist diese Betrachtung ungenügend?
+
+1. Die Stimmumverteilung wird nicht berücksichtigt: 
+Die Stimmen aller Parteien, die es nicht über die 5% Hürde nicht schaffen, 
+werden umverteilt. Je mehr Stimmen umverteilt werden, desto geringer muss der 
+Anteil Stimmen in den Befragungen sein, um eine Mehrheit der Sitze erreichen zu 
+können. Parteien mit einem hohen Stimmanteil profitieren dabei überproportional. 
+
+2. Die Stichprobenunsicherheit wird nicht berücksichtigt: 
+Selbst wenn eine Umfrage representativ ist, bedeutet es nicht, dass es bei der 
+Wahl nicht zu Abweichungen vom Umfragewert kommen kann. Dies kann für potentielle 
+Koalitionen eine Große Rolle spielen, insbesondere wenn eine oder mehrere 
+Parteien nahe an der 5% Hürde liegen.
+
+
+## Was bedeutet dies konkret? 
+
+### 1. Umverteilung 
+Bei der Bundestagswahl 2013 war der Anteil umverteilter Stimmen ungewöhnlich hoch. 
+Nach obiger Umfrage würden die Stimmen der Piraten, AfD und Sonstigen umverteilt, 
+also bereits 10%. Zusätzlich war die FDP knapp an der Grenze, d.h. 
+insgesamt hätten bis zu 15% der Stimmen umverteilt werden können. Die 
+Sitzeverteilung für dieses konkrete Beispiel sähe also folgendermaßen aus: 
+
+```{r, results="asis"}
+frd_13 <- redistribute(forsa_13) %>% 
+    mutate(
+        percent = round(percent, 4)*100,
+        seats = sls(votes, party)) %>% 
+    select(party, percent, seats)
+kable(frd_13, format="html")  %>% 
+  kable_styling(bootstrap_options=c("striped", "hover"), full_width=FALSE)
+```
+
+In diesem Szenario hätte Schwarz-Gelb also nur knapp weniger als 50% anstatt 
+der knapp 45% die sich aus der Umfrage ergaben und Schwarz-Grün eine solide 
+Mehrheit von knapp 55.6%, was nach Umfrage nur 50% wären. 
+
+### 2. Stichprobenunsicherheit
+
+Selbst wenn man davon ausgeht, dass die einzelnen Umfrageinstitute keinen 
+systematischen Fehler machen, ist jede Befragung basierend auf einer Stichprobe 
+mit Unsicherheit behaftet. Das heißt, dass die wahren Anteile einzelner Parteien 
+von den erfragten Anteilen abweichen können.  Je kleiner die Stichprobe, desto 
+größer die Unsicherheit.
+
+Für die FDP würde die Forsa Umfrage deshalb bedeuten, dass sie es nur in 50% 
+Prozent der Fälle in den Bundestag schafft. D.h. selbst wenn es für Schwarz-Gelb, 
+laut Umfrage und nach Umverteilung, knapp für eine Mehrheit reichen würde, 
+**realisiert** sich diese Mehrheit nur in etwa 50% Prozent der Fälle. 
+In den anderen 50% der Fälle profitiert die Union zwar davon, dass die Anteile 
+der FDP umverteilt werden, aber nicht in vollem Umfang, sodass z.B. eine 
+alleinige Mehrheit sehr unwahrscheinlich ist. 
+
+## Wie geht die KOALA mit diesen Problemen um? 
+
+Unser Ansatz beginnt damit, dass wir die Stichprobenunsicherheit anerkennen.
+Basierend auf den Umfragen, generieren wir dann viele verschiedene Wahlausgänge, 
+die manchmal mehr, manchmal weniger von den Umfragewerten abweichen. In jedem 
+dieser hypothetischen Wahlausgänge führen wir die Umverteilung der Anteile 
+durch und berechnen für jede Partei die Anzahl Sitze nach der Umverteilung. 
+Gegeben die Sitze kann dann für eine Koalition von Interesse berechnet werden, 
+ob genügend Sitze für eine Mehrheit Zustande gekommen sind. 
+
+Wiederholt man das ganze mehrere Tausend mal und betrachtet den Anteil 
+Wiederholungen bei denen es für eine Mehrheit gereicht hat, erhält man die 
+Wahrscheinlichkeit, dass, basierend auf der Umfrage, für die Koalition von 
+Interesse eine Mehrheit zustande kommen würde. 
+
+Im vorherigen Beispiel ergeben sich z.B. folgende Wahrscheinlichkeiten: 
+
+```{r}
+probs_13 %>% 
+  mutate(
+    probability = paste(probability, "%")) %>% 
+  select(Koalition = coalition, Wahrscheinlichkeit = probability) %>% 
+  kable(
+    format="html",
+    caption="Auf der Forsa Umfrage basierende Koalitionswahrscheinlichkeiten laut unserer KOALA",
+    align = c("l", "r")) %>% 
+    kable_styling(bootstrap_options=c("striped", "hover"), full_width=F)
+```
+
+Obwohl also die Union und FDP laut Umfrage nur 45% der Stimmanteile erhalten, 
+betrug die Wahrscheinlichkeit dafür, dass Schwarz-Gelb eine rechnerische 
+Sitzemehrheit erhält etwa 27%. 
+
+Zum Vergleich, die Wahrscheinlichkeit, 
+dass Donald Trump die Präsidentschaft gewinnt, lag laut letzter Vorhersage von 
+[FiveThirtyEight](https://projects.fivethirtyeight.com/2016-election-forecast/)
+bei 28.6%. 
+
+Bei der Bundestagswahl 2013 ist hingegen das Ereignis mit der höheren 
+Wahrscheinlichkeit (keine Sitzemehrheit für Schwarz-Gelb) eingetreten, 
+insbesondere auch deshalb, weil die FDP es trotzt 5% in den Umfragen nicht in 
+den Bundestag geschafft hat. 
+
+
+
+
+
