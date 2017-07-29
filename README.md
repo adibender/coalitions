@@ -4,8 +4,6 @@ coalitions
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Travis-CI Build Status](https://travis-ci.org/adibender/coalitions.svg?branch=master)](https://travis-ci.org/adibender/coalitions) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/adibender/coalitions?branch=master&svg=true)](https://ci.appveyor.com/project/adibender/coalitions) [![Coverage Status](https://codecov.io/github/adibender/coalitions/master.svg)](https://codecov.io/github/adibender/coalitions?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/coalitions)](https://cran.r-project.org/package=coalitions)
 
-**Calculate oalition probabilities in multi-party democracies**
-
 Overview
 --------
 
@@ -26,7 +24,7 @@ devtools::install_github("adibender/coalitions", build_vignettes=TRUE)
 Usage
 -----
 
-Detailed workflow is outlined in the vignettes enclosed in the package, especially in `vignette("workflow", package="coalitions")`.
+Detailed [workflow](https://adibender.github.io/coalitions/articles/workflow.html) is outlined in the vignettes enclosed in the package (see `browseVignettes(package="coalitions")`).
 
 ### Scrape surveys
 
@@ -92,12 +90,12 @@ For each survey (row) we can calculate the coalition probabilities
 survey %>% get_probabilities(nsim=1e4) %>% unnest()
 ```
 
-    ## # A tibble: 6 x 2
-    ##          coalition probability
-    ##              <chr>       <dbl>
-    ## 1              cdu        0.00
-    ## 2          cdu_fdp       54.55
-    ## 3   cdu_fdp_gruene       45.45
-    ## 4              spd        0.00
-    ## 5        linke_spd        0.00
-    ## 6 gruene_linke_spd        0.00
+    ## # A tibble: 6 x 4
+    ##    institute      datum        coalition probability
+    ##        <chr>     <date>            <chr>       <dbl>
+    ## 1 allensbach 2017-07-18              cdu        0.00
+    ## 2 allensbach 2017-07-18          cdu_fdp       54.83
+    ## 3 allensbach 2017-07-18   cdu_fdp_gruene       45.17
+    ## 4 allensbach 2017-07-18              spd        0.00
+    ## 5 allensbach 2017-07-18        linke_spd        0.00
+    ## 6 allensbach 2017-07-18 gruene_linke_spd        0.00

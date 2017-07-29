@@ -48,6 +48,9 @@
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
+      <a href="../articles/KOALA.html">KOALA</a>
+    </li>
+    <li>
       <a href="../articles/workflow.html">Workflow</a>
     </li>
   </ul>
@@ -75,7 +78,7 @@
       <h1>Workflow</h1>
                         <h4 class="author">Andreas Bender</h4>
             
-            <h4 class="date">2017-07-27</h4>
+            <h4 class="date">2017-07-29</h4>
           </div>
 
     
@@ -91,21 +94,14 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>This package calculates coalition probabilities in multi-party systems. To this end we provide some convenience functions, the most important of which are listed below:</p>
-<ul>
-<li>
-<code>scrape_wahlrecht</code>: A wrapper function that download the most current survey results from <a href="http://www.wahlrecht.de/" class="uri">http://www.wahlrecht.de/</a>
-</li>
-<li>
-<code>collapse_parties</code>: Transforms information on percentages received by individual parties in long format and stores them inside a nested tibble (see <code><a href="http://www.rdocumentation.org/packages/tidyr/topics/nest">tidyr::nest</a></code>)</li>
-<li>
-<code>draw_from_posterior</code>: Draws <code>nsim</code> samples from the posterior distribution (i.e. <code>nsim</code> simulated election results based on provided survey)</li>
-<li>
-<code>get_seats</code>: Obtain seat distributions for each simulation (see also <code><a href="../reference/sls.html">?sls</a></code>)</li>
-<li>
-<code>have_majority</code>: Given a list of coalitions of interest, caclulates if the respective coalition would have enough seats for a majority</li>
-<li>
-<code>calculate_probs</code>: Given majority tables obtained from <code>have_majority</code>, calculates the probabilities for the respective coalitions to have enough seats for a majority</li>
-</ul>
+<ol style="list-style-type: decimal">
+<li><p><code>scrape_wahlrecht</code>: A wrapper function that download the most current survey results from <a href="http://www.wahlrecht.de/" class="uri">http://www.wahlrecht.de/</a></p></li>
+<li><p><code>collapse_parties</code>: Transforms information on percentages received by individual parties in long format and stores them inside a nested tibble (see <code><a href="http://www.rdocumentation.org/packages/tidyr/topics/nest">tidyr::nest</a></code>)</p></li>
+<li><p><code>draw_from_posterior</code>: Draws <code>nsim</code> samples from the posterior distribution (i.e. <code>nsim</code> simulated election results based on provided survey)</p></li>
+<li><p><code>get_seats</code>: Obtain seat distributions for each simulation (see also <code><a href="../reference/sls.html">?sls</a></code>)</p></li>
+<li><p><code>have_majority</code>: Given a list of coalitions of interest, caclulates if the respective coalition would have enough seats for a majority</p></li>
+<li><p><code>calculate_probs</code>: Given majority tables obtained from <code>have_majority</code>, calculates the probabilities for the respective coalitions to have enough seats for a majority</p></li>
+</ol>
 </div>
 <div id="read-in-data" class="section level2">
 <h2 class="hasAnchor">
@@ -154,7 +150,8 @@ emnid %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <h2 class="hasAnchor">
 <a href="#simulate-elections" class="anchor"></a>Simulate elections</h2>
 <p>Based on each survey we can now simulate <code>nsim</code> elections by drawing from the Dirichlet distribution</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elong %&lt;&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">draws =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(survey, draw_from_posterior, <span class="dt">nsim=</span><span class="dv">10</span>, <span class="dt">correction=</span><span class="fl">0.005</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elong %&lt;&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
+    <span class="dt">draws =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(survey, draw_from_posterior, <span class="dt">nsim=</span><span class="dv">10</span>, <span class="dt">correction=</span><span class="fl">0.005</span>))
 elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(datum, survey, draws)</code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##        datum           survey             draws
@@ -170,16 +167,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 10 x 7
 ##          cdu       spd     gruene        fdp      linke        afd
 ##        &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-##  1 0.4001269 0.2552635 0.07546256 0.07610262 0.08693733 0.06865901
-##  2 0.3657436 0.2437556 0.08007213 0.07470591 0.09912370 0.08895768
-##  3 0.3966461 0.2459691 0.07708263 0.08135202 0.08548950 0.07919283
-##  4 0.3806707 0.2473129 0.06490544 0.07937148 0.08965782 0.09508260
-##  5 0.3811472 0.2384069 0.07512377 0.09254410 0.08743580 0.09033828
-##  6 0.3715167 0.2518560 0.07781071 0.07872316 0.10389624 0.07493994
-##  7 0.3745323 0.2660038 0.06995097 0.07982132 0.07698264 0.08595629
-##  8 0.3934852 0.2550343 0.07942147 0.07701884 0.08690010 0.06987480
-##  9 0.3776817 0.2436734 0.08192297 0.08431573 0.09417568 0.07453246
-## 10 0.3876906 0.2450767 0.08200790 0.07381608 0.09207919 0.07168630
+##  1 0.3875497 0.2496307 0.07446780 0.08110920 0.08624627 0.08323304
+##  2 0.3805348 0.2506517 0.07611033 0.08566235 0.08597240 0.07783774
+##  3 0.3749950 0.2500110 0.07685677 0.08049818 0.08396616 0.08430307
+##  4 0.3666579 0.2436557 0.07274422 0.08248613 0.09557662 0.09198400
+##  5 0.3884218 0.2643933 0.07932690 0.07443268 0.08821075 0.07065601
+##  6 0.3758331 0.2487239 0.08873847 0.07520554 0.08526325 0.09071729
+##  7 0.3903631 0.2506446 0.08362121 0.08019815 0.07948105 0.07394487
+##  8 0.3895900 0.2444934 0.08893369 0.07312671 0.08814972 0.07886155
+##  9 0.3896924 0.2385790 0.08021377 0.07802780 0.09105566 0.08178586
+## 10 0.3845613 0.2464644 0.08859441 0.07612607 0.09203274 0.07023704
 ## # ... with 1 more variables: sonstige &lt;dbl&gt;</code></pre>
 </div>
 <div id="calculate-seat-distribution" class="section level2">
@@ -203,16 +200,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 60 x 3
 ##      sim  party seats
 ##    &lt;int&gt;  &lt;chr&gt; &lt;int&gt;
-##  1     1    cdu   248
-##  2     1    spd   159
-##  3     1 gruene    47
-##  4     1    fdp    47
+##  1     1    cdu   241
+##  2     1    spd   155
+##  3     1 gruene    46
+##  4     1    fdp    50
 ##  5     1  linke    54
-##  6     1    afd    43
-##  7     2    cdu   230
-##  8     2    spd   153
-##  9     2 gruene    50
-## 10     2    fdp    47
+##  6     1    afd    52
+##  7     2    cdu   238
+##  8     2    spd   156
+##  9     2 gruene    48
+## 10     2    fdp    53
 ## # ... with 50 more rows</code></pre>
 <p>In the above example, given the latest survey, CDU/CSU would have 225 seats in the first simulation, 223 seats in the second simulation, etc.</p>
 </div>
@@ -232,7 +229,8 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
     <span class="kw">c</span>(<span class="st">"spd"</span>, <span class="st">"linke"</span>, <span class="st">"gruene"</span>))
 
 
-elong %&lt;&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">majorities =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(seats, have_majority, <span class="dt">coalitions=</span>coalitions))
+elong %&lt;&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">majorities =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(seats, have_majority, <span class="dt">coalitions=</span>coalitions))
 elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(datum, draws, seats, majorities)</code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##        datum             draws             seats        majorities
@@ -265,8 +263,9 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <h2 class="hasAnchor">
 <a href="#calculate-coalition-probabilities" class="anchor"></a>Calculate coalition probabilities</h2>
 <p>The last step is to calculate the coalition probabilities (note that by default we exclude “superior” coalitions, i.e. if “cdu/csu” have a majority on their own, this simulation will not be counted to the simulation with majority for “cdu/csu” and “fdp”, see example in <code><a href="../reference/calculate_probs.html">?calculate_probs</a></code>):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elong %&lt;&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">probabilities =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(majorities, calculate_probs, 
-    <span class="dt">coalitions=</span>coalitions))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elong %&lt;&gt;%<span class="st"> </span>
+<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
+        <span class="dt">probabilities =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(majorities, calculate_probs, <span class="dt">coalitions=</span>coalitions))
 elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(datum, majorities, probabilities)</code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##        datum        majorities    probabilities
@@ -296,20 +295,20 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <a href="#wrapper" class="anchor"></a>Wrapper</h2>
 <p>There is a wrapper function that directly returns probabilities:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elong &lt;-<span class="st"> </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>(emnid)
-elong %&gt;%<span class="st"> </span><span class="kw"><a href="../reference/get_probabilities.html">get_probabilities</a></span>(<span class="dt">nsim=</span><span class="dv">10</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
-<pre><code>## # A tibble: 36 x 2
-##           coalition probability
-##               &lt;chr&gt;       &lt;dbl&gt;
-##  1              cdu           0
-##  2          cdu_fdp           0
-##  3   cdu_fdp_gruene         100
-##  4              spd           0
-##  5        linke_spd           0
-##  6 gruene_linke_spd           0
-##  7              cdu           0
-##  8          cdu_fdp          10
-##  9   cdu_fdp_gruene          90
-## 10              spd           0
+elong %&gt;%<span class="st"> </span><span class="kw"><a href="../reference/get_probabilities.html">get_probabilities</a></span>(., <span class="dt">nsim=</span><span class="dv">10</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
+<pre><code>## # A tibble: 36 x 3
+##         datum        coalition probability
+##        &lt;date&gt;            &lt;chr&gt;       &lt;dbl&gt;
+##  1 2017-07-22              cdu           0
+##  2 2017-07-22          cdu_fdp          10
+##  3 2017-07-22   cdu_fdp_gruene          90
+##  4 2017-07-22              spd           0
+##  5 2017-07-22        linke_spd           0
+##  6 2017-07-22 gruene_linke_spd           0
+##  7 2017-07-15              cdu           0
+##  8 2017-07-15          cdu_fdp          10
+##  9 2017-07-15   cdu_fdp_gruene          90
+## 10 2017-07-15              spd           0
 ## # ... with 26 more rows</code></pre>
 </div>
 </div>

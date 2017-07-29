@@ -1,5 +1,3 @@
-
-
 #' Does a coalition have a majority 
 #' 
 #' @param seats_tab A table containing information on how many seats each party
@@ -235,6 +233,6 @@ get_probabilities <- function(
         coalitions     = coalitions,
         seats_majority = seats_majority),
       probabilities = map(majority, calculate_probs, coalitions=coalitions)) %>%
-    select(probabilities)
+    select(-one_of("draws", "seats", "majority", "survey", "start", "end", "befragte"))
 
 }

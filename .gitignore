@@ -15,3 +15,9 @@ figure/
 ## Dropbox
 *.dropbox.attr
 inst/doc
+
+/vignettes/diagnostic.html
+
+/vignettes/workflow.html
+
+/docs/articles/KOALA_cache/

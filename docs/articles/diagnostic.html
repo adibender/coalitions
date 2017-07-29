@@ -48,6 +48,9 @@
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
+      <a href="../articles/KOALA.html">KOALA</a>
+    </li>
+    <li>
       <a href="../articles/workflow.html">Workflow</a>
     </li>
   </ul>
@@ -75,7 +78,7 @@
       <h1>Diagnostic</h1>
                         <h4 class="author">Andreas Bender</h4>
             
-            <h4 class="date">2017-07-27</h4>
+            <h4 class="date">2017-07-29</h4>
           </div>
 
     
@@ -95,6 +98,8 @@ temp %&lt;&gt;%<span class="st"> </span>
         <span class="dt">percent  =</span> <span class="kw">c</span>(<span class="dv">36</span>, <span class="dv">28</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">5</span>),
         <span class="dt">votes    =</span> befragte *<span class="st"> </span>percent/<span class="dv">100</span>) %&gt;%
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/nest">nest</a></span>(party:votes, <span class="dt">.key=</span>survey)
+
+<span class="kw">set.seed</span>(<span class="dv">29072017</span>)
 draws &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(temp$survey, draw_from_posterior, <span class="dt">nsim=</span><span class="fl">1e4</span>, <span class="dt">correction=</span><span class="fl">0.01</span>) %&gt;%<span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/flatten">flatten_df</a></span>()
 draws_long &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/gather">gather</a></span>(draws, party, percent, cdu:sonstige) %&gt;%<span class="st"> </span>
@@ -116,12 +121,12 @@ draws_long &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rd
 <pre><code>## # A tibble: 7 x 2
 ##      party entryprob
 ##      &lt;chr&gt;     &lt;dbl&gt;
-## 1      afd    0.9999
+## 1      afd    1.0000
 ## 2      cdu    1.0000
-## 3      fdp    0.8664
-## 4   gruene    0.9859
+## 3      fdp    0.8648
+## 4   gruene    0.9861
 ## 5    linke    1.0000
-## 6 sonstige    0.5080
+## 6 sonstige    0.5060
 ## 7      spd    1.0000</code></pre>
 </div>
   </div>

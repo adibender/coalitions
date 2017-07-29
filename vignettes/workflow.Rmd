@@ -33,20 +33,26 @@ In this vignette we demonstrate the basic workflow using the most recent
 emnid survey. 
 
 ## Overview
-This package calculates coalition probabilities in multi-party systems. To this 
-end we provide some convenience functions, the most important of which are listed
-below: 
+This package calculates coalition probabilities in multi-party systems. 
+To this end we provide some convenience functions, the most important of which 
+are listed below:
 
-- `scrape_wahlrecht`: A wrapper function that download the most current 
+1. `scrape_wahlrecht`: A wrapper function that download the most current 
 survey results from http://www.wahlrecht.de/
-- `collapse_parties`: Transforms information on percentages received by individual
-parties in long format and stores them inside a nested tibble (see `tidyr::nest`)
-- `draw_from_posterior`: Draws `nsim` samples from the posterior distribution 
+
+2. `collapse_parties`: Transforms information on percentages received by 
+individual parties in long format and stores them inside a nested tibble 
+(see `tidyr::nest`)
+
+3. `draw_from_posterior`: Draws `nsim` samples from the posterior distribution 
 (i.e. `nsim` simulated election results based on provided survey)
-- `get_seats`: Obtain seat distributions for each simulation (see also `?sls`)
-- `have_majority`: Given a list of coalitions of interest, caclulates if the 
+
+4. `get_seats`: Obtain seat distributions for each simulation (see also `?sls`)
+
+5. `have_majority`: Given a list of coalitions of interest, caclulates if the 
 respective coalition would have enough seats for a majority
-- `calculate_probs`: Given majority tables obtained from `have_majority`, calculates the probabilities for the respective coalitions to have enough 
+
+6. `calculate_probs`: Given majority tables obtained from `have_majority`, calculates the probabilities for the respective coalitions to have enough 
 seats for a majority
 
 ## Read in data 
@@ -72,7 +78,8 @@ Based on each survey we can now simulate `nsim` elections by drawing from the
 Dirichlet distribution 
 
 ```{r}
-elong %<>% mutate(draws = map(survey, draw_from_posterior, nsim=10, correction=0.005))
+elong %<>% mutate(
+	draws = map(survey, draw_from_posterior, nsim=10, correction=0.005))
 elong %>% select(datum, survey, draws)
 # each row is one election simulation
 elong %>% slice(1) %>% select(draws) %>% unnest()
@@ -123,7 +130,8 @@ coalitions <- list(
 	c("spd", "linke", "gruene"))
 
 
-elong %<>% mutate(majorities = map(seats, have_majority, coalitions=coalitions))
+elong %<>% 
+	mutate(majorities = map(seats, have_majority, coalitions=coalitions))
 elong %>% select(datum, draws, seats, majorities)
 # The majorities table for each date will have 1 row per simulation
 # and one column per coalition
@@ -139,8 +147,9 @@ on their own, this simulation will not be counted to the simulation with
 majority for "cdu/csu" and "fdp", see example in `?calculate_probs`): 
 
 ```{r}
-elong %<>% mutate(probabilities = map(majorities, calculate_probs, 
-	coalitions=coalitions))
+elong %<>% 
+	mutate(
+		probabilities = map(majorities, calculate_probs, coalitions=coalitions))
 elong %>% select(datum, majorities, probabilities)
 # one row per coalition
 elong %>% slice(1) %>% select(probabilities) %>% unnest()
@@ -152,6 +161,6 @@ There is a wrapper function that directly returns probabilities:
 
 ```{r}
 elong <- collapse_parties(emnid)
-elong %>% get_probabilities(nsim=10) %>% unnest()
+elong %>% get_probabilities(., nsim=10) %>% unnest()
 ```
 
