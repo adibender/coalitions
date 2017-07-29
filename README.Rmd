@@ -15,7 +15,6 @@ opts_chunk$set(warning=FALSE)
 [![Coverage Status](https://codecov.io/github/adibender/coalitions/master.svg)](https://codecov.io/github/adibender/coalitions?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/coalitions)](https://cran.r-project.org/package=coalitions)
 
-**Calculate oalition probabilities in multi-party democracies**
 
 ## Overview 
 The package offers functions that calculate coalition probabilities 
@@ -34,8 +33,8 @@ devtools::install_github("adibender/coalitions", build_vignettes=TRUE)
 
 ## Usage
 
-Detailed workflow is outlined in the vignettes enclosed in the package, 
-especially in [`vignette("workflow", package="coalitions")`](https://adibender.github.io/coalitions/articles/workflow.html).
+Detailed [workflow](https://adibender.github.io/coalitions/articles/workflow.html) is outlined in the vignettes enclosed in the package 
+(see `browseVignettes(package="coalitions")`).
 
 
 ### Scrape surveys

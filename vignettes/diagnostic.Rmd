@@ -38,6 +38,8 @@ temp %<>%
 		percent  = c(36, 28, 7, 6, 9, 9, 5),
 		votes    = befragte * percent/100) %>%
 	nest(party:votes, .key=survey)
+
+set.seed(29072017)
 draws <- map(temp$survey, draw_from_posterior, nsim=1e4, correction=0.01) %>% 
 	flatten_df()
 draws_long <- gather(draws, party, percent, cdu:sonstige) %>% 
