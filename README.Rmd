@@ -35,7 +35,7 @@ devtools::install_github("adibender/coalitions", build_vignettes=TRUE)
 ## Usage
 
 Detailed workflow is outlined in the vignettes enclosed in the package, 
-especially in `vignette("workflow", package="coalitions")`.
+especially in [`vignette("workflow", package="coalitions")`](https://adibender.github.io/coalitions/articles/workflow.html).
 
 
 ### Scrape surveys
