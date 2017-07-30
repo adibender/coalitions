@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • coalitions</title>
+<title>Make prettier labels for parties — prettify_parties • coalitions</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-vignette-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -95,22 +95,55 @@
       
       </header>
 
-      <div class="page-header">
-  <h1>Articles <small>version&nbsp;0.4.0.903</small></h1>
-</div>
-
-<div class="row">
-  <div class="col-md-9">
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <ul>
-        <li><a href="diagnostic.html">Diagnostic</a></li>
-        <li><a href="KOALA.html">KOALA</a></li>
-        <li><a href="workflow.html">Workflow</a></li>
-      </ul>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Make prettier labels for parties</h1>
     </div>
+
+    
+    <p>Make prettier labels for parties</p>
+<p>Make prettier labels for coalitoins</p>
+    
+
+    <pre class="usage"><span class='fu'>prettify_parties</span>(<span class='no'>x</span>, <span class='kw'>current</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"cdu"</span>, <span class='st'>"spd"</span>, <span class='st'>"gruene"</span>, <span class='st'>"fdp"</span>, <span class='st'>"linke"</span>,
+  <span class='st'>"piraten"</span>, <span class='st'>"afd"</span>, <span class='st'>"sonstige"</span>), <span class='kw'>new</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Union"</span>, <span class='st'>"SPD"</span>, <span class='st'>"Grüne"</span>, <span class='st'>"FDP"</span>,
+  <span class='st'>"Die Linke"</span>, <span class='st'>"Piraten"</span>, <span class='st'>"AfD"</span>, <span class='st'>"Sonstige"</span>))
+
+<span class='fu'>prettify_coalitions</span>(<span class='no'>x</span>, <span class='kw'>current</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"cdu"</span>, <span class='st'>"cdu_fdp"</span>, <span class='st'>"cdu_gruene"</span>,
+  <span class='st'>"cdu_fdp_gruene"</span>, <span class='st'>"spd"</span>, <span class='st'>"linke_spd"</span>, <span class='st'>"gruene_linke_spd"</span>), <span class='kw'>new</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Union"</span>,
+  <span class='st'>"Union - FDP"</span>, <span class='st'>"Union - Grüne"</span>, <span class='st'>"Union - FDP - Grüne"</span>, <span class='st'>"SPD"</span>,
+  <span class='st'>"SPD - Die Linke"</span>, <span class='st'>"SPD - Die Linke - Grüne"</span>))</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a Vector of parties to prettify.</p></td>
+    </tr>
+    <tr>
+      <th>current</th>
+      <td><p>A vector of current values <code>x</code> can take</p></td>
+    </tr>
+    <tr>
+      <th>new</th>
+      <td><p>A vector of labels that <code>x</code> should be transformed into.</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>A vector of coalitions to prettify.</p></td>
+    </tr>
+    </table>
+    
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+                </ul>
+
   </div>
 </div>
 
