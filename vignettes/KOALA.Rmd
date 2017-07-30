@@ -113,7 +113,7 @@ Schwarz-Gelb hätte nicht genügend Stimmen für eine Mehrheit.
     - Dies kann für potentielle Koalitionen eine Große Rolle spielen, insbesondere 
     wenn eine oder mehrere Parteien nahe an der 5% Hürde liegen.
   
-3. Ausreißer und Instituesbias: 
+3. Ausreißer und Institutsbias: 
     - Einzelne Umfragen können von der tatsächlichen Stimmungslage abweichen
     - Umfragen verschiedener Institute weisen teilweise starke Unterschiede auf
     - Oft wird der Anteil einzelner Parteien je nach Umfrageinstitut systematisch

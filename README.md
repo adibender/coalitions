@@ -94,8 +94,8 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##    institute      datum        coalition probability
     ##        <chr>     <date>            <chr>       <dbl>
     ## 1 allensbach 2017-07-18              cdu        0.00
-    ## 2 allensbach 2017-07-18          cdu_fdp       54.23
-    ## 3 allensbach 2017-07-18   cdu_fdp_gruene       45.77
+    ## 2 allensbach 2017-07-18          cdu_fdp       53.83
+    ## 3 allensbach 2017-07-18   cdu_fdp_gruene       46.17
     ## 4 allensbach 2017-07-18              spd        0.00
     ## 5 allensbach 2017-07-18        linke_spd        0.00
     ## 6 allensbach 2017-07-18 gruene_linke_spd        0.00
