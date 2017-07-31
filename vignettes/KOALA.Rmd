@@ -2,7 +2,7 @@
 title: "koala17: Koalitionsanalysen zur Bundestagswahl 2017"
 author: "Andreas Bender"
 date: "`r Sys.Date()`"
-output: github_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
@@ -24,7 +24,7 @@ library(coalitions)
 Kurz vor der Bundestagswahl am 24. September 2017 steigt wieder das Interesse 
 an Wahlberichterstattung. Einen Beitrag hierzu leisten diverse 
 Meinungsforschungsinstitute, die in regelmäßigen Abständen Umfragewerte zur 
-sogenannten *Sonntagsfrage* veröffentlicht: 
+sogenannten *Sonntagsfrage* veröffentlichen: 
 
 > "Welche Partei würden sie wählen, wenn Sonntag Bundestagswahl wäre?"
 
@@ -38,7 +38,7 @@ oder
 
 zu beantworten. 
 
-Meist werden zur Beantwortung dieser Fragen einfach die erzielten Anteile 
+Oft werden zur Beantwortung dieser Fragen die erzielten Anteile 
 betrachtet oder für Koalitionen von Interesse aufaddiert. Diese einfache 
 Betrachtung ist allerdings oft **irreführend und uninformativ**, wie weiter 
 unten gezeigt wird.
@@ -90,10 +90,10 @@ forsa_13[, 1:2] %>%
   mutate(
     Partei = prettify_parties(Partei),
     Anteil = str_pad(paste0(Anteil * 100, "%"), 3)) %>% 
+  spread(Partei, Anteil) %>% 
   kable(
     caption = "Forsa Umfrage vom 20.September 2013", 
-    format="html",
-    align=c("l", "r")) %>% 
+    format="html") %>% 
   kable_styling(bootstrap_options=c("striped", "hover", "responsive"), full_width=FALSE)
 ```
 
@@ -119,7 +119,7 @@ Schwarz-Gelb hätte nicht genügend Stimmen für eine Mehrheit.
     - Selbst wenn eine Umfrage repräsentativ ist, bedeutet es nicht, dass es 
     bei der Wahl nicht zu Abweichungen vom Umfragewert kommen kann.
 
-    - Dies kann für potentielle Koalitionen eine Große Rolle spielen, 
+    - Dies kann für potentielle Koalitionen eine große Rolle spielen, 
     insbesondere wenn eine oder mehrere Parteien nahe an der 5% Hürde liegen.
   
 3. **Ausreißer und Institutsbias**: 
@@ -148,8 +148,8 @@ frd_13 <- redistribute(forsa_13) %>%
         Anteil = paste0(round(percent, 4)*100, "%"),
         Sitze = sls(votes, party))
 kable(frd_13, 
-  caption = "Anteile und Umverteilung und Zuordnung von Sitzen nach 
-  Verfahren von Sainte-Lague-Scheppers",
+  caption = "Anteile nach Umverteilung und Sitze nach Zuordnung
+  mit dem Verfahren  von Sainte-Lague-Scheppers",
   format="html", align = c("l", "r", "r"))  %>% 
   kable_styling(bootstrap_options=c("striped", "hover"), full_width=FALSE)
 ```
@@ -203,9 +203,8 @@ zu Stande gekommen sind.
 
 Wiederholt man das Ganze mehrere Tausend mal lässt sich die Wahrscheinlichkeit 
 berechnen, dass für die Koalition von Interesse eine rechnerische Mehrheit 
-zu Stande kommen würde. 
-
-Im vorherigen Beispiel ergeben sich z.B. folgende Wahrscheinlichkeiten: 
+zu Stande kommen würde. Im vorherigen Beispiel ergeben sich z.B. folgende 
+Wahrscheinlichkeiten:
 
 ```{r}
 probs_13 %>% 
