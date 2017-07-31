@@ -26,6 +26,8 @@ Usage
 
 Detailed [workflow](https://adibender.github.io/coalitions/articles/workflow.html) is outlined in the vignettes enclosed in the package (see `browseVignettes(package="coalitions")`).
 
+A short overview is presented below.
+
 ### Scrape surveys
 
 The wrapper `get_surveys()` which takes no arguments, downloads all surveys currently available at [wahlrecht.de](http://www.wahlrecht.de/umfragen) and stores them in a nested `tibble`:
@@ -74,13 +76,20 @@ surveys %>%
 
 ``` r
 survey <- surveys %>% unnest() %>% slice(1)
-survey
+survey %>% unnest()
 ```
 
-    ## # A tibble: 1 x 6
-    ##    institute      datum      start        end befragte           survey
-    ##        <chr>     <date>     <date>     <date>    <dbl>           <list>
-    ## 1 allensbach 2017-07-18 2017-07-01 2017-07-12     1403 <tibble [7 x 3]>
+    ## # A tibble: 7 x 8
+    ##    institute      datum      start        end befragte    party percent
+    ##        <chr>     <date>     <date>     <date>    <dbl>    <chr>   <dbl>
+    ## 1 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      cdu    39.5
+    ## 2 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      spd    25.0
+    ## 3 allensbach 2017-07-18 2017-07-01 2017-07-12     1403   gruene     7.0
+    ## 4 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      fdp     9.0
+    ## 5 allensbach 2017-07-18 2017-07-01 2017-07-12     1403    linke     9.0
+    ## 6 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      afd     7.0
+    ## 7 allensbach 2017-07-18 2017-07-01 2017-07-12     1403 sonstige     3.5
+    ## # ... with 1 more variables: votes <dbl>
 
 ### Calculate coalition probabilities
 
@@ -94,8 +103,8 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##    institute      datum        coalition probability
     ##        <chr>     <date>            <chr>       <dbl>
     ## 1 allensbach 2017-07-18              cdu        0.00
-    ## 2 allensbach 2017-07-18          cdu_fdp       53.83
-    ## 3 allensbach 2017-07-18   cdu_fdp_gruene       46.17
+    ## 2 allensbach 2017-07-18          cdu_fdp       54.82
+    ## 3 allensbach 2017-07-18   cdu_fdp_gruene       45.18
     ## 4 allensbach 2017-07-18              spd        0.00
     ## 5 allensbach 2017-07-18        linke_spd        0.00
     ## 6 allensbach 2017-07-18 gruene_linke_spd        0.00

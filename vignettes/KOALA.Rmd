@@ -1,5 +1,5 @@
 ---
-title: "KOALA"
+title: "koala17: Koalitionsanalysen zur Bundestagswahl 2017"
 author: "Andreas Bender"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -25,8 +25,6 @@ library(coalitions)
 ```
 
 
-## Koalitionsanalysen zur Bundestagswahl 2017
-
 Kurz vor der Bundestagswahl am 24. September 2017 steigt wieder das Interesse 
 an Wahlberichterstattung. Einen Beitrag hierzu leisten diverse 
 Meinungsforschungsinstitute, die in regelmäßigen Abständen Umfragewerte zur 
@@ -43,23 +41,29 @@ oder
 
 > Schaffen es die kleinen Parteien in den Bundestag? 
 
-zu beantworten. Meist werden dabei einfach die erzielten Anteile betrachtet oder 
-für Koalitionen von Interesse aufaddiert. 
-Diese einfache Betrachtung ist allerdings oft **irreführend und uninformativ**, wie weiter unten gezeigt wird. 
+zu beantworten. 
 
-In Zusammenarbeit mit [ZEIT ONLINE](http://www.zeit.de/serie/wahlistik) hat das 
-[Statistische Beratungslabor (StaBLab) der LMU](http://www.stablab.stat.uni-muenchen.de/index.html) 
-deshalb 2013 ein Verfahren entwickelt, dass eine genauere und aussagekräftigere 
-Interpretation von Umfragen erlaubt. 
+Meist werden zur Beantwortung dieser Fragen einfach die erzielten Anteile 
+betrachtet oder für Koalitionen von Interesse aufaddiert. Diese einfache 
+Betrachtung ist allerdings oft **irreführend und uninformativ**, wie weiter 
+unten gezeigt wird.
 
-Auch zur Bundestagswahl 2017 gibt es wieder
-unsere [\#KOALA](http://koala.stat.uni-muenchen.de/). 
+In Zusammenarbeit mit [ZEIT ONLINE](http://www.zeit.de/serie/wahlistik) hat 
+das [Statistische Beratungslabor (StaBLab) der LMU](http://www.stablab.stat.uni-muenchen.de/index.html)
+deshalb 2013 ein Verfahren entwickelt, dass eine **genauere und 
+aussagekräftigere Interpretation von Umfragen** erlaubt.
 
-- Detailierte Auswertungen bietet unser [interaktives Tool](http://koala.stat.uni-muenchen.de/)
+Zur Bundestagswahl 2017 laufen unsere Analysen unter dem Namen 
+[\#koala17](http://koala.stat.uni-muenchen.de/):
+
+- Detaillierte Auswertungen bietet unser [interaktives Tool](http://koala.stat.uni-muenchen.de/)
 - Aktuelle Updates gibt es in unserem [Twitter feed](https://twitter.com/KOALA_LMU)
+- Details zur Implementierung findet man in 
+unserem Open Source R-Pakett [coalitions](https://adibender.github.io/coalitions/)
 
 ## Warum reicht es nicht Anteile zu betrachten?
 ```{r calcProbs}
+set.seed(31072017)
 forsa_13 <- as_survey(
     percent    = c(.40, .26, .10, .05, .09, .02, .04, .04),
     samplesize = 1995,
@@ -78,7 +82,8 @@ probs_13 <- forsa_13 %>%
 ```
 
 
-Untenstehende Tabelle zeigt die letzte Forsa Umfrage vor der Bundestagswahl 2013: 
+Untenstehende Tabelle zeigt die letzte Forsa Umfrage vor der Bundestagswahl 
+2013: 
 
 ```{r results="asis"}
 forsa_13[, 1:2] %>% 
@@ -98,36 +103,44 @@ Schwarz-Gelb hätte nicht genügend Stimmen für eine Mehrheit.
 
 > Warum ist diese Betrachtung ungenügend?
 
-1. Die Stimmumverteilung wird nicht berücksichtigt: 
+1. **Die Stimmumverteilung wird nicht berücksichtigt**: 
 
     - Die Stimmen aller Parteien, die es nicht über die 5% Hürde schaffen, 
     werden umverteilt. 
-    - Je mehr Stimmen umverteilt werden, desto geringer muss der 
-    Anteil Stimmen in den Befragungen sein, um eine Mehrheit der Sitze erreichen zu 
-    können. 
-    - Parteien mit einem hohen Stimmanteil profitieren dabei stärker als kleinere Parteien. 
 
-2. Die Stichprobenunsicherheit wird nicht berücksichtigt: 
-    - Selbst wenn eine Umfrage representativ ist, bedeutet es nicht, dass es bei der 
-    Wahl nicht zu Abweichungen vom Umfragewert kommen kann. 
-    - Dies kann für potentielle Koalitionen eine Große Rolle spielen, insbesondere 
-    wenn eine oder mehrere Parteien nahe an der 5% Hürde liegen.
+    - Je mehr Stimmen umverteilt werden, desto geringer muss der Anteil 
+    Stimmen in den Befragungen sein, um eine Mehrheit der Sitze erreichen zu 
+    können.
+
+    - Parteien mit einem hohen Stimmanteil profitieren dabei stärker als 
+    kleinere Parteien. 
+
+2. **Die Stichprobenunsicherheit wird nicht berücksichtigt**: 
+
+    - Selbst wenn eine Umfrage repräsentativ ist, bedeutet es nicht, dass es 
+    bei der Wahl nicht zu Abweichungen vom Umfragewert kommen kann.
+
+    - Dies kann für potentielle Koalitionen eine Große Rolle spielen, 
+    insbesondere wenn eine oder mehrere Parteien nahe an der 5% Hürde liegen.
   
-3. Ausreißer und Institutsbias: 
-    - Einzelne Umfragen können von der tatsächlichen Stimmungslage abweichen
+3. **Ausreißer und Institutsbias**: 
+
+    - Einzelne Umfragen können von der tatsächlichen Stimmungslage abweichen.
+    
     - Umfragen verschiedener Institute weisen teilweise starke Unterschiede auf
-    - Oft wird der Anteil einzelner Parteien je nach Umfrageinstitut systematisch
-    höher/niedriger geschätzt als bei einem anderen
+    
+    - Oft wird der Anteil einzelner Parteien je nach Umfrageinstitut 
+    systematisch höher/niedriger geschätzt als bei einem anderen
 
 
 ## Was bedeutet dies konkret? 
 
 ### 1. Umverteilung 
-Bei der Bundestagswahl 2013 war der Anteil umverteilter Stimmen ungewöhnlich hoch. 
-Nach obiger Umfrage würden die Stimmen der Piraten, AfD und Sonstigen umverteilt, 
-also bereits 10%. Zusätzlich war die FDP knapp an der Grenze, d.h. 
+Bei der Bundestagswahl 2013 war der Anteil umverteilter Stimmen ungewöhnlich 
+hoch. Nach obiger Umfrage würden die Stimmen der Piraten, AfD und Sonstigen 
+umverteilt, also bereits 10%. Zusätzlich war die FDP knapp an der Grenze, d.h.
 insgesamt hätten bis zu 15% der Stimmen umverteilt werden können. Die 
-Sitzeverteilung für dieses konkrete Beispiel sähe also folgendermaßen aus: 
+Sitzverteilung für dieses konkrete Beispiel sähe also folgendermaßen aus: 
 
 ```{r, results="asis"}
 frd_13 <- redistribute(forsa_13) %>% 
@@ -146,27 +159,27 @@ Mehrheit von knapp 55.6%, was nach Umfrage nur 50% wären.
 ### 2. Stichprobenunsicherheit
 
 Selbst wenn man davon ausgeht, dass die einzelnen Umfrageinstitute keinen 
-systematischen Fehler machen, ist jede Befragung basierend auf einer Stichprobe 
-mit Unsicherheit behaftet. Das heißt, dass die wahren Anteile einzelner Parteien 
-von den erfragten Anteilen abweichen können.  Je kleiner die Stichprobe, desto 
-größer die Unsicherheit.
+systematischen Fehler machen, ist jede Befragung basierend auf einer 
+Stichprobe mit Unsicherheit behaftet. Das heißt, dass die wahren Anteile 
+einzelner Parteien von den erfragten Anteilen abweichen können.  Je kleiner 
+die Stichprobe, desto größer die Unsicherheit.
 
 Für die FDP würde die Forsa Umfrage deshalb bedeuten, dass sie es nur in 50% 
-Prozent der Fälle in den Bundestag schafft. D.h. selbst wenn es für Schwarz-Gelb, 
-laut Umfrage und nach Umverteilung, knapp für eine Mehrheit reichen würde, 
-**realisiert** sich diese Mehrheit nur in etwa 50% Prozent der Fälle. 
-In den anderen 50% der Fälle profitiert die Union zwar davon, dass die Anteile 
-der FDP umverteilt werden, aber nicht in vollem Umfang, sodass z.B. eine 
-alleinige Mehrheit sehr unwahrscheinlich war. 
+Prozent der Fälle in den Bundestag schafft. D.h. selbst wenn es für 
+Schwarz-Gelb, laut Umfrage und nach Umverteilung, knapp für eine Mehrheit 
+reichen würde, **realisiert** sich diese Mehrheit nur in etwa 50% Prozent der 
+Fälle. In den anderen 50% der Fälle profitiert die Union zwar davon, dass die 
+Anteile der FDP umverteilt werden, aber nicht in vollem Umfang, sodass z.B. 
+eine alleinige Mehrheit sehr unwahrscheinlich war.
 
 
 ### 3. Ausreißer und Institutsbias 
 Bei jeder Umfrage kann es passieren, dass die 
 zugrundeliegende Stichprobe das aktuelle Stimmungsbild nicht korrekt abbildet. 
-Es stellt sich außerdem die Frage welche der Umfragen man für seine Aussagen heranzieht. 
-Selbiges gilt für die Frage, den Umfragen welcher Institute man vertrauen soll. 
-In beiden Fällen besteht die Gefahr der Rosinnenpickerei und, damit verbunden, 
-falscher Schlüsse. 
+Es stellt sich außerdem die Frage welche der Umfragen man für seine Aussagen 
+heranzieht. Selbiges gilt für die Frage, den Umfragen welcher Institute man 
+vertrauen soll. In beiden Fällen besteht die Gefahr der Rosinnenpickerei und, 
+damit verbunden, falscher Schlüsse.
 
 ## Wie geht KOALA mit diesen Problemen um? 
 
@@ -180,16 +193,15 @@ reduziert.
 
 Basierend auf dieser *gepoolten* Umfrage, generieren wir dann viele 
 verschiedene Wahlausgänge, die manchmal mehr, manchmal weniger von den 
-Umfragewerten abweichen.
-In jedem dieser hypothetischen Wahlausgänge führen wir die Umverteilung der 
-Anteile durch und berechnen für jede Partei die Anzahl Sitze nach der 
-Umverteilung.
-Gegeben die Sitze kann dann für eine Koalition von Interesse berechnet werden, 
-ob genügend Sitze für eine Mehrheit Zustande gekommen sind. 
+Umfragewerten abweichen. In jedem dieser hypothetischen Wahlausgänge führen 
+wir die Umverteilung der Anteile durch und berechnen für jede Partei die 
+Anzahl Sitze nach der Umverteilung. Gegeben die Sitze kann dann für eine 
+Koalition von Interesse berechnet werden, ob genügend Sitze für eine Mehrheit 
+zu Stande gekommen sind.
 
-Wiederholt man das ganze mehrere Tausend mal lässt sich die Wahrscheinlichkeit 
+Wiederholt man das Ganze mehrere Tausend mal lässt sich die Wahrscheinlichkeit 
 berechnen, dass für die Koalition von Interesse eine rechnerische Mehrheit 
-zustande kommen würde. 
+zu Stande kommen würde. 
 
 Im vorherigen Beispiel ergeben sich z.B. folgende Wahrscheinlichkeiten: 
 
@@ -216,5 +228,4 @@ bei 28.6%.
 
 Bei der Bundestagswahl 2013 ist hingegen das Ereignis mit der höheren 
 Wahrscheinlichkeit (keine Sitzemehrheit für Schwarz-Gelb) eingetreten, 
-insbesondere auch deshalb, weil die FDP es trotzt 5% in den Umfragen nicht in 
-den Bundestag geschafft hat. 
+weil die FDP es trotzt 5% in den Umfragen nicht in den Bundestag geschafft hat.

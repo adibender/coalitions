@@ -14,6 +14,7 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'>
+
 </head>
 <body>
     <div class="container template-vignette">
@@ -49,7 +50,7 @@
       <a href="articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
-      <a href="articles/KOALA.html">KOALA</a>
+      <a href="articles/KOALA.html">koala17: Koalitionsanalysen zur Bundestagswahl 2017</a>
     </li>
     <li>
       <a href="articles/workflow.html">Workflow</a>
@@ -106,6 +107,7 @@
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>Detailed <a href="https://adibender.github.io/coalitions/articles/workflow.html">workflow</a> is outlined in the vignettes enclosed in the package (see <code>browseVignettes(package="coalitions")</code>).</p>
+<p>A short overview is presented below.</p>
 <div id="scrape-surveys" class="section level3">
 <h3 class="hasAnchor">
 <a href="#scrape-surveys" class="anchor"></a>Scrape surveys</h3>
@@ -144,11 +146,18 @@ surveys</code></pre></div>
 ## 10 allensbach 2016-10-20 2016-10-01 2016-10-13     1458 &lt;tibble [7 x 3]&gt;
 ## # ... with 23 more rows</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey &lt;-<span class="st"> </span>surveys %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>() %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>)
-survey</code></pre></div>
-<pre><code>## # A tibble: 1 x 6
-##    institute      datum      start        end befragte           survey
-##        &lt;chr&gt;     &lt;date&gt;     &lt;date&gt;     &lt;date&gt;    &lt;dbl&gt;           &lt;list&gt;
-## 1 allensbach 2017-07-18 2017-07-01 2017-07-12     1403 &lt;tibble [7 x 3]&gt;</code></pre>
+survey %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
+<pre><code>## # A tibble: 7 x 8
+##    institute      datum      start        end befragte    party percent
+##        &lt;chr&gt;     &lt;date&gt;     &lt;date&gt;     &lt;date&gt;    &lt;dbl&gt;    &lt;chr&gt;   &lt;dbl&gt;
+## 1 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      cdu    39.5
+## 2 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      spd    25.0
+## 3 allensbach 2017-07-18 2017-07-01 2017-07-12     1403   gruene     7.0
+## 4 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      fdp     9.0
+## 5 allensbach 2017-07-18 2017-07-01 2017-07-12     1403    linke     9.0
+## 6 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      afd     7.0
+## 7 allensbach 2017-07-18 2017-07-01 2017-07-12     1403 sonstige     3.5
+## # ... with 1 more variables: votes &lt;dbl&gt;</code></pre>
 </div>
 <div id="calculate-coalition-probabilities" class="section level3">
 <h3 class="hasAnchor">
@@ -158,12 +167,12 @@ survey</code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##    institute      datum        coalition probability
 ##        &lt;chr&gt;     &lt;date&gt;            &lt;chr&gt;       &lt;dbl&gt;
-## 1 allensbach 2017-07-18              cdu        0.00
-## 2 allensbach 2017-07-18          cdu_fdp       53.47
-## 3 allensbach 2017-07-18   cdu_fdp_gruene       46.53
-## 4 allensbach 2017-07-18              spd        0.00
-## 5 allensbach 2017-07-18        linke_spd        0.00
-## 6 allensbach 2017-07-18 gruene_linke_spd        0.00</code></pre>
+## 1 allensbach 2017-07-18              cdu         0.0
+## 2 allensbach 2017-07-18          cdu_fdp        53.3
+## 3 allensbach 2017-07-18   cdu_fdp_gruene        46.7
+## 4 allensbach 2017-07-18              spd         0.0
+## 5 allensbach 2017-07-18        linke_spd         0.0
+## 6 allensbach 2017-07-18 gruene_linke_spd         0.0</code></pre>
 </div>
 </div>
 </div>
