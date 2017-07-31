@@ -51,8 +51,12 @@ aussagekräftigere Interpretation von Umfragen** erlaubt.
 Zur Bundestagswahl 2017 laufen unsere Analysen unter dem Namen 
 [\#koala17](http://koala.stat.uni-muenchen.de/):
 
-- Detaillierte Auswertungen bietet unser [interaktives Tool](http://koala.stat.uni-muenchen.de/)
 - Aktuelle Updates gibt es in unserem [Twitter feed](https://twitter.com/KOALA_LMU)
+
+- Detaillierte Auswertungen bietet unser [interaktives Tool](http://koala.stat.uni-muenchen.de/)
+
+- Details zur Methodik finden sich [hier](http://www.stablab.stat.uni-muenchen.de/forschung/koala/methodik.pdf)
+
 - Details zur Implementierung findet man in 
 unserem Open Source R-Pakett [coalitions](https://adibender.github.io/coalitions/)
 
