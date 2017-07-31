@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KOALA • coalitions</title>
+<title>koala17: Koalitionsanalysen zur Bundestagswahl 2017 • coalitions</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -48,7 +48,7 @@
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
-      <a href="../articles/KOALA.html">KOALA</a>
+      <a href="../articles/KOALA.html">koala17: Koalitionsanalysen zur Bundestagswahl 2017</a>
     </li>
     <li>
       <a href="../articles/workflow.html">Workflow</a>
@@ -75,18 +75,15 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>KOALA</h1>
+      <h1>koala17: Koalitionsanalysen zur Bundestagswahl 2017</h1>
                         <h4 class="author">Andreas Bender</h4>
             
-            <h4 class="date">2017-07-30</h4>
+            <h4 class="date">2017-07-31</h4>
           </div>
 
     
     
 <div class="contents">
-<div id="koalitionsanalysen-zur-bundestagswahl-2017" class="section level2">
-<h2 class="hasAnchor">
-<a href="#koalitionsanalysen-zur-bundestagswahl-2017" class="anchor"></a>Koalitionsanalysen zur Bundestagswahl 2017</h2>
 <p>Kurz vor der Bundestagswahl am 24. September 2017 steigt wieder das Interesse an Wahlberichterstattung. Einen Beitrag hierzu leisten diverse Meinungsforschungsinstitute, die in regelmäßigen Abständen Umfragewerte zur sogenannten <em>Sonntagsfrage</em> veröffentlicht:</p>
 <blockquote>
 <p>“Welche Partei würden sie wählen, wenn Sonntag Bundestagswahl wäre?”</p>
@@ -99,16 +96,18 @@
 <blockquote>
 <p>Schaffen es die kleinen Parteien in den Bundestag?</p>
 </blockquote>
-<p>zu beantworten. Meist werden dabei einfach die erzielten Anteile betrachtet oder für Koalitionen von Interesse aufaddiert. Diese einfache Betrachtung ist allerdings oft <strong>irreführend und uninformativ</strong>, wie weiter unten gezeigt wird.</p>
-<p>In Zusammenarbeit mit <a href="http://www.zeit.de/serie/wahlistik">ZEIT ONLINE</a> hat das <a href="http://www.stablab.stat.uni-muenchen.de/index.html">Statistische Beratungslabor (StaBLab) der LMU</a> deshalb 2013 ein Verfahren entwickelt, dass eine genauere und aussagekräftigere Interpretation von Umfragen erlaubt.</p>
-<p>Auch zur Bundestagswahl 2017 gibt es wieder unsere <a href="http://koala.stat.uni-muenchen.de/">#KOALA</a>.</p>
+<p>zu beantworten.</p>
+<p>Meist werden zur Beantwortung dieser Fragen einfach die erzielten Anteile betrachtet oder für Koalitionen von Interesse aufaddiert. Diese einfache Betrachtung ist allerdings oft <strong>irreführend und uninformativ</strong>, wie weiter unten gezeigt wird.</p>
+<p>In Zusammenarbeit mit <a href="http://www.zeit.de/serie/wahlistik">ZEIT ONLINE</a> hat das <a href="http://www.stablab.stat.uni-muenchen.de/index.html">Statistische Beratungslabor (StaBLab) der LMU</a> deshalb 2013 ein Verfahren entwickelt, dass eine <strong>genauere und aussagekräftigere Interpretation von Umfragen</strong> erlaubt.</p>
+<p>Zur Bundestagswahl 2017 laufen unsere Analysen unter dem Namen <a href="http://koala.stat.uni-muenchen.de/">#koala17</a>:</p>
 <ul>
-<li>Detailierte Auswertungen bietet unser <a href="http://koala.stat.uni-muenchen.de/">interaktives Tool</a>
+<li>Detaillierte Auswertungen bietet unser <a href="http://koala.stat.uni-muenchen.de/">interaktives Tool</a>
 </li>
 <li>Aktuelle Updates gibt es in unserem <a href="https://twitter.com/KOALA_LMU">Twitter feed</a>
 </li>
+<li>Details zur Implementierung findet man in unserem Open Source R-Pakett <a href="https://adibender.github.io/coalitions/">coalitions</a>
+</li>
 </ul>
-</div>
 <div id="warum-reicht-es-nicht-anteile-zu-betrachten" class="section level2">
 <h2 class="hasAnchor">
 <a href="#warum-reicht-es-nicht-anteile-zu-betrachten" class="anchor"></a>Warum reicht es nicht Anteile zu betrachten?</h2>
@@ -198,24 +197,26 @@ Sonstige
 </blockquote>
 <ol style="list-style-type: decimal">
 <li>
-<p>Die Stimmumverteilung wird nicht berücksichtigt:</p>
+<p><strong>Die Stimmumverteilung wird nicht berücksichtigt</strong>:</p>
 <ul>
-<li>Die Stimmen aller Parteien, die es nicht über die 5% Hürde schaffen, werden umverteilt.</li>
-<li>Je mehr Stimmen umverteilt werden, desto geringer muss der Anteil Stimmen in den Befragungen sein, um eine Mehrheit der Sitze erreichen zu können.</li>
-<li>Parteien mit einem hohen Stimmanteil profitieren dabei stärker als kleinere Parteien.</li>
+<li><p>Die Stimmen aller Parteien, die es nicht über die 5% Hürde schaffen, werden umverteilt.</p></li>
+<li><p>Je mehr Stimmen umverteilt werden, desto geringer muss der Anteil Stimmen in den Befragungen sein, um eine Mehrheit der Sitze erreichen zu können.</p></li>
+<li><p>Parteien mit einem hohen Stimmanteil profitieren dabei stärker als kleinere Parteien.</p></li>
 </ul>
 </li>
-<li>Die Stichprobenunsicherheit wird nicht berücksichtigt:
+<li>
+<p><strong>Die Stichprobenunsicherheit wird nicht berücksichtigt</strong>:</p>
 <ul>
-<li>Selbst wenn eine Umfrage representativ ist, bedeutet es nicht, dass es bei der Wahl nicht zu Abweichungen vom Umfragewert kommen kann.</li>
-<li>Dies kann für potentielle Koalitionen eine Große Rolle spielen, insbesondere wenn eine oder mehrere Parteien nahe an der 5% Hürde liegen.</li>
+<li><p>Selbst wenn eine Umfrage repräsentativ ist, bedeutet es nicht, dass es bei der Wahl nicht zu Abweichungen vom Umfragewert kommen kann.</p></li>
+<li><p>Dies kann für potentielle Koalitionen eine Große Rolle spielen, insbesondere wenn eine oder mehrere Parteien nahe an der 5% Hürde liegen.</p></li>
 </ul>
 </li>
-<li>Ausreißer und Institutsbias:
+<li>
+<p><strong>Ausreißer und Institutsbias</strong>:</p>
 <ul>
-<li>Einzelne Umfragen können von der tatsächlichen Stimmungslage abweichen</li>
-<li>Umfragen verschiedener Institute weisen teilweise starke Unterschiede auf</li>
-<li>Oft wird der Anteil einzelner Parteien je nach Umfrageinstitut systematisch höher/niedriger geschätzt als bei einem anderen</li>
+<li><p>Einzelne Umfragen können von der tatsächlichen Stimmungslage abweichen.</p></li>
+<li><p>Umfragen verschiedener Institute weisen teilweise starke Unterschiede auf</p></li>
+<li><p>Oft wird der Anteil einzelner Parteien je nach Umfrageinstitut systematisch höher/niedriger geschätzt als bei einem anderen</p></li>
 </ul>
 </li>
 </ol>
@@ -226,7 +227,7 @@ Sonstige
 <div id="umverteilung" class="section level3">
 <h3 class="hasAnchor">
 <a href="#umverteilung" class="anchor"></a>1. Umverteilung</h3>
-<p>Bei der Bundestagswahl 2013 war der Anteil umverteilter Stimmen ungewöhnlich hoch. Nach obiger Umfrage würden die Stimmen der Piraten, AfD und Sonstigen umverteilt, also bereits 10%. Zusätzlich war die FDP knapp an der Grenze, d.h. insgesamt hätten bis zu 15% der Stimmen umverteilt werden können. Die Sitzeverteilung für dieses konkrete Beispiel sähe also folgendermaßen aus:</p>
+<p>Bei der Bundestagswahl 2013 war der Anteil umverteilter Stimmen ungewöhnlich hoch. Nach obiger Umfrage würden die Stimmen der Piraten, AfD und Sonstigen umverteilt, also bereits 10%. Zusätzlich war die FDP knapp an der Grenze, d.h. insgesamt hätten bis zu 15% der Stimmen umverteilt werden können. Die Sitzverteilung für dieses konkrete Beispiel sähe also folgendermaßen aus:</p>
 <?xml version="1.0" encoding="UTF-8"?><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;">
@@ -315,8 +316,8 @@ Die Linke
 <h2 class="hasAnchor">
 <a href="#wie-geht-koala-mit-diesen-problemen-um" class="anchor"></a>Wie geht KOALA mit diesen Problemen um?</h2>
 <p>Unser Ansatz beginnt damit, dass wir die Stichprobenunsicherheit sowie die Unterschiede zwischen den Umfragen verschiedener Institute anerkennen. Neben den Umfragen der einzelnen Institute betrachten wir deshalb auch eine sog. <em>gepoolte</em> Stichprobe, die eine Art Durchschnitt über die Umfragen aller Institute innerhalb eines Fensters von 14 Tagen darstellt. Dadurch wird der Einfluss potentieller Ausreißer gemildert und die Stichprobenunsicherheit reduziert.</p>
-<p>Basierend auf dieser <em>gepoolten</em> Umfrage, generieren wir dann viele verschiedene Wahlausgänge, die manchmal mehr, manchmal weniger von den Umfragewerten abweichen. In jedem dieser hypothetischen Wahlausgänge führen wir die Umverteilung der Anteile durch und berechnen für jede Partei die Anzahl Sitze nach der Umverteilung. Gegeben die Sitze kann dann für eine Koalition von Interesse berechnet werden, ob genügend Sitze für eine Mehrheit Zustande gekommen sind.</p>
-<p>Wiederholt man das ganze mehrere Tausend mal lässt sich die Wahrscheinlichkeit berechnen, dass für die Koalition von Interesse eine rechnerische Mehrheit zustande kommen würde.</p>
+<p>Basierend auf dieser <em>gepoolten</em> Umfrage, generieren wir dann viele verschiedene Wahlausgänge, die manchmal mehr, manchmal weniger von den Umfragewerten abweichen. In jedem dieser hypothetischen Wahlausgänge führen wir die Umverteilung der Anteile durch und berechnen für jede Partei die Anzahl Sitze nach der Umverteilung. Gegeben die Sitze kann dann für eine Koalition von Interesse berechnet werden, ob genügend Sitze für eine Mehrheit zu Stande gekommen sind.</p>
+<p>Wiederholt man das Ganze mehrere Tausend mal lässt sich die Wahrscheinlichkeit berechnen, dass für die Koalition von Interesse eine rechnerische Mehrheit zu Stande kommen würde.</p>
 <p>Im vorherigen Beispiel ergeben sich z.B. folgende Wahrscheinlichkeiten:</p>
 <?xml version="1.0" encoding="UTF-8"?><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
@@ -336,7 +337,7 @@ Wahrscheinlichkeit
 Union
 </td>
 <td style="text-align:right;">
-0.35 %
+0.43 %
 </td>
 </tr>
 <tr>
@@ -344,7 +345,7 @@ Union
 Union - FDP
 </td>
 <td style="text-align:right;">
-26.76 %
+27.48 %
 </td>
 </tr>
 <tr>
@@ -352,7 +353,7 @@ Union - FDP
 Union - Grüne
 </td>
 <td style="text-align:right;">
-99.58 %
+99.49 %
 </td>
 </tr>
 <tr>
@@ -360,7 +361,7 @@ Union - Grüne
 Union - FDP - Grüne
 </td>
 <td style="text-align:right;">
-0.07 %
+0.08 %
 </td>
 </tr>
 <tr>
@@ -384,14 +385,14 @@ SPD - Die Linke
 SPD - Die Linke - Grüne
 </td>
 <td style="text-align:right;">
-67.47 %
+66.97 %
 </td>
 </tr>
 </tbody>
 </table>
 <p>Obwohl also die Union und FDP laut Umfrage nur 45% der Stimmanteile erhalten, betrug die Wahrscheinlichkeit dafür, dass Schwarz-Gelb eine rechnerische Sitzemehrheit erhält etwa 27%.</p>
 <p>Zum Vergleich, die Wahrscheinlichkeit, dass Donald Trump die Präsidentschaft gewinnt, lag laut letzter Vorhersage von <a href="https://projects.fivethirtyeight.com/2016-election-forecast/">FiveThirtyEight</a> bei 28.6%.</p>
-<p>Bei der Bundestagswahl 2013 ist hingegen das Ereignis mit der höheren Wahrscheinlichkeit (keine Sitzemehrheit für Schwarz-Gelb) eingetreten, insbesondere auch deshalb, weil die FDP es trotzt 5% in den Umfragen nicht in den Bundestag geschafft hat.</p>
+<p>Bei der Bundestagswahl 2013 ist hingegen das Ereignis mit der höheren Wahrscheinlichkeit (keine Sitzemehrheit für Schwarz-Gelb) eingetreten, weil die FDP es trotzt 5% in den Umfragen nicht in den Bundestag geschafft hat.</p>
 </div>
 </div>
   </div>
@@ -401,8 +402,7 @@ SPD - Die Linke - Grüne
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#koalitionsanalysen-zur-bundestagswahl-2017">Koalitionsanalysen zur Bundestagswahl 2017</a></li>
-      <li><a href="#warum-reicht-es-nicht-anteile-zu-betrachten">Warum reicht es nicht Anteile zu betrachten?</a></li>
+<li><a href="#warum-reicht-es-nicht-anteile-zu-betrachten">Warum reicht es nicht Anteile zu betrachten?</a></li>
       <li><a href="#was-bedeutet-dies-konkret">Was bedeutet dies konkret?</a></li>
       <li><a href="#wie-geht-koala-mit-diesen-problemen-um">Wie geht KOALA mit diesen Problemen um?</a></li>
       </ul>
