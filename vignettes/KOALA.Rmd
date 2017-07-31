@@ -2,11 +2,7 @@
 title: "koala17: Koalitionsanalysen zur Bundestagswahl 2017"
 author: "Andreas Bender"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{workflow}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: github_document
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
@@ -32,8 +28,7 @@ sogenannten *Sonntagsfrage* veröffentlicht:
 
 > "Welche Partei würden sie wählen, wenn Sonntag Bundestagswahl wäre?"
 
-Anhand der in diesen Umfragen erzielten Anteile pro Partei, versuchen die 
-Medien dann meist Fragen wie 
+Anhand dieser Umfragen versuchen die Medien dann meist Fragen wie
 
 > Welche Parteien bilden die Regierungskoalition? 
 
@@ -148,7 +143,10 @@ frd_13 <- redistribute(forsa_13) %>%
         Partei = prettify_parties(party),
         Anteil = paste0(round(percent, 4)*100, "%"),
         Sitze = sls(votes, party))
-kable(frd_13, format="html", align = c("l", "r", "r"))  %>% 
+kable(frd_13, 
+  caption = "Anteile und Umverteilung und Zuordnung von Sitzen nach 
+  Verfahren von Sainte-Lague-Scheppers",
+  format="html", align = c("l", "r", "r"))  %>% 
   kable_styling(bootstrap_options=c("striped", "hover"), full_width=FALSE)
 ```
 
