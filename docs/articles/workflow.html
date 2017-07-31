@@ -167,16 +167,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 10 x 7
 ##          cdu       spd     gruene        fdp      linke        afd
 ##        &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-##  1 0.3739160 0.2375146 0.07683180 0.08623479 0.08138662 0.10059715
-##  2 0.3782042 0.2361738 0.07399882 0.08501395 0.08064230 0.10115280
-##  3 0.3736176 0.2396494 0.07232845 0.07775604 0.09670514 0.10760127
-##  4 0.3785119 0.2625621 0.06519184 0.07416409 0.08630471 0.08822401
-##  5 0.3841443 0.2376035 0.06779518 0.07533358 0.10095981 0.09404047
-##  6 0.3940751 0.2323532 0.08195661 0.07928853 0.09185664 0.08350698
-##  7 0.3859405 0.2427227 0.06913663 0.07985209 0.08955058 0.09180776
-##  8 0.3600206 0.2656223 0.08862322 0.06951405 0.08839804 0.08503688
-##  9 0.3732298 0.2536746 0.07639448 0.07720963 0.09885306 0.08770672
-## 10 0.3697136 0.2423325 0.07695632 0.07053783 0.10152135 0.09166906
+##  1 0.3736780 0.2369959 0.08881941 0.08391430 0.08584738 0.09054215
+##  2 0.3911421 0.2371631 0.07354582 0.08035398 0.09187578 0.08995627
+##  3 0.3785313 0.2445499 0.08610046 0.07830385 0.08516537 0.09252274
+##  4 0.3809440 0.2397577 0.08044386 0.08215249 0.08821944 0.08723402
+##  5 0.4123311 0.2235295 0.07308140 0.07936848 0.08435759 0.08898843
+##  6 0.3764411 0.2409650 0.08238301 0.07570523 0.08760757 0.08796280
+##  7 0.3715032 0.2384314 0.09577480 0.07024085 0.09227626 0.08289457
+##  8 0.3894865 0.2538157 0.08984050 0.07064370 0.07232416 0.08869069
+##  9 0.3885241 0.2341192 0.07209704 0.08089491 0.09967171 0.08737261
+## 10 0.3699350 0.2361351 0.08523837 0.07227037 0.08628887 0.10360627
 ## # ... with 1 more variables: sonstige &lt;dbl&gt;</code></pre>
 </div>
 <div id="calculate-seat-distribution" class="section level2">
@@ -200,16 +200,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 60 x 3
 ##      sim  party seats
 ##    &lt;int&gt;  &lt;chr&gt; &lt;int&gt;
-##  1     1    cdu   234
+##  1     1    cdu   233
 ##  2     1    spd   148
-##  3     1 gruene    48
-##  4     1    fdp    54
-##  5     1  linke    51
-##  6     1    afd    63
-##  7     2    cdu   237
-##  8     2    spd   148
+##  3     1 gruene    55
+##  4     1    fdp    52
+##  5     1  linke    54
+##  6     1    afd    56
+##  7     2    cdu   242
+##  8     2    spd   147
 ##  9     2 gruene    46
-## 10     2    fdp    53
+## 10     2    fdp    50
 ## # ... with 50 more rows</code></pre>
 <p>In the above example, given the latest survey, CDU/CSU would have 225 seats in the first simulation, 223 seats in the second simulation, etc.</p>
 </div>
@@ -251,7 +251,7 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 ##  2 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
 ##  3 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
 ##  4 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
-##  5 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
+##  5 FALSE    TRUE       TRUE           TRUE FALSE     FALSE      FALSE
 ##  6 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
 ##  7 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
 ##  8 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
@@ -282,9 +282,9 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 ##          coalition probability
 ##              &lt;chr&gt;       &lt;dbl&gt;
 ## 1              cdu           0
-## 2          cdu_fdp           0
-## 3       cdu_gruene           0
-## 4   cdu_fdp_gruene         100
+## 2          cdu_fdp          10
+## 3       cdu_gruene          10
+## 4   cdu_fdp_gruene          90
 ## 5              spd           0
 ## 6        linke_spd           0
 ## 7       gruene_spd           0

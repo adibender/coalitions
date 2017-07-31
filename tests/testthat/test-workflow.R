@@ -32,6 +32,10 @@ test_that("workflow stable", {
 
 	expect_warning(draw_from_posterior(survey$survey[[1]], nsim=10, correction=0.5))
 
+	entry_probs <- get_entryprobability(survey$draws[[1]])
+	expect_numeric(entry_probs, lower=0, upper=1, all.missing=FALSE, len=7, 
+		names="named")
+
 	## add seats after redistribution
 	survey %<>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls))
 	expect_data_frame(survey, nrows=1, ncols=7)
