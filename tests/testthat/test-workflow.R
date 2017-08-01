@@ -9,10 +9,19 @@ test_that("workflow stable", {
 		c("spd"), c("spd", "linke"), c("spd", "linke", "gruene"))
 	coalas <- coalitions:::paste_coalitions(coalitions)
 	## scrape
-	survey <- scrape_wahlrecht() %>% slice(1)
-	expect_data_frame(survey, nrows=1, ncols=11)
+	survey <- scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/insa.htm" ) %>% 
+		filter(datum==as.Date("2017-08-01"))
+	expect_data_frame(survey, nrows=1, ncols=13)
 	expect_equal(colnames(survey), c("datum", "start", "end", "cdu", "spd", 
-		"gruene", "fdp", "linke", "afd", "sonstige", "befragte"))
+		"gruene", "fdp", "linke", "piraten", "fw", "afd", "sonstige", "befragte"))
+	expect_equal(survey$spd, 24.5)
+	expect_equal(survey$befragte, 2046)
+	
+	survey2 <- scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/allensbach.htm") %>% 
+		filter(datum==as.Date("2017-07-18"))
+	expect_data_frame(survey2, nrows=1, ncols=11)
+	expect_equal(survey2$cdu, 39.5)
+	expect_equal(survey2$befragte, 1403)
 
 	## collapse
 	survey <- collapse_parties(survey)

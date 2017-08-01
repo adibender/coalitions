@@ -4,10 +4,12 @@
 \alias{extract_num}
 \title{Extract numericals from string or character}
 \usage{
-extract_num(x)
+extract_num(x, decimal = TRUE)
 }
 \arguments{
 \item{x}{A character vector.}
+
+\item{decimal}{Logical flag, indicating if x has a decimal separator}
 }
 \description{
 Removes all characters that are not in [0-9].

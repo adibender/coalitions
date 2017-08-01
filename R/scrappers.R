@@ -38,9 +38,17 @@ sanitize_strings <- function(x) {
 #' 
 #' Removes all characters that are not in [0-9].
 #' @param x A character vector.
+#' @param decimal Logical flag, indicating if x has a decimal separator
 #' @keywords internal
-extract_num <- function(x) {
-	as.numeric(gsub("[^0-9]", "", x))
+extract_num <- function(x, decimal=TRUE) {
+
+	if(decimal) {
+		x <- gsub(",", "\\.", x)
+		replace_string <- "[^0-9,.]"
+	} else {
+		replace_string <- "[^0-9]"
+	}
+	as.numeric(gsub(replace_string, "", x))
 }
 
 #' Sanitize column names 
@@ -101,10 +109,8 @@ scrape_wahlrecht <- function(
 	atab <- sanitize_colnames(atab)
 	parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
 	# transform percentage string to numerics
-	atab %<>% mutate_at(c(parties, "befragte"), extract_num)
-	if(address == "http://www.wahlrecht.de/umfragen/allensbach.htm") {
-		atab %<>% mutate_at(parties, funs(./10))
-	}
+	atab %<>% mutate_at(c(parties), extract_num) %>% 
+		mutate_at("befragte", extract_num, decimal=FALSE)
 
 	atab %<>% mutate(datum = dmy(datum))
 	atab %<>% mutate(
