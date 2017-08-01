@@ -2,7 +2,7 @@
 title: "koala17: Koalitionsanalysen zur Bundestagswahl 2017"
 author: "Andreas Bender"
 date: "`r Sys.Date()`"
-output: github_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
@@ -26,6 +26,7 @@ an Wahlberichterstattung. Einen Beitrag hierzu leisten diverse
 Meinungsforschungsinstitute, die in regelmäßigen Abständen Umfragewerte zur 
 sogenannten *Sonntagsfrage* veröffentlichen:
 
+
 > "Welche Partei würden sie wählen, wenn Sonntag Bundestagswahl wäre?"
 
 Anhand dieser Umfragen versuchen die Medien dann meist Fragen wie
@@ -38,7 +39,7 @@ oder
 
 zu beantworten. 
 
-Meist werden zur Beantwortung dieser Fragen einfach die erzielten Anteile 
+Oft werden zur Beantwortung dieser Fragen die erzielten Anteile 
 betrachtet oder für Koalitionen von Interesse aufaddiert. Diese einfache 
 Betrachtung ist allerdings oft **irreführend und uninformativ**, wie weiter 
 unten gezeigt wird.
@@ -90,6 +91,7 @@ forsa_13[, 1:2] %>%
   mutate(
     Partei = prettify_parties(Partei),
     Anteil = str_pad(paste0(Anteil * 100, "%"), 3)) %>% 
+  spread(Partei, Anteil) %>% 
   kable(
     caption = "Forsa-Umfrage vom 20.September 2013", 
     format="html",
@@ -150,6 +152,7 @@ frd_13 <- redistribute(forsa_13) %>%
 kable(frd_13, 
   caption = "Anteile und Zuordnung von Sitzen (nach dem
   Verfahren von Sainte-Lague-Scheppers) nach der Umverteilung der Stimmen",
+
   format="html", align = c("l", "r", "r"))  %>% 
   kable_styling(bootstrap_options=c("striped", "hover"), full_width=FALSE)
 ```
@@ -204,9 +207,8 @@ zu Stande gekommen sind.
 
 Wiederholt man das Ganze mehrere Tausend mal lässt sich die Wahrscheinlichkeit 
 berechnen, dass für die Koalition von Interesse eine rechnerische Mehrheit 
-zu Stande kommen würde. 
-
-Im vorherigen Beispiel ergeben sich z.B. folgende Wahrscheinlichkeiten: 
+zu Stande kommen würde. Im vorherigen Beispiel ergeben sich z.B. folgende 
+Wahrscheinlichkeiten:
 
 ```{r}
 probs_13 %>% 
