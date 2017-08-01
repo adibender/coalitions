@@ -24,7 +24,8 @@ library(coalitions)
 Kurz vor der Bundestagswahl am 24. September 2017 steigt wieder das Interesse 
 an Wahlberichterstattung. Einen Beitrag hierzu leisten diverse 
 Meinungsforschungsinstitute, die in regelmäßigen Abständen Umfragewerte zur 
-sogenannten *Sonntagsfrage* veröffentlichen: 
+sogenannten *Sonntagsfrage* veröffentlichen:
+
 
 > "Welche Partei würden sie wählen, wenn Sonntag Bundestagswahl wäre?"
 
@@ -51,14 +52,14 @@ aussagekräftigere Interpretation von Umfragen** erlaubt.
 Zur Bundestagswahl 2017 laufen unsere Analysen unter dem Namen 
 [\#koala17](http://koala.stat.uni-muenchen.de/):
 
-- Aktuelle Updates gibt es in unserem [Twitter feed](https://twitter.com/KOALA_LMU)
+- Aktuelle Updates gibt es in unserem [Twitter Feed](https://twitter.com/KOALA_LMU)
 
 - Detaillierte Auswertungen bietet unser [interaktives Tool](http://koala.stat.uni-muenchen.de/)
 
 - Details zur Methodik finden sich [hier](http://www.stablab.stat.uni-muenchen.de/forschung/koala/methodik.pdf)
 
 - Details zur Implementierung findet man in 
-unserem Open Source R-Pakett [coalitions](https://adibender.github.io/coalitions/)
+unserem Open Source R-Paket [coalitions](https://adibender.github.io/coalitions/)
 
 ## Warum reicht es nicht Anteile zu betrachten?
 ```{r calcProbs}
@@ -81,7 +82,7 @@ probs_13 <- forsa_13 %>%
 ```
 
 
-Untenstehende Tabelle zeigt die letzte Forsa Umfrage vor der Bundestagswahl 
+Untenstehende Tabelle zeigt die letzte Forsa-Umfrage vor der Bundestagswahl 
 2013: 
 
 ```{r results="asis"}
@@ -92,8 +93,9 @@ forsa_13[, 1:2] %>%
     Anteil = str_pad(paste0(Anteil * 100, "%"), 3)) %>% 
   spread(Partei, Anteil) %>% 
   kable(
-    caption = "Forsa Umfrage vom 20.September 2013", 
-    format="html") %>% 
+    caption = "Forsa-Umfrage vom 20.September 2013", 
+    format="html",
+    align=c("l", "r")) %>% 
   kable_styling(bootstrap_options=c("striped", "hover", "responsive"), full_width=FALSE)
 ```
 
@@ -104,11 +106,11 @@ Schwarz-Gelb hätte nicht genügend Stimmen für eine Mehrheit.
 
 1. **Die Stimmumverteilung wird nicht berücksichtigt**: 
 
-    - Die Stimmen aller Parteien, die es nicht über die 5% Hürde schaffen, 
+    - Die Stimmen aller Parteien, die es nicht über die 5%-Hürde schaffen, 
     werden umverteilt. 
 
     - Je mehr Stimmen umverteilt werden, desto geringer muss der Anteil 
-    Stimmen in den Befragungen sein, um eine Mehrheit der Sitze erreichen zu 
+    an Stimmen in den Befragungen sein, um eine Mehrheit der Sitze erreichen zu 
     können.
 
     - Parteien mit einem hohen Stimmanteil profitieren dabei stärker als 
@@ -120,7 +122,7 @@ Schwarz-Gelb hätte nicht genügend Stimmen für eine Mehrheit.
     bei der Wahl nicht zu Abweichungen vom Umfragewert kommen kann.
 
     - Dies kann für potentielle Koalitionen eine große Rolle spielen, 
-    insbesondere wenn eine oder mehrere Parteien nahe an der 5% Hürde liegen.
+    insbesondere wenn eine oder mehrere Parteien nahe an der 5%-Hürde liegen.
   
 3. **Ausreißer und Institutsbias**: 
 
@@ -129,7 +131,7 @@ Schwarz-Gelb hätte nicht genügend Stimmen für eine Mehrheit.
     - Umfragen verschiedener Institute weisen teilweise starke Unterschiede auf
     
     - Oft wird der Anteil einzelner Parteien je nach Umfrageinstitut 
-    systematisch höher/niedriger geschätzt als bei einem anderen
+    systematisch höher/niedriger geschätzt als bei den anderen Instituten
 
 
 ## Was bedeutet dies konkret? 
@@ -137,9 +139,9 @@ Schwarz-Gelb hätte nicht genügend Stimmen für eine Mehrheit.
 ### 1. Umverteilung 
 Bei der Bundestagswahl 2013 war der Anteil umverteilter Stimmen ungewöhnlich 
 hoch. Nach obiger Umfrage würden die Stimmen der Piraten, AfD und Sonstigen 
-umverteilt, also bereits 10%. Zusätzlich war die FDP knapp an der Grenze, d.h.
+umverteilt, also bereits 10% aller Stimmen. Zusätzlich war die FDP nahe der 5%-Hürde, d.h.
 insgesamt hätten bis zu 15% der Stimmen umverteilt werden können. Die 
-Sitzverteilung für dieses konkrete Beispiel sähe also folgendermaßen aus: 
+Sitzverteilung für dieses konkrete Beispiel sähe folgendermaßen aus: 
 
 ```{r, results="asis"}
 frd_13 <- redistribute(forsa_13) %>% 
@@ -148,15 +150,17 @@ frd_13 <- redistribute(forsa_13) %>%
         Anteil = paste0(round(percent, 4)*100, "%"),
         Sitze = sls(votes, party))
 kable(frd_13, 
-  caption = "Anteile nach Umverteilung und Sitze nach Zuordnung
-  mit dem Verfahren  von Sainte-Lague-Scheppers",
+  caption = "Anteile und Zuordnung von Sitzen (nach dem
+  Verfahren von Sainte-Lague-Scheppers) nach der Umverteilung der Stimmen",
+
   format="html", align = c("l", "r", "r"))  %>% 
   kable_styling(bootstrap_options=c("striped", "hover"), full_width=FALSE)
 ```
 
 In diesem Szenario hätte Schwarz-Gelb also nur knapp weniger als 50% anstatt 
-der knapp 45% die sich aus der Umfrage ergaben und Schwarz-Grün eine solide 
-Mehrheit von knapp 55.6%, was nach Umfrage nur 50% wären. 
+der knapp 45%, die sich aus der Umfrage ergaben. Schwarz-Grün hätte eine solide 
+Mehrheit von 55.6% statt der 50%, welche sich aus der Umfrage ohne Umverteilung
+der Stimmen ergeben würden.
 
 ### 2. Stichprobenunsicherheit
 
@@ -166,10 +170,10 @@ Stichprobe mit Unsicherheit behaftet. Das heißt, dass die wahren Anteile
 einzelner Parteien von den erfragten Anteilen abweichen können.  Je kleiner 
 die Stichprobe, desto größer die Unsicherheit.
 
-Für die FDP würde die Forsa Umfrage deshalb bedeuten, dass sie es nur in 50% 
-Prozent der Fälle in den Bundestag schafft. D.h. selbst wenn es für 
+Für die FDP würde die Forsa-Umfrage deshalb bedeuten, dass sie es nur in 50%
+der Fälle in den Bundestag schafft. D.h. selbst wenn es für 
 Schwarz-Gelb, laut Umfrage und nach Umverteilung, knapp für eine Mehrheit 
-reichen würde, **realisiert** sich diese Mehrheit nur in etwa 50% Prozent der 
+reichen würde, **realisiert** sich diese Mehrheit nur in etwa 50% der 
 Fälle. In den anderen 50% der Fälle profitiert die Union zwar davon, dass die 
 Anteile der FDP umverteilt werden, aber nicht in vollem Umfang, sodass z.B. 
 eine alleinige Mehrheit sehr unwahrscheinlich war.
@@ -180,7 +184,7 @@ Bei jeder Umfrage kann es passieren, dass die
 zugrundeliegende Stichprobe das aktuelle Stimmungsbild nicht korrekt abbildet. 
 Es stellt sich außerdem die Frage welche der Umfragen man für seine Aussagen 
 heranzieht. Selbiges gilt für die Frage, den Umfragen welcher Institute man 
-vertrauen soll. In beiden Fällen besteht die Gefahr der Rosinnenpickerei und, 
+vertrauen soll. In beiden Fällen besteht die Gefahr der Rosinenpickerei und, 
 damit verbunden, falscher Schlüsse.
 
 ## Wie geht KOALA mit diesen Problemen um? 
@@ -193,11 +197,11 @@ Institute innerhalb eines Fensters von 14 Tagen darstellt. Dadurch wird der
 Einfluss potentieller Ausreißer gemildert und die Stichprobenunsicherheit 
 reduziert.
 
-Basierend auf dieser *gepoolten* Umfrage, generieren wir dann viele 
+Basierend auf dieser *gepoolten* Umfrage generieren wir dann viele 
 verschiedene Wahlausgänge, die manchmal mehr, manchmal weniger von den 
 Umfragewerten abweichen. In jedem dieser hypothetischen Wahlausgänge führen 
 wir die Umverteilung der Anteile durch und berechnen für jede Partei die 
-Anzahl Sitze nach der Umverteilung. Gegeben die Sitze kann dann für eine 
+Anzahl an Sitzen nach der Umverteilung. Gegeben die Sitze kann dann für eine 
 Koalition von Interesse berechnet werden, ob genügend Sitze für eine Mehrheit 
 zu Stande gekommen sind.
 
@@ -213,20 +217,20 @@ probs_13 %>%
     Wahrscheinlichkeit = paste(probability, "%")) %>% 
   kable(
     format="html",
-    caption="Auf der Forsa Umfrage basierende Koalitionswahrscheinlichkeiten laut unserer KOALA",
+    caption="Auf der Forsa-Umfrage basierende Koalitionswahrscheinlichkeiten laut unserer KOALA",
     align = c("l", "r")) %>% 
     kable_styling(bootstrap_options=c("striped", "hover"), full_width=F)
 ```
 
-Obwohl also die Union und FDP laut Umfrage nur 45% der Stimmanteile erhalten, 
+Obwohl also die Union und FDP laut Umfrage nur 45% der Stimmanteile hatten, 
 betrug die Wahrscheinlichkeit dafür, dass Schwarz-Gelb eine rechnerische 
 Sitzemehrheit erhält etwa 27%. 
 
-Zum Vergleich, die Wahrscheinlichkeit, 
+Zum Vergleich: Die Wahrscheinlichkeit, 
 dass Donald Trump die Präsidentschaft gewinnt, lag laut letzter Vorhersage von 
 [FiveThirtyEight](https://projects.fivethirtyeight.com/2016-election-forecast/)
 bei 28.6%. 
 
-Bei der Bundestagswahl 2013 ist hingegen das Ereignis mit der höheren 
+Bei der Bundestagswahl 2013 ist letztendlich das Ereignis mit der höheren 
 Wahrscheinlichkeit (keine Sitzemehrheit für Schwarz-Gelb) eingetreten, 
-weil die FDP es trotzt 5% in den Umfragen nicht in den Bundestag geschafft hat.
+da die FDP es trotz 5% in den Umfragen nicht in den Bundestag geschafft hat.
