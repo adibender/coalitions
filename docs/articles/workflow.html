@@ -48,9 +48,6 @@
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
-      <a href="../articles/KOALA.html">koala17: Koalitionsanalysen zur Bundestagswahl 2017</a>
-    </li>
-    <li>
       <a href="../articles/workflow.html">Workflow</a>
     </li>
   </ul>
@@ -78,7 +75,7 @@
       <h1>Workflow</h1>
                         <h4 class="author">Andreas Bender</h4>
             
-            <h4 class="date">2017-07-31</h4>
+            <h4 class="date">2017-08-01</h4>
           </div>
 
     
@@ -167,16 +164,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 10 x 7
 ##          cdu       spd     gruene        fdp      linke        afd
 ##        &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-##  1 0.3710441 0.2426301 0.08781256 0.07993750 0.09832480 0.08567300
-##  2 0.3737148 0.2338842 0.09255663 0.07601512 0.09090155 0.08229920
-##  3 0.3960281 0.2241007 0.08056655 0.07221340 0.10518895 0.08069625
-##  4 0.3887592 0.2362954 0.07006575 0.08410975 0.10147967 0.09131755
-##  5 0.3835232 0.2405642 0.07826220 0.07545559 0.08848403 0.09649836
-##  6 0.3767770 0.2506742 0.08726095 0.08394848 0.08244972 0.07550426
-##  7 0.3951868 0.2323285 0.08142942 0.07793051 0.08095271 0.09205889
-##  8 0.3635211 0.2304735 0.09307734 0.07523916 0.11207615 0.07703091
-##  9 0.3783377 0.2541287 0.07937786 0.06719722 0.07933578 0.08991234
-## 10 0.3951601 0.2399997 0.07082943 0.08294486 0.08179488 0.09164288
+##  1 0.3970925 0.2381844 0.06683275 0.07172503 0.09469081 0.08171962
+##  2 0.3636727 0.2423340 0.09233383 0.08142748 0.09069447 0.09371539
+##  3 0.3666794 0.2401623 0.09808560 0.08127477 0.08192909 0.08791012
+##  4 0.3971405 0.2319727 0.08041136 0.07947981 0.09194628 0.08298555
+##  5 0.3938732 0.2224090 0.08168890 0.09150575 0.09006970 0.07699966
+##  6 0.3845472 0.2419187 0.08405516 0.07694153 0.08191834 0.09275388
+##  7 0.3667115 0.2435604 0.10163918 0.07207353 0.08515852 0.08815911
+##  8 0.3877189 0.2179977 0.07754025 0.08577393 0.10769917 0.08504830
+##  9 0.3936384 0.2267551 0.08006092 0.07953354 0.08810296 0.09123708
+## 10 0.3853402 0.2535803 0.07650993 0.07137913 0.08576495 0.09566806
 ## # ... with 1 more variables: sonstige &lt;dbl&gt;</code></pre>
 </div>
 <div id="calculate-seat-distribution" class="section level2">
@@ -200,16 +197,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 60 x 3
 ##      sim  party seats
 ##    &lt;int&gt;  &lt;chr&gt; &lt;int&gt;
-##  1     1    cdu   230
+##  1     1    cdu   250
 ##  2     1    spd   150
-##  3     1 gruene    54
-##  4     1    fdp    50
-##  5     1  linke    61
-##  6     1    afd    53
-##  7     2    cdu   236
-##  8     2    spd   147
-##  9     2 gruene    58
-## 10     2    fdp    48
+##  3     1 gruene    42
+##  4     1    fdp    45
+##  5     1  linke    60
+##  6     1    afd    51
+##  7     2    cdu   226
+##  8     2    spd   150
+##  9     2 gruene    57
+## 10     2    fdp    51
 ## # ... with 50 more rows</code></pre>
 <p>In the above example, given the latest survey, CDU/CSU would have 225 seats in the first simulation, 223 seats in the second simulation, etc.</p>
 </div>
@@ -251,7 +248,7 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 ##  2 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
 ##  3 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
 ##  4 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
-##  5 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
+##  5 FALSE    TRUE      FALSE           TRUE FALSE     FALSE      FALSE
 ##  6 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
 ##  7 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
 ##  8 FALSE   FALSE      FALSE           TRUE FALSE     FALSE      FALSE
@@ -282,9 +279,9 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 ##          coalition probability
 ##              &lt;chr&gt;       &lt;dbl&gt;
 ## 1              cdu           0
-## 2          cdu_fdp           0
+## 2          cdu_fdp          10
 ## 3       cdu_gruene           0
-## 4   cdu_fdp_gruene         100
+## 4   cdu_fdp_gruene          90
 ## 5              spd           0
 ## 6        linke_spd           0
 ## 7       gruene_spd           0

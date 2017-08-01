@@ -71,9 +71,6 @@
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
-      <a href="../articles/KOALA.html">koala17: Koalitionsanalysen zur Bundestagswahl 2017</a>
-    </li>
-    <li>
       <a href="../articles/workflow.html">Workflow</a>
     </li>
   </ul>
@@ -105,7 +102,7 @@
     <p>Removes all characters that are not in [0-9].</p>
     
 
-    <pre class="usage"><span class='fu'>extract_num</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>extract_num</span>(<span class='no'>x</span>, <span class='kw'>decimal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -113,6 +110,10 @@
     <tr>
       <th>x</th>
       <td><p>A character vector.</p></td>
+    </tr>
+    <tr>
+      <th>decimal</th>
+      <td><p>Logical flag, indicating if x has a decimal separator</p></td>
     </tr>
     </table>
     
