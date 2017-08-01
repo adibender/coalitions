@@ -48,8 +48,8 @@ surveys
     ## 3      forsa <tibble [198 x 5]>
     ## 4        fgw  <tibble [69 x 5]>
     ## 5        gms  <tibble [89 x 5]>
-    ## 6  infratest  <tibble [91 x 5]>
-    ## 7       insa  <tibble [99 x 5]>
+    ## 6  infratest  <tibble [92 x 5]>
+    ## 7       insa <tibble [271 x 5]>
 
 Each row represents a survey insitute and each row in the `surveys` column again contains a nested `tibble` with survey results from different time-points:
 
@@ -103,8 +103,8 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##    institute      datum        coalition probability
     ##        <chr>     <date>            <chr>       <dbl>
     ## 1 allensbach 2017-07-18              cdu        0.00
-    ## 2 allensbach 2017-07-18          cdu_fdp       54.16
-    ## 3 allensbach 2017-07-18   cdu_fdp_gruene       45.84
+    ## 2 allensbach 2017-07-18          cdu_fdp       54.29
+    ## 3 allensbach 2017-07-18   cdu_fdp_gruene       45.71
     ## 4 allensbach 2017-07-18              spd        0.00
     ## 5 allensbach 2017-07-18        linke_spd        0.00
     ## 6 allensbach 2017-07-18 gruene_linke_spd        0.00

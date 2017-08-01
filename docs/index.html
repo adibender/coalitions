@@ -120,8 +120,8 @@ surveys</code></pre></div>
 ## 3      forsa &lt;tibble [198 x 5]&gt;
 ## 4        fgw  &lt;tibble [69 x 5]&gt;
 ## 5        gms  &lt;tibble [89 x 5]&gt;
-## 6  infratest  &lt;tibble [91 x 5]&gt;
-## 7       insa  &lt;tibble [99 x 5]&gt;</code></pre>
+## 6  infratest  &lt;tibble [92 x 5]&gt;
+## 7       insa &lt;tibble [271 x 5]&gt;</code></pre>
 <p>Each row represents a survey insitute and each row in the <code>surveys</code> column again contains a nested <code>tibble</code> with survey results from different time-points:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys %&gt;%<span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(institute ==<span class="st"> "allensbach"</span>) %&gt;%<span class="st"> </span>
@@ -163,8 +163,8 @@ survey %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocu
 ##    institute      datum        coalition probability
 ##        &lt;chr&gt;     &lt;date&gt;            &lt;chr&gt;       &lt;dbl&gt;
 ## 1 allensbach 2017-07-18              cdu        0.00
-## 2 allensbach 2017-07-18          cdu_fdp       53.13
-## 3 allensbach 2017-07-18   cdu_fdp_gruene       46.87
+## 2 allensbach 2017-07-18          cdu_fdp       54.49
+## 3 allensbach 2017-07-18   cdu_fdp_gruene       45.51
 ## 4 allensbach 2017-07-18              spd        0.00
 ## 5 allensbach 2017-07-18        linke_spd        0.00
 ## 6 allensbach 2017-07-18 gruene_linke_spd        0.00</code></pre>
