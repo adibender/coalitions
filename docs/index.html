@@ -48,9 +48,6 @@
       <a href="articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
-      <a href="articles/KOALA.html">koala17: Koalitionsanalysen zur Bundestagswahl 2017</a>
-    </li>
-    <li>
       <a href="articles/workflow.html">Workflow</a>
     </li>
   </ul>
@@ -120,11 +117,11 @@ surveys</code></pre></div>
 ##        &lt;chr&gt;             &lt;list&gt;
 ## 1 allensbach  &lt;tibble [33 x 5]&gt;
 ## 2      emnid &lt;tibble [195 x 5]&gt;
-## 3      forsa &lt;tibble [198 x 5]&gt;
+## 3      forsa &lt;tibble [199 x 5]&gt;
 ## 4        fgw  &lt;tibble [69 x 5]&gt;
 ## 5        gms  &lt;tibble [89 x 5]&gt;
-## 6  infratest  &lt;tibble [91 x 5]&gt;
-## 7       insa  &lt;tibble [99 x 5]&gt;</code></pre>
+## 6  infratest  &lt;tibble [92 x 5]&gt;
+## 7       insa &lt;tibble [271 x 5]&gt;</code></pre>
 <p>Each row represents a survey insitute and each row in the <code>surveys</code> column again contains a nested <code>tibble</code> with survey results from different time-points:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys %&gt;%<span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(institute ==<span class="st"> "allensbach"</span>) %&gt;%<span class="st"> </span>
@@ -165,12 +162,12 @@ survey %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocu
 <pre><code>## # A tibble: 6 x 4
 ##    institute      datum        coalition probability
 ##        &lt;chr&gt;     &lt;date&gt;            &lt;chr&gt;       &lt;dbl&gt;
-## 1 allensbach 2017-07-18              cdu         0.0
-## 2 allensbach 2017-07-18          cdu_fdp        53.5
-## 3 allensbach 2017-07-18   cdu_fdp_gruene        46.5
-## 4 allensbach 2017-07-18              spd         0.0
-## 5 allensbach 2017-07-18        linke_spd         0.0
-## 6 allensbach 2017-07-18 gruene_linke_spd         0.0</code></pre>
+## 1 allensbach 2017-07-18              cdu        0.00
+## 2 allensbach 2017-07-18          cdu_fdp       53.62
+## 3 allensbach 2017-07-18   cdu_fdp_gruene       46.38
+## 4 allensbach 2017-07-18              spd        0.00
+## 5 allensbach 2017-07-18        linke_spd        0.00
+## 6 allensbach 2017-07-18 gruene_linke_spd        0.00</code></pre>
 </div>
 </div>
 </div>
