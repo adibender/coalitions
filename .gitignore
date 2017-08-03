@@ -20,6 +20,5 @@ inst/doc
 
 /vignettes/workflow.html
 
-/docs/articles/KOALA_cache/
-
-/vignettes/KOALA.html
+## linux artifacts
+*.nfs*
