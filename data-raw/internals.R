@@ -28,15 +28,18 @@ div_vec <- 0.5:(598+0.5)
 ## a survey of samples used for tests and examples
 .survey_sample <- get_surveys() %>%
 	tidyr::unnest() %>%
-	filter(datum <= as.Date("2017-08-02") & datum >= as.Date("2017-07-06")) %>%
+	filter(datum <= as.Date("2017-09-02") & datum >= as.Date("2017-01-06")) %>%
 	group_by(institute) %>%
-	slice(3)
+	slice(1:3)
 
 
 ## A data frame of terms in German and English used by prettify_strings
 .trans_df <- tibble::tribble(
 	~ german           , ~ german_pretty                , ~ english         , ~english_pretty             ,
-	"befragte"         , "Befragte"                     , "respondents"     , "Respondents"               ,
+	"start"            , "Beginn"                       , "start"           , "start"                     ,
+	"end"              , "Ende"                         , "end"             , "end"                       ,
+	"survey"           , "Umfrage"                      , "survey"          , "survey"                    ,
+	"befragte"         , "Befragte"                     , "respondents"     , "respondents"               ,
 	"institute"        , "Institut"                     , "pollster"        , "pollster"                  ,
 	"datum"            , "Datum"                        , "date"            , "date"                      ,
 	"cdu"              , "Union"                        , "cdu"             , "Union"                     ,
