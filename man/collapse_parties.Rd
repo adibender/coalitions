@@ -16,7 +16,7 @@ collapse_parties(surveys, parties = c("cdu", "spd", "gruene", "fdp", "linke",
 Data frame in long format
 }
 \description{
-Given a data frame containing multiple surveys (one row per survey), transforms 
+Given a data frame containing multiple surveys (one row per survey), transforms
 the data into long format with one row per party.
 }
 \examples{

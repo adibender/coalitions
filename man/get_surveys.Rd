@@ -2,10 +2,23 @@
 % Please edit documentation in R/scrappers.R
 \name{get_surveys}
 \alias{get_surveys}
+\alias{get_latest}
 \title{Scrape surveys from all survey institutes}
 \usage{
 get_surveys()
+
+get_latest(surveys = NULL, date = Sys.Date())
+}
+\arguments{
+\item{surveys}{If provided, lates survey will be obtained from this object,
+otherwise calls \code{\link{get_surveys}}.}
+
+\item{date}{Specifies the date, relative to which latest survey will
+be searched for. Defaults to \code{Sys.Date}.}
 }
 \description{
 Scrape surveys from all survey institutes
+
+Given a specific date, extract the survey from this date or the last one
+before this date.
 }

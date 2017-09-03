@@ -7,7 +7,7 @@
 sanitize_percent(vec)
 }
 \arguments{
-\item{vec}{Character vector containg percentages that can not be transformed 
+\item{vec}{Character vector containg percentages that can not be transformed
 to numerics b/c of special characters}
 }
 \description{
