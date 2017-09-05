@@ -54,11 +54,13 @@ test_that("Sainte-Lague/Scheppers works correctly", {
 context("helper functions")
 test_that("Prettify function works correctly", {
 
-	x <- colnames(.survey_sample)
+	x <- colnames(tidyr::unnest(.survey_sample))
 	trans <- prettify_strings(x)
-	expect_equal(trans, c("Institut", "Datum", "Beginn", "Ende", "Befragte", "Umfrage"))
+	expect_equal(trans, c("Institut", "Datum", "Beginn", "Ende", "Befragte",
+		"Umfrage"))
 	trans <- prettify_strings(x, .trans_df$german, .trans_df$english)
-	expect_equal(trans, c("pollster", "date", "start", "end", "respondents", "survey"))
+	expect_equal(trans, c("pollster", "date", "start", "end", "respondents",
+		"survey"))
 	trans <- prettify_strings(c("asdf", "cdu", "cdu_gruene"),
 		.trans_df$german, .trans_df$english_pretty)
 	expect_equal(trans, c("asdf", "Union", "Union - Greens"))

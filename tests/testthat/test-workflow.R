@@ -11,7 +11,9 @@ test_that("workflow stable", {
 
 	## collapse
 	survey <- .survey_sample %>%
-		filter(institute=="insa" & datum == as.Date("2017-08-29"))
+		filter(institute=="insa") %>%
+		unnest() %>%
+		filter(datum == as.Date("2017-08-29"))
 	expect_data_frame(survey, nrows = 1, ncols=6)
 	expect_equal(colnames(survey),
 		c("institute", "datum", "start", "end", "befragte", "survey"))

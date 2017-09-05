@@ -46,6 +46,7 @@ test_that("GMS tables correct", {
 
 	gms <- .survey_sample %>%
 		filter(institute == "gms") %>%
+		unnest() %>%
 		filter(datum == "2017-06-01") %>%
 		unnest()
 	expect_identical(sum(gms$percent), 100)
