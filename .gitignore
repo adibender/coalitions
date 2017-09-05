@@ -15,10 +15,7 @@ figure/
 ## Dropbox
 *.dropbox.attr
 inst/doc
-
 /vignettes/diagnostic.html
-
 /vignettes/workflow.html
-
 ## linux artifacts
 *.nfs*

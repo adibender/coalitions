@@ -9,17 +9,17 @@ sls(votes, parties, n_seats = 598L)
 \arguments{
 \item{votes}{A numeric vector giving the redistributes votes}
 
-\item{parties}{A character vector indicating the names of parties with 
+\item{parties}{A character vector indicating the names of parties with
 respective \code{votes}.}
 
-\item{n_seats}{The total number of seats that can be assigned to the different 
+\item{n_seats}{The total number of seats that can be assigned to the different
 parties.}
 }
 \value{
 A numeric vector giving the number of seats each party obtained.
 }
 \description{
-Calculates number of seats for the respective parties that have received more 
+Calculates number of seats for the respective parties that have received more
 than 5\% of votes (according to the method of Sainte-Lague/Schepers,
 see http://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 }

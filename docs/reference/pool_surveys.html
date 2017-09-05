@@ -99,7 +99,7 @@
     </div>
 
     
-    <p>Per default, pools surveys starting from current date and going 14 days back. 
+    <p>Per default, pools surveys starting from current date and going 14 days back.
 For each institute within the defined time-frame, only the most recent survey
 is used.</p>
     
@@ -113,13 +113,13 @@ is used.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>surveys</th>
-      <td><p>A <code>tibble</code> containing survey results for multiple 
+      <td><p>A <code>tibble</code> containing survey results for multiple
 institutes as returned by <code><a href='get_surveys.html'>get_surveys</a></code>.</p></td>
     </tr>
     <tr>
       <th>last_date</th>
-      <td><p>Only surveys in the time-window from <code>last_date</code> to 
-<code>last_date</code> - period will be considered for each institute. Defaults 
+      <td><p>Only surveys in the time-window from <code>last_date</code> to
+<code>last_date</code> - period will be considered for each institute. Defaults
 to current date.</p></td>
     </tr>
     <tr>
@@ -133,7 +133,7 @@ for pooling.</p></td>
     </tr>
     <tr>
       <th>corr</th>
-      <td><p>Assumed correlation between surveys (of different institutes). 
+      <td><p>Assumed correlation between surveys (of different institutes).
 Defaults to 0.5.</p></td>
     </tr>
     <tr>
@@ -144,17 +144,17 @@ Defaults to 0.5.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_surveys.html'>get_surveys</a></span>()</div><div class='output co'>#&gt; <span class='warning'>Warning:  1 failed to parse.</span></div><div class='output co'>#&gt; <span class='warning'>Warning:  1 failed to parse.</span></div><div class='output co'>#&gt; <span class='warning'>Warning:  2 failed to parse.</span></div><div class='output co'>#&gt; <span class='warning'>Warning:  2 failed to parse.</span></div><div class='input'><span class='fu'>pool_surveys</span>(<span class='no'>surveys</span>)</div><div class='output co'>#&gt; # A tibble: 7 x 8
-#&gt;   institute      datum      start        end befragte    party   percent
-#&gt;       &lt;chr&gt;     &lt;date&gt;     &lt;date&gt;     &lt;date&gt;    &lt;dbl&gt;    &lt;chr&gt;     &lt;dbl&gt;
-#&gt; 1    pooled 2017-08-03 2017-07-21 2017-08-02 2979.884      afd  8.685107
-#&gt; 2    pooled 2017-08-03 2017-07-21 2017-08-02 2979.884      cdu 38.859298
-#&gt; 3    pooled 2017-08-03 2017-07-21 2017-08-02 2979.884      fdp  8.233855
-#&gt; 4    pooled 2017-08-03 2017-07-21 2017-08-02 2979.884   gruene  7.766145
-#&gt; 5    pooled 2017-08-03 2017-07-21 2017-08-02 2979.884    linke  8.687279
-#&gt; 6    pooled 2017-08-03 2017-07-21 2017-08-02 2979.884 sonstige  4.337867
-#&gt; 7    pooled 2017-08-03 2017-07-21 2017-08-02 2979.884      spd 23.430449
-#&gt; # ... with 1 more variables: votes &lt;dbl&gt;</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>coalitions</span>)
+<span class='fu'>pool_surveys</span>(<span class='no'>surveys_sample</span>)</div><div class='output co'>#&gt; # A tibble: 7 x 8
+#&gt;   institute datum      start      end        befragte party    percent votes
+#&gt;   &lt;chr&gt;     &lt;date&gt;     &lt;date&gt;     &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 pooled    2017-09-05 2017-08-22 2017-09-02     3055 afd         8.89   272
+#&gt; 2 pooled    2017-09-05 2017-08-22 2017-09-02     3055 cdu        38.0   1161
+#&gt; 3 pooled    2017-09-05 2017-08-22 2017-09-02     3055 fdp         8.52   260
+#&gt; 4 pooled    2017-09-05 2017-08-22 2017-09-02     3055 gruene      7.41   226
+#&gt; 5 pooled    2017-09-05 2017-08-22 2017-09-02     3055 linke       9.06   277
+#&gt; 6 pooled    2017-09-05 2017-08-22 2017-09-02     3055 sonstige    4.51   138
+#&gt; 7 pooled    2017-09-05 2017-08-22 2017-09-02     3055 spd        23.6    722</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

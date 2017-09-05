@@ -13,12 +13,12 @@ get_seats(dirichlet.draws, survey, distrib.fun = sls, samplesize = NULL,
 \item{survey}{The actual survey results on which \code{dirichlet.draws}
 were based on.}
 
-\item{distrib.fun}{Function to calculate seat distribution. Defaults to 
+\item{distrib.fun}{Function to calculate seat distribution. Defaults to
 \code{\link{sls}} (Sainte-Lague/Scheppers).}
 
 \item{samplesize}{Number of individuals participating in the \code{survey}.}
 
-\item{hurdle}{The percentage which has to be reached to enter the 
+\item{hurdle}{The percentage which has to be reached to enter the
 parliament.}
 
 \item{others}{A character indicating the}
@@ -26,14 +26,14 @@ parliament.}
 \item{...}{Further arguments passed to \code{distrib.fun}.}
 }
 \value{
-A data frame containing seat distributions for each simulation in 
+A data frame containing seat distributions for each simulation in
 \code{dirichlet.draws}
 }
 \description{
 Calculate seat distribution from draws from posterior
 }
 \seealso{
-\code{\link{draw_from_posterior}}, \code{\link{sls}}, 
+\code{\link{draw_from_posterior}}, \code{\link{sls}},
 \code{\link{dHondt}}
 }
 \keyword{distribution}

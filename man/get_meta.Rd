@@ -7,7 +7,7 @@
 get_meta(surveys_df)
 }
 \arguments{
-\item{surveys_df}{A data frame containing surveys from different survey 
+\item{surveys_df}{A data frame containing surveys from different survey
 institutes as returned by \code{\link{get_surveys}}.}
 }
 \description{

@@ -7,7 +7,7 @@
 sanitize_colnames(df)
 }
 \arguments{
-\item{df}{A data frame with party names with special characters that need 
+\item{df}{A data frame with party names with special characters that need
 to be sanitized.}
 }
 \description{

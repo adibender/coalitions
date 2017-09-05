@@ -9,16 +9,16 @@ get_probabilities(x, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
   nsim = 1e+05, distrib.fun = sls, seats_majority = 300L)
 }
 \arguments{
-\item{x}{A table containing one row per survey and survey information in 
+\item{x}{A table containing one row per survey and survey information in
 long format in a separate column named \code{survey}.}
 
-\item{coalitions}{A list of coaltions for which coalition probabilities should 
-be calculated. Each list entry must be a vector of party names. Those names 
+\item{coalitions}{A list of coaltions for which coalition probabilities should
+be calculated. Each list entry must be a vector of party names. Those names
 need to correspond to the names in \code{majority_df}.}
 
 \item{nsim}{number of simulations}
 
-\item{distrib.fun}{Function to calculate seat distribution. Defaults to 
+\item{distrib.fun}{Function to calculate seat distribution. Defaults to
 \code{\link{sls}} (Sainte-Lague/Scheppers).}
 
 \item{seats_majority}{The number of seats needed to obtain majority.}

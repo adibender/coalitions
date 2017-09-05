@@ -7,7 +7,7 @@
 get_n(eligible_df)
 }
 \arguments{
-\item{eligible_df}{A data frame containing surveys that should be used for 
+\item{eligible_df}{A data frame containing surveys that should be used for
 pooling as returned by \code{get_eligible}.}
 }
 \description{

@@ -5,76 +5,66 @@ test_that("workflow stable", {
 	library(purrr)
 	library(dplyr)
 
-	coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu", "fdp", "gruene"), 
+	coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu", "fdp", "gruene"),
 		c("spd"), c("spd", "linke"), c("spd", "linke", "gruene"))
 	coalas <- coalitions:::paste_coalitions(coalitions)
-	## scrape
-	survey <- scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/insa.htm" ) %>% 
-		filter(datum==as.Date("2017-08-01"))
-	expect_data_frame(survey, nrows=1, ncols=13)
-	expect_equal(colnames(survey), c("datum", "start", "end", "cdu", "spd", 
-		"gruene", "fdp", "linke", "piraten", "fw", "afd", "sonstige", "befragte"))
-	expect_equal(survey$spd, 24.5)
-	expect_equal(survey$befragte, 2046)
-	
-	survey2 <- scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/allensbach.htm") %>% 
-		filter(datum==as.Date("2017-07-18"))
-	expect_data_frame(survey2, nrows=1, ncols=11)
-	expect_equal(survey2$cdu, 39.5)
-	expect_equal(survey2$befragte, 1403)
 
 	## collapse
-	survey <- collapse_parties(survey)
-	expect_data_frame(survey, nrows = 1, ncols=5)
-	expect_equal(colnames(survey), c("datum", "start", "end", "befragte", "survey"))
+	survey <- .survey_sample %>%
+		filter(institute=="insa") %>%
+		unnest() %>%
+		filter(datum == as.Date("2017-08-29"))
+	expect_data_frame(survey, nrows = 1, ncols=6)
+	expect_equal(colnames(survey),
+		c("institute", "datum", "start", "end", "befragte", "survey"))
 	expect_data_frame(survey$survey[[1]], nrows=7, ncols=3)
 	expect_equal(colnames(survey$survey[[1]]), c("party", "percent", "votes"))
 
-	## add draws 
+	## add draws
 	survey %<>% mutate(draws = map(survey, draw_from_posterior, nsim=10, seed=123))
-	expect_data_frame(survey, nrows = 1, ncols=6)
+	expect_data_frame(survey, nrows = 1, ncols=7)
 	expect_equal(
-		colnames(survey), 
-		c("datum", "start", "end", "befragte", "survey", "draws"))
+		colnames(survey),
+		c("institute", "datum", "start", "end", "befragte", "survey", "draws"))
 	expect_data_frame(survey$draws[[1]], nrows=10, ncols=7)
 	expect_equal(colnames(survey$draws[[1]]), survey$survey[[1]]$party)
 
 	expect_warning(draw_from_posterior(survey$survey[[1]], nsim=10, correction=0.5))
 
 	entry_probs <- get_entryprobability(survey$draws[[1]])
-	expect_numeric(entry_probs, lower=0, upper=1, all.missing=FALSE, len=7, 
+	expect_numeric(entry_probs, lower=0, upper=1, all.missing=FALSE, len=7,
 		names="named")
 
 	## add seats after redistribution
 	survey %<>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls))
-	expect_data_frame(survey, nrows=1, ncols=7)
+	expect_data_frame(survey, nrows=1, ncols=8)
 	expect_equal(
 		colnames(survey),
-		c("datum", "start", "end", "befragte", "survey", "draws", "seats"))
+		c("institute", "datum", "start", "end", "befragte", "survey", "draws", "seats"))
 	expect_data_frame(survey$seats[[1]], nrows=60, ncols=3)
 	expect_equal(colnames(survey$seats[[1]]), c("sim", "party", "seats"))
 
 	## get majorities
 	survey %<>% mutate(majorities = map(seats, have_majority))
-	expect_data_frame(survey, nrows=1, ncols=8, any.missing=FALSE)
+	expect_data_frame(survey, nrows=1, ncols=9, any.missing=FALSE)
 	expect_equal(
 		colnames(survey),
-		c("datum", "start", "end", "befragte", "survey", "draws", "seats", 
+		c("institute", "datum", "start", "end", "befragte", "survey", "draws", "seats",
 			"majorities"))
-	expect_data_frame(survey$majorities[[1]], nrows=10, ncols=6, 
+	expect_data_frame(survey$majorities[[1]], nrows=10, ncols=6,
 		types="logical")
 	expect_equal(colnames(survey$majorities[[1]]), coalas)
 
 	## get probabilities
-	survey %<>% mutate(probabilities = map(majorities, calculate_probs, 
+	survey %<>% mutate(probabilities = map(majorities, calculate_probs,
 		coalitions=coalitions))
 
-	expect_data_frame(survey, nrows=1, ncols=9, any.missing=FALSE)
+	expect_data_frame(survey, nrows=1, ncols=10, any.missing=FALSE)
 	expect_equal(
 		colnames(survey),
-		c("datum", "start", "end", "befragte", "survey", "draws", "seats", 
+		c("institute", "datum", "start", "end", "befragte", "survey", "draws", "seats",
 			"majorities", "probabilities"))
-	expect_data_frame(survey$probabilities[[1]], nrows=6, ncols=2, 
+	expect_data_frame(survey$probabilities[[1]], nrows=6, ncols=2,
 		types=c("character", "numeric"))
 	expect_equal(colnames(survey$probabilities[[1]]), c("coalition", "probability"))
 

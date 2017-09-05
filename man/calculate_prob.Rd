@@ -7,21 +7,21 @@
 calculate_prob(majority_df, coalition, exclude_superior = TRUE, ...)
 }
 \arguments{
-\item{majority_df}{A data frame containing logical values indicating 
+\item{majority_df}{A data frame containing logical values indicating
 if the coalitions (columns) have a majority (rows).}
 
-\item{coalition}{The coaliton of interest for which superior coalitions 
+\item{coalition}{The coaliton of interest for which superior coalitions
 will be obtained by \code{\link[coalitions]{get_superior}}.}
 
-\item{exclude_superior}{Logical. If \code{TRUE}, superior coalitions will 
-be excluded, otherwise total coalition probabilities will be returned. 
+\item{exclude_superior}{Logical. If \code{TRUE}, superior coalitions will
+be excluded, otherwise total coalition probabilities will be returned.
 Usually it makes sense to exclude superior coalitions.}
 
 \item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}
 }
 \description{
-Given a table with simulations in the rows and coalitions in the columns, 
-this function returns the coalition probabilities for a specified coalition, 
+Given a table with simulations in the rows and coalitions in the columns,
+this function returns the coalition probabilities for a specified coalition,
 by default excluding superior coalitions first
 }
 \examples{
