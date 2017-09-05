@@ -53,4 +53,3 @@ test_that("GMS tables correct", {
 	expect_false(any(is.na(gms$percent)))
 
 })
-
