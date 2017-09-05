@@ -25,7 +25,7 @@ coercible to one.}
   \code{\link{boundary}()}. An empty pattern, "", is equivalent to
   \code{boundary("character")}.}
 
-\item{collapse}{string that will be used to concatenate multiple elements 
+\item{collapse}{string that will be used to concatenate multiple elements
 obtained by splitting \code{string} to one string.}
 }
 \description{

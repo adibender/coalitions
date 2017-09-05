@@ -7,18 +7,18 @@
 effective_samplesize(size, share, corr = 0.5, weights = NULL)
 }
 \arguments{
-\item{size}{A vecotr of sample sizes from different surveys (from different 
+\item{size}{A vecotr of sample sizes from different surveys (from different
 institutes) for one party.}
 
 \item{share}{The relative share of votes for party of interest ([0-1])}
 
-\item{corr}{Assumed correlation between surveys (of different institutes). 
+\item{corr}{Assumed correlation between surveys (of different institutes).
 Defaults to 0.5.}
 
 \item{weights}{Additional weights for individual surveys.}
 }
 \description{
-This is the work horse function that calculates the effective sample size. 
+This is the work horse function that calculates the effective sample size.
 Should usually not be called by the user directly.
 }
 \keyword{internal}

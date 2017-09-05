@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coalition probabilities in multi-party democracies • coalitions</title>
+<title>Coalition Probabilities in Multi-party Democracies • coalitions</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
@@ -96,7 +96,7 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install from GitHub using:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">"adibender/coalitions"</span>, <span class="dt">build_vignettes=</span><span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"adibender/coalitions"</span>, <span class="dt">build_vignettes=</span><span class="ot">TRUE</span>)</code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -113,61 +113,60 @@
 surveys &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_surveys.html">get_surveys</a></span>()
 surveys</code></pre></div>
 <pre><code>## # A tibble: 7 x 2
-##    institute            surveys
-##        &lt;chr&gt;             &lt;list&gt;
-## 1 allensbach  &lt;tibble [33 x 5]&gt;
-## 2      emnid &lt;tibble [195 x 5]&gt;
-## 3      forsa &lt;tibble [199 x 5]&gt;
-## 4        fgw  &lt;tibble [69 x 5]&gt;
-## 5        gms  &lt;tibble [89 x 5]&gt;
-## 6  infratest  &lt;tibble [92 x 5]&gt;
-## 7       insa &lt;tibble [271 x 5]&gt;</code></pre>
+##   institute  surveys           
+##   &lt;chr&gt;      &lt;list&gt;            
+## 1 allensbach &lt;tibble [34 x 5]&gt; 
+## 2 emnid      &lt;tibble [200 x 5]&gt;
+## 3 forsa      &lt;tibble [203 x 5]&gt;
+## 4 fgw        &lt;tibble [72 x 5]&gt; 
+## 5 gms        &lt;tibble [90 x 5]&gt; 
+## 6 infratest  &lt;tibble [95 x 5]&gt; 
+## 7 insa       &lt;tibble [276 x 5]&gt;</code></pre>
 <p>Each row represents a survey insitute and each row in the <code>surveys</code> column again contains a nested <code>tibble</code> with survey results from different time-points:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys %&gt;%<span class="st"> </span>
-<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(institute ==<span class="st"> "allensbach"</span>) %&gt;%<span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(institute <span class="op">==</span><span class="st"> "allensbach"</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
-<pre><code>## # A tibble: 33 x 6
-##     institute      datum      start        end befragte           survey
-##         &lt;chr&gt;     &lt;date&gt;     &lt;date&gt;     &lt;date&gt;    &lt;dbl&gt;           &lt;list&gt;
-##  1 allensbach 2017-07-18 2017-07-01 2017-07-12     1403 &lt;tibble [7 x 3]&gt;
-##  2 allensbach 2017-06-20 2017-06-01 2017-06-15     1437 &lt;tibble [7 x 3]&gt;
-##  3 allensbach 2017-05-26 2017-05-05 2017-05-19     1457 &lt;tibble [7 x 3]&gt;
-##  4 allensbach 2017-04-25 2017-04-01 2017-04-13     1407 &lt;tibble [7 x 3]&gt;
-##  5 allensbach 2017-03-28 2017-03-06 2017-03-19     1397 &lt;tibble [7 x 3]&gt;
-##  6 allensbach 2017-02-22 2017-02-01 2017-02-15     1542 &lt;tibble [7 x 3]&gt;
-##  7 allensbach 2017-01-26 2017-01-05 2017-01-19     1441 &lt;tibble [7 x 3]&gt;
-##  8 allensbach 2016-12-22 2016-12-01 2016-12-15     1459 &lt;tibble [7 x 3]&gt;
-##  9 allensbach 2016-11-16 2016-10-28 2016-11-10     1436 &lt;tibble [7 x 3]&gt;
-## 10 allensbach 2016-10-20 2016-10-01 2016-10-13     1458 &lt;tibble [7 x 3]&gt;
-## # ... with 23 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey &lt;-<span class="st"> </span>surveys %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>() %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>)
-survey %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
+<pre><code>## # A tibble: 34 x 6
+##    institute  datum      start      end        befragte survey          
+##    &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;     &lt;date&gt;        &lt;dbl&gt; &lt;list&gt;          
+##  1 allensbach 2017-08-22 2017-08-04 2017-08-17     1421 &lt;tibble [7 x 3]&gt;
+##  2 allensbach 2017-07-18 2017-07-01 2017-07-12     1403 &lt;tibble [7 x 3]&gt;
+##  3 allensbach 2017-06-20 2017-06-01 2017-06-15     1437 &lt;tibble [7 x 3]&gt;
+##  4 allensbach 2017-05-26 2017-05-05 2017-05-19     1457 &lt;tibble [7 x 3]&gt;
+##  5 allensbach 2017-04-25 2017-04-01 2017-04-13     1407 &lt;tibble [7 x 3]&gt;
+##  6 allensbach 2017-03-28 2017-03-06 2017-03-19     1397 &lt;tibble [7 x 3]&gt;
+##  7 allensbach 2017-02-22 2017-02-01 2017-02-15     1542 &lt;tibble [7 x 3]&gt;
+##  8 allensbach 2017-01-26 2017-01-05 2017-01-19     1441 &lt;tibble [7 x 3]&gt;
+##  9 allensbach 2016-12-22 2016-12-01 2016-12-15     1459 &lt;tibble [7 x 3]&gt;
+## 10 allensbach 2016-11-16 2016-10-28 2016-11-10     1436 &lt;tibble [7 x 3]&gt;
+## # ... with 24 more rows</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey &lt;-<span class="st"> </span>surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>)
+survey <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 7 x 8
-##    institute      datum      start        end befragte    party percent
-##        &lt;chr&gt;     &lt;date&gt;     &lt;date&gt;     &lt;date&gt;    &lt;dbl&gt;    &lt;chr&gt;   &lt;dbl&gt;
-## 1 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      cdu    39.5
-## 2 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      spd    25.0
-## 3 allensbach 2017-07-18 2017-07-01 2017-07-12     1403   gruene     7.0
-## 4 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      fdp     9.0
-## 5 allensbach 2017-07-18 2017-07-01 2017-07-12     1403    linke     9.0
-## 6 allensbach 2017-07-18 2017-07-01 2017-07-12     1403      afd     7.0
-## 7 allensbach 2017-07-18 2017-07-01 2017-07-12     1403 sonstige     3.5
-## # ... with 1 more variables: votes &lt;dbl&gt;</code></pre>
+##   institute  datum      start      end        befragte party   perc… votes
+##   &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;     &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 allensbach 2017-08-22 2017-08-04 2017-08-17     1421 cdu     39.5  561  
+## 2 allensbach 2017-08-22 2017-08-04 2017-08-17     1421 spd     24.0  341  
+## 3 allensbach 2017-08-22 2017-08-04 2017-08-17     1421 gruene   7.50 107  
+## 4 allensbach 2017-08-22 2017-08-04 2017-08-17     1421 fdp     10.0  142  
+## 5 allensbach 2017-08-22 2017-08-04 2017-08-17     1421 linke    8.00 114  
+## 6 allensbach 2017-08-22 2017-08-04 2017-08-17     1421 afd      7.00  99.5
+## 7 allensbach 2017-08-22 2017-08-04 2017-08-17     1421 sonsti…  4.00  56.8</code></pre>
 </div>
 <div id="calculate-coalition-probabilities" class="section level3">
 <h3 class="hasAnchor">
 <a href="#calculate-coalition-probabilities" class="anchor"></a>Calculate coalition probabilities</h3>
 <p>For each survey (row) we can calculate the coalition probabilities</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey %&gt;%<span class="st"> </span><span class="kw"><a href="reference/get_probabilities.html">get_probabilities</a></span>(<span class="dt">nsim=</span><span class="fl">1e4</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/get_probabilities.html">get_probabilities</a></span>(<span class="dt">nsim=</span><span class="fl">1e4</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 6 x 4
-##    institute      datum        coalition probability
-##        &lt;chr&gt;     &lt;date&gt;            &lt;chr&gt;       &lt;dbl&gt;
-## 1 allensbach 2017-07-18              cdu        0.00
-## 2 allensbach 2017-07-18          cdu_fdp       53.62
-## 3 allensbach 2017-07-18   cdu_fdp_gruene       46.38
-## 4 allensbach 2017-07-18              spd        0.00
-## 5 allensbach 2017-07-18        linke_spd        0.00
-## 6 allensbach 2017-07-18 gruene_linke_spd        0.00</code></pre>
+##   institute  datum      coalition        probability
+##   &lt;chr&gt;      &lt;date&gt;     &lt;chr&gt;                  &lt;dbl&gt;
+## 1 allensbach 2017-08-22 cdu                      0  
+## 2 allensbach 2017-08-22 cdu_fdp                 86.4
+## 3 allensbach 2017-08-22 cdu_fdp_gruene          13.6
+## 4 allensbach 2017-08-22 spd                      0  
+## 5 allensbach 2017-08-22 linke_spd                0  
+## 6 allensbach 2017-08-22 gruene_linke_spd         0</code></pre>
 </div>
 </div>
 </div>

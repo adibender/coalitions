@@ -30,7 +30,7 @@ div_vec <- 0.5:(598+0.5)
 	tidyr::unnest() %>%
 	filter(datum <= as.Date("2017-09-02") & datum >= as.Date("2017-01-06")) %>%
 	group_by(institute) %>%
-	slice(1:3)
+	slice(1:3) %>% nest(-institute, .key="surveys")
 
 
 ## A data frame of terms in German and English used by prettify_strings

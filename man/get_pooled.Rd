@@ -9,11 +9,11 @@ get_pooled(surveys, last_date = Sys.Date(), institutes = c("allensbach",
   corr = 0.5, weights = NULL)
 }
 \arguments{
-\item{surveys}{A \code{tibble} containing survey results for multiple 
+\item{surveys}{A \code{tibble} containing survey results for multiple
 institutes as returned by \code{\link[coalitions]{get_surveys}}.}
 
-\item{last_date}{Only surveys in the time-window from \code{last_date} to 
-\code{last_date} - period will be considered for each institute. Defaults 
+\item{last_date}{Only surveys in the time-window from \code{last_date} to
+\code{last_date} - period will be considered for each institute. Defaults
 to current date.}
 
 \item{institutes}{Character vector of institutes that should be considered
@@ -21,14 +21,14 @@ for pooling.}
 
 \item{period}{See \code{last_date} argument.}
 
-\item{corr}{Assumed correlation between surveys (of different institutes). 
+\item{corr}{Assumed correlation between surveys (of different institutes).
 Defaults to 0.5.}
 
 \item{weights}{Additional weights for individual surveys.}
 }
 \description{
-Given a specified time window (defaults to current day - 14 days). 
-calculate the effective sample size of the pooled sample over multiple 
+Given a specified time window (defaults to current day - 14 days).
+calculate the effective sample size of the pooled sample over multiple
 institutes.
 }
 \keyword{internal}

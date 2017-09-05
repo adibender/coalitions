@@ -1,9 +1,9 @@
 Package: coalitions
 Type: Package
-Title: Coalition probabilities in multi-party democracies
-Version: 0.4.3.902
+Title: Coalition Probabilities in Multi-party Democracies
+Version: 0.4.4
 Authors@R: person("Andreas", "Bender", , "andreas.bender@stat.uni-muenchen.de", role = c("aut", "cre"))
-Description: An Implementation of a Monte Carlo method to calculate
+Description: An Implementation of a MCMC method to calculate
     probabilities for a coalition majority based on survey results.
 Depends:
     R (>= 3.2.1)
@@ -32,3 +32,4 @@ URL: https://github.com/adibender/coalitions/, http://adibender.github.io/coalit
 BugReports: https://github.com/adibender/coalitions/issues
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
+LazyData: true

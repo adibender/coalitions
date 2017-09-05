@@ -7,10 +7,10 @@
 filter_superior(majority_df, coalition, ...)
 }
 \arguments{
-\item{majority_df}{A data frame containing logical values indicating 
+\item{majority_df}{A data frame containing logical values indicating
 if the coalitions (columns) have a majority (rows).}
 
-\item{coalition}{The coaliton of interest for which superior coalitions 
+\item{coalition}{The coaliton of interest for which superior coalitions
 will be obtained by \code{\link[coalitions]{get_superior}}.}
 
 \item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}

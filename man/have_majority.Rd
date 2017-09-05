@@ -9,11 +9,11 @@ have_majority(seats_tab, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
   seats_majority = 300L, collapse = "_")
 }
 \arguments{
-\item{seats_tab}{A data frame cotaining number of seats obtained by a party. 
+\item{seats_tab}{A data frame cotaining number of seats obtained by a party.
 Must have columns \code{party} and \code{seats}.}
 
-\item{coalitions}{A list of coaltions for which coalition probabilities should 
-be calculated. Each list entry must be a vector of party names. Those names 
+\item{coalitions}{A list of coaltions for which coalition probabilities should
+be calculated. Each list entry must be a vector of party names. Those names
 need to correspond to the names in \code{majority_df}.}
 
 \item{seats_majority}{The number of seats needed to obtain majority.}
