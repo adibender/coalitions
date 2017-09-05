@@ -64,5 +64,9 @@ test_that("Prettify function works correctly", {
 	trans <- prettify_strings(c("asdf", "cdu", "cdu_gruene"),
 		.trans_df$german, .trans_df$english_pretty)
 	expect_equal(trans, c("asdf", "Union", "Union - Greens"))
+	trans <- prettify_strings(as.factor(c("asdf", "cdu", "cdu_gruene")),
+		.trans_df$german, .trans_df$english_pretty)
+	expect_equal(trans, c("asdf", "Union", "Union - Greens"))
+
 
 })
