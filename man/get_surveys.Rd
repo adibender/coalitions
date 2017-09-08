@@ -7,13 +7,13 @@
 \usage{
 get_surveys()
 
-get_latest(surveys = NULL, date = Sys.Date())
+get_latest(surveys = NULL, max_date = Sys.Date())
 }
 \arguments{
 \item{surveys}{If provided, lates survey will be obtained from this object,
 otherwise calls \code{\link{get_surveys}}.}
 
-\item{date}{Specifies the date, relative to which latest survey will
+\item{max_date}{Specifies the date, relative to which latest survey will
 be searched for. Defaults to \code{Sys.Date}.}
 }
 \description{

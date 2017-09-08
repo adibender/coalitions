@@ -5,7 +5,7 @@
 \title{Do coalitions have a majority}
 \usage{
 have_majority(seats_tab, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
-  "fdp", "gruene"), c("spd"), c("spd", "linke"), c("spd", "linke", "gruene")),
+  "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left", "greens")),
   seats_majority = 300L, collapse = "_")
 }
 \arguments{

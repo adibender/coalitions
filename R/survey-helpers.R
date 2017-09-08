@@ -10,7 +10,7 @@ get_meta <- function(surveys_df) {
 
 	surveys_df %>%
 		unnest() %>%
-		select(institute, datum:befragte)
+		select(pollster, date:respondents)
 
 }
 
@@ -19,6 +19,7 @@ get_meta <- function(surveys_df) {
 #'
 #' Given a data frame containing multiple surveys (one row per survey), transforms
 #' the data into long format with one row per party.
+#'
 #' @inheritParams scrape_wahlrecht
 #' @param surveys A data frame with one survey per row.
 #' @import checkmate magrittr dplyr
@@ -31,21 +32,23 @@ get_meta <- function(surveys_df) {
 #' @export
 collapse_parties <- function(
 	surveys,
-	parties = c("cdu", "spd", "gruene", "fdp", "linke", "piraten", "fw", "afd",
-		"sonstige")) {
+	parties = c("cdu", "spd", "greens", "fdp", "left", "pirates", "fw", "afd",
+		"others")) {
 
 	assert_data_frame(surveys, min.rows=1, min.cols=3)
 	assert_character(parties, any.missing=FALSE, min.len=2, unique=TRUE)
 
 	surveys %<>% select_if(compose("!", all, is.na))
 	av.parties <- colnames(surveys)[colnames(surveys) %in% parties]
-	surveys <- gather(surveys, party, percent, select_vars(names(surveys),one_of(av.parties))) %>%
-		arrange(desc(datum))
+	surveys <- gather(surveys, party, percent,
+			select_vars(names(surveys),one_of(av.parties))) %>%
+		arrange(desc(date))
 
-	surveys %>% mutate(votes = percent/100 * befragte) %>%
+	surveys %>% mutate(votes = percent/100 * respondents) %>%
 		filter(!is.na(percent)) %>%
 	  as_tibble() %>%
 		nest(party:votes, .key="survey")
+
 }
 
 
@@ -57,11 +60,11 @@ collapse_parties <- function(
 #' @rdname get_surveys
 #' @param surveys If provided, lates survey will be obtained from this object,
 #' otherwise calls \code{\link{get_surveys}}.
-#' @param date Specifies the date, relative to which latest survey will
+#' @param max_date Specifies the date, relative to which latest survey will
 #' be searched for. Defaults to \code{Sys.Date}.
 #' @importFrom tidyr unnest
 #' @importFrom dplyr filter
-get_latest <- function(surveys=NULL, date = Sys.Date()) {
+get_latest <- function(surveys=NULL, max_date = Sys.Date()) {
 
 	if(is.null(surveys)) {
 		surveys <- get_surveys()
@@ -69,7 +72,7 @@ get_latest <- function(surveys=NULL, date = Sys.Date()) {
 
 	surveys %>%
 		unnest() %>%
-		filter(datum <= as.Date(date)) %>%
-		filter(datum == max(datum))
+		filter(date <= as.Date(max_date)) %>%
+		filter(date == max(date))
 
 }

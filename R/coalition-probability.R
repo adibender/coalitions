@@ -33,18 +33,26 @@ have_majority <- function(
   coalitions = list(
     c("cdu"),
     c("cdu", "fdp"),
-    c("cdu", "fdp", "gruene"),
+    c("cdu", "fdp", "greens"),
     c("spd"),
-    c("spd", "linke"),
-    c("spd", "linke", "gruene")),
+    c("spd", "left"),
+    c("spd", "left", "greens")),
   seats_majority = 300L,
   collapse       = "_") {
 
-  assert_data_frame(seats_tab, types=c("character", "numeric"), any.missing=FALSE,
-    min.rows=1, min.cols=2)
+  assert_data_frame(
+    seats_tab,
+    types       = c("character", "numeric"),
+    any.missing = FALSE,
+    min.rows    = 1,
+    min.cols    = 2)
   check_subset(c("party", "seats"), names(seats_tab))
-  assert_list(coalitions, types="character", any.missing=FALSE, min.len=1,
-    unique=TRUE)
+  assert_list(
+    coalitions,
+    types       = "character",
+    any.missing = FALSE,
+    min.len     = 1,
+    unique      = TRUE)
   assert_number(seats_majority, finite=TRUE)
 
   coalitions %<>% map(sort)
@@ -68,7 +76,10 @@ have_majority <- function(
 #' @keywords internal
 paste_coalitions <- function(coalitions, collapse="_") {
 
-  coalitions %>% map(sort) %>% map(paste, collapse=collapse) %>% unlist()
+  coalitions %>%
+    map(sort) %>%
+    map(paste, collapse=collapse) %>%
+    unlist()
 
 }
 
@@ -93,9 +104,9 @@ paste_coalitions <- function(coalitions, collapse="_") {
 #'test_df <- data.frame(
 #'  cdu            = c(rep(FALSE, 9), TRUE),
 #'  cdu_fdp        = c(rep(FALSE, 8), TRUE, TRUE),
-#'  cdu_fdp_gruene = c(TRUE, TRUE, rep(FALSE, 6), TRUE, TRUE))
-#' calculate_prob(test_df, "cdu_fdp_gruene") # exclude_superior defaults to TRUE
-#' calculate_prob(test_df, "cdu_fdp_gruene", exclude_superior=FALSE)
+#'  cdu_fdp_greens = c(TRUE, TRUE, rep(FALSE, 6), TRUE, TRUE))
+#' calculate_prob(test_df, "cdu_fdp_greens") # exclude_superior defaults to TRUE
+#' calculate_prob(test_df, "cdu_fdp_greens", exclude_superior=FALSE)
 #' @export
 calculate_prob <- function(
   majority_df,
@@ -131,9 +142,9 @@ calculate_prob <- function(
 #' test_df <- data.frame(
 #'  cdu            = c(rep(FALSE, 9), TRUE),
 #'  cdu_fdp        = c(rep(FALSE, 8), TRUE, TRUE),
-#'  cdu_fdp_gruene = c(TRUE, TRUE, rep(FALSE, 6), TRUE, TRUE))
-#' calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"))
-#' calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_gruene"), exclude_superior=FALSE)
+#'  cdu_fdp_greens = c(TRUE, TRUE, rep(FALSE, 6), TRUE, TRUE))
+#' calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_greens"))
+#' calculate_probs(test_df, list("cdu", "cdu_fdp", "cdu_fdp_greens"), exclude_superior=FALSE)
 #' @export
 calculate_probs <- function(
   majority_df,
@@ -215,10 +226,10 @@ get_probabilities <- function(
   coalitions = list(
     c("cdu"),
     c("cdu", "fdp"),
-    c("cdu", "fdp", "gruene"),
+    c("cdu", "fdp", "greens"),
     c("spd"),
-    c("spd", "linke"),
-    c("spd", "linke", "gruene")),
+    c("spd", "left"),
+    c("spd", "left", "greens")),
   nsim           = 1e5,
   distrib.fun    = sls,
   seats_majority = 300L) {
@@ -233,6 +244,6 @@ get_probabilities <- function(
         coalitions     = coalitions,
         seats_majority = seats_majority),
       probabilities = map(majority, calculate_probs, coalitions=coalitions)) %>%
-    select(-one_of("draws", "seats", "majority", "survey", "start", "end", "befragte"))
+    select(-one_of("draws", "seats", "majority", "survey", "start", "end", "respondents"))
 
 }

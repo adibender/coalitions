@@ -5,7 +5,7 @@
 \title{Calculate seat distribution from draws from posterior}
 \usage{
 get_seats(dirichlet.draws, survey, distrib.fun = sls, samplesize = NULL,
-  hurdle = 0.05, others = "sonstige", ...)
+  hurdle = 0.05, others = "others", ...)
 }
 \arguments{
 \item{dirichlet.draws}{Matrix containing random draws from posterior.}
@@ -18,10 +18,11 @@ were based on.}
 
 \item{samplesize}{Number of individuals participating in the \code{survey}.}
 
-\item{hurdle}{The percentage which has to be reached to enter the
-parliament.}
+\item{hurdle}{The percentage threshold which has to be reached by a party
+to enter the parliament.}
 
-\item{others}{A character indicating the}
+\item{others}{A string indecating the name under which parties not listed
+explicitly are subsummed.}
 
 \item{...}{Further arguments passed to \code{distrib.fun}.}
 }

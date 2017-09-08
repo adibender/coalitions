@@ -1,8 +1,8 @@
 library(dplyr)
 ## A data frame containing names of pollsters and the respective adress at
 # which survey information can be obtained.
-.institutes_df <- tibble::tibble(
-	institute = c(
+.pollster_df <- tibble::tibble(
+	pollster = c(
 		"allensbach",
 		"emnid",
 		"forsa",
@@ -26,11 +26,11 @@ div_vec <- 0.5:(598+0.5)
 
 
 ## a survey of samples used for tests and examples
-.survey_sample <- get_surveys() %>%
+.survey_sample <- surveys_sample <- get_surveys() %>%
 	tidyr::unnest() %>%
-	filter(datum <= as.Date("2017-09-02") & datum >= as.Date("2017-01-06")) %>%
-	group_by(institute) %>%
-	slice(1:3) %>% nest(-institute, .key="surveys")
+	filter(date <= as.Date("2017-09-02") & date >= as.Date("2017-01-06")) %>%
+	group_by(pollster) %>%
+	slice(1:3) %>% nest(-pollster, .key="surveys")
 
 
 ## A data frame of terms in German and English used by prettify_strings
@@ -56,10 +56,35 @@ div_vec <- 0.5:(598+0.5)
 	"linke_spd"        , "SPD - Die Linke"              , "left_spd"        , "SPD - The Left"            ,
 	"gruene_linke_spd" , "SPD - Die Linke - Gr\u00fcne" , "greens_left_spd" , "SPD - The Left - Greeens")
 
+
+.party_cols_de <- c(
+	"cdu"     = "black",
+	"spd"     = "#E3000F",
+	"greens"  = "#46962b",
+	"fdp"     = "#eec900",# FDP_dark for cases where the normal FDP color is too bright
+	"left"    = "#cd1076",
+	"pirates" = "brown",
+	"afd"     = "skyblue",
+	"others"  = "grey")
+
+.btw13 <- tibble::tibble(
+	institute = rep("election_de", 7),
+	datum     = rep(as.Date("2013-09-22"), 7),
+	start     = rep(as.Date("2013-09-22"), 7),
+	end       = rep(as.Date("2013-09-22"), 7),
+	befragte  = rep(71.5, 7),
+	party     = c("cdu", "spd", "left", "greens", "fdp", "afd", "others"),
+	percent   = c(41.5, 25.7, 8.6, 8.4, 4.8, 4.7, 6.3)
+	)
+
 devtools::use_data(
 	.div_mat,
-	.institutes_df,
+	.pollster_df,
 	.survey_sample,
 	.trans_df,
+	.party_cols_de,
+	.btw13,
 	internal  = TRUE,
 	overwrite = TRUE)
+
+devtools::use_data(surveys_sample, overwrite=TRUE)

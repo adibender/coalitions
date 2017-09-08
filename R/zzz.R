@@ -1,10 +1,11 @@
-.onLoad <- function(libname=find.package("pam"), pkgname="pam") {
-	
+.onLoad <- function(libname=find.package("coalitions"), pkgname="coalitions") {
+
 	if(getRversion() >= "2.5.1") {
 		utils::globalVariables(c(
-			"befragte", "datum", "party", "percent", "cdu", "sonstige", "surveys",
-			"probabilities", "seats", "sim", "survey", "total", "votes", "zeitraum", 
-			".", "majority", "draws", "institute", "address"))
+			"datum", "respondents", "party", "percent", "cdu", "others", "surveys",
+			"probabilities", "seats", "sim", "survey", "total", "votes",
+			".", "majority", "draws", "pollster", "address", "zeitraum",
+			"befragte"))
 	}
 
 	invisible()

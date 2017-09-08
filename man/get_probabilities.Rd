@@ -5,7 +5,7 @@
 \title{Wrapper for calculation of coalition probabilities from survey}
 \usage{
 get_probabilities(x, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
-  "fdp", "gruene"), c("spd"), c("spd", "linke"), c("spd", "linke", "gruene")),
+  "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left", "greens")),
   nsim = 1e+05, distrib.fun = sls, seats_majority = 300L)
 }
 \arguments{

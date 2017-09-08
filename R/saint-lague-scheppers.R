@@ -24,8 +24,8 @@ sls <- function(
   divisor.mat <- sum(votes)/t(.div_mat[seq_along(votes), ]*votes)
   colnames(divisor.mat) <- parties
 
-  m.mat <- melt(divisor.mat, as.is=TRUE, value.name="seats")
-  m.mat <- m.mat[rank(m.mat$seats, ties.method = "random") <= n_seats, ]
+  m.mat     <- melt(divisor.mat, as.is=TRUE, value.name="seats")
+  m.mat     <- m.mat[rank(m.mat$seats, ties.method = "random") <= n_seats, ]
   rle.seats <- rle(m.mat$Var2)
   # seat.mat <- bind_cols(rle.seats[2:1])
   # colnames(seat.mat) <- c("party","seats")

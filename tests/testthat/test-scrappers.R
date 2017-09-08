@@ -18,18 +18,18 @@ expect_data_frame(head(scrape_wahlrecht(hp.vec[5])), ncols=13, nrows=6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[6])), ncols=11, nrows=6)
 
 survey <- scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/insa.htm" ) %>%
-	filter(datum==as.Date("2017-08-01"))
+	filter(date==as.Date("2017-08-01"))
 expect_data_frame(survey, nrows=1, ncols=13)
-expect_equal(colnames(survey), c("datum", "start", "end", "cdu", "spd",
-	"gruene", "fdp", "linke", "piraten", "fw", "afd", "sonstige", "befragte"))
+expect_equal(colnames(survey), c("date", "start", "end", "cdu", "spd",
+	"greens", "fdp", "left", "pirates", "fw", "afd", "others", "respondents"))
 expect_equal(survey$spd, 24.5)
-expect_equal(survey$befragte, 2046)
+expect_equal(survey$respondents, 2046)
 
 survey2 <- scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/allensbach.htm") %>%
-	filter(datum==as.Date("2017-07-18"))
+	filter(date==as.Date("2017-07-18"))
 expect_data_frame(survey2, nrows=1, ncols=11)
 expect_equal(survey2$cdu, 39.5)
-expect_equal(survey2$befragte, 1403)
+expect_equal(survey2$respondents, 1403)
 
 })
 
@@ -45,10 +45,11 @@ context("No missing values in percent columns")
 test_that("GMS tables correct", {
 
 	gms <- .survey_sample %>%
-		filter(institute == "gms") %>%
+		filter(pollster == "gms") %>%
 		unnest() %>%
-		filter(datum == "2017-06-01") %>%
+		filter(date == "2017-06-01") %>%
 		unnest()
+
 	expect_identical(sum(gms$percent), 100)
 	expect_false(any(is.na(gms$percent)))
 

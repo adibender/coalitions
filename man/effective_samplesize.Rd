@@ -8,11 +8,11 @@ effective_samplesize(size, share, corr = 0.5, weights = NULL)
 }
 \arguments{
 \item{size}{A vecotr of sample sizes from different surveys (from different
-institutes) for one party.}
+pollsters) for one party.}
 
 \item{share}{The relative share of votes for party of interest ([0-1])}
 
-\item{corr}{Assumed correlation between surveys (of different institutes).
+\item{corr}{Assumed correlation between surveys (of different pollsters).
 Defaults to 0.5.}
 
 \item{weights}{Additional weights for individual surveys.}

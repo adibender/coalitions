@@ -4,8 +4,8 @@
 \alias{prettify_strings}
 \title{Replace/prettify matching words/terms in one vector by another}
 \usage{
-prettify_strings(x, current = .trans_df$german,
-  new = .trans_df$german_pretty)
+prettify_strings(x, current = .trans_df$english,
+  new = .trans_df$english_pretty)
 }
 \arguments{
 \item{x}{A character vector (or factor) that should be renamed.}
