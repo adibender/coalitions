@@ -4,9 +4,9 @@
 #' Should usually not be called by the user directly.
 #'
 #' @param size A vecotr of sample sizes from different surveys (from different
-#' institutes) for one party.
+#' pollsters) for one party.
 #' @param share The relative share of votes for party of interest ([0-1])
-#' @param corr Assumed correlation between surveys (of different institutes).
+#' @param corr Assumed correlation between surveys (of different pollsters).
 #' Defaults to 0.5.
 #' @param weights Additional weights for individual surveys.
 #' @keywords internal
@@ -18,7 +18,7 @@ effective_samplesize <- function(
 
   assert_numeric(size, lower=0, finite=TRUE, min.len = 1)
   if (length(size) == 1) {
-    message("Only one survey/institute provided. The provided sample size will
+    message("Only one survey/pollster provided. The provided sample size will
       be returned.")
     return(size)
   }
@@ -84,11 +84,11 @@ effective_samplesize <- function(
 #'
 #'
 #' @param surveys A \code{tibble} containing survey results for multiple
-#' institutes as returned by \code{\link[coalitions]{get_surveys}}.
-#' @param institutes Character vector of institutes that should be considered
+#' pollsters as returned by \code{\link[coalitions]{get_surveys}}.
+#' @param pollsters Character vector of pollsters that should be considered
 #' for pooling.
 #' @param last_date Only surveys in the time-window from \code{last_date} to
-#' \code{last_date} - period will be considered for each institute. Defaults
+#' \code{last_date} - period will be considered for each pollster. Defaults
 #' to current date.
 #' @param period See \code{last_date} argument.
 #' @import dplyr checkmate
@@ -96,20 +96,20 @@ effective_samplesize <- function(
 #' @keywords internal
 get_eligible <- function(
   surveys,
-  institutes   = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
+  pollsters   = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
   last_date = Sys.Date(),
   period    = 14) {
 
   assert_data_frame(surveys, min.rows=2, min.cols=2)
   assert_date(last_date)
-  assert_character(institutes, null.ok = TRUE)
+  assert_character(pollsters, null.ok = TRUE)
   assert_number(period, lower=1, finite=TRUE)
 
-  surveys %>% filter(institute %in% institutes) %>%
+  surveys %>% filter(pollster %in% pollsters) %>%
     unnest(surveys) %>%
-    filter(datum >= last_date - period & datum <= last_date) %>%
-    group_by(institute) %>%
-    filter(datum == max(datum))
+    filter(date >= last_date - period & date <= last_date) %>%
+    group_by(pollster) %>%
+    filter(date == max(date))
 
 }
 
@@ -118,7 +118,7 @@ get_eligible <- function(
 #'
 #' Given a specified time window (defaults to current day - 14 days).
 #' calculate the effective sample size of the pooled sample over multiple
-#' institutes.
+#' pollsters.
 #'
 #' @inherit get_eligible
 #' @inheritParams effective_samplesize
@@ -127,14 +127,14 @@ get_eligible <- function(
 get_pooled <- function(
   surveys,
   last_date  = Sys.Date(),
-  institutes = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
+  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
   period     = 14,
   corr       = 0.5,
   weights    = NULL) {
 
   assert_data_frame(surveys, min.rows=2, min.cols=2)
   assert_date(last_date)
-  assert_character(institutes, any.missing=FALSE)
+  assert_character(pollsters, any.missing=FALSE)
   assert_number(period, lower=1, finite=TRUE)
   assert_number(corr, lower=-1, upper=1)
   assert_numeric(weights, finite=TRUE, null.ok=TRUE)
@@ -142,7 +142,7 @@ get_pooled <- function(
 
   elg_udf <- surveys %>%
     get_eligible(
-      institutes = institutes,
+      pollsters = pollsters,
       last_date  = last_date,
       period     = period) %>%
     unnest()
@@ -151,14 +151,14 @@ get_pooled <- function(
     filter(!is.na(percent)) %>%
     group_by(party) %>%
     summarize(
-      from       = min(datum),
-      to         = max(datum),
+      from       = min(date),
+      to         = max(date),
       Neff       = effective_samplesize(
-        size       = befragte,
+        size       = respondents,
         share      = percent/100,
         corr       = corr,
         weights    = weights),
-      institutes = paste0(institute, collapse = ", ")) %>%
+      pollsters = paste0(pollster, collapse = ", ")) %>%
     ungroup()
 
 }
@@ -167,7 +167,7 @@ get_pooled <- function(
 #' Obtain pooled survey during specified period
 #'
 #' Per default, pools surveys starting from current date and going 14 days back.
-#' For each institute within the defined time-frame, only the most recent survey
+#' For each pollster within the defined time-frame, only the most recent survey
 #' is used.
 #'
 #' @inherit get_pooled
@@ -179,25 +179,25 @@ get_pooled <- function(
 pool_surveys <- function(
   surveys,
   last_date  = Sys.Date(),
-  institutes = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
+  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
   period     = 14,
   corr       = 0.5,
   weights    = NULL) {
 
   assert_data_frame(surveys, min.rows=2, min.cols=2)
   assert_date(last_date)
-  assert_character(institutes, any.missing=FALSE)
+  assert_character(pollsters, any.missing=FALSE)
   assert_number(period, lower=1, finite=TRUE)
   assert_number(corr, lower=-1, upper=1)
   assert_numeric(weights, finite=TRUE, null.ok=TRUE)
 
-  pooled_df <- get_pooled(surveys, last_date, institutes, period, corr, weights)
+  pooled_df <- get_pooled(surveys, last_date, pollsters, period, corr, weights)
 
   elg_udf <- surveys %>%
     get_eligible(
-      institutes = institutes,
-      last_date  = last_date,
-      period     = period) %>%
+      pollsters = pollsters,
+      last_date = last_date,
+      period    = period) %>%
     unnest() %>%
     filter(!is.na(percent))
   nall <- get_n(elg_udf)
@@ -215,14 +215,14 @@ pool_surveys <- function(
 
   svotes %>%
     mutate(
-      institute = "pooled",
-      datum     = last_date,
-      start     = unique(pooled_df$from),
-      end       = unique(pooled_df$to),
-      befragte  = Neff,
-      percent   = votes/nall*100,
-      votes     = percent/100 * Neff) %>%
-    select(one_of("institute", "datum", "start", "end", "befragte", "party",
+      pollster    = "pooled",
+      date        = last_date,
+      start       = unique(pooled_df$from),
+      end         = unique(pooled_df$to),
+      respondents = Neff,
+      percent     = votes/nall*100,
+      votes       = percent/100 * Neff) %>%
+    select(one_of("pollster", "date", "start", "end", "respondents", "party",
       "percent", "votes"))
 
 }
@@ -236,9 +236,10 @@ pool_surveys <- function(
 get_n <- function(eligible_df) {
 
   eligible_df %>%
-    group_by(institute, datum) %>%
+    group_by(pollster, date) %>%
     slice(1) %>%
     ungroup() %>%
-    pull(befragte) %>% sum()
+    pull(respondents) %>%
+    sum()
 
 }

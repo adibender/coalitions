@@ -4,24 +4,24 @@
 \alias{get_pooled}
 \title{Extract effective sample size for pooled sample}
 \usage{
-get_pooled(surveys, last_date = Sys.Date(), institutes = c("allensbach",
+get_pooled(surveys, last_date = Sys.Date(), pollsters = c("allensbach",
   "emnid", "forsa", "fgw", "gms", "infratest", "insa"), period = 14,
   corr = 0.5, weights = NULL)
 }
 \arguments{
 \item{surveys}{A \code{tibble} containing survey results for multiple
-institutes as returned by \code{\link[coalitions]{get_surveys}}.}
+pollsters as returned by \code{\link[coalitions]{get_surveys}}.}
 
 \item{last_date}{Only surveys in the time-window from \code{last_date} to
-\code{last_date} - period will be considered for each institute. Defaults
+\code{last_date} - period will be considered for each pollster. Defaults
 to current date.}
 
-\item{institutes}{Character vector of institutes that should be considered
+\item{pollsters}{Character vector of pollsters that should be considered
 for pooling.}
 
 \item{period}{See \code{last_date} argument.}
 
-\item{corr}{Assumed correlation between surveys (of different institutes).
+\item{corr}{Assumed correlation between surveys (of different pollsters).
 Defaults to 0.5.}
 
 \item{weights}{Additional weights for individual surveys.}
@@ -29,6 +29,6 @@ Defaults to 0.5.}
 \description{
 Given a specified time window (defaults to current day - 14 days).
 calculate the effective sample size of the pooled sample over multiple
-institutes.
+pollsters.
 }
 \keyword{internal}

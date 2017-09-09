@@ -4,18 +4,18 @@
 \alias{get_eligible}
 \title{Extract surveys from insitutes within a specfied time-window}
 \usage{
-get_eligible(surveys, institutes = c("allensbach", "emnid", "forsa", "fgw",
+get_eligible(surveys, pollsters = c("allensbach", "emnid", "forsa", "fgw",
   "gms", "infratest", "insa"), last_date = Sys.Date(), period = 14)
 }
 \arguments{
 \item{surveys}{A \code{tibble} containing survey results for multiple
-institutes as returned by \code{\link[coalitions]{get_surveys}}.}
+pollsters as returned by \code{\link[coalitions]{get_surveys}}.}
 
-\item{institutes}{Character vector of institutes that should be considered
+\item{pollsters}{Character vector of pollsters that should be considered
 for pooling.}
 
 \item{last_date}{Only surveys in the time-window from \code{last_date} to
-\code{last_date} - period will be considered for each institute. Defaults
+\code{last_date} - period will be considered for each pollster. Defaults
 to current date.}
 
 \item{period}{See \code{last_date} argument.}

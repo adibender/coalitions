@@ -102,7 +102,7 @@
     <p>Extract surveys from insitutes within a specfied time-window</p>
     
 
-    <pre class="usage"><span class='fu'>get_eligible</span>(<span class='no'>surveys</span>, <span class='kw'>institutes</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"allensbach"</span>, <span class='st'>"emnid"</span>, <span class='st'>"forsa"</span>, <span class='st'>"fgw"</span>,
+    <pre class="usage"><span class='fu'>get_eligible</span>(<span class='no'>surveys</span>, <span class='kw'>pollsters</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"allensbach"</span>, <span class='st'>"emnid"</span>, <span class='st'>"forsa"</span>, <span class='st'>"fgw"</span>,
   <span class='st'>"gms"</span>, <span class='st'>"infratest"</span>, <span class='st'>"insa"</span>), <span class='kw'>last_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>(), <span class='kw'>period</span> <span class='kw'>=</span> <span class='fl'>14</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
@@ -111,17 +111,17 @@
     <tr>
       <th>surveys</th>
       <td><p>A <code>tibble</code> containing survey results for multiple
-institutes as returned by <code><a href='get_surveys.html'>get_surveys</a></code>.</p></td>
+pollsters as returned by <code><a href='get_surveys.html'>get_surveys</a></code>.</p></td>
     </tr>
     <tr>
-      <th>institutes</th>
-      <td><p>Character vector of institutes that should be considered
+      <th>pollsters</th>
+      <td><p>Character vector of pollsters that should be considered
 for pooling.</p></td>
     </tr>
     <tr>
       <th>last_date</th>
       <td><p>Only surveys in the time-window from <code>last_date</code> to
-<code>last_date</code> - period will be considered for each institute. Defaults
+<code>last_date</code> - period will be considered for each pollster. Defaults
 to current date.</p></td>
     </tr>
     <tr>

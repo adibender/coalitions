@@ -103,7 +103,7 @@
     
 
     <pre class="usage"><span class='fu'>get_seats</span>(<span class='no'>dirichlet.draws</span>, <span class='no'>survey</span>, <span class='kw'>distrib.fun</span> <span class='kw'>=</span> <span class='no'>sls</span>, <span class='kw'>samplesize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>others</span> <span class='kw'>=</span> <span class='st'>"sonstige"</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>others</span> <span class='kw'>=</span> <span class='st'>"others"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -128,12 +128,13 @@ were based on.</p></td>
     </tr>
     <tr>
       <th>hurdle</th>
-      <td><p>The percentage which has to be reached to enter the
-parliament.</p></td>
+      <td><p>The percentage threshold which has to be reached by a party
+to enter the parliament.</p></td>
     </tr>
     <tr>
       <th>others</th>
-      <td><p>A character indicating the</p></td>
+      <td><p>A string indecating the name under which parties not listed
+explicitly are subsummed.</p></td>
     </tr>
     <tr>
       <th>...</th>

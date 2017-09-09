@@ -15,8 +15,8 @@
 #' @keywords internal
 prettify_strings <- function(
 	x,
-	current = .trans_df$german,
-	new     = .trans_df$german_pretty) {
+	current = .trans_df$english,
+	new     = .trans_df$english_pretty) {
 
 	if(is.factor(x)) {
 		was_factor <- TRUE

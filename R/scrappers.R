@@ -106,6 +106,11 @@ scrape_wahlrecht <- function(
 		filter(total==100, !is.na(befragte), !is.na(datum)) %>%
 		select(one_of(c("datum", "start", "end", parties, "befragte")))
 
+	colnames(atab) <- prettify_strings(
+		colnames(atab),
+		current = .trans_df$german,
+		new     = .trans_df$english)
+
 	return(atab)
 
 }
@@ -119,7 +124,7 @@ scrape_wahlrecht <- function(
 #' @export
 get_surveys <- function() {
 
-	.institutes_df %>%
+	.pollster_df %>%
 		mutate(
 			surveys = map(address, scrape_wahlrecht),
 			surveys = map(.x=surveys, collapse_parties)) %>%

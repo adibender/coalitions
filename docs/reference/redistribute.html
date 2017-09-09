@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate percentage of votes/seats after excluding parties with 
+<title>Calculate percentage of votes/seats after excluding parties with
 <code>votes &lt; hurdle</code> — redistribute • coalitions</title>
 
 <!-- jquery -->
@@ -96,34 +96,34 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate percentage of votes/seats after excluding parties with 
+    <h1>Calculate percentage of votes/seats after excluding parties with
 <code>votes &lt; hurdle</code></h1>
     </div>
 
     
-    <p>Calculate percentage of votes/seats after excluding parties with 
+    <p>Calculate percentage of votes/seats after excluding parties with
 <code>votes &lt; hurdle</code></p>
     
 
-    <pre class="usage"><span class='fu'>redistribute</span>(<span class='no'>survey</span>, <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>others</span> <span class='kw'>=</span> <span class='st'>"sonstige"</span>, <span class='kw'>epsilon</span> <span class='kw'>=</span> <span class='fl'>1e-05</span>)</pre>
+    <pre class="usage"><span class='fu'>redistribute</span>(<span class='no'>survey</span>, <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>others</span> <span class='kw'>=</span> <span class='st'>"others"</span>, <span class='kw'>epsilon</span> <span class='kw'>=</span> <span class='fl'>1e-05</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>survey</th>
-      <td><p>table containing votes and votes in percent (as created e.g. by 
-<code><a href='as_survey.html'>as_survey</a></code>)</p></td>
+      <td><p>The actual survey results on which <code>dirichlet.draws</code>
+were based on.</p></td>
     </tr>
     <tr>
       <th>hurdle</th>
-      <td><p>the percentage of votes that must be reached to get seats in 
-parliament. Defaults to 0.05 (hurdle for german parliament)</p></td>
+      <td><p>The percentage threshold which has to be reached by a party
+to enter the parliament.</p></td>
     </tr>
     <tr>
       <th>others</th>
-      <td><p>Name under which parties far below the <code>hurdle</code> are 
-summarized.</p></td>
+      <td><p>A string indecating the name under which parties not listed
+explicitly are subsummed.</p></td>
     </tr>
     <tr>
       <th>epsilon</th>
@@ -134,7 +134,7 @@ of <code>epsilon</code>, an error is thrown.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='as_survey.html'>as_survey</a></code>, <code><a href='sls.html'>sls</a></code></p>
+    <p><code><a href='get_seats.html'>get_seats</a></code>, <code><a href='sls.html'>sls</a></code></p>
     
 
   </div>

@@ -9,25 +9,25 @@ opts_chunk$set(warning=FALSE)
 
 # coalitions
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) 
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Travis-CI Build Status](https://travis-ci.org/adibender/coalitions.svg?branch=master)](https://travis-ci.org/adibender/coalitions)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/adibender/coalitions?branch=master&svg=true)](https://ci.appveyor.com/project/adibender/coalitions)
 [![Coverage Status](https://codecov.io/github/adibender/coalitions/master.svg)](https://codecov.io/github/adibender/coalitions?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/coalitions)](https://cran.r-project.org/package=coalitions)
 
 
-## Overview 
+## Overview
 
-The package offers functions that calculate coalition probabilities 
-in multi-party elections, based on a survey results. 
+The package offers functions that calculate coalition probabilities
+in multi-party elections, based on a survey results.
 It offers two main functions:
 
 - `get_surveys`: Scrapes surveys on German Bundestag elections from [wahlrecht.de](http://www.wahlrecht.de)
-- `get_probabilities`: Calculates coalition probabilities based on provided survey results. 
+- `get_probabilities`: Calculates coalition probabilities based on provided survey results.
 
 ## Installation
 
-Install from GitHub using: 
+Install from GitHub using:
 ```{r, eval=FALSE}
 devtools::install_github("adibender/coalitions", build_vignettes=TRUE)
 ```
@@ -35,15 +35,15 @@ devtools::install_github("adibender/coalitions", build_vignettes=TRUE)
 
 ## Usage
 
-Detailed [workflow](https://adibender.github.io/coalitions/articles/workflow.html) is outlined in the vignettes enclosed in the package 
-(see `browseVignettes(package="coalitions")`). 
+Detailed [workflow](https://adibender.github.io/coalitions/articles/workflow.html) is outlined in the vignettes enclosed in the package
+(see `browseVignettes(package="coalitions")`).
 
 A short overview is presented below.
 
 
 ### Scrape surveys
 
-The wrapper `get_surveys()` which takes no arguments, downloads all surveys currently available at [wahlrecht.de](http://www.wahlrecht.de/umfragen) and stores them in a nested `tibble`: 
+The wrapper `get_surveys()` which takes no arguments, downloads all surveys currently available at [wahlrecht.de](http://www.wahlrecht.de/umfragen) and stores them in a nested `tibble`:
 
 ```{r, message = FALSE}
 library(coalitions)
@@ -53,11 +53,11 @@ surveys <- get_surveys()
 surveys
 ```
 
-Each row represents a survey insitute and each row in the `surveys` column again contains a nested `tibble` with survey results from different time-points: 
+Each row represents a survey insitute and each row in the `surveys` column again contains a nested `tibble` with survey results from different time-points:
 
 ```{r}
-surveys %>% 
-    filter(institute == "allensbach") %>% 
+surveys %>%
+    filter(pollster == "allensbach") %>%
     unnest()
 
 survey <- surveys %>% unnest() %>% slice(1)
