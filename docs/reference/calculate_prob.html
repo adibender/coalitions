@@ -136,9 +136,9 @@ Usually it makes sense to exclude superior coalitions.</p></td>
     <pre class="examples"><div class='input'><span class='no'>test_df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
  <span class='kw'>cdu</span>            <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fu'>rep</span>(<span class='fl'>FALSE</span>, <span class='fl'>9</span>), <span class='fl'>TRUE</span>),
  <span class='kw'>cdu_fdp</span>        <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fu'>rep</span>(<span class='fl'>FALSE</span>, <span class='fl'>8</span>), <span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>),
- <span class='kw'>cdu_fdp_gruene</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>, <span class='fu'>rep</span>(<span class='fl'>FALSE</span>, <span class='fl'>6</span>), <span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>))
-<span class='fu'>calculate_prob</span>(<span class='no'>test_df</span>, <span class='st'>"cdu_fdp_gruene"</span>) <span class='co'># exclude_superior defaults to TRUE</span></div><div class='output co'>#&gt;   cdu_fdp_gruene
-#&gt; 1             20</div><div class='input'><span class='fu'>calculate_prob</span>(<span class='no'>test_df</span>, <span class='st'>"cdu_fdp_gruene"</span>, <span class='kw'>exclude_superior</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;   cdu_fdp_gruene
+ <span class='kw'>cdu_fdp_greens</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>, <span class='fu'>rep</span>(<span class='fl'>FALSE</span>, <span class='fl'>6</span>), <span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>))
+<span class='fu'>calculate_prob</span>(<span class='no'>test_df</span>, <span class='st'>"cdu_fdp_greens"</span>) <span class='co'># exclude_superior defaults to TRUE</span></div><div class='output co'>#&gt;   cdu_fdp_greens
+#&gt; 1             20</div><div class='input'><span class='fu'>calculate_prob</span>(<span class='no'>test_df</span>, <span class='st'>"cdu_fdp_greens"</span>, <span class='kw'>exclude_superior</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;   cdu_fdp_greens
 #&gt; 1             40</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -106,7 +106,7 @@ before this date.</p>
 
     <pre class="usage"><span class='fu'>get_surveys</span>()
 
-<span class='fu'>get_latest</span>(<span class='kw'>surveys</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>())</pre>
+<span class='fu'>get_latest</span>(<span class='kw'>surveys</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -117,7 +117,7 @@ before this date.</p>
 otherwise calls <code>get_surveys</code>.</p></td>
     </tr>
     <tr>
-      <th>date</th>
+      <th>max_date</th>
       <td><p>Specifies the date, relative to which latest survey will
 be searched for. Defaults to <code>Sys.Date</code>.</p></td>
     </tr>

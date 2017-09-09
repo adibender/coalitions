@@ -100,11 +100,11 @@
 
     
     <p>Per default, pools surveys starting from current date and going 14 days back.
-For each institute within the defined time-frame, only the most recent survey
+For each pollster within the defined time-frame, only the most recent survey
 is used.</p>
     
 
-    <pre class="usage"><span class='fu'>pool_surveys</span>(<span class='no'>surveys</span>, <span class='kw'>last_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>(), <span class='kw'>institutes</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"allensbach"</span>,
+    <pre class="usage"><span class='fu'>pool_surveys</span>(<span class='no'>surveys</span>, <span class='kw'>last_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>(), <span class='kw'>pollsters</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"allensbach"</span>,
   <span class='st'>"emnid"</span>, <span class='st'>"forsa"</span>, <span class='st'>"fgw"</span>, <span class='st'>"gms"</span>, <span class='st'>"infratest"</span>, <span class='st'>"insa"</span>), <span class='kw'>period</span> <span class='kw'>=</span> <span class='fl'>14</span>,
   <span class='kw'>corr</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>weights</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
@@ -114,17 +114,17 @@ is used.</p>
     <tr>
       <th>surveys</th>
       <td><p>A <code>tibble</code> containing survey results for multiple
-institutes as returned by <code><a href='get_surveys.html'>get_surveys</a></code>.</p></td>
+pollsters as returned by <code><a href='get_surveys.html'>get_surveys</a></code>.</p></td>
     </tr>
     <tr>
       <th>last_date</th>
       <td><p>Only surveys in the time-window from <code>last_date</code> to
-<code>last_date</code> - period will be considered for each institute. Defaults
+<code>last_date</code> - period will be considered for each pollster. Defaults
 to current date.</p></td>
     </tr>
     <tr>
-      <th>institutes</th>
-      <td><p>Character vector of institutes that should be considered
+      <th>pollsters</th>
+      <td><p>Character vector of pollsters that should be considered
 for pooling.</p></td>
     </tr>
     <tr>
@@ -133,7 +133,7 @@ for pooling.</p></td>
     </tr>
     <tr>
       <th>corr</th>
-      <td><p>Assumed correlation between surveys (of different institutes).
+      <td><p>Assumed correlation between surveys (of different pollsters).
 Defaults to 0.5.</p></td>
     </tr>
     <tr>
@@ -146,15 +146,15 @@ Defaults to 0.5.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>coalitions</span>)
 <span class='fu'>pool_surveys</span>(<span class='no'>surveys_sample</span>)</div><div class='output co'>#&gt; # A tibble: 7 x 8
-#&gt;   institute datum      start      end        befragte party    percent votes
-#&gt;   &lt;chr&gt;     &lt;date&gt;     &lt;date&gt;     &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 pooled    2017-09-05 2017-08-22 2017-09-02     3055 afd         8.89   272
-#&gt; 2 pooled    2017-09-05 2017-08-22 2017-09-02     3055 cdu        38.0   1161
-#&gt; 3 pooled    2017-09-05 2017-08-22 2017-09-02     3055 fdp         8.52   260
-#&gt; 4 pooled    2017-09-05 2017-08-22 2017-09-02     3055 gruene      7.41   226
-#&gt; 5 pooled    2017-09-05 2017-08-22 2017-09-02     3055 linke       9.06   277
-#&gt; 6 pooled    2017-09-05 2017-08-22 2017-09-02     3055 sonstige    4.51   138
-#&gt; 7 pooled    2017-09-05 2017-08-22 2017-09-02     3055 spd        23.6    722</div></pre>
+#&gt;   pollster date       start      end        respondents party  percent votes
+#&gt;   &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;     &lt;date&gt;           &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 pooled   2017-09-09 2017-08-29 2017-09-02        3084 afd       9.18   283
+#&gt; 2 pooled   2017-09-09 2017-08-29 2017-09-02        3084 cdu      37.8   1165
+#&gt; 3 pooled   2017-09-09 2017-08-29 2017-09-02        3084 fdp       8.29   256
+#&gt; 4 pooled   2017-09-09 2017-08-29 2017-09-02        3084 greens    7.39   228
+#&gt; 5 pooled   2017-09-09 2017-08-29 2017-09-02        3084 left      9.22   284
+#&gt; 6 pooled   2017-09-09 2017-08-29 2017-09-02        3084 others    4.59   142
+#&gt; 7 pooled   2017-09-09 2017-08-29 2017-09-02        3084 spd      23.6    727</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
