@@ -174,7 +174,9 @@ get_pooled <- function(
 #' @importFrom tidyr unnest
 #' @examples
 #' library(coalitions)
-#' pool_surveys(surveys_sample)
+#' library(dplyr)
+#' latest <- get_latest(surveys_sample)
+#' pool_surveys(surveys_sample, last_date=as.Date("2017-09-02"))
 #' @export
 pool_surveys <- function(
   surveys,

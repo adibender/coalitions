@@ -30,12 +30,19 @@ div_vec <- 0.5:(598+0.5)
 	tidyr::unnest() %>%
 	filter(date <= as.Date("2017-09-02") & date >= as.Date("2017-01-06")) %>%
 	group_by(pollster) %>%
-	slice(1:3) %>% nest(-pollster, .key="surveys")
+	slice(1:3) %>% tidyr::nest(-pollster, .key="surveys")
 
 
 ## A data frame of terms in German and English used by prettify_strings
 .trans_df <- tibble::tribble(
 	~ german           , ~ german_pretty                , ~ english         , ~english_pretty             ,
+	"allensbach"       , "Allensbach"                   , "allensbach"      , "Allensbach"                ,
+	"emnid"            , "Emnid"                        , "emnid"           , "Emnid"                     ,
+	"forsa"            , "Forsa"                        , "forsa"           , "Forsa"                     ,
+	"fgw"              , "Forsch'gr. Wahlen"            , "fgw"             , "FGW"                       ,
+	"gms"              , "GMS"                          , "gms"             , "GMS"                       ,
+	"infratest"        , "Infratest dimap"              , "infratest"       , "Infratest dimap"           ,
+	"INSA"             , "INSA"                         , "insa"            , "INSA"                      ,
 	"start"            , "Beginn"                       , "start"           , "start"                     ,
 	"end"              , "Ende"                         , "end"             , "end"                       ,
 	"survey"           , "Umfrage"                      , "survey"          , "survey"                    ,
@@ -50,11 +57,13 @@ div_vec <- 0.5:(598+0.5)
 	"piraten"          , "Piraten"                      , "pirates"         , "Pirates"                   ,
 	"afd"              , "AfD"                          , "afd"             , "AfD"                       ,
 	"sonstige"         , "Sonstige"                     , "others"          , "Others"                    ,
+	"cdu_spd"          , "Union - SPD"                  , "cdu_spd"         , "Union - SPD"               ,
 	"cdu_fdp"          , "Union - FDP"                  , "cdu_fdp"         , "Union - FDP"               ,
 	"cdu_gruene"       , "Union - Gr\u00fcne"           , "cdu_greens"      , "Union - Greens"            ,
 	"cdu_fdp_gruene"   , "Union - FDP - Gr\u00fcne"     , "cdu_fdp_greens"  , "Union - FDP - Greens"      ,
 	"linke_spd"        , "SPD - Die Linke"              , "left_spd"        , "SPD - The Left"            ,
-	"gruene_linke_spd" , "SPD - Die Linke - Gr\u00fcne" , "greens_left_spd" , "SPD - The Left - Greeens")
+	"fdp_gruene_spd"   , "SPD - FDP - Gr\u00fcne"       , "fdp_greens_spd"  , "SPD - FDP - Greens"        ,
+	"gruene_linke_spd" , "SPD - Die Linke - Gr\u00fcne" , "greens_left_spd" , "SPD - The Left - Greens")
 
 
 .party_cols_de <- c(

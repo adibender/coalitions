@@ -4,6 +4,8 @@
 #' and replaces them with entries in \code{new}. Usefull for quick
 #' renaming/translation of survey column names and by using internal object
 #' \code{.trans_df}
+#'
+#' @rdname prettify
 #' @param x A character vector (or factor) that should be renamed.
 #' @param current A vector of characters (possibly subset of \code{x}).
 #' Entries in \code{x} that match entries in \code{current} will be renamed
@@ -11,8 +13,8 @@
 #' @param new A vector of characters that will replace entries in \code{x} which
 #' have matches in \code{current}.
 #' @importFrom purrr map2
-#' @export
 #' @keywords internal
+#' @export
 prettify_strings <- function(
 	x,
 	current = .trans_df$english,
@@ -36,4 +38,17 @@ prettify_strings <- function(
 		x
 	}
 
+}
+
+
+#' @rdname prettify
+#' @inherit prettify_strings
+prettify_de <- function(x) {
+	prettify_strings(x, current = .trans_df$english, new=.trans_df$german_pretty)
+}
+
+#' @rdname prettify
+#' @inherit prettify_strings
+prettify_en <- function(x) {
+	prettify_strings(x, current = .trans_df$english, new=.trans_df$english_pretty)
 }
