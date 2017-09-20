@@ -220,6 +220,7 @@ get_superior <- function(
 #' @param x A table containing one row per survey and survey information in
 #' long format in a separate column named \code{survey}.
 #' @importFrom purrr map map2
+#' @importFrom lubridate now
 #' @export
 get_probabilities <- function(
   x,
@@ -232,11 +233,12 @@ get_probabilities <- function(
     c("spd", "left", "greens")),
   nsim           = 1e5,
   distrib.fun    = sls,
-  seats_majority = 300L) {
+  seats_majority = 300L,
+  seed = as.numeric(now())) {
 
   x %>%
     mutate(
-      draws    = map(survey, draw_from_posterior, nsim      = nsim),
+      draws    = map(survey, draw_from_posterior, nsim = nsim, seed=seed),
       seats    = map2(draws, survey, get_seats, distrib.fun = distrib.fun),
       majority = map(
         seats,

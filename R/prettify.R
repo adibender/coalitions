@@ -43,12 +43,14 @@ prettify_strings <- function(
 
 #' @rdname prettify
 #' @inherit prettify_strings
+#' @export
 prettify_de <- function(x) {
 	prettify_strings(x, current = .trans_df$english, new=.trans_df$german_pretty)
 }
 
 #' @rdname prettify
 #' @inherit prettify_strings
+#' @export
 prettify_en <- function(x) {
 	prettify_strings(x, current = .trans_df$english, new=.trans_df$english_pretty)
 }

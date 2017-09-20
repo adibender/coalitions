@@ -10,7 +10,7 @@ get_surveys()
 get_latest(surveys = NULL, max_date = Sys.Date())
 }
 \arguments{
-\item{surveys}{If provided, lates survey will be obtained from this object,
+\item{surveys}{If provided, latest survey will be obtained from this object,
 otherwise calls \code{\link{get_surveys}}.}
 
 \item{max_date}{Specifies the date, relative to which latest survey will

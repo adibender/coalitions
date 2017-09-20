@@ -6,7 +6,8 @@
 \usage{
 get_probabilities(x, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
   "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left", "greens")),
-  nsim = 1e+05, distrib.fun = sls, seats_majority = 300L)
+  nsim = 1e+05, distrib.fun = sls, seats_majority = 300L,
+  seed = as.numeric(now()))
 }
 \arguments{
 \item{x}{A table containing one row per survey and survey information in
@@ -22,6 +23,8 @@ need to correspond to the names in \code{majority_df}.}
 \code{\link{sls}} (Sainte-Lague/Scheppers).}
 
 \item{seats_majority}{The number of seats needed to obtain majority.}
+
+\item{seed}{sets seed}
 }
 \description{
 Wrapper for calculation of coalition probabilities from survey

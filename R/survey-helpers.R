@@ -58,13 +58,16 @@ collapse_parties <- function(
 #' before this date.
 #'
 #' @rdname get_surveys
-#' @param surveys If provided, lates survey will be obtained from this object,
+#' @param surveys If provided, latest survey will be obtained from this object,
 #' otherwise calls \code{\link{get_surveys}}.
 #' @param max_date Specifies the date, relative to which latest survey will
 #' be searched for. Defaults to \code{Sys.Date}.
 #' @importFrom tidyr unnest
 #' @importFrom dplyr filter
-get_latest <- function(surveys=NULL, max_date = Sys.Date()) {
+#' @export
+get_latest <- function(
+	surveys  = NULL,
+	max_date = Sys.Date()) {
 
 	if(is.null(surveys)) {
 		surveys <- get_surveys()
