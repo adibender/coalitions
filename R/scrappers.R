@@ -131,3 +131,49 @@ get_surveys <- function() {
 		select(-address)
 
 }
+
+
+#' @rdname scrape
+#' @inherit scrape_wahlrecht
+#' @export
+scrape_ltw <- function(
+  address = "http://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+    "SONSTIGE")) {
+
+  atab <- read_html(address) %>%
+    html_nodes("table") %>% .[[2]] %>%
+    html_table(fill=TRUE)
+
+  ind.row.remove <- -c(1:2)
+
+  atab <- atab[ind.row.remove, ]
+  atab <- atab[-nrow(atab), ]
+  atab <- atab[, -2]
+
+  atab$Befragte <- extract_num(substr(atab$Befragte, 5, 9), decimal=FALSE)
+  ind.empty     <- sapply(atab, function(z) all(z=="")) |
+    sapply(colnames(atab), function(z) z=="")
+  atab          <- atab[, !ind.empty]
+
+  atab <- sanitize_colnames(atab)
+  parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
+  # transform percentage string to numerics
+  atab %<>% mutate_at(c(parties), extract_num) %>%
+    mutate_at("befragte", extract_num, decimal=FALSE)
+
+  atab %<>% mutate(datum = dmy(datum))
+  atab %<>%
+    mutate(total = rowSums(atab[, parties], na.rm=TRUE)) %>%
+    filter(total==100, !is.na(befragte), !is.na(datum)) %>%
+    select(one_of(c("datum", parties, "befragte")))
+
+  colnames(atab) <- prettify_strings(
+    colnames(atab),
+    current = .trans_df$german,
+    new     = .trans_df$english)
+
+  return(atab)
+
+
+}

@@ -234,11 +234,13 @@ get_probabilities <- function(
   nsim           = 1e5,
   distrib.fun    = sls,
   seats_majority = 300L,
-  seed = as.numeric(now())) {
+  seed           = as.numeric(now()),
+  correction     = NULL) {
 
   x %>%
     mutate(
-      draws    = map(survey, draw_from_posterior, nsim = nsim, seed=seed),
+      draws    = map(survey, draw_from_posterior,
+        nsim = nsim, seed=seed, correction=correction),
       seats    = map2(draws, survey, get_seats, distrib.fun = distrib.fun),
       majority = map(
         seats,

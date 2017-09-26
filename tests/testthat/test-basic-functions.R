@@ -24,22 +24,18 @@ test_that("Redistritubion works correctly", {
 })
 
 
-context("Sainte-Lague/Scheppers")
+context("Seat distribution functions")
 test_that("Sainte-Lague/Scheppers works correctly", {
-	forsa <- as_survey(
-		percent    = c(0.41, 0.24, 0.13, 0.04, 0.08, 0.03, 0.03, 0.04),
-		samplesize = 2508,
-		parties    = c("cdu", "spd", "greens", "fdp", "linke", "pirates", "afd", "others"))
-	red_forsa <- redistribute(forsa)
-	expect_numeric(seats <- sls(red_forsa$votes, red_forsa$party, n_seats = 598),
-		len=4, any.missing=FALSE)
-	expect_identical(seats, c(285L, 167L, 90L, 56L))
+  expect_equal(sls(c(4.160, 3.380, 2.460), LETTERS[1:3], 10), c(4, 3, 3))
 
+})
+test_that("dHondt workds correctly", {
+  expect_equal(dHondt(c(4160, 3380, 2460), LETTERS[1:3], 10), c(4, 4, 2))
 })
 
 
 context("Draw from posterior")
-test_that("Sainte-Lague/Scheppers works correctly", {
+test_that("Drawing from posterior works", {
 	forsa <- as_survey(
 		percent    = c(0.41, 0.24, 0.13, 0.04, 0.08, 0.03, 0.03, 0.04),
 		samplesize = 2508,

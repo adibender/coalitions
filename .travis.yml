@@ -2,7 +2,7 @@
 
 language: r
 sudo: false
-warnings_are_errors: false
+warnings_are_errors: true
 cache: packages
 r:
   - devel

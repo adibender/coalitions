@@ -2,9 +2,15 @@
 % Please edit documentation in R/scrappers.R
 \name{scrape_wahlrecht}
 \alias{scrape_wahlrecht}
+\alias{scrape_ltw}
 \title{Scrape surveys from wahlrecht.de}
 \usage{
 scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/emnid.htm",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+  "SONSTIGE"))
+
+
+  scrape_ltw(address = "http://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
   "SONSTIGE"))
 }

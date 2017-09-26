@@ -55,6 +55,7 @@ respective coalition would have enough seats for a majority
 6. `calculate_probs`: Given majority tables obtained from `have_majority`, calculates the probabilities for the respective coalitions to have enough
 seats for a majority
 
+
 ## Read in data
 ```{r}
 # one line per survey (party information in wide format)
@@ -163,4 +164,3 @@ There is a wrapper function that directly returns probabilities:
 elong <- collapse_parties(emnid)
 elong %>% get_probabilities(., nsim=10) %>% unnest()
 ```
-

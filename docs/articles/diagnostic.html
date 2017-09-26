@@ -75,7 +75,7 @@
       <h1>Diagnostic</h1>
                         <h4 class="author">Andreas Bender</h4>
             
-            <h4 class="date">2017-09-09</h4>
+            <h4 class="date">2017-09-26</h4>
           </div>
 
     
@@ -88,8 +88,11 @@
 <span class="kw">library</span>(coalitions)
 <span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme_get">theme_set</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>())</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()
-temp <span class="op">%&lt;&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
+<pre><code>## Warning: 1 failed to parse.
+
+## Warning: 1 failed to parse.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp <span class="op">%&lt;&gt;%</span>
 <span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
         <span class="dt">respondents =</span> 1000L,
         <span class="dt">percent  =</span> <span class="kw">c</span>(<span class="dv">36</span>, <span class="dv">28</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">5</span>),
@@ -120,10 +123,10 @@ draws &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocume
 ##   &lt;chr&gt;      &lt;dbl&gt;
 ## 1 afd        1.00 
 ## 2 cdu        1.00 
-## 3 fdp        0.863
-## 4 greens     0.988
+## 3 fdp        0.865
+## 4 greens     0.986
 ## 5 left       1.00 
-## 6 others     0.506
+## 6 others     0.509
 ## 7 spd        1.00</code></pre>
 </div>
   </div>

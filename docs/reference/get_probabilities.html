@@ -104,7 +104,8 @@
 
     <pre class="usage"><span class='fu'>get_probabilities</span>(<span class='no'>x</span>, <span class='kw'>coalitions</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='st'>"cdu"</span>), <span class='fu'>c</span>(<span class='st'>"cdu"</span>, <span class='st'>"fdp"</span>), <span class='fu'>c</span>(<span class='st'>"cdu"</span>,
   <span class='st'>"fdp"</span>, <span class='st'>"greens"</span>), <span class='fu'>c</span>(<span class='st'>"spd"</span>), <span class='fu'>c</span>(<span class='st'>"spd"</span>, <span class='st'>"left"</span>), <span class='fu'>c</span>(<span class='st'>"spd"</span>, <span class='st'>"left"</span>, <span class='st'>"greens"</span>)),
-  <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>, <span class='kw'>distrib.fun</span> <span class='kw'>=</span> <span class='no'>sls</span>, <span class='kw'>seats_majority</span> <span class='kw'>=</span> <span class='fl'>300L</span>)</pre>
+  <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>, <span class='kw'>distrib.fun</span> <span class='kw'>=</span> <span class='no'>sls</span>, <span class='kw'>seats_majority</span> <span class='kw'>=</span> <span class='fl'>300L</span>,
+  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'>as.numeric</span>(<span class='fu'>now</span>()), <span class='kw'>correction</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -132,6 +133,18 @@ need to correspond to the names in <code>majority_df</code>.</p></td>
     <tr>
       <th>seats_majority</th>
       <td><p>The number of seats needed to obtain majority.</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>sets seed</p></td>
+    </tr>
+    <tr>
+      <th>correction</th>
+      <td><p>A positiv number. If not <code>NULL</code>, each sample from the
+dirichlet distribution will be additionally "corrected" by a random number
+from U(-1*correction, 1*correction). This can be used to introduce extra
+variation which might be usefull due to rounding errors from reported survey
+results (or add an aditional source of variation in general).</p></td>
     </tr>
     </table>
     

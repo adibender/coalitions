@@ -103,7 +103,7 @@
 than <code>hurdle</code> percent of votes (according to the method of D'Hondt)</p>
     
 
-    <pre class="usage"><span class='fu'>dHondt</span>(<span class='no'>survey</span>, <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.04</span>, <span class='kw'>seats</span> <span class='kw'>=</span> <span class='fl'>183</span>, <span class='kw'>epsilon</span> <span class='kw'>=</span> <span class='fl'>1e-06</span>)</pre>
+    <pre class="usage"><span class='fu'>dHondt</span>(<span class='no'>votes</span>, <span class='no'>parties</span>, <span class='kw'>n_seats</span> <span class='kw'>=</span> <span class='fl'>183</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -113,14 +113,14 @@ than <code>hurdle</code> percent of votes (according to the method of D'Hondt)</
       <td><p>Results of a survey as data.frame containing party names and votes.</p></td>
     </tr>
     <tr>
-      <th>hurdle</th>
-      <td><p>The percentage of votes that must be reached to get seats in
-parliament. Defaults to 0.04 (hurdle for austrian parliament).</p></td>
-    </tr>
-    <tr>
       <th>seats</th>
       <td><p>Number of seats in parliament. Defaults to 183 (seats in austrian
 parliament).</p></td>
+    </tr>
+    <tr>
+      <th>hurdle</th>
+      <td><p>The percentage of votes that must be reached to get seats in
+parliament. Defaults to 0.04 (hurdle for austrian parliament).</p></td>
     </tr>
     <tr>
       <th>epsilon</th>

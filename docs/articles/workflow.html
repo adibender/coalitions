@@ -75,7 +75,7 @@
       <h1>Workflow</h1>
                         <h4 class="author">Andreas Bender</h4>
             
-            <h4 class="date">2017-09-09</h4>
+            <h4 class="date">2017-09-26</h4>
           </div>
 
     
@@ -104,17 +104,20 @@
 <h2 class="hasAnchor">
 <a href="#read-in-data" class="anchor"></a>Read in data</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># one line per survey (party information in wide format)</span>
-emnid &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)
-emnid <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="op">-</span>start, <span class="op">-</span>end)</code></pre></div>
+emnid &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)</code></pre></div>
+<pre><code>## Warning: 1 failed to parse.
+
+## Warning: 1 failed to parse.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">emnid <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="op">-</span>start, <span class="op">-</span>end)</code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##   date         cdu   spd greens   fdp  left   afd others respondents
 ##   &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
-## 1 2017-09-02  38.0  24.0   8.00  8.00  9.00  8.00   5.00        1889
-## 2 2017-08-26  38.0  23.0   7.00  9.00  9.00  8.00   6.00        1979
-## 3 2017-08-19  39.0  24.0   8.00  8.00  9.00  7.00   5.00        1426
-## 4 2017-08-12  38.0  24.0   7.00  8.00 10.0   8.00   5.00        1886
-## 5 2017-08-05  38.0  23.0   8.00  8.00 10.0   8.00   5.00        2453
-## 6 2017-07-29  38.0  24.0   8.00  8.00  9.00  9.00   4.00        1921</code></pre>
+## 1 2017-09-22  35.0  22.0   8.00  9.00 10.0  11.0    5.00        1994
+## 2 2017-09-16  36.0  22.0   8.00  9.00 10.0  11.0    4.00        1888
+## 3 2017-09-09  37.0  24.0   8.00  8.00  9.00  9.00   5.00        1869
+## 4 2017-09-02  38.0  24.0   8.00  8.00  9.00  8.00   5.00        1889
+## 5 2017-08-26  38.0  23.0   7.00  9.00  9.00  8.00   6.00        1979
+## 6 2017-08-19  39.0  24.0   8.00  8.00  9.00  7.00   5.00        1426</code></pre>
 </div>
 <div id="collapse-survey-data" class="section level2">
 <h2 class="hasAnchor">
@@ -125,23 +128,23 @@ emnid <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a
 <pre><code>## # A tibble: 6 x 5
 ##   date       start      end        respondents survey          
 ##   &lt;date&gt;     &lt;date&gt;     &lt;date&gt;           &lt;dbl&gt; &lt;list&gt;          
-## 1 2017-09-02 2017-08-24 2017-08-30        1889 &lt;tibble [7 x 3]&gt;
-## 2 2017-08-26 2017-08-17 2017-08-23        1979 &lt;tibble [7 x 3]&gt;
-## 3 2017-08-19 2017-08-10 2017-08-16        1426 &lt;tibble [7 x 3]&gt;
-## 4 2017-08-12 2017-08-03 2017-08-09        1886 &lt;tibble [7 x 3]&gt;
-## 5 2017-08-05 2017-07-27 2017-08-02        2453 &lt;tibble [7 x 3]&gt;
-## 6 2017-07-29 2017-07-20 2017-07-26        1921 &lt;tibble [7 x 3]&gt;</code></pre>
+## 1 2017-09-22 2017-09-14 2017-09-21        1994 &lt;tibble [7 x 3]&gt;
+## 2 2017-09-16 2017-09-07 2017-09-13        1888 &lt;tibble [7 x 3]&gt;
+## 3 2017-09-09 2017-08-31 2017-09-06        1869 &lt;tibble [7 x 3]&gt;
+## 4 2017-09-02 2017-08-24 2017-08-30        1889 &lt;tibble [7 x 3]&gt;
+## 5 2017-08-26 2017-08-17 2017-08-23        1979 &lt;tibble [7 x 3]&gt;
+## 6 2017-08-19 2017-08-10 2017-08-16        1426 &lt;tibble [7 x 3]&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(survey) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 7 x 3
 ##   party  percent votes
 ##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-## 1 cdu      38.0  718  
-## 2 spd      24.0  453  
-## 3 greens    8.00 151  
-## 4 fdp       8.00 151  
-## 5 left      9.00 170  
-## 6 afd       8.00 151  
-## 7 others    5.00  94.4</code></pre>
+## 1 cdu      35.0  698  
+## 2 spd      22.0  439  
+## 3 greens    8.00 160  
+## 4 fdp       9.00 179  
+## 5 left     10.0  199  
+## 6 afd      11.0  219  
+## 7 others    5.00  99.7</code></pre>
 </div>
 <div id="simulate-elections" class="section level2">
 <h2 class="hasAnchor">
@@ -153,27 +156,27 @@ elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a
 <pre><code>## # A tibble: 6 x 3
 ##   date       survey           draws            
 ##   &lt;date&gt;     &lt;list&gt;           &lt;list&gt;           
-## 1 2017-09-02 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
-## 2 2017-08-26 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
-## 3 2017-08-19 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
-## 4 2017-08-12 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
-## 5 2017-08-05 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
-## 6 2017-07-29 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;</code></pre>
+## 1 2017-09-22 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
+## 2 2017-09-16 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
+## 3 2017-09-09 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
+## 4 2017-09-02 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
+## 5 2017-08-26 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;
+## 6 2017-08-19 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># each row is one election simulation</span>
 elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(draws) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 10 x 7
 ##      cdu   spd greens    fdp   left    afd others
 ##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.377 0.242 0.0815 0.0731 0.0942 0.0778 0.0545
-##  2 0.380 0.232 0.0804 0.0917 0.0849 0.0863 0.0447
-##  3 0.382 0.225 0.0892 0.0689 0.107  0.0797 0.0480
-##  4 0.389 0.233 0.0803 0.0798 0.0935 0.0708 0.0535
-##  5 0.378 0.231 0.0815 0.0899 0.0838 0.0815 0.0547
-##  6 0.369 0.243 0.0761 0.0797 0.0893 0.0865 0.0567
-##  7 0.376 0.245 0.0801 0.0766 0.0877 0.0794 0.0550
-##  8 0.382 0.227 0.0865 0.0776 0.0906 0.0792 0.0562
-##  9 0.385 0.236 0.0779 0.0801 0.0946 0.0822 0.0444
-## 10 0.392 0.252 0.0781 0.0807 0.0790 0.0680 0.0500</code></pre>
+##  1 0.362 0.236 0.0733 0.0841 0.0946 0.0957 0.0541
+##  2 0.354 0.211 0.0819 0.100  0.0918 0.113  0.0473
+##  3 0.352 0.219 0.0769 0.0869 0.0999 0.116  0.0479
+##  4 0.339 0.229 0.0703 0.0890 0.0997 0.107  0.0665
+##  5 0.346 0.224 0.0743 0.0928 0.109  0.103  0.0507
+##  6 0.374 0.219 0.0777 0.0917 0.0962 0.0912 0.0493
+##  7 0.362 0.206 0.0763 0.0982 0.0994 0.108  0.0501
+##  8 0.326 0.242 0.0793 0.0922 0.102  0.109  0.0497
+##  9 0.337 0.219 0.0755 0.0980 0.115  0.110  0.0452
+## 10 0.341 0.222 0.0752 0.0983 0.111  0.109  0.0431</code></pre>
 </div>
 <div id="calculate-seat-distribution" class="section level2">
 <h2 class="hasAnchor">
@@ -185,27 +188,27 @@ elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a
 <pre><code>## # A tibble: 6 x 4
 ##   date       survey           draws             seats            
 ##   &lt;date&gt;     &lt;list&gt;           &lt;list&gt;            &lt;list&gt;           
-## 1 2017-09-02 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
-## 2 2017-08-26 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
-## 3 2017-08-19 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
-## 4 2017-08-12 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
-## 5 2017-08-05 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
-## 6 2017-07-29 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;</code></pre>
+## 1 2017-09-22 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
+## 2 2017-09-16 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
+## 3 2017-09-09 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
+## 4 2017-09-02 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
+## 5 2017-08-26 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;
+## 6 2017-08-19 &lt;tibble [7 x 3]&gt; &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## sim column indicates simulated elections (rows in draws column)
 elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(seats) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 60 x 3
 ##      sim party  seats
 ##    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
-##  1     1 cdu      238
-##  2     1 spd      153
-##  3     1 greens    52
-##  4     1 fdp       46
+##  1     1 cdu      229
+##  2     1 spd      149
+##  3     1 greens    46
+##  4     1 fdp       53
 ##  5     1 left      60
-##  6     1 afd       49
-##  7     2 cdu      238
-##  8     2 spd      146
-##  9     2 greens    50
-## 10     2 fdp       57
+##  6     1 afd       61
+##  7     2 cdu      222
+##  8     2 spd      133
+##  9     2 greens    51
+## 10     2 fdp       63
 ## # ... with 50 more rows</code></pre>
 <p>In the above example, given the latest survey, CDU/CSU would have 225 seats in the first simulation, 223 seats in the second simulation, etc.</p>
 </div>
@@ -231,12 +234,12 @@ elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a
 <pre><code>## # A tibble: 6 x 4
 ##   date       draws             seats             majorities       
 ##   &lt;date&gt;     &lt;list&gt;            &lt;list&gt;            &lt;list&gt;           
-## 1 2017-09-02 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
-## 2 2017-08-26 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
-## 3 2017-08-19 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
-## 4 2017-08-12 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
-## 5 2017-08-05 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
-## 6 2017-07-29 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;</code></pre>
+## 1 2017-09-22 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
+## 2 2017-09-16 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
+## 3 2017-09-09 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
+## 4 2017-09-02 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
+## 5 2017-08-26 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;
+## 6 2017-08-19 &lt;tibble [10 x 7]&gt; &lt;tibble [60 x 3]&gt; &lt;tibble [10 x 8]&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The majorities table for each date will have 1 row per simulation</span>
 <span class="co"># and one column per coalition</span>
 elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(majorities) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
@@ -265,12 +268,12 @@ elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a
 <pre><code>## # A tibble: 6 x 3
 ##   date       majorities        probabilities   
 ##   &lt;date&gt;     &lt;list&gt;            &lt;list&gt;          
-## 1 2017-09-02 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
-## 2 2017-08-26 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
-## 3 2017-08-19 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
-## 4 2017-08-12 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
-## 5 2017-08-05 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
-## 6 2017-07-29 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;</code></pre>
+## 1 2017-09-22 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
+## 2 2017-09-16 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
+## 3 2017-09-09 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
+## 4 2017-09-02 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
+## 5 2017-08-26 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;
+## 6 2017-08-19 &lt;tibble [10 x 8]&gt; &lt;tibble [8 x 2]&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># one row per coalition</span>
 elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(probabilities) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 8 x 2
@@ -294,16 +297,16 @@ elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a
 <pre><code>## # A tibble: 36 x 3
 ##    date       coalition       probability
 ##    &lt;date&gt;     &lt;chr&gt;                 &lt;dbl&gt;
-##  1 2017-09-02 cdu                     0  
-##  2 2017-09-02 cdu_fdp                20.0
-##  3 2017-09-02 cdu_fdp_greens         80.0
-##  4 2017-09-02 spd                     0  
-##  5 2017-09-02 left_spd                0  
-##  6 2017-09-02 greens_left_spd         0  
-##  7 2017-08-26 cdu                     0  
-##  8 2017-08-26 cdu_fdp                40.0
-##  9 2017-08-26 cdu_fdp_greens         60.0
-## 10 2017-08-26 spd                     0  
+##  1 2017-09-22 cdu                       0
+##  2 2017-09-22 cdu_fdp                   0
+##  3 2017-09-22 cdu_fdp_greens          100
+##  4 2017-09-22 spd                       0
+##  5 2017-09-22 left_spd                  0
+##  6 2017-09-22 greens_left_spd           0
+##  7 2017-09-16 cdu                       0
+##  8 2017-09-16 cdu_fdp                   0
+##  9 2017-09-16 cdu_fdp_greens          100
+## 10 2017-09-16 spd                       0
 ## # ... with 26 more rows</code></pre>
 </div>
 </div>
