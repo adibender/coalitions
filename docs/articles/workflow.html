@@ -165,18 +165,18 @@ elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># each row is one election simulation</span>
 elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(draws) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 10 x 7
-##      cdu   spd greens    fdp   left    afd others
-##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.362 0.236 0.0733 0.0841 0.0946 0.0957 0.0541
-##  2 0.354 0.211 0.0819 0.100  0.0918 0.113  0.0473
-##  3 0.352 0.219 0.0769 0.0869 0.0999 0.116  0.0479
-##  4 0.339 0.229 0.0703 0.0890 0.0997 0.107  0.0665
-##  5 0.346 0.224 0.0743 0.0928 0.109  0.103  0.0507
-##  6 0.374 0.219 0.0777 0.0917 0.0962 0.0912 0.0493
-##  7 0.362 0.206 0.0763 0.0982 0.0994 0.108  0.0501
-##  8 0.326 0.242 0.0793 0.0922 0.102  0.109  0.0497
-##  9 0.337 0.219 0.0755 0.0980 0.115  0.110  0.0452
-## 10 0.341 0.222 0.0752 0.0983 0.111  0.109  0.0431</code></pre>
+##      cdu   spd greens    fdp   left   afd others
+##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 0.344 0.231 0.0777 0.0793 0.112  0.106 0.0507
+##  2 0.362 0.217 0.0881 0.0821 0.0983 0.109 0.0428
+##  3 0.344 0.228 0.0895 0.0891 0.101  0.106 0.0424
+##  4 0.358 0.221 0.0734 0.0933 0.105  0.102 0.0478
+##  5 0.357 0.215 0.0752 0.0823 0.0927 0.122 0.0565
+##  6 0.365 0.221 0.0820 0.0926 0.0899 0.101 0.0483
+##  7 0.372 0.211 0.0777 0.0890 0.0874 0.106 0.0568
+##  8 0.356 0.215 0.0689 0.0930 0.0988 0.118 0.0492
+##  9 0.348 0.230 0.0647 0.100  0.0976 0.104 0.0552
+## 10 0.340 0.244 0.0870 0.0896 0.0993 0.101 0.0384</code></pre>
 </div>
 <div id="calculate-seat-distribution" class="section level2">
 <h2 class="hasAnchor">
@@ -199,16 +199,16 @@ elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a
 <pre><code>## # A tibble: 60 x 3
 ##      sim party  seats
 ##    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
-##  1     1 cdu      229
-##  2     1 spd      149
-##  3     1 greens    46
-##  4     1 fdp       53
-##  5     1 left      60
-##  6     1 afd       61
-##  7     2 cdu      222
-##  8     2 spd      133
-##  9     2 greens    51
-## 10     2 fdp       63
+##  1     1 cdu      217
+##  2     1 spd      145
+##  3     1 greens    49
+##  4     1 fdp       50
+##  5     1 left      70
+##  6     1 afd       67
+##  7     2 cdu      227
+##  8     2 spd      136
+##  9     2 greens    55
+## 10     2 fdp       51
 ## # ... with 50 more rows</code></pre>
 <p>In the above example, given the latest survey, CDU/CSU would have 225 seats in the first simulation, 223 seats in the second simulation, etc.</p>
 </div>

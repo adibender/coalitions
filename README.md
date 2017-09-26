@@ -102,8 +102,8 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##   pollster   date       coalition       probability
     ##   <chr>      <date>     <chr>                 <dbl>
     ## 1 allensbach 2017-09-22 cdu                     0  
-    ## 2 allensbach 2017-09-22 cdu_fdp                14.2
-    ## 3 allensbach 2017-09-22 cdu_fdp_greens         85.8
+    ## 2 allensbach 2017-09-22 cdu_fdp                14.6
+    ## 3 allensbach 2017-09-22 cdu_fdp_greens         85.4
     ## 4 allensbach 2017-09-22 spd                     0  
     ## 5 allensbach 2017-09-22 left_spd                0  
     ## 6 allensbach 2017-09-22 greens_left_spd         0

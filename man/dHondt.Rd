@@ -7,16 +7,12 @@
 dHondt(votes, parties, n_seats = 183)
 }
 \arguments{
-\item{survey}{Results of a survey as data.frame containing party names and votes.}
+\item{votes}{Number of votes per party.}
 
-\item{seats}{Number of seats in parliament. Defaults to 183 (seats in austrian
-parliament).}
+\item{parties}{Names of parties (must be same length as votes).}
 
-\item{hurdle}{The percentage of votes that must be reached to get seats in
-parliament. Defaults to 0.04 (hurdle for austrian parliament).}
-
-\item{epsilon}{The percentages of votes in survey must add up to 1,
-this allows for some numerical imprecission. Defaults to 10e-6.}
+\item{n_seats}{Number of seats in parliament. Defaults to 183 (seats in
+austrian parliament).}
 }
 \value{
 A \code{data.frame} containing parties above the hurdle and the respective
