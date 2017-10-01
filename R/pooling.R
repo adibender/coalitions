@@ -16,69 +16,48 @@ effective_samplesize <- function(
   corr = 0.5,
   weights = NULL){
 
-  assert_numeric(size, lower=0, finite=TRUE, min.len = 1)
+  assert_numeric(size, lower = 0, finite = TRUE, min.len = 1)
   if (length(size) == 1) {
     message("Only one survey/pollster provided. The provided sample size will
       be returned.")
     return(size)
   }
-  assert_numeric(share, lower=0, upper=1, len = length(size))
-  assert_number(corr, lower=-1, upper=1)
-  assert_numeric(weights, finite=TRUE, len = length(size), null.ok=TRUE)
+  assert_numeric(share, lower = 0, upper = 1, len = length(size))
+  assert_number(corr, lower = -1, upper = 1)
+  assert_numeric(weights, finite = TRUE, len = length(size), null.ok = TRUE)
   if (is.null(weights)) {
     weights <- size
   }
 
   # calculation
-  p.total = sum(weights*share)/sum(weights)
-  var.ind = p.total*(1-p.total)
-  n.inst  = length(size)
-  n.total = sum(size)
-  var.vec = share*(1-share)/size
-  sd.vec  = sqrt(var.vec)
-  n.comb  = 0
-  for (i in (n.inst-1):1){
-    n.comb = n.comb + i
+  p.total <- sum(weights * share) / sum(weights)
+  var.ind <- p.total * (1 - p.total)
+  n.inst  <- length(size)
+  n.total <- sum(size)
+  var.vec <- share * (1 - share) / size
+  sd.vec  <- sqrt(var.vec)
+  n.comb  <- 0
+  for (i in (n.inst - 1):1){
+    n.comb <- n.comb + i
   }
-  cov.vec   = rep(NA, n.comb)
-  n.cov.vec = cov.vec
-  k = n.inst-1
-  count = 1
+  cov.vec   <- rep(NA, n.comb)
+  n.cov.vec <- cov.vec
+  k <- n.inst - 1
+  count <- 1
   while (k > 0){
-    cov.vec[count:(count+k-1)]   = corr*sd.vec[1:k]*sd.vec[(n.inst-k+1):n.inst]
-    n.cov.vec[count:(count+k-1)] = weights[1:k]*weights[(n.inst-k+1):n.inst]
-    count = count+k
-    k = k-1
+    cov.vec[count:(count + k - 1)] <- corr * sd.vec[1:k] *
+      sd.vec[(n.inst - k + 1):n.inst]
+    n.cov.vec[count:(count + k - 1)] <- weights[1:k] *
+      weights[(n.inst - k + 1):n.sinst]
+    count <- count + k
+    k <- k - 1
   }
-  var.est = 1/sum(weights)^2*(sum((weights^2)*var.vec) + sum(2*n.cov.vec*cov.vec))
-  n.eff   = var.ind/var.est
+  var.est <- 1 / sum(weights)^2 * (sum((weights^2) * var.vec) +
+    sum(2 * n.cov.vec * cov.vec))
+  n.eff <- var.ind / var.est
   return(n.eff)
 
 }
-
-
-# #' @inherit effective_samplesize
-# #' @importFrom stats optim
-# optim_eff <- function(size, share, corr) {
-#   max.start <- rep(1/length(size), length(size)-1)
-#   opt_res <- optim(
-#     max.start,
-#     function(x) {
-#       -effective_samplesize(
-#         size   = size,
-#         share  = share,
-#         corr   = corr,
-#         weights = c(x,1-sum(x)))
-#     },
-#     method = "L-BFGS-B",
-#     lower  = rep(0, length(size)-1),
-#     upper  = rep(1, length(size)-1))
-
-#   -opt_res$value
-
-# }
-
-
 
 #' Extract surveys from insitutes within a specfied time-window
 #'
@@ -96,14 +75,15 @@ effective_samplesize <- function(
 #' @keywords internal
 get_eligible <- function(
   surveys,
-  pollsters   = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
+  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest",
+    "insa"),
   last_date = Sys.Date(),
   period    = 14) {
 
-  assert_data_frame(surveys, min.rows=2, min.cols=2)
+  assert_data_frame(surveys, min.rows = 2, min.cols = 2)
   assert_date(last_date)
   assert_character(pollsters, null.ok = TRUE)
-  assert_number(period, lower=1, finite=TRUE)
+  assert_number(period, lower = 1, finite = TRUE)
 
   surveys %>% filter(pollster %in% pollsters) %>%
     unnest(surveys) %>%
@@ -127,17 +107,18 @@ get_eligible <- function(
 get_pooled <- function(
   surveys,
   last_date  = Sys.Date(),
-  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
+  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest",
+    "insa"),
   period     = 14,
   corr       = 0.5,
   weights    = NULL) {
 
-  assert_data_frame(surveys, min.rows=2, min.cols=2)
+  assert_data_frame(surveys, min.rows = 2, min.cols = 2)
   assert_date(last_date)
-  assert_character(pollsters, any.missing=FALSE)
-  assert_number(period, lower=1, finite=TRUE)
-  assert_number(corr, lower=-1, upper=1)
-  assert_numeric(weights, finite=TRUE, null.ok=TRUE)
+  assert_character(pollsters, any.missing = FALSE)
+  assert_number(period, lower = 1, finite = TRUE)
+  assert_number(corr, lower = -1, upper = 1)
+  assert_numeric(weights, finite = TRUE, null.ok = TRUE)
 
 
   elg_udf <- surveys %>%
@@ -155,7 +136,7 @@ get_pooled <- function(
       to         = max(date),
       Neff       = effective_samplesize(
         size       = respondents,
-        share      = percent/100,
+        share      = percent / 100,
         corr       = corr,
         weights    = weights),
       pollsters = paste0(pollster, collapse = ", ")) %>%
@@ -181,17 +162,18 @@ get_pooled <- function(
 pool_surveys <- function(
   surveys,
   last_date  = Sys.Date(),
-  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "insa"),
+  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest",
+    "insa"),
   period     = 14,
   corr       = 0.5,
   weights    = NULL) {
 
-  assert_data_frame(surveys, min.rows=2, min.cols=2)
+  assert_data_frame(surveys, min.rows = 2, min.cols = 2)
   assert_date(last_date)
-  assert_character(pollsters, any.missing=FALSE)
-  assert_number(period, lower=1, finite=TRUE)
-  assert_number(corr, lower=-1, upper=1)
-  assert_numeric(weights, finite=TRUE, null.ok=TRUE)
+  assert_character(pollsters, any.missing = FALSE)
+  assert_number(period, lower = 1, finite = TRUE)
+  assert_number(corr, lower = -1, upper = 1)
+  assert_numeric(weights, finite = TRUE, null.ok = TRUE)
 
   pooled_df <- get_pooled(surveys, last_date, pollsters, period, corr, weights)
 
@@ -222,13 +204,12 @@ pool_surveys <- function(
       start       = unique(pooled_df$from),
       end         = unique(pooled_df$to),
       respondents = Neff,
-      percent     = votes/nall*100,
-      votes       = percent/100 * Neff) %>%
+      percent     = votes / nall * 100,
+      votes       = percent / 100 * Neff) %>%
     select(one_of("pollster", "date", "start", "end", "respondents", "party",
       "percent", "votes"))
 
 }
-
 
 #' Total number of survey participants from surveys elligible for pooling.
 #'

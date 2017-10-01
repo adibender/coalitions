@@ -16,27 +16,27 @@
 #' @keywords internal
 #' @export
 prettify_strings <- function(
-	x,
-	current = .trans_df$english,
-	new     = .trans_df$english_pretty) {
+  x,
+  current = .trans_df$english,
+  new     = .trans_df$english_pretty) {
 
-	if(is.factor(x)) {
-		was_factor <- TRUE
-		x <- as.character(x)
-		message("x was converted from factor to character!")
-	}
+  if (is.factor(x)) {
+    was_factor <- TRUE
+    x <- as.character(x)
+    message("x was converted from factor to character!")
+  }
 
-	if(!any(x %in% current)) {
-		return(x)
-	} else {
+  if (!any(x %in% current)) {
+    return(x)
+  } else {
 
-		indc     <- match(x, current)
-		ind.x    <- which(!is.na(indc))
-		ind.repl <- indc[!is.na(indc)]
-		x[ind.x] <- new[ind.repl]
+    indc     <- match(x, current)
+    ind.x    <- which(!is.na(indc))
+    ind.repl <- indc[!is.na(indc)]
+    x[ind.x] <- new[ind.repl]
 
-		x
-	}
+    x
+  }
 
 }
 
@@ -45,12 +45,14 @@ prettify_strings <- function(
 #' @inherit prettify_strings
 #' @export
 prettify_de <- function(x) {
-	prettify_strings(x, current = .trans_df$english, new=.trans_df$german_pretty)
+  prettify_strings(x, current = .trans_df$english,
+    new = .trans_df$german_pretty)
 }
 
 #' @rdname prettify
 #' @inherit prettify_strings
 #' @export
 prettify_en <- function(x) {
-	prettify_strings(x, current = .trans_df$english, new=.trans_df$english_pretty)
+  prettify_strings(x, current = .trans_df$english,
+    new = .trans_df$english_pretty)
 }

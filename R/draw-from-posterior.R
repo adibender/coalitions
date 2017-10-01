@@ -27,28 +27,28 @@ draw_from_posterior <- function(
   correction = NULL) {
 
   ## set seed if provided
-  if(!is.null(seed)) set.seed(seed)
+  if (!is.null(seed)) set.seed(seed)
     ## calculate posteriori
-  if(is.null(prior)) {
+  if (is.null(prior)) {
     prior <- rep(0.5, nrow(survey))
   } else {
-    if(length(prior) != nrow(survey))
+    if (length(prior) != nrow(survey))
       stop("length of prior weights and number of observations differ")
   }
-  ## draw n.sim random dirichlet numbers/vectors with concentration weights alpha
+  # draw n.sim random dirichlet numbers/vectors with concentration weights alpha
   draws <- rdirichlet(nsim, alpha = survey$votes + prior)
   colnames(draws) <- survey$party
 
   if (!is.null(correction)) {
     draws_correction <- matrix(
-      runif(prod(dim(draws)), -1*correction, 1*correction),
+      runif(prod(dim(draws)), -1 * correction, 1 * correction),
       nrow = nrow(draws),
       ncol = ncol(draws))
     draws_correction <- draws_correction - rowMeans(draws_correction)
     draws <- draws + draws_correction
 
     if (any(ind.mat <- draws < 0)) {
-      draws <- draws[!(rowSums(ind.mat) > 0), , drop=FALSE]
+      draws <- draws[!(rowSums(ind.mat) > 0), , drop = FALSE]
       warning(paste0(
         "Some drawn percentages were smaller than 0.\n ",
         "The value of the correction may be to large.\n ",
@@ -56,7 +56,6 @@ draw_from_posterior <- function(
         may leed to bias."))
     }
   }
-
 
   return(tbl_df(draws))
 

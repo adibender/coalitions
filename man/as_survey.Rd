@@ -8,25 +8,25 @@ as_survey(percent, samplesize, parties = c("cdu", "spd", "gruene", "fdp",
   "linke", "piraten", "afd", "fw", "sonstige"), epsilon = 1e-05)
 }
 \arguments{
-\item{percent}{Votes in percent each party received in the survey 
-of interest. Can be set to \code{NA}, if parties are specified that are not 
-mentioned in the specific survey (otherwise the \code{parties} argument has 
+\item{percent}{Votes in percent each party received in the survey
+of interest. Can be set to \code{NA}, if parties are specified that are not
+mentioned in the specific survey (otherwise the \code{parties} argument has
 to be modified).}
 
 \item{samplesize}{Number of respondents in survey.}
 
 \item{parties}{Vector of same length and in the same order as \code{percent}}
 
-\item{epsilon}{The parameter \code{percent} should add up to one. 
+\item{epsilon}{The parameter \code{percent} should add up to one.
 This parameter controls the maximal numerical divergence allowed.}
 }
 \value{
-A \code{data.frame} containing input and absolute number of votes 
+A \code{data.frame} containing input and absolute number of votes
 in survey per party.
 }
 \description{
-This functions takes votes in percent (per party) obtained from a survey, 
-and returns a table containing votes (in percent) and party names. Conducts  
+This functions takes votes in percent (per party) obtained from a survey,
+and returns a table containing votes (in percent) and party names. Conducts
 sanity checks along the way, such as checking that percentages add up to 1.
 }
 \examples{
@@ -34,7 +34,7 @@ forsa <- as_survey(
  percent    = c(0.41, 0.24, 0.13, 0.04, 0.08, 0.03, 0.03, 0.04),
  samplesize = 2508,
  parties    = c("cdu/csu", "spd", "gruene", "fdp", "linke", "piraten", "afd", "others"))
-forsa 
+forsa
 }
 \seealso{
 \code{\link{redistribute}}

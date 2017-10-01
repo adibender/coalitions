@@ -14,13 +14,13 @@
 #' @export
 dHondt <- function(votes, parties, n_seats = 183) {
 
-  divisor.mat           <- sum(votes)/sapply(votes, "/", seq(1, n_seats, 1))
+  divisor.mat           <- sum(votes) / sapply(votes, "/", seq(1, n_seats, 1))
   colnames(divisor.mat) <- parties
-  m.mat                 <- melt(divisor.mat, id.vars = "party")
-  m.mat                 <- m.mat[rank(m.mat$value, ties.method = "random") <= n_seats, ]
-  rle.seats             <- rle(as.character(m.mat$Var2))
+  m.mat     <- melt(divisor.mat, id.vars = "party")
+  m.mat     <- m.mat[rank(m.mat$value, ties.method = "random") <= n_seats, ]
+  rle.seats <- rle(as.character(m.mat$Var2))
 
-  if( sum(rle.seats$length) != n_seats )
+  if (sum(rle.seats$length) != n_seats)
     stop(paste("Number of seats distributed not equal to", n_seats))
 
   rle.seats$length

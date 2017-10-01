@@ -27,11 +27,12 @@ get_seats <- function(
   others      = "others",
   ... ) {
 
-  assert_data_frame(dirichlet.draws, any.missing=FALSE, min.rows=1, min.cols=2)
-  assert_number(hurdle, lower=0, upper=1)
-  assert_string(others, min.chars=1)
+  assert_data_frame(dirichlet.draws, any.missing = FALSE, min.rows = 1,
+    min.cols = 2)
+  assert_number(hurdle, lower = 0, upper = 1)
+  assert_string(others, min.chars = 1)
 
-  if( is.null(samplesize) ) samplesize <- sum(survey$votes)
+  if (is.null(samplesize)) samplesize <- sum(survey$votes)
 
   pnames <- colnames(dirichlet.draws)
 
@@ -62,10 +63,10 @@ redistribute <- function(
   others  = "others",
   epsilon = 10e-6) {
 
-  ## must be & (we include parties with percent > hurdel and name != others)
+  # must be & (we include parties with percent > hurdel and name != others)
   survey <- survey[survey$percent >= hurdle & survey$party != others, ]
 
-  survey$percent <- survey$votes/sum(survey$votes)
+  survey$percent <- survey$votes / sum(survey$votes)
 
   # check for data validity
   if (abs(sum(survey$percent) - 1) > epsilon)

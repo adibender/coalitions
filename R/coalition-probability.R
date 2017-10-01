@@ -53,7 +53,7 @@ have_majority <- function(
     any.missing = FALSE,
     min.len     = 1,
     unique      = TRUE)
-  assert_number(seats_majority, finite=TRUE)
+  assert_number(seats_majority, finite = TRUE)
 
   coalitions %<>% map(sort)
 
@@ -62,7 +62,7 @@ have_majority <- function(
     has_majority,
     seats_tab = seats_tab,
     seats_majority  = seats_majority) %>% bind_cols()
-  colnames(majority_df) <- paste_coalitions(coalitions, collapse=collapse)
+  colnames(majority_df) <- paste_coalitions(coalitions, collapse = collapse)
 
   majority_df
 
@@ -78,7 +78,7 @@ paste_coalitions <- function(coalitions, collapse="_") {
 
   coalitions %>%
     map(sort) %>%
-    map(paste, collapse=collapse) %>%
+    map(paste, collapse = collapse) %>%
     unlist()
 
 }
@@ -114,17 +114,17 @@ calculate_prob <- function(
   exclude_superior = TRUE,
   ...) {
 
-  assert_data_frame(majority_df, types="logical")
-  assert_string(coalition, min.chars=1L)
+  assert_data_frame(majority_df, types = "logical")
+  assert_string(coalition, min.chars = 1L)
   assert_subset(coalition, names(majority_df))
   assert_flag(exclude_superior)
 
   n_all <- nrow(majority_df)
-  if(exclude_superior) {
+  if (exclude_superior) {
     majority_df %<>% filter_superior(coalition, ...)
   }
 
-  majority_df %>% summarize_at(coalition, funs(sum(.)/n_all*100))
+  majority_df %>% summarize_at(coalition, funs(sum(.) / n_all * 100))
 
 }
 
@@ -152,9 +152,9 @@ calculate_probs <- function(
   exclude_superior = TRUE,
   ...) {
 
-  assert_data_frame(majority_df, types="logical")
-  assert_list(coalitions, types="character", any.missing=FALSE, min.len=1,
-    unique=TRUE)
+  assert_data_frame(majority_df, types = "logical")
+  assert_list(coalitions, types = "character", any.missing = FALSE, min.len = 1,
+    unique = TRUE)
   assert_flag(exclude_superior)
 
   coalitions %<>% paste_coalitions()
@@ -178,7 +178,7 @@ filter_superior <- function(majority_df, coalition, ...) {
     superior       <- get_superior(coalition, ...)
     superior_names <- intersect(superior, names(majority_df))
 
-    if(length(superior_names) > 0) {
+    if (length(superior_names) > 0) {
       majority_df %>% filter_at(superior_names, all_vars(!.))
     } else {
       majority_df
@@ -203,9 +203,9 @@ get_superior <- function(
   pattern  = "_",
   collapse = "_") {
 
-  party_list <- str_split(string, pattern=pattern) %>% unlist()
+  party_list <- str_split(string, pattern = pattern) %>% unlist()
   seq_len(length(party_list) -1) %>%
-    map(combn, x=party_list, simplify=FALSE) %>%
+    map(combn, x = party_list, simplify = FALSE) %>%
     flatten() %>%
     map_chr(paste, collapse = collapse)
 
@@ -240,14 +240,14 @@ get_probabilities <- function(
   x %>%
     mutate(
       draws    = map(survey, draw_from_posterior,
-        nsim = nsim, seed=seed, correction=correction),
+        nsim = nsim, seed = seed, correction = correction),
       seats    = map2(draws, survey, get_seats, distrib.fun = distrib.fun),
       majority = map(
         seats,
         have_majority,
         coalitions     = coalitions,
         seats_majority = seats_majority),
-      probabilities = map(majority, calculate_probs, coalitions=coalitions)) %>%
+      probabilities = map(majority, calculate_probs, coalitions = coalitions)) %>%
     select(-one_of("draws", "seats", "majority", "survey", "start", "end", "respondents"))
 
 }
