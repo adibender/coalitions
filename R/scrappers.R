@@ -165,7 +165,7 @@ scrape_ltw <- function(
     mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
     filter(total == 100, !is.na(befragte), !is.na(datum)) %>%
     select(one_of(c("institut", "datum", parties, "befragte"))) %>%
-    rename(pollster = institut)
+    rename(pollster = "institut")
 
   colnames(atab) <- prettify_strings(
     colnames(atab),

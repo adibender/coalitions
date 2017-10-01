@@ -32,23 +32,23 @@ effective_samplesize <- function(
   # calculation
   p.total <- sum(weights * share) / sum(weights)
   var.ind <- p.total * (1 - p.total)
-  n.inst  <- length(size)
+  n_inst  <- length(size)
   n.total <- sum(size)
   var.vec <- share * (1 - share) / size
   sd.vec  <- sqrt(var.vec)
   n.comb  <- 0
-  for (i in (n.inst - 1):1){
+  for (i in (n_inst - 1):1){
     n.comb <- n.comb + i
   }
   cov.vec   <- rep(NA, n.comb)
   n.cov.vec <- cov.vec
-  k <- n.inst - 1
+  k <- n_inst - 1
   count <- 1
   while (k > 0){
     cov.vec[count:(count + k - 1)] <- corr * sd.vec[1:k] *
-      sd.vec[(n.inst - k + 1):n.inst]
+      sd.vec[(n_inst - k + 1):n_inst]
     n.cov.vec[count:(count + k - 1)] <- weights[1:k] *
-      weights[(n.inst - k + 1):n.sinst]
+      weights[(n_inst - k + 1):n_inst]
     count <- count + k
     k <- k - 1
   }
