@@ -104,11 +104,8 @@
 <h2 class="hasAnchor">
 <a href="#read-in-data" class="anchor"></a>Read in data</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># one line per survey (party information in wide format)</span>
-emnid &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>:<span class="dv">6</span>)</code></pre></div>
-<pre><code>## Warning: 1 failed to parse.
-
-## Warning: 1 failed to parse.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">emnid %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(-start, -end)</code></pre></div>
+emnid &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>:<span class="dv">6</span>)
+emnid %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(-start, -end)</code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##   date         cdu   spd greens   fdp  left   afd others respondents
 ##   &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
@@ -167,16 +164,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 10 x 7
 ##      cdu   spd greens    fdp   left    afd others
 ##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.336 0.198 0.119  0.106  0.0934 0.118  0.0295
-##  2 0.319 0.203 0.116  0.108  0.101  0.122  0.0314
-##  3 0.321 0.205 0.101  0.119  0.105  0.122  0.0274
-##  4 0.333 0.221 0.0967 0.0978 0.104  0.124  0.0233
-##  5 0.336 0.235 0.0910 0.116  0.0869 0.105  0.0306
-##  6 0.336 0.209 0.0976 0.130  0.0994 0.104  0.0239
-##  7 0.355 0.200 0.0866 0.121  0.102  0.0994 0.0357
-##  8 0.325 0.240 0.101  0.0977 0.101  0.103  0.0317
-##  9 0.332 0.212 0.0929 0.0932 0.101  0.133  0.0354
-## 10 0.325 0.217 0.104  0.128  0.0984 0.105  0.0227</code></pre>
+##  1 0.341 0.205 0.0985 0.114  0.0983 0.114  0.0291
+##  2 0.345 0.190 0.128  0.0962 0.0949 0.115  0.0306
+##  3 0.346 0.199 0.0985 0.119  0.0954 0.116  0.0258
+##  4 0.328 0.211 0.0864 0.114  0.108  0.116  0.0364
+##  5 0.339 0.210 0.0873 0.105  0.105  0.119  0.0352
+##  6 0.327 0.211 0.112  0.110  0.0949 0.121  0.0257
+##  7 0.325 0.233 0.0837 0.115  0.105  0.107  0.0312
+##  8 0.308 0.211 0.0865 0.128  0.103  0.128  0.0350
+##  9 0.347 0.221 0.0852 0.123  0.107  0.0933 0.0238
+## 10 0.323 0.196 0.101  0.129  0.0931 0.128  0.0303</code></pre>
 </div>
 <div id="calculate-seat-distribution" class="section level2">
 <h2 class="hasAnchor">
@@ -199,16 +196,16 @@ elong %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidy
 <pre><code>## # A tibble: 60 x 3
 ##      sim party  seats
 ##    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
-##  1     1 cdu      207
-##  2     1 spd      122
-##  3     1 greens    73
-##  4     1 fdp       65
-##  5     1 left      58
-##  6     1 afd       73
-##  7     2 cdu      197
-##  8     2 spd      125
-##  9     2 greens    72
-## 10     2 fdp       67
+##  1     1 cdu      210
+##  2     1 spd      126
+##  3     1 greens    61
+##  4     1 fdp       70
+##  5     1 left      61
+##  6     1 afd       70
+##  7     2 cdu      213
+##  8     2 spd      117
+##  9     2 greens    79
+## 10     2 fdp       59
 ## # ... with 50 more rows</code></pre>
 <p>In the above example, given the latest survey, CDU/CSU would have 225 seats in the first simulation, 223 seats in the second simulation, etc.</p>
 </div>
