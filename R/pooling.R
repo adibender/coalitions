@@ -191,7 +191,10 @@ pool_surveys <- function(
     group_by(party) %>%
     summarize(votes = sum(votes))
 
-  max_party <- svotes %>% filter(votes == max(votes)) %>% pull(party)
+  max_party <- svotes %>%
+    filter(votes == max(votes)) %>%
+    slice(1) %>%
+    pull(party)
 
   Neff <- pooled_df %>%
     filter(party == max_party) %>%
