@@ -68,6 +68,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/austria.html">Application to other elections</a>
+    </li>
+    <li>
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
@@ -145,16 +148,22 @@ Defaults to 0.5.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>coalitions</span>)
-<span class='fu'>pool_surveys</span>(<span class='no'>surveys_sample</span>)</div><div class='output co'>#&gt; # A tibble: 7 x 8
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='no'>latest</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_surveys.html'>get_latest</a></span>(<span class='no'>surveys_sample</span>)
+<span class='fu'>pool_surveys</span>(<span class='no'>surveys_sample</span>, <span class='kw'>last_date</span><span class='kw'>=</span><span class='fu'>as.Date</span>(<span class='st'>"2017-09-02"</span>))</div><div class='output co'>#&gt; # A tibble: 7 x 8
 #&gt;   pollster date       start      end        respondents party  percent votes
 #&gt;   &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;     &lt;date&gt;           &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 pooled   2017-09-09 2017-08-29 2017-09-02        3084 afd       9.18   283
-#&gt; 2 pooled   2017-09-09 2017-08-29 2017-09-02        3084 cdu      37.8   1165
-#&gt; 3 pooled   2017-09-09 2017-08-29 2017-09-02        3084 fdp       8.29   256
-#&gt; 4 pooled   2017-09-09 2017-08-29 2017-09-02        3084 greens    7.39   228
-#&gt; 5 pooled   2017-09-09 2017-08-29 2017-09-02        3084 left      9.22   284
-#&gt; 6 pooled   2017-09-09 2017-08-29 2017-09-02        3084 others    4.59   142
-#&gt; 7 pooled   2017-09-09 2017-08-29 2017-09-02        3084 spd      23.6    727</div></pre>
+#&gt; 1 pooled   2017-09-02 2017-08-22 2017-09-02        3055 afd       8.89   272
+#&gt; 2 pooled   2017-09-02 2017-08-22 2017-09-02        3055 cdu      38.0   1161
+#&gt; 3 pooled   2017-09-02 2017-08-22 2017-09-02        3055 fdp       8.52   260
+#&gt; 4 pooled   2017-09-02 2017-08-22 2017-09-02        3055 greens    7.41   226
+#&gt; 5 pooled   2017-09-02 2017-08-22 2017-09-02        3055 left      9.06   277
+#&gt; 6 pooled   2017-09-02 2017-08-22 2017-09-02        3055 others    4.51   138
+#&gt; 7 pooled   2017-09-02 2017-08-22 2017-09-02        3055 spd      23.6    722</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

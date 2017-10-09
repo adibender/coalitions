@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initial dowload and data base creation — initialize • coalitions</title>
+<title>Import austrian survey results — scrape_austria • coalitions</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -68,6 +68,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/austria.html">Application to other elections</a>
+    </li>
+    <li>
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
@@ -95,21 +98,21 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initial dowload and data base creation</h1>
+    <h1>Import austrian survey results</h1>
     </div>
 
     
-    <p>Initial dowload and data base creation</p>
+    <p>Reads JSON file from neuwal.com</p>
     
 
-    <pre class="usage"><span class='fu'>initialize</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"./"</span>)</pre>
+    <pre class="usage"><span class='fu'>scrape_austria</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='st'>"https://neuwal.com/wahlumfragen/openwal/neuwal-openwal.json"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>path</th>
-      <td><p>A path to the folder in which data base should be initialized.</p></td>
+      <th>address</th>
+      <td><p>URL of the JSON file</p></td>
     </tr>
     </table>
     

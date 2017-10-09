@@ -3,21 +3,24 @@
 \name{get_surveys}
 \alias{get_surveys}
 \alias{get_latest}
-\title{Scrape surveys from all survey institutes}
+\title{Scrape surveys from all pollsters}
 \usage{
-get_surveys()
+get_surveys(country = c("DE", "AT"))
 
 get_latest(surveys = NULL, max_date = Sys.Date())
 }
 \arguments{
-\item{surveys}{If provided, lates survey will be obtained from this object,
+\item{country}{Choose country from which surveys should be scrapped.
+Currently \code{"DE"} (Germany) and \code{"AT"} (Austria) are supported.}
+
+\item{surveys}{If provided, latest survey will be obtained from this object,
 otherwise calls \code{\link{get_surveys}}.}
 
 \item{max_date}{Specifies the date, relative to which latest survey will
 be searched for. Defaults to \code{Sys.Date}.}
 }
 \description{
-Scrape surveys from all survey institutes
+Scrape surveys from all pollsters
 
 Given a specific date, extract the survey from this date or the last one
 before this date.

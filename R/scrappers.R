@@ -5,16 +5,16 @@
 #' @keywords internal
 sanitize_strings <- function(x) {
 
-	# lower case letters
-	x <- gsub("\u00f6", "oe", x)
-	x <- gsub("\u00fc", "ue", x)
-	x <- gsub("\u00e4", "ae", x)
-	# upper case letters
-	x <- gsub("\u00d6", "Oe", x)
-	x <- gsub("\u00dc", "Ue", x)
-	x <- gsub("\u00c4", "Ae", x)
+  # lower case letters
+  x <- gsub("\u00f6", "oe", x)
+  x <- gsub("\u00fc", "ue", x)
+  x <- gsub("\u00e4", "ae", x)
+  # upper case letters
+  x <- gsub("\u00d6", "Oe", x)
+  x <- gsub("\u00dc", "Ue", x)
+  x <- gsub("\u00c4", "Ae", x)
 
-	return(x)
+  return(x)
 
 }
 
@@ -26,13 +26,13 @@ sanitize_strings <- function(x) {
 #' @keywords internal
 extract_num <- function(x, decimal=TRUE) {
 
-	if(decimal) {
-		x <- gsub(",", "\\.", x)
-		replace_string <- "[^0-9,.]"
-	} else {
-		replace_string <- "[^0-9]"
-	}
-	as.numeric(gsub(replace_string, "", x))
+  if (decimal) {
+    x <- gsub(",", "\\.", x)
+    replace_string <- "[^0-9,.]"
+  } else {
+    replace_string <- "[^0-9]"
+  }
+  as.numeric(gsub(replace_string, "", x))
 }
 
 #' Sanitize column names
@@ -42,14 +42,14 @@ extract_num <- function(x, decimal=TRUE) {
 #' @keywords internal
 sanitize_colnames <- function(df) {
 
-	cdf <- colnames(df)
-	cdf <- tolower(sanitize_strings(cdf))
-	cdf <- sub("cdu/csu", "cdu", cdf)
-	cdf <- sub("gruenen", "gruene", cdf)
+  cdf <- colnames(df)
+  cdf <- tolower(sanitize_strings(cdf))
+  cdf <- sub("cdu/csu", "cdu", cdf)
+  cdf <- sub("gruenen", "gruene", cdf)
 
-	colnames(df) <- cdf
+  colnames(df) <- cdf
 
-	return(df)
+  return(df)
 
 }
 
@@ -65,69 +65,164 @@ sanitize_colnames <- function(df) {
 #' @importFrom stringr str_sub
 #' @export
 scrape_wahlrecht <- function(
-	address = "http://www.wahlrecht.de/umfragen/emnid.htm",
-	parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
-		"SONSTIGE")) {
+  address = "http://www.wahlrecht.de/umfragen/emnid.htm",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+    "SONSTIGE")) {
 
-	atab <- read_html(address) %>%
-		html_nodes("table") %>% .[[2]] %>%
-		html_table(fill=TRUE)
+  atab <- read_html(address) %>%
+    html_nodes("table") %>% .[[2]] %>%
+    html_table(fill = TRUE)
 
-	if(address == "http://www.wahlrecht.de/umfragen/politbarometer.htm") {
-		colnames(atab) <- atab[2, ]
-		ind.row.remove <- -1:-3
-	} else if (address == "http://www.wahlrecht.de/umfragen/gms.htm" |
-		address == "http://www.wahlrecht.de/umfragen/insa.htm") {
-		ind.row.remove <- -1:-4
-	} else {
-		ind.row.remove <- -1:-3
-	}
+  if (address == "http://www.wahlrecht.de/umfragen/politbarometer.htm") {
+    colnames(atab) <- atab[2, ]
+    ind_row_remove <- -1:-3
+  } else if ( address == "http://www.wahlrecht.de/umfragen/gms.htm" |
+    address == "http://www.wahlrecht.de/umfragen/insa.htm" ) {
+    ind_row_remove <- -1:-4
+  } else {
+    ind_row_remove <- -1:-3
+  }
 
-	atab           <- atab[ind.row.remove, ]
-	atab           <- atab[-nrow(atab), ]
-	colnames(atab) <- c("Datum", colnames(atab)[-1])
-	ind.empty      <- sapply(atab, function(z) all(z=="")) |
-		sapply(colnames(atab), function(z) z=="")
-	atab           <- atab[, !ind.empty]
+  atab           <- atab[ind_row_remove, ]
+  atab           <- atab[-nrow(atab), ]
+  colnames(atab) <- c("Datum", colnames(atab)[-1])
+  ind.empty      <- sapply(atab, function(z) all(z == "")) |
+    sapply(colnames(atab), function(z) z == "")
+  atab           <- atab[, !ind.empty]
 
-	atab <- sanitize_colnames(atab)
-	parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
-	# transform percentage string to numerics
-	atab %<>% mutate_at(c(parties), extract_num) %>%
-		mutate_at("befragte", extract_num, decimal=FALSE)
+  atab <- sanitize_colnames(atab)
+  parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
+  # transform percentage string to numerics
+  atab %<>% mutate_at(c(parties), extract_num) %>%
+    mutate_at("befragte", extract_num, decimal = FALSE)
 
-	atab %<>% mutate(datum = dmy(datum))
-	atab %<>% mutate(
-		start = dmy(paste0(str_sub(zeitraum, 1, 6), str_sub(datum, 1, 4))),
-		end   = dmy(paste0(str_sub(zeitraum, 8, 13), str_sub(datum, 1, 4))))
+  atab <- mutate(atab, datum = dmy(datum))
+  atab %<>% mutate(
+    start = dmy(paste0(str_sub(zeitraum, 1, 6), str_sub(datum, 1, 4))),
+    end   = dmy(paste0(str_sub(zeitraum, 8, 13), str_sub(datum, 1, 4))))
 
-	atab %<>%
-		mutate(total = rowSums(atab[, parties], na.rm=TRUE)) %>%
-		filter(total==100, !is.na(befragte), !is.na(datum)) %>%
-		select(one_of(c("datum", "start", "end", parties, "befragte")))
+  atab %<>%
+    mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
+    filter(total == 100, !is.na(befragte), !is.na(datum)) %>%
+    select(one_of(c("datum", "start", "end", parties, "befragte")))
 
-	colnames(atab) <- prettify_strings(
-		colnames(atab),
-		current = .trans_df$german,
-		new     = .trans_df$english)
+  colnames(atab) <- prettify_strings(
+    colnames(atab),
+    current = .trans_df$german,
+    new     = .trans_df$english)
 
-	return(atab)
+  return(atab)
 
 }
 
-
-
-#' Scrape surveys from all survey institutes
+#' Scrape surveys from all pollsters
 #'
+#' @param country Choose country from which surveys should be scrapped.
+#' Currently \code{"DE"} (Germany) and \code{"AT"} (Austria) are supported.
 #' @import dplyr
 #' @importFrom purrr map
 #' @export
-get_surveys <- function() {
+get_surveys <- function(country = c("DE", "AT")) {
 
-	.pollster_df %>%
-		mutate(
-			surveys = map(address, scrape_wahlrecht),
-			surveys = map(.x=surveys, collapse_parties)) %>%
-		select(-address)
+  country <- match.arg(country)
+
+  if (country == "DE") {
+    surveys <- .pollster_df %>%
+    mutate(
+      surveys = map(address, scrape_wahlrecht),
+      surveys = map(.x = surveys, collapse_parties)) %>%
+    select(-address)
+  }
+  if (country == "AT") {
+    surveys <- scrape_austria()
+  }
+
+  surveys
+
+}
+
+#' Scrape regional polls
+#'
+#' @rdname scrape
+#' @inherit scrape_wahlrecht
+#' @export
+scrape_ltw <- function(
+  address = "http://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+    "SONSTIGE")) {
+
+  atab <- read_html(address) %>%
+    html_nodes("table") %>% .[[2]] %>%
+    html_table(fill = TRUE)
+
+  ind_row_remove <- -c(1:2)
+
+  atab <- atab[ind_row_remove, ]
+  atab <- atab[-nrow(atab), ]
+  atab <- atab[, -2]
+
+  atab$Befragte <- extract_num(substr(atab$Befragte, 5, 9), decimal = FALSE)
+  ind.empty     <- sapply(atab, function(z) all(z == "")) |
+    sapply(colnames(atab), function(z) z == "")
+  atab          <- atab[, !ind.empty]
+
+  atab <- sanitize_colnames(atab)
+  parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
+  # transform percentage string to numerics
+  atab %<>% mutate_at(c(parties), extract_num) %>%
+    mutate_at("befragte", extract_num, decimal = FALSE)
+
+  atab <- mutate(atab, datum = dmy(datum))
+  atab %<>%
+    mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
+    filter(total == 100, !is.na(befragte), !is.na(datum)) %>%
+    select(one_of(c("institut", "datum", parties, "befragte"))) %>%
+    rename(pollster = "institut")
+
+  colnames(atab) <- prettify_strings(
+    colnames(atab),
+    current = .trans_df$german,
+    new     = .trans_df$english)
+
+  return(atab)
+
+}
+
+#' Import austrian survey results
+#'
+#' Reads JSON file from neuwal.com
+#' @param address URL of the JSON file
+#' @import dplyr
+#' @importFrom tidyr nest unnest
+#' @importFrom purrr map map_dfr flatten_dfc
+#' @importFrom jsonlite fromJSON
+#' @importFrom RCurl getURL
+#' @importFrom forcats fct_collapse
+#' @importFrom lubridate dmy
+#' @export
+scrape_austria <- function(
+  address = "https://neuwal.com/wahlumfragen/openwal/neuwal-openwal.json") {
+
+  aut_list <- fromJSON(getURL(address))
+  out_df   <- as_tibble(aut_list) %>%
+    rename(survey=results) %>%
+    select(institute, date, n,  survey) %>%
+    unnest() %>%
+    rename(pollster = institute, respondents = n, party = partyName,
+      percent = percentage) %>%
+    mutate(
+    votes = respondents * percent / 100,
+    date  = dmy(date),
+    start = date,
+    end   = date,
+    party = fct_collapse(party, others = c("? ", "So"))) %>%
+  mutate(party = as.character(party)) %>%
+  group_by(pollster, respondents, date, start, end, party) %>%
+  summarize(
+    percent = sum(percent),
+    votes   = sum(votes)) %>%
+  ungroup() %>%
+  nest(party:votes, .key = "survey") %>%
+  nest(-pollster,   .key = "surveys")
 
 }

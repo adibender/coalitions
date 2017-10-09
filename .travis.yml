@@ -2,14 +2,20 @@
 
 language: r
 sudo: false
-warnings_are_errors: false
+warnings_are_errors: true
 cache: packages
+
 r:
   - devel
   - release
 
 r_github_packages:
   - jimhester/covr
+
+# whitelist
+branches:
+  only:
+    - master
 
 after_success:
   - Rscript -e 'covr::codecov(line_exclusions="R/zzz.R", type="all")'

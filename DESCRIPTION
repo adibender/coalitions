@@ -1,7 +1,7 @@
 Package: coalitions
 Type: Package
 Title: Coalition Probabilities in Multi-party Democracies
-Version: 0.5.1
+Version: 0.5.3
 Authors@R: person("Andreas", "Bender", , "andreas.bender@stat.uni-muenchen.de", role = c("aut", "cre"))
 Description: An Implementation of a MCMC method to calculate
     probabilities for a coalition majority based on survey results.
@@ -12,9 +12,12 @@ Imports:
     gtools,
     rvest,
     xml2,
+    jsonlite,
+    RCurl,
     reshape2,
     magrittr,
     lubridate,
+    forcats,
     stringr,
     tidyr,
     purrr (> 0.2.2),

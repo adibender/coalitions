@@ -6,7 +6,8 @@
 \usage{
 get_probabilities(x, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
   "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left", "greens")),
-  nsim = 1e+05, distrib.fun = sls, seats_majority = 300L)
+  nsim = 1e+05, distrib.fun = sls, seats_majority = 300L,
+  seed = as.numeric(now()), correction = NULL)
 }
 \arguments{
 \item{x}{A table containing one row per survey and survey information in
@@ -22,6 +23,14 @@ need to correspond to the names in \code{majority_df}.}
 \code{\link{sls}} (Sainte-Lague/Scheppers).}
 
 \item{seats_majority}{The number of seats needed to obtain majority.}
+
+\item{seed}{sets seed}
+
+\item{correction}{A positiv number. If not \code{NULL}, each sample from the
+dirichlet distribution will be additionally "corrected" by a random number
+from U(-1*correction, 1*correction). This can be used to introduce extra
+variation which might be usefull due to rounding errors from reported survey
+results (or add an aditional source of variation in general).}
 }
 \description{
 Wrapper for calculation of coalition probabilities from survey

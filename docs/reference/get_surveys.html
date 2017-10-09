@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Scrape surveys from all survey institutes — get_surveys • coalitions</title>
+<title>Scrape surveys from all pollsters — get_surveys • coalitions</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -68,6 +68,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/austria.html">Application to other elections</a>
+    </li>
+    <li>
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
@@ -95,16 +98,16 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Scrape surveys from all survey institutes</h1>
+    <h1>Scrape surveys from all pollsters</h1>
     </div>
 
     
-    <p>Scrape surveys from all survey institutes</p>
+    <p>Scrape surveys from all pollsters</p>
 <p>Given a specific date, extract the survey from this date or the last one
 before this date.</p>
     
 
-    <pre class="usage"><span class='fu'>get_surveys</span>()
+    <pre class="usage"><span class='fu'>get_surveys</span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"DE"</span>, <span class='st'>"AT"</span>))
 
 <span class='fu'>get_latest</span>(<span class='kw'>surveys</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>())</pre>
     
@@ -112,8 +115,13 @@ before this date.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>country</th>
+      <td><p>Choose country from which surveys should be scrapped.
+Currently <code>"DE"</code> (Germany) and <code>"AT"</code> (Austria) are supported.</p></td>
+    </tr>
+    <tr>
       <th>surveys</th>
-      <td><p>If provided, lates survey will be obtained from this object,
+      <td><p>If provided, latest survey will be obtained from this object,
 otherwise calls <code>get_surveys</code>.</p></td>
     </tr>
     <tr>

@@ -45,6 +45,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/austria.html">Application to other elections</a>
+    </li>
+    <li>
       <a href="articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
@@ -115,43 +118,43 @@ surveys</code></pre></div>
 <pre><code>## # A tibble: 7 x 2
 ##   pollster   surveys           
 ##   &lt;chr&gt;      &lt;list&gt;            
-## 1 allensbach &lt;tibble [35 x 5]&gt; 
-## 2 emnid      &lt;tibble [200 x 5]&gt;
-## 3 forsa      &lt;tibble [205 x 5]&gt;
-## 4 fgw        &lt;tibble [73 x 5]&gt; 
-## 5 gms        &lt;tibble [91 x 5]&gt; 
-## 6 infratest  &lt;tibble [96 x 5]&gt; 
-## 7 insa       &lt;tibble [276 x 5]&gt;</code></pre>
+## 1 allensbach &lt;tibble [37 x 5]&gt; 
+## 2 emnid      &lt;tibble [205 x 5]&gt;
+## 3 forsa      &lt;tibble [209 x 5]&gt;
+## 4 fgw        &lt;tibble [76 x 5]&gt; 
+## 5 gms        &lt;tibble [92 x 5]&gt; 
+## 6 infratest  &lt;tibble [97 x 5]&gt; 
+## 7 insa       &lt;tibble [280 x 5]&gt;</code></pre>
 <p>Each row represents a survey insitute and each row in the <code>surveys</code> column again contains a nested <code>tibble</code> with survey results from different time-points:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(pollster <span class="op">==</span><span class="st"> "allensbach"</span>) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
-<pre><code>## # A tibble: 35 x 6
+<pre><code>## # A tibble: 37 x 6
 ##    pollster   date       start      end        respondents survey         
 ##    &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;     &lt;date&gt;           &lt;dbl&gt; &lt;list&gt;         
-##  1 allensbach 2017-09-06 2017-08-22 2017-08-31        1043 &lt;tibble [7 x 3…
-##  2 allensbach 2017-08-22 2017-08-04 2017-08-17        1421 &lt;tibble [7 x 3…
-##  3 allensbach 2017-07-18 2017-07-01 2017-07-12        1403 &lt;tibble [7 x 3…
-##  4 allensbach 2017-06-20 2017-06-01 2017-06-15        1437 &lt;tibble [7 x 3…
-##  5 allensbach 2017-05-26 2017-05-05 2017-05-19        1457 &lt;tibble [7 x 3…
-##  6 allensbach 2017-04-25 2017-04-01 2017-04-13        1407 &lt;tibble [7 x 3…
-##  7 allensbach 2017-03-28 2017-03-06 2017-03-19        1397 &lt;tibble [7 x 3…
-##  8 allensbach 2017-02-22 2017-02-01 2017-02-15        1542 &lt;tibble [7 x 3…
-##  9 allensbach 2017-01-26 2017-01-05 2017-01-19        1441 &lt;tibble [7 x 3…
-## 10 allensbach 2016-12-22 2016-12-01 2016-12-15        1459 &lt;tibble [7 x 3…
-## # ... with 25 more rows</code></pre>
+##  1 allensbach 2017-09-22 2017-09-13 2017-09-20        1074 &lt;tibble [7 x 3…
+##  2 allensbach 2017-09-19 2017-09-06 2017-09-14        1083 &lt;tibble [7 x 3…
+##  3 allensbach 2017-09-06 2017-08-22 2017-08-31        1043 &lt;tibble [7 x 3…
+##  4 allensbach 2017-08-22 2017-08-04 2017-08-17        1421 &lt;tibble [7 x 3…
+##  5 allensbach 2017-07-18 2017-07-01 2017-07-12        1403 &lt;tibble [7 x 3…
+##  6 allensbach 2017-06-20 2017-06-01 2017-06-15        1437 &lt;tibble [7 x 3…
+##  7 allensbach 2017-05-26 2017-05-05 2017-05-19        1457 &lt;tibble [7 x 3…
+##  8 allensbach 2017-04-25 2017-04-01 2017-04-13        1407 &lt;tibble [7 x 3…
+##  9 allensbach 2017-03-28 2017-03-06 2017-03-19        1397 &lt;tibble [7 x 3…
+## 10 allensbach 2017-02-22 2017-02-01 2017-02-15        1542 &lt;tibble [7 x 3…
+## # ... with 27 more rows</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey &lt;-<span class="st"> </span>surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>)
 survey <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 7 x 8
 ##   pollster   date       start      end        responde… party perce… votes
 ##   &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;     &lt;date&gt;         &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1 allensbach 2017-09-06 2017-08-22 2017-08-31      1043 cdu    38.5  402  
-## 2 allensbach 2017-09-06 2017-08-22 2017-08-31      1043 spd    24.0  250  
-## 3 allensbach 2017-09-06 2017-08-22 2017-08-31      1043 gree…   7.50  78.2
-## 4 allensbach 2017-09-06 2017-08-22 2017-08-31      1043 fdp    10.0  104  
-## 5 allensbach 2017-09-06 2017-08-22 2017-08-31      1043 left    8.00  83.4
-## 6 allensbach 2017-09-06 2017-08-22 2017-08-31      1043 afd     8.00  83.4
-## 7 allensbach 2017-09-06 2017-08-22 2017-08-31      1043 othe…   4.00  41.7</code></pre>
+## 1 allensbach 2017-09-22 2017-09-13 2017-09-20      1074 cdu    36.0  387  
+## 2 allensbach 2017-09-22 2017-09-13 2017-09-20      1074 spd    22.0  236  
+## 3 allensbach 2017-09-22 2017-09-13 2017-09-20      1074 gree…   8.00  85.9
+## 4 allensbach 2017-09-22 2017-09-13 2017-09-20      1074 fdp    10.5  113  
+## 5 allensbach 2017-09-22 2017-09-13 2017-09-20      1074 left    9.50 102  
+## 6 allensbach 2017-09-22 2017-09-13 2017-09-20      1074 afd    10.0  107  
+## 7 allensbach 2017-09-22 2017-09-13 2017-09-20      1074 othe…   4.00  43.0</code></pre>
 </div>
 <div id="calculate-coalition-probabilities" class="section level3">
 <h3 class="hasAnchor">
@@ -161,12 +164,12 @@ survey <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><
 <pre><code>## # A tibble: 6 x 4
 ##   pollster   date       coalition       probability
 ##   &lt;chr&gt;      &lt;date&gt;     &lt;chr&gt;                 &lt;dbl&gt;
-## 1 allensbach 2017-09-06 cdu                     0  
-## 2 allensbach 2017-09-06 cdu_fdp                59.7
-## 3 allensbach 2017-09-06 cdu_fdp_greens         40.3
-## 4 allensbach 2017-09-06 spd                     0  
-## 5 allensbach 2017-09-06 left_spd                0  
-## 6 allensbach 2017-09-06 greens_left_spd         0</code></pre>
+## 1 allensbach 2017-09-22 cdu                     0  
+## 2 allensbach 2017-09-22 cdu_fdp                13.8
+## 3 allensbach 2017-09-22 cdu_fdp_greens         86.2
+## 4 allensbach 2017-09-22 spd                     0  
+## 5 allensbach 2017-09-22 left_spd                0  
+## 6 allensbach 2017-09-22 greens_left_spd         0</code></pre>
 </div>
 </div>
 </div>
@@ -195,6 +198,7 @@ survey <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><
 <li><a href="https://ci.appveyor.com/project/adibender/coalitions"><img src="https://ci.appveyor.com/api/projects/status/github/adibender/coalitions?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="https://codecov.io/github/adibender/coalitions?branch=master"><img src="https://codecov.io/github/adibender/coalitions/master.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=coalitions"><img src="http://www.r-pkg.org/badges/version/coalitions" alt="CRAN_Status_Badge"></a></li>
+<li><a href="http://opensource.org/licenses/MIT"><img src="http://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT license"></a></li>
 </ul>
 </div>
 

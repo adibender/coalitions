@@ -2,10 +2,16 @@
 % Please edit documentation in R/prettify.R
 \name{prettify_strings}
 \alias{prettify_strings}
+\alias{prettify_de}
+\alias{prettify_en}
 \title{Replace/prettify matching words/terms in one vector by another}
 \usage{
 prettify_strings(x, current = .trans_df$english,
   new = .trans_df$english_pretty)
+
+prettify_de(x)
+
+prettify_en(x)
 }
 \arguments{
 \item{x}{A character vector (or factor) that should be renamed.}
