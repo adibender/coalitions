@@ -21,4 +21,6 @@ scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/emnid.htm",
 }
 \description{
 Scrapes survey tables and perfroms sanitization to output tidy data
+
+Scrape regional polls
 }

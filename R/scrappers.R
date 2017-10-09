@@ -115,22 +115,34 @@ scrape_wahlrecht <- function(
 
 }
 
-#' Scrape surveys from all survey institutes
+#' Scrape surveys from all pollsters
 #'
+#' @param country Choose country from which surveys should be scrapped.
+#' Currently \code{"DE"} (Germany) and \code{"AT"} (Austria) are supported.
 #' @import dplyr
 #' @importFrom purrr map
 #' @export
-get_surveys <- function() {
+get_surveys <- function(country = c("DE", "AT")) {
 
-  .pollster_df %>%
+  country <- match.arg(country)
+
+  if (country == "DE") {
+    surveys <- .pollster_df %>%
     mutate(
       surveys = map(address, scrape_wahlrecht),
       surveys = map(.x = surveys, collapse_parties)) %>%
     select(-address)
+  }
+  if (country == "AT") {
+    surveys <- scrape_austria()
+  }
+
+  surveys
 
 }
 
-
+#' Scrape regional polls
+#'
 #' @rdname scrape
 #' @inherit scrape_wahlrecht
 #' @export
@@ -174,5 +186,43 @@ scrape_ltw <- function(
 
   return(atab)
 
+}
+
+#' Import austrian survey results
+#'
+#' Reads JSON file from neuwal.com
+#' @param address URL of the JSON file
+#' @import dplyr
+#' @importFrom tidyr nest unnest
+#' @importFrom purrr map map_dfr flatten_dfc
+#' @importFrom jsonlite fromJSON
+#' @importFrom RCurl getURL
+#' @importFrom forcats fct_collapse
+#' @importFrom lubridate dmy
+#' @export
+scrape_austria <- function(
+  address = "https://neuwal.com/wahlumfragen/openwal/neuwal-openwal.json") {
+
+  aut_list <- fromJSON(getURL(address))
+  out_df   <- as_tibble(aut_list) %>%
+    rename(survey=results) %>%
+    select(institute, date, n,  survey) %>%
+    unnest() %>%
+    rename(pollster = institute, respondents = n, party = partyName,
+      percent = percentage) %>%
+    mutate(
+    votes = respondents * percent / 100,
+    date  = dmy(date),
+    start = date,
+    end   = date,
+    party = fct_collapse(party, others = c("? ", "So"))) %>%
+  mutate(party = as.character(party)) %>%
+  group_by(pollster, respondents, date, start, end, party) %>%
+  summarize(
+    percent = sum(percent),
+    votes   = sum(votes)) %>%
+  ungroup() %>%
+  nest(party:votes, .key = "survey") %>%
+  nest(-pollster,   .key = "surveys")
 
 }

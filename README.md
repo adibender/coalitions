@@ -44,7 +44,7 @@ surveys
     ##   pollster   surveys           
     ##   <chr>      <list>            
     ## 1 allensbach <tibble [37 x 5]> 
-    ## 2 emnid      <tibble [204 x 5]>
+    ## 2 emnid      <tibble [205 x 5]>
     ## 3 forsa      <tibble [209 x 5]>
     ## 4 fgw        <tibble [76 x 5]> 
     ## 5 gms        <tibble [92 x 5]> 

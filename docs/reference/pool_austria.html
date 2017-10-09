@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate seat distribution from draws from posterior — get_seats • coalitions</title>
+<title>Pool surveys from different pollsters — pool_austria • coalitions</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -98,62 +98,29 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate seat distribution from draws from posterior</h1>
+    <h1>Pool surveys from different pollsters</h1>
     </div>
 
     
-    <p>Calculate seat distribution from draws from posterior</p>
+    <p>Pool surveys from different pollsters</p>
     
 
-    <pre class="usage"><span class='fu'>get_seats</span>(<span class='no'>dirichlet.draws</span>, <span class='no'>survey</span>, <span class='kw'>distrib.fun</span> <span class='kw'>=</span> <span class='no'>sls</span>, <span class='kw'>samplesize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>others</span> <span class='kw'>=</span> <span class='st'>"others"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>pool_austria</span>(<span class='no'>...</span>, <span class='kw'>pollsters</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Market"</span>, <span class='st'>"Research Affairs"</span>,
+  <span class='st'>"Unique Research"</span>, <span class='st'>"OGM"</span>, <span class='st'>"IMAS"</span>, <span class='st'>"Hajek"</span>, <span class='st'>"Gallup"</span>, <span class='st'>"Karmasin"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dirichlet.draws</th>
-      <td><p>Matrix containing random draws from posterior.</p></td>
-    </tr>
-    <tr>
-      <th>survey</th>
-      <td><p>The actual survey results on which <code>dirichlet.draws</code>
-were based on.</p></td>
-    </tr>
-    <tr>
-      <th>distrib.fun</th>
-      <td><p>Function to calculate seat distribution. Defaults to
-<code><a href='sls.html'>sls</a></code> (Sainte-Lague/Scheppers).</p></td>
-    </tr>
-    <tr>
-      <th>samplesize</th>
-      <td><p>Number of individuals participating in the <code>survey</code>.</p></td>
-    </tr>
-    <tr>
-      <th>hurdle</th>
-      <td><p>The percentage threshold which has to be reached by a party
-to enter the parliament.</p></td>
-    </tr>
-    <tr>
-      <th>others</th>
-      <td><p>A string indecating the name under which parties not listed
-explicitly are subsummed.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Further arguments passed to <code>distrib.fun</code>.</p></td>
+      <th>pollsters</th>
+      <td><p>Character vector of pollsters that should be considered
+for pooling.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A data frame containing seat distributions for each simulation in
-<code>dirichlet.draws</code></p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='draw_from_posterior.html'>draw_from_posterior</a></code>, <code><a href='sls.html'>sls</a></code>,
-<code><a href='dHondt.html'>dHondt</a></code></p>
+    <p>pool_surveys</p>
     
 
   </div>
@@ -162,8 +129,6 @@ explicitly are subsummed.</p></td>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#see-also">See also</a></li>
           </ul>
 

@@ -229,3 +229,19 @@ get_n <- function(eligible_df) {
     sum()
 
 }
+
+
+#' Pool surveys from different pollsters
+#'
+#' @inherit pool_surveys
+#' @keywords internal
+#' @seealso pool_surveys
+#' @export
+pool_austria <- function(
+  ...,
+  pollsters=c("Market", "Research Affairs", "Unique Research", "OGM", "IMAS",
+    "Hajek", "Gallup", "Karmasin")) {
+
+  pool_surveys(..., pollsters = pollsters)
+
+}

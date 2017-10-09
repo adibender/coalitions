@@ -1,0 +1,95 @@
+---
+title: "Application to other elections"
+author: "Andreas Bender"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{austria}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  fig.align  = "center",
+  fig.width  = 4,
+  fig.height = 4,
+  crop       = TRUE)
+```
+
+
+```{r message=FALSE, warning=FALSE}
+library(magrittr)
+library(tidyr)
+library(purrr)
+library(dplyr)
+library(coalitions)
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+In this article we show how the framework of the coalitions package can be
+applied to other elections, using the Austrian "Nationalratswahlen" aus
+an example.
+
+## Getting the data
+The first step as usual, is getting the data. Fortunately,
+[neuwal.com](neuwal.com) provides survey results from different pollsters. Thus
+it was easy to write a function that imports data from that file:
+
+```{r}
+surveys_at <- get_surveys(country="AT")
+```
+
+which, as for Germany (`country = "DE"`) returns a nested `tibble`:
+```{r}
+surveys_at
+```
+
+To obtain a *pooled*  survey (wheited average over last 14 days, that takes
+correlation between different pollsters into account), you could use the
+`pool_surveys` and specify the pollsters that should be considered when pooling.
+However, there is also a wrapper function to do this for Austrian surveys
+```{r}
+pooled_at <- pool_austria(surveys_at)
+pooled_at
+```
+
+The above steps are not necessary. To use the coalitions package, you just
+need a data frame (or tibble) similar to `pooled_at`, which doesn't have to
+be a *pooled* survey. Given the survey, the workflw is equivalent to the one
+described in the [workflow vignette](https://adibender.github.io/coalitions/articles/workflow.html). However,
+it is necessary, to take the method for seat distribution, as well as the
+threshold and number of seats of the specific parliament of interest into
+account.
+
+```{r}
+## first specify coalitions of interest
+coalitions=list(
+      c("ÖVP", "GRÜNE", "NEOS", "PILZ"),
+      c("ÖVP", "FPÖ"))
+res_df <- pooled_at %>%
+  collapse_parties() %>%
+  mutate(draws = map(survey, draw_from_posterior, nsim=100, correction=0.005)) %>%
+  ## note distrib.fun, n_seats and hurdle arguments, specified for Austria
+  mutate(seats = map2(draws, survey, get_seats, distrib.fun = dHondt, n_seats = 183,
+    hurdle = 0.04))  %>%
+  mutate(majorities = map(seats, have_majority, coalitions=coalitions,
+    seats_majority = 92)) %>%
+  mutate(probabilities = map(majorities, calculate_probs,coalitions=coalitions))
+
+res_df
+```
+
+From this we can calculate properties of interest, e.g. probability that
+small parties will pass the 4% threshold or coalition probabilities:
+
+```{r}
+## probability of passing the 4% threshold
+res_df %>% pull(draws) %>% flatten_dfc() %>% apply(2, function(party) mean(party > 0.04))
+
+## coalition probabilities
+res_df %>% pull(probabilities)
+```
