@@ -61,12 +61,15 @@ The above steps are not necessary. To use the coalitions package, you just
 need a data frame (or `tibble`) similar to `pooled_at`, which doesn't have to
 be a *pooled* survey. Given the survey, the work flow is equivalent to the one
 described in the [work flow vignette](https://adibender.github.io/coalitions/articles/workflow.html).
-However, these steps are necessary:
+However, the following steps are necessary:
+
 - implement the method that is used to redistribute seats in the respective
 country (in Austria this is the method of D'Hondt, which is allready implemented
 in **`coalitions`**; see `?dHondt`)
+
 - provide the respective values of `n_seats`, `hurdle` and `distrib.fun` to
 the `get_seats` function
+
 - provide the correct value to the `seats_majority` argument of the `have_majority`
 function
 
@@ -75,6 +78,9 @@ function
 coalitions=list(
       c("ÖVP", "GRÜNE", "NEOS", "PILZ"),
       c("ÖVP", "FPÖ"))
+
+## In the following we set nsim=100 for illustration. Should be much higher
+# for serious calculations
 res_df <- pooled_at %>%
   collapse_parties() %>%
   mutate(draws = map(survey, draw_from_posterior, nsim=100, correction=0.005)) %>%
