@@ -99,7 +99,7 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install from GitHub using:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"adibender/coalitions"</span>, <span class="dt">build_vignettes=</span><span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">"adibender/coalitions"</span>, <span class="dt">build_vignettes=</span><span class="ot">TRUE</span>)</code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -120,14 +120,14 @@ surveys</code></pre></div>
 ##   &lt;chr&gt;      &lt;list&gt;            
 ## 1 allensbach &lt;tibble [37 x 5]&gt; 
 ## 2 emnid      &lt;tibble [205 x 5]&gt;
-## 3 forsa      &lt;tibble [209 x 5]&gt;
+## 3 forsa      &lt;tibble [210 x 5]&gt;
 ## 4 fgw        &lt;tibble [76 x 5]&gt; 
 ## 5 gms        &lt;tibble [92 x 5]&gt; 
 ## 6 infratest  &lt;tibble [97 x 5]&gt; 
-## 7 insa       &lt;tibble [280 x 5]&gt;</code></pre>
+## 7 insa       &lt;tibble [281 x 5]&gt;</code></pre>
 <p>Each row represents a survey insitute and each row in the <code>surveys</code> column again contains a nested <code>tibble</code> with survey results from different time-points:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(pollster <span class="op">==</span><span class="st"> "allensbach"</span>) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys %&gt;%
+<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(pollster ==<span class="st"> "allensbach"</span>) %&gt;%
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 37 x 6
 ##    pollster   date       start      end        respondents survey         
@@ -143,8 +143,8 @@ surveys</code></pre></div>
 ##  9 allensbach 2017-03-28 2017-03-06 2017-03-19        1397 &lt;tibble [7 x 3…
 ## 10 allensbach 2017-02-22 2017-02-01 2017-02-15        1542 &lt;tibble [7 x 3…
 ## # ... with 27 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey &lt;-<span class="st"> </span>surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>)
-survey <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey &lt;-<span class="st"> </span>surveys %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>() %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>)
+survey %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 7 x 8
 ##   pollster   date       start      end        responde… party perce… votes
 ##   &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;     &lt;date&gt;         &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
@@ -160,13 +160,13 @@ survey <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><
 <h3 class="hasAnchor">
 <a href="#calculate-coalition-probabilities" class="anchor"></a>Calculate coalition probabilities</h3>
 <p>For each survey (row) we can calculate the coalition probabilities</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/get_probabilities.html">get_probabilities</a></span>(<span class="dt">nsim=</span><span class="fl">1e4</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey %&gt;%<span class="st"> </span><span class="kw"><a href="reference/get_probabilities.html">get_probabilities</a></span>(<span class="dt">nsim=</span><span class="fl">1e4</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   pollster   date       coalition       probability
 ##   &lt;chr&gt;      &lt;date&gt;     &lt;chr&gt;                 &lt;dbl&gt;
 ## 1 allensbach 2017-09-22 cdu                     0  
-## 2 allensbach 2017-09-22 cdu_fdp                13.8
-## 3 allensbach 2017-09-22 cdu_fdp_greens         86.2
+## 2 allensbach 2017-09-22 cdu_fdp                13.7
+## 3 allensbach 2017-09-22 cdu_fdp_greens         86.3
 ## 4 allensbach 2017-09-22 spd                     0  
 ## 5 allensbach 2017-09-22 left_spd                0  
 ## 6 allensbach 2017-09-22 greens_left_spd         0</code></pre>
@@ -186,10 +186,11 @@ survey <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><
 </li>
 </ul>
 <h2>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
+<p>MIT + file LICENSE</p>
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Andreas Bender <br><small class="roles"> Author, maintainer </small> </li>
+<li>Andreas Bender <br><small class="roles"> Author, maintainer </small> <br><small>(0000-0001-5628-8611)</small>
+</li>
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">

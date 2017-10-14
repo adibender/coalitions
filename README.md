@@ -45,11 +45,11 @@ surveys
     ##   <chr>      <list>            
     ## 1 allensbach <tibble [37 x 5]> 
     ## 2 emnid      <tibble [205 x 5]>
-    ## 3 forsa      <tibble [209 x 5]>
+    ## 3 forsa      <tibble [210 x 5]>
     ## 4 fgw        <tibble [76 x 5]> 
     ## 5 gms        <tibble [92 x 5]> 
     ## 6 infratest  <tibble [97 x 5]> 
-    ## 7 insa       <tibble [280 x 5]>
+    ## 7 insa       <tibble [281 x 5]>
 
 Each row represents a survey insitute and each row in the `surveys` column again contains a nested `tibble` with survey results from different time-points:
 
@@ -102,8 +102,8 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##   pollster   date       coalition       probability
     ##   <chr>      <date>     <chr>                 <dbl>
     ## 1 allensbach 2017-09-22 cdu                     0  
-    ## 2 allensbach 2017-09-22 cdu_fdp                13.8
-    ## 3 allensbach 2017-09-22 cdu_fdp_greens         86.2
+    ## 2 allensbach 2017-09-22 cdu_fdp                14.7
+    ## 3 allensbach 2017-09-22 cdu_fdp_greens         85.3
     ## 4 allensbach 2017-09-22 spd                     0  
     ## 5 allensbach 2017-09-22 left_spd                0  
     ## 6 allensbach 2017-09-22 greens_left_spd         0
