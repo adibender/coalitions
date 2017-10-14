@@ -11,3 +11,12 @@
 #' }
 #' @source \url{http://www.wahlrecht.de/}
 "surveys_sample"
+
+
+#' Colors of German parties
+#'
+#' A vector of colors associated with German parties.
+#'
+#' @format A named character vector. Names indicate parties. Values contain
+#' color strings for the respective parties
+"party_colors_de"
