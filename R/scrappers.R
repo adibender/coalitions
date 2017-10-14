@@ -244,14 +244,14 @@ scrape_austria <- function(
       start = date,
       end   = date,
       party = fct_collapse(party, others = c("? ", "So"))) %>%
-  mutate(party = as.character(party)) %>%
-  group_by(UQS(
-    syms(c("pollster", "respondents", "date", "start", "end", "party")))) %>%
-  summarize(
-    percent = sum(percent),
-    votes   = sum(votes)) %>%
-  ungroup() %>%
-  nest(party:votes, .key = "survey") %>%
-  nest(-pollster,   .key = "surveys")
+    mutate(party = as.character(party)) %>%
+    group_by(UQS(
+      syms(c("pollster", "respondents", "date", "start", "end", "party")))) %>%
+    summarize(
+      percent = sum(percent),
+      votes   = sum(votes)) %>%
+    ungroup() %>%
+    nest(party:votes, .key = "survey") %>%
+    nest(-pollster,   .key = "surveys")
 
 }
