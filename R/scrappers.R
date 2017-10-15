@@ -179,8 +179,8 @@ scrape_ltw <- function(
     mutate(
       datum = dmy(datum)) %>%
     mutate(
-      start    = datum,
-      end      = datum)
+      start = datum,
+      end   = datum)
   atab <- atab %>%
     mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
     filter(total == 100, !is.na(befragte), !is.na(datum)) %>%
@@ -189,8 +189,8 @@ scrape_ltw <- function(
       mutate(
         pollster = tolower(pollster),
         pollster = case_when(
-          pollster == "forschungs-gruppe ahlen" ~ "fgw",
-          pollster == "dimap"                    ~ "infratest",
+          pollster == "forschungs-gruppe wahlen" ~ "fgw",
+          pollster == "dimap"                    ~ "infratestdimap",
           TRUE                                   ~ pollster))
 
   colnames(atab) <- prettify_strings(
@@ -204,7 +204,10 @@ scrape_ltw <- function(
 
 #' Obtain (nested) Niedersachsen surveys object
 #'
+#' Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
+#'
 #' @importFrom tidyr nest
+#' @export
 get_surveys_nds <- function() {
 
   nds <- scrape_ltw()
