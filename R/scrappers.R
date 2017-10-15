@@ -59,7 +59,7 @@ sanitize_colnames <- function(df) {
 #' @rdname scrape
 #' @param address http-address from which tables should be scraped.
 #' @param parties A character vector containing names of parties to collapse.
-#' @import rvest dplyr magrittr
+#' @import rvest dplyr
 #' @importFrom lubridate dmy
 #' @importFrom xml2 read_html
 #' @importFrom stringr str_sub
@@ -90,18 +90,20 @@ scrape_wahlrecht <- function(
     sapply(colnames(atab), function(z) z == "")
   atab           <- atab[, !ind.empty]
 
-  atab <- sanitize_colnames(atab)
+  atab    <- sanitize_colnames(atab)
   parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
   # transform percentage string to numerics
-  atab %<>% mutate_at(c(parties), extract_num) %>%
+  atab <- atab %>%
+    mutate_at(c(parties), extract_num) %>%
     mutate_at("befragte", extract_num, decimal = FALSE)
 
   atab <- mutate(atab, datum = dmy(datum))
-  atab %<>% mutate(
-    start = dmy(paste0(str_sub(zeitraum, 1, 6), str_sub(datum, 1, 4))),
-    end   = dmy(paste0(str_sub(zeitraum, 8, 13), str_sub(datum, 1, 4))))
+  atab <- atab %>%
+    mutate(
+      start = dmy(paste0(str_sub(zeitraum, 1, 6), str_sub(datum, 1, 4))),
+      end   = dmy(paste0(str_sub(zeitraum, 8, 13), str_sub(datum, 1, 4))))
 
-  atab %<>%
+  atab <- atab %>%
     mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
     filter(total == 100, !is.na(befragte), !is.na(datum)) %>%
     select(one_of(c("datum", "start", "end", parties, "befragte")))
@@ -166,18 +168,30 @@ scrape_ltw <- function(
     sapply(colnames(atab), function(z) z == "")
   atab          <- atab[, !ind.empty]
 
-  atab <- sanitize_colnames(atab)
+  atab    <- sanitize_colnames(atab)
   parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
   # transform percentage string to numerics
-  atab %<>% mutate_at(c(parties), extract_num) %>%
+  atab <- atab %>%
+    mutate_at(c(parties), extract_num) %>%
     mutate_at("befragte", extract_num, decimal = FALSE)
 
-  atab <- mutate(atab, datum = dmy(datum))
-  atab %<>%
+  atab <- atab %>%
+    mutate(
+      datum = dmy(datum)) %>%
+    mutate(
+      start    = datum,
+      end      = datum)
+  atab <- atab %>%
     mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
     filter(total == 100, !is.na(befragte), !is.na(datum)) %>%
-    select(one_of(c("institut", "datum", parties, "befragte"))) %>%
-    rename(pollster = "institut")
+    select(one_of(c("institut", "datum", "start", "end", parties, "befragte"))) %>%
+    rename(pollster = "institut") %>%
+      mutate(
+        pollster = tolower(pollster),
+        pollster = case_when(
+          pollster == "forschungs-gruppe ahlen" ~ "fgw",
+          pollster == "dimap"                    ~ "infratest",
+          TRUE                                   ~ pollster))
 
   colnames(atab) <- prettify_strings(
     colnames(atab),
@@ -185,6 +199,18 @@ scrape_ltw <- function(
     new     = .trans_df$english)
 
   return(atab)
+
+}
+
+#' Obtain (nested) Niedersachsen surveys object
+#'
+#' @importFrom tidyr nest
+get_surveys_nds <- function() {
+
+  nds <- scrape_ltw()
+  nds %>%
+    collapse_parties() %>%
+    nest(-pollster, .key = "surveys")
 
 }
 
@@ -199,30 +225,33 @@ scrape_ltw <- function(
 #' @importFrom RCurl getURL
 #' @importFrom forcats fct_collapse
 #' @importFrom lubridate dmy
+#' @importFrom rlang UQS syms
 #' @export
 scrape_austria <- function(
   address = "https://neuwal.com/wahlumfragen/openwal/neuwal-openwal.json") {
 
   aut_list <- fromJSON(getURL(address))
   out_df   <- as_tibble(aut_list) %>%
-    rename(survey=results) %>%
-    select(institute, date, n,  survey) %>%
+    rename(survey="results") %>%
+    select(one_of(c("institute", "date", "n",  "survey"))) %>%
     unnest() %>%
-    rename(pollster = institute, respondents = n, party = partyName,
-      percent = percentage) %>%
+    rename(pollster = "institute", respondents = "n", party = "partyName",
+      percent = "percentage") %>%
     mutate(
-    votes = respondents * percent / 100,
-    date  = dmy(date),
-    start = date,
-    end   = date,
-    party = fct_collapse(party, others = c("? ", "So"))) %>%
-  mutate(party = as.character(party)) %>%
-  group_by(pollster, respondents, date, start, end, party) %>%
-  summarize(
-    percent = sum(percent),
-    votes   = sum(votes)) %>%
-  ungroup() %>%
-  nest(party:votes, .key = "survey") %>%
-  nest(-pollster,   .key = "surveys")
+      votes = respondents * percent / 100,
+      date  = dmy(date)) %>%
+    mutate(
+      start = date,
+      end   = date,
+      party = fct_collapse(party, others = c("? ", "So"))) %>%
+    mutate(party = as.character(party)) %>%
+    group_by(UQS(
+      syms(c("pollster", "respondents", "date", "start", "end", "party")))) %>%
+    summarize(
+      percent = sum(percent),
+      votes   = sum(votes)) %>%
+    ungroup() %>%
+    nest(party:votes, .key = "survey") %>%
+    nest(-pollster,   .key = "surveys")
 
 }

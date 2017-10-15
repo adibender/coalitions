@@ -78,20 +78,19 @@
       <h1>Application to other elections</h1>
                         <h4 class="author">Andreas Bender</h4>
             
-            <h4 class="date">2017-10-09</h4>
+            <h4 class="date">2017-10-14</h4>
           </div>
 
     
     
 <div class="contents">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magrittr)
-<span class="kw">library</span>(tidyr)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
 <span class="kw">library</span>(purrr)
 <span class="kw">library</span>(dplyr)
 <span class="kw">library</span>(coalitions)
 <span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme_get">theme_set</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>())</code></pre></div>
-<p>In this article we show how the framework of the coalitions package can be applied to other elections, using the Austrian “Nationalratswahlen” aus an example.</p>
+<p>In this article we show how the framework of the coalitions package can be applied to other elections, using the Austrian “Nationalratswahlen” as an example.</p>
 <div id="getting-the-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-the-data" class="anchor"></a>Getting the data</h2>
@@ -100,72 +99,85 @@
 <p>which, as for Germany (<code>country = "DE"</code>) returns a nested <code>tibble</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">surveys_at</code></pre></div>
 <pre><code>## # A tibble: 17 x 2
-##    pollster           surveys           
-##    &lt;chr&gt;              &lt;list&gt;            
-##  1 "AG Wahlen"        &lt;tibble [1 x 5]&gt;  
-##  2 AKonsult           &lt;tibble [8 x 5]&gt;  
-##  3 "Christina Matzka" &lt;tibble [2 x 5]&gt;  
-##  4 Gallup             &lt;tibble [127 x 5]&gt;
-##  5 GfK                &lt;tibble [3 x 5]&gt;  
-##  6 Hajek              &lt;tibble [33 x 5]&gt; 
-##  7 Humaninstitut      &lt;tibble [1 x 5]&gt;  
-##  8 IFES               &lt;tibble [3 x 5]&gt;  
-##  9 IMAS               &lt;tibble [26 x 5]&gt; 
-## 10 Karmasin           &lt;tibble [30 x 5]&gt; 
-## 11 Market             &lt;tibble [52 x 5]&gt; 
-## 12 meinungsraum.at    &lt;tibble [12 x 5]&gt; 
-## 13 OGM                &lt;tibble [20 x 5]&gt; 
-## 14 "Research Affairs" &lt;tibble [26 x 5]&gt; 
-## 15 SORA               &lt;tibble [1 x 5]&gt;  
-## 16 Spectra            &lt;tibble [7 x 5]&gt;  
-## 17 "Unique Research"  &lt;tibble [50 x 5]&gt;</code></pre>
-<p>To obtain a <em>pooled</em> survey (wheited average over last 14 days, that takes correlation between different pollsters into account), you could use the <code>pool_surveys</code> and specify the pollsters that should be considered when pooling. However, there is also a wrapper function to do this for Austrian surveys</p>
+##    pollster         surveys           
+##    &lt;chr&gt;            &lt;list&gt;            
+##  1 AG Wahlen        &lt;tibble [1 x 5]&gt;  
+##  2 AKonsult         &lt;tibble [8 x 5]&gt;  
+##  3 Christina Matzka &lt;tibble [2 x 5]&gt;  
+##  4 Gallup           &lt;tibble [127 x 5]&gt;
+##  5 GfK              &lt;tibble [3 x 5]&gt;  
+##  6 Hajek            &lt;tibble [33 x 5]&gt; 
+##  7 Humaninstitut    &lt;tibble [1 x 5]&gt;  
+##  8 IFES             &lt;tibble [3 x 5]&gt;  
+##  9 IMAS             &lt;tibble [26 x 5]&gt; 
+## 10 Karmasin         &lt;tibble [30 x 5]&gt; 
+## 11 Market           &lt;tibble [52 x 5]&gt; 
+## 12 meinungsraum.at  &lt;tibble [12 x 5]&gt; 
+## 13 OGM              &lt;tibble [20 x 5]&gt; 
+## 14 Research Affairs &lt;tibble [27 x 5]&gt; 
+## 15 SORA             &lt;tibble [1 x 5]&gt;  
+## 16 Spectra          &lt;tibble [7 x 5]&gt;  
+## 17 Unique Research  &lt;tibble [50 x 5]&gt;</code></pre>
+<p>To obtain a <em>pooled</em> survey (weighted average over last 14 days, that takes correlation between different pollsters into account), you could use the <code>pool_surveys</code> and specify the pollsters that should be considered when pooling. However, there is also a wrapper function to do this for Austrian surveys</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pooled_at &lt;-<span class="st"> </span><span class="kw"><a href="../reference/pool_austria.html">pool_austria</a></span>(surveys_at)
 pooled_at</code></pre></div>
 <pre><code>## # A tibble: 7 x 8
 ##   pollster date       start      end        respondents party  perc… votes
 ##   &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;     &lt;date&gt;           &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1 pooled   2017-10-09 2017-09-29 2017-10-06        1499 FPÖ    25.4  381  
-## 2 pooled   2017-10-09 2017-09-29 2017-10-06        1499 GRÜNE   4.49  67.2
-## 3 pooled   2017-10-09 2017-09-29 2017-10-06        1499 NEOS    4.69  70.3
-## 4 pooled   2017-10-09 2017-09-29 2017-10-06        1499 others  2.28  34.2
-## 5 pooled   2017-10-09 2017-09-29 2017-10-06        1499 ÖVP    33.7  505  
-## 6 pooled   2017-10-09 2017-09-29 2017-10-06        1499 PILZ    4.56  68.3
-## 7 pooled   2017-10-09 2017-09-29 2017-10-06        1499 SPÖ    24.9  372</code></pre>
-<p>The above steps are not necessary. To use the coalitions package, you just need a data frame (or tibble) similar to <code>pooled_at</code>, which doesn’t have to be a <em>pooled</em> survey. Given the survey, the workflw is equivalent to the one described in the <a href="https://adibender.github.io/coalitions/articles/workflow.html">workflow vignette</a>. However, it is necessary, to take the method for seat distribution, as well as the threshold and number of seats of the specific parliament of interest into account.</p>
+## 1 pooled   2017-10-14 2017-10-06 2017-10-09        1410 FPÖ    25.7  363  
+## 2 pooled   2017-10-14 2017-10-06 2017-10-09        1410 GRÜNE   4.64  65.5
+## 3 pooled   2017-10-14 2017-10-06 2017-10-09        1410 NEOS    5.36  75.5
+## 4 pooled   2017-10-14 2017-10-06 2017-10-09        1410 others  1.93  27.3
+## 5 pooled   2017-10-14 2017-10-06 2017-10-09        1410 ÖVP    33.0  465  
+## 6 pooled   2017-10-14 2017-10-06 2017-10-09        1410 PILZ    4.93  69.6
+## 7 pooled   2017-10-14 2017-10-06 2017-10-09        1410 SPÖ    24.4  344</code></pre>
+</div>
+<div id="apply-coalitions-package-to-austrian-election-2017" class="section level2">
+<h2 class="hasAnchor">
+<a href="#apply-coalitions-package-to-austrian-election-2017" class="anchor"></a>Apply coalitions package to Austrian election 2017</h2>
+<p>The above steps are not necessary. To use the coalitions package, you just need a data frame (or <code>tibble</code>) similar to <code>pooled_at</code>, which doesn’t have to be a <em>pooled</em> survey. Given the survey, the work flow is equivalent to the one described in the <a href="https://adibender.github.io/coalitions/articles/workflow.html">work flow vignette</a>. However, these steps are necessary:</p>
+<ul>
+<li><p>implement the method that is used to redistribute seats in the respective country (in Austria this is the method of D’Hondt, which is allready implemented in <strong><code>coalitions</code></strong>; see <code><a href="../reference/dHondt.html">?dHondt</a></code>)</p></li>
+<li><p>provide the respective values of <code>n_seats</code>, <code>hurdle</code> and <code>distrib.fun</code> to the <code>get_seats</code> function</p></li>
+<li><p>provide the correct value to the <code>seats_majority</code> argument of the <code>have_majority</code> function</p></li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## first specify coalitions of interest
 coalitions=<span class="kw">list</span>(
       <span class="kw">c</span>(<span class="st">"ÖVP"</span>, <span class="st">"GRÜNE"</span>, <span class="st">"NEOS"</span>, <span class="st">"PILZ"</span>),
       <span class="kw">c</span>(<span class="st">"ÖVP"</span>, <span class="st">"FPÖ"</span>))
-res_df &lt;-<span class="st"> </span>pooled_at <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">draws =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(survey, draw_from_posterior, <span class="dt">nsim=</span><span class="dv">100</span>, <span class="dt">correction=</span><span class="fl">0.005</span>)) <span class="op">%&gt;%</span>
+res_df &lt;-<span class="st"> </span>pooled_at %&gt;%
+<span class="st">  </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>() %&gt;%
+<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">draws =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(survey, draw_from_posterior, <span class="dt">nsim=</span><span class="dv">100</span>, <span class="dt">correction=</span><span class="fl">0.005</span>)) %&gt;%
 <span class="st">  </span>## note distrib.fun, n_seats and hurdle arguments, specified for Austria
 <span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">seats =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map2">map2</a></span>(draws, survey, get_seats, <span class="dt">distrib.fun =</span> dHondt, <span class="dt">n_seats =</span> <span class="dv">183</span>,
-    <span class="dt">hurdle =</span> <span class="fl">0.04</span>))  <span class="op">%&gt;%</span>
+    <span class="dt">hurdle =</span> <span class="fl">0.04</span>))  %&gt;%
 <span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">majorities =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(seats, have_majority, <span class="dt">coalitions=</span>coalitions,
-    <span class="dt">seats_majority =</span> <span class="dv">92</span>)) <span class="op">%&gt;%</span>
+    <span class="dt">seats_majority =</span> <span class="dv">92</span>)) %&gt;%
 <span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">probabilities =</span> <span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(majorities, calculate_probs,<span class="dt">coalitions=</span>coalitions))
 
 res_df</code></pre></div>
 <pre><code>## # A tibble: 1 x 10
 ##   polls… date       start      end        respo… survey draws  seats majo…
 ##   &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;     &lt;date&gt;      &lt;dbl&gt; &lt;list&gt; &lt;list&gt; &lt;lis&gt; &lt;lis&gt;
-## 1 pooled 2017-10-09 2017-09-29 2017-10-06   1499 &lt;tibb… &lt;tibb… &lt;tib… &lt;tib…
+## 1 pooled 2017-10-14 2017-10-06 2017-10-09   1410 &lt;tibb… &lt;tibb… &lt;tib… &lt;tib…
 ## # ... with 1 more variable: probabilities &lt;list&gt;</code></pre>
+</div>
+<div id="calculate-quantities-of-interest" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculate-quantities-of-interest" class="anchor"></a>Calculate quantities of interest</h2>
 <p>From this we can calculate properties of interest, e.g. probability that small parties will pass the 4% threshold or coalition probabilities:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## probability of passing the 4% threshold
-res_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(draws) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/flatten">flatten_dfc</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">apply</span>(<span class="dv">2</span>, <span class="cf">function</span>(party) <span class="kw">mean</span>(party <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.04</span>))</code></pre></div>
+res_df %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(draws) %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/flatten">flatten_dfc</a></span>() %&gt;%<span class="st"> </span><span class="kw">apply</span>(<span class="dv">2</span>, function(party) <span class="kw">mean</span>(party &gt;<span class="st"> </span><span class="fl">0.04</span>))</code></pre></div>
 <pre><code>##    FPÖ  GRÜNE   NEOS others    ÖVP   PILZ    SPÖ 
-##   1.00   0.80   0.88   0.00   1.00   0.88   1.00</code></pre>
+##   1.00   0.88   0.98   0.00   1.00   0.95   1.00</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## coalition probabilities
-res_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(probabilities)</code></pre></div>
+res_df %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(probabilities)</code></pre></div>
 <pre><code>## [[1]]
 ## # A tibble: 2 x 2
 ##   coalition           probability
 ##   &lt;chr&gt;                     &lt;dbl&gt;
-## 1 GRÜNE_NEOS_ÖVP_PILZ        6.00
-## 2 FPÖ_ÖVP                  100</code></pre>
+## 1 GRÜNE_NEOS_ÖVP_PILZ        12.0
+## 2 FPÖ_ÖVP                   100</code></pre>
 </div>
 </div>
   </div>
@@ -176,6 +188,8 @@ res_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#getting-the-data">Getting the data</a></li>
+      <li><a href="#apply-coalitions-package-to-austrian-election-2017">Apply coalitions package to Austrian election 2017</a></li>
+      <li><a href="#calculate-quantities-of-interest">Calculate quantities of interest</a></li>
       </ul>
 </div>
       </div>
