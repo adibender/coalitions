@@ -101,7 +101,10 @@ scrape_wahlrecht <- function(
   atab <- atab %>%
     mutate(
       start = dmy(paste0(str_sub(zeitraum, 1, 6), str_sub(datum, 1, 4))),
-      end   = dmy(paste0(str_sub(zeitraum, 8, 13), str_sub(datum, 1, 4))))
+      end   = dmy(paste0(str_sub(zeitraum, 8, 13), str_sub(datum, 1, 4))),
+      end   = case_when(
+        is.na(end) ~ start,
+        TRUE ~ end))
 
   atab <- atab %>%
     mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
@@ -190,7 +193,6 @@ scrape_ltw <- function(
         pollster = tolower(pollster),
         pollster = case_when(
           pollster == "forschungs-gruppe wahlen" ~ "fgw",
-          pollster == "dimap"                    ~ "infratestdimap",
           TRUE                                   ~ pollster))
 
   colnames(atab) <- prettify_strings(

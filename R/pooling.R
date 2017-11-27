@@ -75,8 +75,7 @@ effective_samplesize <- function(
 #' @keywords internal
 get_eligible <- function(
   surveys,
-  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest",
-    "insa"),
+  pollsters,
   last_date = Sys.Date(),
   period    = 14) {
 
@@ -108,7 +107,7 @@ get_pooled <- function(
   surveys,
   last_date  = Sys.Date(),
   pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest",
-    "insa"),
+    "dimap", "infratestdimap", "insa"),
   period     = 14,
   corr       = 0.5,
   weights    = NULL) {
@@ -163,7 +162,7 @@ pool_surveys <- function(
   surveys,
   last_date  = Sys.Date(),
   pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest",
-    "insa"),
+    "dimap", "infratestdimap", "insa"),
   period     = 14,
   corr       = 0.5,
   weights    = NULL) {

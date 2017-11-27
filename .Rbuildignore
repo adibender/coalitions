@@ -16,3 +16,4 @@ data/electionDE2012.RData
 ^README\.Rmd$
 ^vignettes/KOALA\.Rmd$
 ^_pkgdown\.yml$
+^vignettes/austria\.Rmd$
