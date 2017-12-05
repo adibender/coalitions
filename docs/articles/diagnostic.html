@@ -45,9 +45,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/austria.html">Application to other elections</a>
-    </li>
-    <li>
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
@@ -78,7 +75,7 @@
       <h1>Diagnostic</h1>
                         <h4 class="author">Andreas Bender</h4>
             
-            <h4 class="date">2017-10-14</h4>
+            <h4 class="date">2017-11-27</h4>
           </div>
 
     
@@ -91,45 +88,45 @@
 <span class="kw">library</span>(coalitions)
 <span class="kw">library</span>(ggplot2)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme_get">theme_set</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>())</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) %&gt;%<span class="st"> </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>() %&gt;%<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</code></pre></div>
 <pre><code>## Warning: 1 failed to parse.
 
 ## Warning: 1 failed to parse.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp %&lt;&gt;%
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp <span class="op">%&lt;&gt;%</span>
 <span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
         <span class="dt">respondents =</span> 1000L,
         <span class="dt">percent  =</span> <span class="kw">c</span>(<span class="dv">36</span>, <span class="dv">28</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">5</span>),
-        <span class="dt">votes    =</span> respondents *<span class="st"> </span>percent/<span class="dv">100</span>) %&gt;%
-<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/nest">nest</a></span>(party:votes, <span class="dt">.key=</span>survey)
+        <span class="dt">votes    =</span> respondents <span class="op">*</span><span class="st"> </span>percent<span class="op">/</span><span class="dv">100</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/nest">nest</a></span>(party<span class="op">:</span>votes, <span class="dt">.key=</span>survey)
 
 <span class="kw">set.seed</span>(<span class="dv">29072017</span>)
-draws &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(temp$survey, draw_from_posterior, <span class="dt">nsim=</span><span class="fl">1e4</span>, <span class="dt">correction=</span><span class="fl">0.01</span>) %&gt;%
+draws &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map">map</a></span>(temp<span class="op">$</span>survey, draw_from_posterior, <span class="dt">nsim=</span><span class="fl">1e4</span>, <span class="dt">correction=</span><span class="fl">0.01</span>) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/flatten">flatten_df</a></span>()
-    draws_long &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/gather">gather</a></span>(draws, party, percent, cdu:others) %&gt;%
-<span class="st">        </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(party) %&gt;%
-<span class="st">        </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">sim =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span>()) %&gt;%<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(draws_long, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x=</span>party, <span class="dt">y=</span>percent)) +
-<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot">geom_boxplot</a></span>() +
+    draws_long &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/gather">gather</a></span>(draws, party, percent, cdu<span class="op">:</span>others) <span class="op">%&gt;%</span>
+<span class="st">        </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(party) <span class="op">%&gt;%</span>
+<span class="st">        </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">sim =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(draws_long, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x=</span>party, <span class="dt">y=</span>percent)) <span class="op">+</span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot">geom_boxplot</a></span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_abline">geom_hline</a></span>(<span class="dt">yintercept =</span> <span class="fl">0.05</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="dv">2</span>)</code></pre></div>
 <p><img src="diagnostic_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## chains
-<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(draws_long, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x=</span>sim, <span class="dt">y=</span>percent)) +
-<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_path</a></span>() +
-<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_abline">geom_hline</a></span>(<span class="dt">yintercept =</span> <span class="fl">0.05</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="dv">2</span>) +
-<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(~party, <span class="dt">nrow=</span><span class="dv">2</span>)</code></pre></div>
+<span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(draws_long, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x=</span>sim, <span class="dt">y=</span>percent)) <span class="op">+</span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_path</a></span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_abline">geom_hline</a></span>(<span class="dt">yintercept =</span> <span class="fl">0.05</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="dv">2</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(<span class="op">~</span>party, <span class="dt">nrow=</span><span class="dv">2</span>)</code></pre></div>
 <p><img src="diagnostic_files/figure-html/unnamed-chunk-4-2.png" width="576" style="display: block; margin: auto;"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">draws_long %&gt;%
-<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(party) %&gt;%
-<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">entryprob =</span> <span class="kw">sum</span>(percent &gt;=<span class="st"> </span><span class="fl">0.05</span>)/<span class="kw"><a href="http://dplyr.tidyverse.org/reference/n.html">n</a></span>())</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">draws_long <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(party) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">entryprob =</span> <span class="kw">sum</span>(percent <span class="op">&gt;=</span><span class="st"> </span><span class="fl">0.05</span>)<span class="op">/</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/n.html">n</a></span>())</code></pre></div>
 <pre><code>## # A tibble: 7 x 2
 ##   party  entryprob
 ##   &lt;chr&gt;      &lt;dbl&gt;
 ## 1 afd        1.00 
 ## 2 cdu        1.00 
 ## 3 fdp        0.868
-## 4 greens     0.987
+## 4 greens     0.986
 ## 5 left       1.00 
-## 6 others     0.502
+## 6 others     0.507
 ## 7 spd        1.00</code></pre>
 </div>
   </div>

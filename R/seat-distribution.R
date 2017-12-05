@@ -38,7 +38,7 @@ get_seats <- function(
 
   dirichlet.draws %>%
     mutate(sim = row_number()) %>%
-    gather(party, percent, one_of(pnames)) %>%
+    gather(party, percent, -sim) %>%
     arrange(sim) %>%
     mutate(votes = percent * samplesize) %>%
     filter(party != others & percent >= hurdle) %>%

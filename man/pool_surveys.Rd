@@ -5,8 +5,8 @@
 \title{Obtain pooled survey during specified period}
 \usage{
 pool_surveys(surveys, last_date = Sys.Date(), pollsters = c("allensbach",
-  "emnid", "forsa", "fgw", "gms", "infratest", "insa"), period = 14,
-  corr = 0.5, weights = NULL)
+  "emnid", "forsa", "fgw", "gms", "infratest", "dimap", "infratestdimap",
+  "insa"), period = 14, corr = 0.5, weights = NULL)
 }
 \arguments{
 \item{surveys}{A \code{tibble} containing survey results for multiple

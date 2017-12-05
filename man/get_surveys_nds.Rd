@@ -7,5 +7,5 @@
 get_surveys_nds()
 }
 \description{
-Obtain (nested) Niedersachsen surveys object
+Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
 }
