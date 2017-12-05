@@ -88,8 +88,8 @@ get_eligible <- function(
     unnest(surveys) %>%
     filter(date >= last_date - period & date <= last_date) %>%
     group_by(pollster) %>%
-    filter(date == max(date))
-
+    filter(date == max(date)) %>%
+    filter(row_number() == 1)
 }
 
 
