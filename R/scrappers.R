@@ -160,7 +160,7 @@ scrape_by <- function(
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
   
-  ind_row_remove <- -c(1:2)
+  ind_row_remove <- -c(1)
   
   atab <- atab[ind_row_remove, ]
   atab <- atab[-nrow(atab), ]
