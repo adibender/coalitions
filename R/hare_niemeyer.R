@@ -16,7 +16,7 @@ hare_niemeyer <- function(votes, parties, n_seats = 183) {
 
   quotas <- votes / sum(votes) * n_seats
   seats <- floor(quotas)
-  rest <- quotas - base_seats
+  rest <- quotas - seats
   seats_left <- n_seats - sum(seats)
   for (i in 1:seats_left) {
     m_i <- which.max(rest)
