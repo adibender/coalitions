@@ -166,7 +166,11 @@ scrape_by <- function(
   atab <- atab[-nrow(atab), ]
   atab <- atab[, -2]
   
-  atab$Befragte <- extract_num(substr(atab$Befragte, 5, 9), decimal = FALSE)
+  atab$Befragte <- sapply(atab$Befragte, function(x) {
+    startchar <- ifelse(grepl("TOM",x),7,5)
+    endchar <- ifelse(grepl("TOM",x),11,9)
+    extract_num(substr(x, startchar, endchar), decimal = FALSE)
+  }, USE.NAMES = FALSE)
   ind.empty     <- sapply(atab, function(z) all(z == "")) |
     sapply(colnames(atab), function(z) z == "")
   atab          <- atab[, !ind.empty]
