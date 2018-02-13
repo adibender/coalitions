@@ -156,17 +156,17 @@ scrape_by <- function(
   address = "http://www.wahlrecht.de/umfragen/landtage/bayern.htm",
   parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
               "SONSTIGE")) {
-  
+
   atab <- read_html(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
-  
+
   ind_row_remove <- -c(1)
-  
+
   atab <- atab[ind_row_remove, ]
   atab <- atab[-nrow(atab), ]
   atab <- atab[, -2]
-  
+
   atab$Befragte <- sapply(atab$Befragte, function(x) {
     startchar <- ifelse(grepl("TOM",x),7,5)
     endchar <- ifelse(grepl("TOM",x),11,9)
@@ -175,38 +175,38 @@ scrape_by <- function(
   ind.empty     <- sapply(atab, function(z) all(z == "")) |
     sapply(colnames(atab), function(z) z == "")
   atab          <- atab[, !ind.empty]
-  
+
   atab    <- sanitize_colnames(atab)
   parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
   # transform percentage string to numerics
   atab <- atab %>%
     mutate_at(c(parties), extract_num) %>%
     mutate_at("befragte", extract_num, decimal = FALSE)
-  
+
   atab <- atab %>%
     mutate(
-      datum = dmy(datum)) %>%
+      datum = dmy(.data$datum)) %>%
     mutate(
-      start = datum,
-      end   = datum)
+      start = .data$datum,
+      end   = .data$datum)
   atab <- atab %>%
     mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
-    filter(total == 100, !is.na(befragte), !is.na(datum)) %>%
+    filter(.data$total == 100, !is.na(.data$befragte), !is.na(.data$datum)) %>%
     select(one_of(c("institut", "datum", "start", "end", parties, "befragte"))) %>%
     rename(pollster = "institut") %>%
     mutate(
-      pollster = tolower(pollster),
+      pollster = tolower(.data$pollster),
       pollster = case_when(
-        pollster == "forschungs-gruppe wahlen" ~ "fgw",
-        TRUE                                   ~ pollster))
-  
+        .data$pollster == "forschungs-gruppe wahlen" ~ "fgw",
+        TRUE                                   ~ .data$pollster))
+
   colnames(atab) <- prettify_strings(
     colnames(atab),
     current = .trans_df$german,
     new     = .trans_df$english)
-  
+
   return(atab)
-  
+
 }
 
 #' Obtain (nested) Bavaria surveys object
@@ -216,12 +216,12 @@ scrape_by <- function(
 #' @importFrom tidyr nest
 #' @export
 get_surveys_by <- function() {
-  
+
   by <- scrape_by()
   by %>%
     collapse_parties(parties = c("csu","spd","greens","fdp","left","pirates","fw","afd","others")) %>%
-    nest(-pollster, .key = "surveys")
-  
+    nest(-one_of("pollster"), .key = "surveys")
+
 }
 
 #' Scrape regional polls
