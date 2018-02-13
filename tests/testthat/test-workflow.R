@@ -21,7 +21,7 @@ test_that("workflow stable", {
 	expect_equal(colnames(survey$survey[[1]]), c("party", "percent", "votes"))
 
 	## add draws
-	survey %<>% mutate(draws = map(survey, draw_from_posterior, nsim=10, seed=123))
+	survey <- survey %>% mutate(draws = map(survey, draw_from_posterior, nsim=10, seed=123))
 	expect_data_frame(survey, nrows = 1, ncols=7)
 	expect_equal(
 		colnames(survey),
@@ -36,7 +36,7 @@ test_that("workflow stable", {
 		names="named")
 
 	## add seats after redistribution
-	survey %<>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls))
+	survey <- survey %>% mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls))
 	expect_data_frame(survey, nrows=1, ncols=8)
 	expect_equal(
 		colnames(survey),
@@ -45,7 +45,7 @@ test_that("workflow stable", {
 	expect_equal(colnames(survey$seats[[1]]), c("sim", "party", "seats"))
 
 	## get majorities
-	survey %<>% mutate(majorities = map(seats, have_majority))
+	survey <- survey %>% mutate(majorities = map(seats, have_majority))
 	expect_data_frame(survey, nrows=1, ncols=9, any.missing=FALSE)
 	expect_equal(
 		colnames(survey),
@@ -56,7 +56,7 @@ test_that("workflow stable", {
 	expect_equal(colnames(survey$majorities[[1]]), coalas)
 
 	## get probabilities
-	survey %<>% mutate(probabilities = map(majorities, calculate_probs,
+	survey <- survey %>% mutate(probabilities = map(majorities, calculate_probs,
 		coalitions=coalitions))
 
 	expect_data_frame(survey, nrows=1, ncols=10, any.missing=FALSE)

@@ -10,7 +10,7 @@ get_meta <- function(surveys_df) {
 
   surveys_df %>%
     unnest() %>%
-    select(pollster, date:respondents)
+    select(one_of(c("pollster", "date", "start", "end", "respondents")))
 
 }
 
@@ -38,16 +38,16 @@ collapse_parties <- function(
   assert_data_frame(surveys, min.rows = 1, min.cols = 3)
   assert_character(parties, any.missing = FALSE, min.len = 2, unique = TRUE)
 
-  surveys %<>% select_if(compose("!", all, is.na))
+  surveys <- surveys %>% select_if(compose("!", all, is.na))
   av.parties <- colnames(surveys)[colnames(surveys) %in% parties]
-  surveys <- gather(surveys, party, percent,
+  surveys <- gather(surveys, "party", "percent",
       select_vars(names(surveys), one_of(av.parties))) %>%
     arrange(desc(date))
 
-  surveys %>% mutate(votes = percent / 100 * respondents) %>%
-    filter(!is.na(percent)) %>%
+  surveys %>% mutate(votes = .data$percent / 100 * .data$respondents) %>%
+    filter(!is.na(.data$percent)) %>%
     as_tibble() %>%
-    nest(party:votes, .key = "survey")
+    nest(one_of(c("party", "percent", "votes")), .key = "survey")
 
 }
 

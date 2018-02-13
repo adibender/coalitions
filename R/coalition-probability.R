@@ -4,6 +4,7 @@
 #' obtained.
 #' @inheritParams calculate_prob
 #' @param seats_majority The number of seats needed to obtain majority.
+#' @importFrom rlang .data
 #' @keywords internal
 has_majority <- function(
   seats_tab,
@@ -11,10 +12,10 @@ has_majority <- function(
   seats_majority = 300L) {
 
   seats_tab %>%
-    filter(party %in% coalition) %>%
-    group_by(sim) %>%
-    summarize(majority = sum(seats) >= seats_majority) %>%
-    select(majority)
+    filter(.data$party %in% coalition) %>%
+    group_by(.data$sim) %>%
+    summarize(majority = sum(.data$seats) >= seats_majority) %>%
+    select(one_of("majority"))
 
 }
 
@@ -55,7 +56,7 @@ have_majority <- function(
     unique      = TRUE)
   assert_number(seats_majority, finite = TRUE)
 
-  coalitions %<>% map(sort)
+  coalitions <- coalitions %>% map(sort)
 
   majority_df <- map(
     coalitions,
@@ -99,7 +100,6 @@ paste_coalitions <- function(coalitions, collapse="_") {
 #' Usually it makes sense to exclude superior coalitions.
 #' @param ... Further arguments passed to \code{\link[coalitions]{get_superior}}
 #' @import dplyr checkmate
-#' @importFrom magrittr "%<>%"
 #' @examples
 #'test_df <- data.frame(
 #'  cdu            = c(rep(FALSE, 9), TRUE),
@@ -121,10 +121,10 @@ calculate_prob <- function(
 
   n_all <- nrow(majority_df)
   if (exclude_superior) {
-    majority_df %<>% filter_superior(coalition, ...)
+    majority_df <- majority_df %>% filter_superior(coalition, ...)
   }
 
-  majority_df %>% summarize_at(coalition, funs(sum(.) / n_all * 100))
+  majority_df %>% summarize_at(coalition, ~sum(.) / n_all * 100)
 
 }
 
@@ -157,7 +157,7 @@ calculate_probs <- function(
     unique = TRUE)
   assert_flag(exclude_superior)
 
-  coalitions %<>% paste_coalitions()
+  coalitions <- coalitions %>% paste_coalitions()
   coalitions %>% map(
       .f               = calculate_prob,
       majority_df      = majority_df,
@@ -221,6 +221,7 @@ get_superior <- function(
 #' long format in a separate column named \code{survey}.
 #' @importFrom purrr map map2
 #' @importFrom lubridate now
+#' @importFrom rlang .data
 #' @export
 get_probabilities <- function(
   x,
@@ -239,15 +240,15 @@ get_probabilities <- function(
 
   x %>%
     mutate(
-      draws    = map(survey, draw_from_posterior,
+      draws    = map(.data$survey, draw_from_posterior,
         nsim = nsim, seed = seed, correction = correction),
-      seats    = map2(draws, survey, get_seats, distrib.fun = distrib.fun),
+      seats    = map2(.data$draws, .data$survey, get_seats, distrib.fun = distrib.fun),
       majority = map(
-        seats,
+        .data$seats,
         have_majority,
         coalitions     = coalitions,
         seats_majority = seats_majority),
-      probabilities = map(majority, calculate_probs, coalitions = coalitions)) %>%
+      probabilities = map(.data$majority, calculate_probs, coalitions = coalitions)) %>%
     select(-one_of("draws", "seats", "majority", "survey", "start", "end", "respondents"))
 
 }

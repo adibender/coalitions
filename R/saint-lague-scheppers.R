@@ -29,7 +29,7 @@ sls <- function(
   rle.seats <- rle(m.mat$Var2)
 
   if (sum(rle.seats$length) != n_seats)
-    stop(paste("Number of seats distributed not equal to", seats))
+    stop(paste("Number of seats distributed not equal to", n_seats))
 
   rle.seats$length
 
