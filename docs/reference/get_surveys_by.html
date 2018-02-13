@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper for calculation of coalition probabilities from survey — get_probabilities • coalitions</title>
+<title>Obtain (nested) Bavaria surveys object — get_surveys_by • coalitions</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -98,72 +98,21 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper for calculation of coalition probabilities from survey</h1>
+    <h1>Obtain (nested) Bavaria surveys object</h1>
     </div>
 
     
-    <p>Wrapper for calculation of coalition probabilities from survey</p>
+    <p>Scrapes data from <a href='wahlrecht.de'>wahlrecht.de</a> and performs some sanitizing.</p>
     
 
-    <pre class="usage"><span class='fu'>get_probabilities</span>(<span class='no'>x</span>, <span class='kw'>coalitions</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='st'>"cdu"</span>), <span class='fu'>c</span>(<span class='st'>"cdu"</span>, <span class='st'>"fdp"</span>), <span class='fu'>c</span>(<span class='st'>"cdu"</span>,
-  <span class='st'>"fdp"</span>, <span class='st'>"greens"</span>), <span class='fu'>c</span>(<span class='st'>"spd"</span>), <span class='fu'>c</span>(<span class='st'>"spd"</span>, <span class='st'>"left"</span>), <span class='fu'>c</span>(<span class='st'>"spd"</span>, <span class='st'>"left"</span>, <span class='st'>"greens"</span>)),
-  <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>, <span class='kw'>distrib.fun</span> <span class='kw'>=</span> <span class='no'>sls</span>, <span class='kw'>seats_majority</span> <span class='kw'>=</span> <span class='fl'>300L</span>,
-  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'>as.numeric</span>(<span class='fu'>now</span>()), <span class='kw'>correction</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A table containing one row per survey and survey information in
-long format in a separate column named <code>survey</code>.</p></td>
-    </tr>
-    <tr>
-      <th>coalitions</th>
-      <td><p>A list of coaltions for which coalition probabilities should
-be calculated. Each list entry must be a vector of party names. Those names
-need to correspond to the names in <code>majority_df</code>.</p></td>
-    </tr>
-    <tr>
-      <th>nsim</th>
-      <td><p>number of simulations</p></td>
-    </tr>
-    <tr>
-      <th>distrib.fun</th>
-      <td><p>Function to calculate seat distribution. Defaults to
-<code><a href='sls.html'>sls</a></code> (Sainte-Lague/Scheppers).</p></td>
-    </tr>
-    <tr>
-      <th>seats_majority</th>
-      <td><p>The number of seats needed to obtain majority.</p></td>
-    </tr>
-    <tr>
-      <th>seed</th>
-      <td><p>sets seed</p></td>
-    </tr>
-    <tr>
-      <th>correction</th>
-      <td><p>A positiv number. If not <code>NULL</code>, each sample from the
-dirichlet distribution will be additionally "corrected" by a random number
-from U(-1*correction, 1*correction). This can be used to introduce extra
-variation which might be usefull due to rounding errors from reported survey
-results (or add an aditional source of variation in general).</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p><code><a href='calculate_prob.html'>calculate_prob</a></code></p>
-    
+    <pre class="usage"><span class='fu'>get_surveys_by</span>()</pre>
+        
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

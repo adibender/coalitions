@@ -1,6 +1,6 @@
 context("scrappers")
 
-test_that("All scrapers work", {
+test_that("State wide german scrapers work", {
 hp.vec <- c(
 	"allensbach"     = "http://www.wahlrecht.de/umfragen/allensbach.htm",
 	"emnid"          = "http://www.wahlrecht.de/umfragen/emnid.htm",
@@ -30,6 +30,27 @@ survey2 <- scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/allensba
 expect_data_frame(survey2, nrows=1, ncols=11)
 expect_equal(survey2$cdu, 39.5)
 expect_equal(survey2$respondents, 1403)
+
+})
+
+test_that("Federal german scrappers work", {
+	# Bayern
+	by <- scrape_by() %>% filter(date == "2018-02-12")
+	expect_data_frame(by, nrows=1, ncols=13)
+	expect_equal(by$csu, 40)
+	expect_equal(by$respondents, 1510)
+
+	surveys_by <- get_surveys_by()
+	expect_data_frame(surveys_by, nrows = 6, ncols = 2)
+
+	# Niedersachsen
+	nds <- scrape_ltw() %>% filter(date == "2017-10-12")
+	expect_data_frame(nds, nrows=1, ncols=12)
+	expect_equal(nds$spd, 34.5)
+	expect_equal(nds$respondents, 1001)
+
+	surveys_nds <- get_surveys_nds()
+	expect_data_frame(surveys_nds, nrows = 6, ncols = 2)
 
 })
 
