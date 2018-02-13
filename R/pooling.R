@@ -71,7 +71,6 @@ effective_samplesize <- function(
 #' to current date.
 #' @param period See \code{last_date} argument.
 #' @import dplyr checkmate
-#' @importFrom magrittr "%<>%"
 #' @keywords internal
 get_eligible <- function(
   surveys,
@@ -84,10 +83,10 @@ get_eligible <- function(
   assert_character(pollsters, null.ok = TRUE)
   assert_number(period, lower = 1, finite = TRUE)
 
-  surveys %>% filter(pollster %in% pollsters) %>%
+  surveys %>% filter(.data$pollster %in% pollsters) %>%
     unnest(surveys) %>%
     filter(date >= last_date - period & date <= last_date) %>%
-    group_by(pollster) %>%
+    group_by(.data$pollster) %>%
     filter(date == max(date)) %>%
     filter(row_number() == 1)
 }
@@ -102,6 +101,7 @@ get_eligible <- function(
 #' @inherit get_eligible
 #' @inheritParams effective_samplesize
 #' @importFrom tidyr unnest
+#' @importFrom rlang .data
 #' @keywords internal
 get_pooled <- function(
   surveys,
@@ -128,17 +128,17 @@ get_pooled <- function(
     unnest()
 
   elg_udf %>%
-    filter(!is.na(percent)) %>%
-    group_by(party) %>%
+    filter(!is.na(.data$percent)) %>%
+    group_by(.data$party) %>%
     summarize(
       from       = min(date),
       to         = max(date),
       Neff       = effective_samplesize(
-        size       = respondents,
-        share      = percent / 100,
+        size       = .data$respondents,
+        share      = .data$percent / 100,
         corr       = corr,
         weights    = weights),
-      pollsters = paste0(pollster, collapse = ", ")) %>%
+      pollsters = paste0(.data$pollster, collapse = ", ")) %>%
     ungroup()
 
 }
@@ -182,21 +182,21 @@ pool_surveys <- function(
       last_date = last_date,
       period    = period) %>%
     unnest() %>%
-    filter(!is.na(percent))
+    filter(!is.na(.data$percent))
   nall <- get_n(elg_udf)
 
   svotes <- elg_udf %>%
     ungroup() %>%
-    group_by(party) %>%
-    summarize(votes = sum(votes))
+    group_by(.data$party) %>%
+    summarize(votes = sum(.data$votes))
 
   max_party <- svotes %>%
-    filter(votes == max(votes)) %>%
+    filter(.data$votes == max(.data$votes)) %>%
     slice(1) %>%
-    pull(party)
+    pull(.data$party)
 
   Neff <- pooled_df %>%
-    filter(party == max_party) %>%
+    filter(.data$party == max_party) %>%
     pull(Neff)
 
   svotes %>%
@@ -206,8 +206,8 @@ pool_surveys <- function(
       start       = unique(pooled_df$from),
       end         = unique(pooled_df$to),
       respondents = Neff,
-      percent     = votes / nall * 100,
-      votes       = percent / 100 * Neff) %>%
+      percent     = .data$votes / nall * 100,
+      votes       = .data$percent / 100 * Neff) %>%
     select(one_of("pollster", "date", "start", "end", "respondents", "party",
       "percent", "votes"))
 
@@ -221,10 +221,11 @@ pool_surveys <- function(
 get_n <- function(eligible_df) {
 
   eligible_df %>%
-    group_by(pollster, date) %>%
+    ungroup() %>%
+    group_by(.data$pollster, date) %>%
     slice(1) %>%
     ungroup() %>%
-    pull(respondents) %>%
+    pull(.data$respondents) %>%
     sum()
 
 }

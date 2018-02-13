@@ -38,14 +38,14 @@ get_seats <- function(
 
   dirichlet.draws %>%
     mutate(sim = row_number()) %>%
-    gather(party, percent, -sim) %>%
-    arrange(sim) %>%
-    mutate(votes = percent * samplesize) %>%
-    filter(party != others & percent >= hurdle) %>%
-    group_by(sim) %>%
-    mutate(seats = distrib.fun(votes, party, ...)) %>%
+    gather("party", "percent", -.data$sim) %>%
+    arrange(.data$sim) %>%
+    mutate(votes = .data$percent * samplesize) %>%
+    filter(.data$party != others & .data$percent >= hurdle) %>%
+    group_by(.data$sim) %>%
+    mutate(seats = distrib.fun(.data$votes, .data$party, ...)) %>%
     ungroup() %>%
-    select(sim, party, seats)
+    select(one_of(c("sim", "party", "seats")))
 
 }
 
