@@ -7,10 +7,11 @@ coalitions
 Overview
 --------
 
-The package offers functions that calculate coalition probabilities in multi-party elections, based on a survey results. It offers two main functions:
+The package offers functions that calculate coalition probabilities in multi-party elections, based on a survey results:
 
--   `get_surveys`: Scrapes surveys on German Bundestag elections from [wahlrecht.de](http://www.wahlrecht.de)
--   `get_probabilities`: Calculates coalition probabilities based on provided survey results.
+-   Check out our [interactive shiny app on German elections](http://koala.stat.uni-muenchen.de/)!
+
+-   To get started, see our [workflow vignette](https://adibender.github.io/coalitions/articles/workflow.html)
 
 Installation
 ------------
@@ -103,8 +104,8 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##   pollster   date       coalition       probability
     ##   <chr>      <date>     <chr>                 <dbl>
     ## 1 allensbach 2018-01-25 cdu                   0    
-    ## 2 allensbach 2018-01-25 cdu_fdp               0.130
-    ## 3 allensbach 2018-01-25 cdu_fdp_greens       99.9  
+    ## 2 allensbach 2018-01-25 cdu_fdp               0.160
+    ## 3 allensbach 2018-01-25 cdu_fdp_greens       99.8  
     ## 4 allensbach 2018-01-25 spd                   0    
     ## 5 allensbach 2018-01-25 left_spd              0    
     ## 6 allensbach 2018-01-25 greens_left_spd       0

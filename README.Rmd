@@ -20,11 +20,11 @@ opts_chunk$set(warning=FALSE)
 ## Overview
 
 The package offers functions that calculate coalition probabilities
-in multi-party elections, based on a survey results.
-It offers two main functions:
+in multi-party elections, based on a survey results:
 
-- `get_surveys`: Scrapes surveys on German Bundestag elections from [wahlrecht.de](http://www.wahlrecht.de)
-- `get_probabilities`: Calculates coalition probabilities based on provided survey results.
+  - Check out our [interactive shiny app on German elections](http://koala.stat.uni-muenchen.de/)!
+
+  - To get started, see our [workflow vignette](https://adibender.github.io/coalitions/articles/workflow.html)
 
 ## Installation
 
@@ -36,7 +36,8 @@ devtools::install_github("adibender/coalitions", build_vignettes=TRUE)
 
 ## Usage
 
-Detailed [workflow](https://adibender.github.io/coalitions/articles/workflow.html) is outlined in the vignettes enclosed in the package
+Detailed [workflow](https://adibender.github.io/coalitions/articles/workflow.html)
+is outlined in the vignettes enclosed in the package
 (see `browseVignettes(package="coalitions")`).
 
 A short overview is presented below.

@@ -75,6 +75,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -100,11 +103,16 @@
 
     
     <p>Scrapes survey tables and perfroms sanitization to output tidy data</p>
+<p>Scrape Bavarian regional polls</p>
 <p>Scrape regional polls</p>
     
 
     <pre class="usage"><span class='fu'>scrape_wahlrecht</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='st'>"http://www.wahlrecht.de/umfragen/emnid.htm"</span>,
   <span class='kw'>parties</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CDU"</span>, <span class='st'>"SPD"</span>, <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, <span class='st'>"PIRATEN"</span>, <span class='st'>"FW"</span>, <span class='st'>"AFD"</span>,
+  <span class='st'>"SONSTIGE"</span>))
+
+<span class='fu'>scrape_by</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='st'>"http://www.wahlrecht.de/umfragen/landtage/bayern.htm"</span>,
+  <span class='kw'>parties</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CSU"</span>, <span class='st'>"SPD"</span>, <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, <span class='st'>"PIRATEN"</span>, <span class='st'>"FW"</span>, <span class='st'>"AFD"</span>,
   <span class='st'>"SONSTIGE"</span>))
 
 
