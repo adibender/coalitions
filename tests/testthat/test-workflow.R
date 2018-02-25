@@ -4,6 +4,7 @@ test_that("workflow stable", {
 	library(magrittr)
 	library(purrr)
 	library(dplyr)
+	library(tidyr)
 
 	coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu", "fdp", "greens"),
 		c("spd"), c("spd", "left"), c("spd", "left", "greens"))
@@ -21,15 +22,17 @@ test_that("workflow stable", {
 	expect_equal(colnames(survey$survey[[1]]), c("party", "percent", "votes"))
 
 	## add draws
+	# system.time({
 	survey <- survey %>% mutate(draws = map(survey, draw_from_posterior, nsim=10, seed=123))
-	expect_data_frame(survey, nrows = 1, ncols=7)
+	# })
+	expect_data_frame(survey, nrows =	 1, ncols=7)
 	expect_equal(
 		colnames(survey),
 		c("pollster", "date", "start", "end", "respondents", "survey", "draws"))
 	expect_data_frame(survey$draws[[1]], nrows=10, ncols=7)
 	expect_equal(colnames(survey$draws[[1]]), survey$survey[[1]]$party)
 
-	expect_warning(draw_from_posterior(survey$survey[[1]], nsim=10, correction=0.5))
+	expect_warning(draw_from_posterior(survey$survey[[1]], nsim=10, correction=.10))
 
 	entry_probs <- get_entryprobability(survey$draws[[1]])
 	expect_numeric(entry_probs, lower=0, upper=1, all.missing=FALSE, len=7,
