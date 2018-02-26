@@ -35,28 +35,41 @@ draw_from_posterior <- function(
     if (length(prior) != nrow(survey))
       stop("length of prior weights and number of observations differ")
   }
+  n_votes <- sum(survey$votes)
+  percent <- survey$percent/100
   # draw n.sim random dirichlet numbers/vectors with concentration weights alpha
-  draws <- rdirichlet(nsim, alpha = survey$votes + prior)
-  colnames(draws) <- survey$party
+  # draws <- rdirichlet(nsim, alpha = survey$votes + prior)
+  # colnames(draws) <- survey$party
 
   if (!is.null(correction)) {
-    draws_correction <- matrix(
-      runif(prod(dim(draws)), -1 * correction, 1 * correction),
-      nrow = nrow(draws),
-      ncol = ncol(draws))
-    draws_correction <- draws_correction - rowMeans(draws_correction)
-    draws <- draws + draws_correction
-
-    if (any(ind.mat <- draws < 0)) {
-      draws <- draws[!(rowSums(ind.mat) > 0), , drop = FALSE]
+    corrections <- seq_len(nrow(survey)) %>%
+      map(~runif(n=nsim, min=-1*correction, max=1*correction)) %>%
+      do.call(what=cbind)
+    corrections <- corrections - rowMeans(corrections)
+    corrections <- t(t(corrections) + percent)
+    # draws_correction <- matrix(
+    #   runif(nsim * nrow(survey), -1 * correction, 1 * correction),
+    #   nrow = nsim,
+    #   ncol = nrow(survey))
+    # draws_correction <- draws_correction - rowMeans(draws_correction)
+    # alpha <- t(apply(draws_correction, 1, function(x) {x + percent}))
+    if (any(ind.mat <- corrections < 0)) {
+      corrections <- corrections[!(rowSums(ind.mat) > 0), , drop = FALSE]
       warning(paste0(
         "Some drawn percentages were smaller than 0.\n ",
         "The value of the correction may be to large.\n ",
-        "Draws with negative percentages will be excluded, which
-        may leed to bias."))
+        "Draws with negative percentages will be excluded, which may leed to bias."))
     }
+
+    alpha <- corrections * n_votes + prior
+    draws <- t(apply(alpha, 1, rdirichlet, n=1))
+
+  } else {
+    alpha <- survey$votes + prior
+    draws <- rdirichlet(nsim, alpha)
   }
 
-  return(tbl_df(draws))
+  colnames(draws) <- survey$party
+  tbl_df(draws)
 
 }
