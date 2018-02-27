@@ -4,7 +4,8 @@
 \alias{get_eligible}
 \title{Extract surveys from insitutes within a specfied time-window}
 \usage{
-get_eligible(surveys, pollsters, last_date = Sys.Date(), period = 14)
+get_eligible(surveys, pollsters, last_date = Sys.Date(), period = 14,
+  period_extended = NA)
 }
 \arguments{
 \item{surveys}{A \code{tibble} containing survey results for multiple
@@ -18,6 +19,11 @@ for pooling.}
 to current date.}
 
 \item{period}{See \code{last_date} argument.}
+
+\item{period_extended}{Optional. If specified, all surveys in the time-window
+from \code{last_date} - period_extended to \code{last_date} - period will
+also be considered for each pollster, but only after downweighting them by
+halving their true sample size.}
 }
 \description{
 Extract surveys from insitutes within a specfied time-window
