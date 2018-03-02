@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,10 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Extract superior coalitions from coalition string or vector — get_superior" />
+
+<meta property="og:description" content="Extract superior coalitions from coalition string or vector" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -69,6 +75,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/diagnostic.html">Diagnostic</a>
+    </li>
+    <li>
+      <a href="../articles/pooling.html">Pooling</a>
     </li>
     <li>
       <a href="../articles/workflow.html">Workflow</a>
@@ -119,15 +128,15 @@ coercible to one.</p></td>
       <th>pattern</th>
       <td><p>Pattern to look for.</p>
 <p>The default interpretation is a regular expression, as described
-  in <a href='http://www.rdocumentation.org/packages/stringi/topics/stringi-search-regex'>stringi-search-regex</a>. Control options with
-  <code>regex()</code>.</p>
+in <a href='http://www.rdocumentation.org/packages/stringi/topics/stringi-search-regex'>stringi::stringi-search-regex</a>. Control options with
+<code>regex()</code>.</p>
 <p>Match a fixed string (i.e. by comparing only bytes), using
-  <code>fixed(x)</code>. This is fast, but approximate. Generally,
-  for matching human text, you'll want <code>coll(x)</code> which
-  respects character matching rules for the specified locale.</p>
+<code>fixed()</code>. This is fast, but approximate. Generally,
+for matching human text, you'll want <code>coll()</code> which
+respects character matching rules for the specified locale.</p>
 <p>Match character, word, line and sentence boundaries with
-  <code>boundary()</code>. An empty pattern, "", is equivalent to
-  <code>boundary("character")</code>.</p></td>
+<code>boundary()</code>. An empty pattern, "", is equivalent to
+<code>boundary("character")</code>.</p></td>
     </tr>
     <tr>
       <th>collapse</th>
@@ -155,7 +164,7 @@ obtained by splitting <code>string</code> to one string.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Andreas Bender.</p>
+  <p>Developed by Andreas Bender, Alexander Bauer.</p>
 </div>
 
 <div class="pkgdown">
