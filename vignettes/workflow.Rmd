@@ -30,7 +30,7 @@ library(coalitions)
 
 
 In this vignette we demonstrate the basic workflow using the most recent
-emnid survey.
+*Emnid* survey.
 
 ## Overview
 This package calculates coalition probabilities in multi-party systems.
@@ -49,7 +49,7 @@ individual parties in long format and stores them inside a nested tibble
 
 4. `get_seats`: Obtain seat distributions for each simulation (see also `?sls`)
 
-5. `have_majority`: Given a list of coalitions of interest, caclulates if the
+5. `have_majority`: Given a list of coalitions of interest, calculates if the
 respective coalition would have enough seats for a majority
 
 6. `calculate_probs`: Given majority tables obtained from `have_majority`, calculates the probabilities for the respective coalitions to have enough
@@ -91,7 +91,7 @@ elong %>% slice(1) %>% select(draws) %>% unnest()
 Given the simulated elections, we can calculate the number of seats each
 party obtained. To do so wee need to have a function that knows how to
 redistribute seats for the particular election. In Germany for example,
-seats are distributed according to the system of Sainte-Lague-Scheppers, which
+seats are distributed according to the system of *Sainte-Lague-Scheppers*, which
 is implemented in `?sls`.
 
 This makes this package easily extensible to other

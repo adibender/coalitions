@@ -29,7 +29,7 @@ library(coalitions)
 ```
 
 
-In this vignette we demonstrate the offered functionality for pooling 
+In this vignette we demonstrate the offered functionality for pooling
 multiple surveys.
 
 
@@ -39,7 +39,7 @@ approach:
 
 1. `get_surveys`: Wrapper that uses `scrape_wahlrecht` and `collapse_parties`
 to download the most current survey results from http://www.wahlrecht.de/
-and stores the prepared data inside a nested tibble (see `tidyr::nest`)
+and stores the prepared data inside a nested `tibble` (see `tidyr::nest`)
 
 2. `pool_surveys`: Pool all newest surveys (obtained with `get_surveys`), using
 a specified time window that defaults to the last 14 days, and assuming a certain
@@ -79,4 +79,3 @@ surveys
 pool <- pool_surveys(surveys)
 pool %>% select(-start, -end)
 ```
-
