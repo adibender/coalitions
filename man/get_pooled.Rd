@@ -6,7 +6,8 @@
 \usage{
 get_pooled(surveys, last_date = Sys.Date(), pollsters = c("allensbach",
   "emnid", "forsa", "fgw", "gms", "infratest", "dimap", "infratestdimap",
-  "insa"), period = 14, corr = 0.5, weights = NULL)
+  "insa"), period = 14, period_extended = NA, corr = 0.5,
+  weights = NULL)
 }
 \arguments{
 \item{surveys}{A \code{tibble} containing survey results for multiple
@@ -20,6 +21,11 @@ to current date.}
 for pooling.}
 
 \item{period}{See \code{last_date} argument.}
+
+\item{period_extended}{Optional. If specified, all surveys in the time-window
+from \code{last_date} - period_extended to \code{last_date} - period will
+also be considered for each pollster, but only after downweighting them by
+halving their true sample size.}
 
 \item{corr}{Assumed correlation between surveys (of different pollsters).
 Defaults to 0.5.}
