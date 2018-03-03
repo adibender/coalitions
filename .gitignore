@@ -1,9 +1,9 @@
 #################
-## Sublime 
+## Sublime
 *.sublime-project
 *.sublime-workspace
 
-## folders 
+## folders
 sandbox/
 cache/
 figure/
