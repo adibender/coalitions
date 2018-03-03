@@ -89,16 +89,16 @@ get_eligible <- function(
   assert_number(period, lower = 1, finite = TRUE)
   assert_number(period_extended, lower = 1, finite = TRUE, na.ok = TRUE)
   assert_true(period < period_extended, na.ok = TRUE)
-  
+
   first_date <- last_date - ifelse(!is.na(period_extended), period_extended, period)
-  
+
   surveys %>% filter(.data$pollster %in% pollsters) %>%
     unnest(surveys) %>%
     filter(date >= first_date & date <= last_date) %>%
     unnest() %>%
-    mutate(respondents = respondents * ifelse(date >= last_date - period, 1, 0.5),
-           votes = votes * ifelse(date >= last_date - period, 1, 0.5)) %>%
-    nest(-pollster, -date, -start, -end, -respondents) %>%
+    mutate(respondents = .data$respondents * ifelse(date >= last_date - period, 1, 0.5),
+           votes = .data$votes * ifelse(date >= last_date - period, 1, 0.5)) %>%
+    nest(-one_of("pollster", "date", "start", "end", "respondents")) %>%
     group_by(.data$pollster) %>%
     filter(date == max(date)) %>%
     filter(row_number() == 1)
