@@ -26,7 +26,7 @@ from polls on questions like
 
 > Who would you vote for if the election was tomorrow?
 
-Whether a coalition (union of multiple parties) will obtain enough votes to form a governing coalition is discussed by adding up votes obtain by the parties in question, while ignoring sample uncertainty and redistribution of votes for parties beneath a specific threshold (e.g., 5% in Germany).
+Whether a coalition (union of multiple parties) will obtain enough votes to form a governing coalition is discussed by adding up votes obtained by the parties in question, while ignoring sample uncertainty and redistribution of votes for parties beneath a specific threshold (e.g., 5% in Germany).
 
 
 The [**R**](https://www.r-project.org/) [@R] package [`coalitions`](https://adibender.github.io/coalitions/) [@coalitions_zenodo] implements methods that overcome those shortcomings and quantifies sample uncertainty in terms of probabilities for events of interest. Specifically, it contains functions to
