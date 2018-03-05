@@ -1,0 +1,24 @@
+reference:
+  - title: "Seat distribution"
+    desc: "Methods used to distribute seats based on voting percentages."
+    contents:
+      - dHondt
+      - sls
+      - hare_niemeyer
+  - title: "Scrappers"
+    desc: "Scrappers for various election polls."
+    contents:
+      - scrape_wahlrecht
+      - scrape_by
+      - scrape_austria
+      - scrape_ltw
+  - title: "Workflow"
+    desc: "Get data, perform simulation, redistribute seats, calculate probabilities."
+    contents:
+      - get_surveys
+      - pool_surveys
+      - draw_from_posterior
+      - redistribute
+      - have_majority
+      - get_seats
+      - get_probabilities

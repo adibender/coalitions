@@ -7,7 +7,7 @@ library(knitr)
 opts_chunk$set(warning=FALSE)
 ```
 
-# coalitions
+# coalitions <img src="man/figures/logo.png" align="right" />
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Travis-CI Build Status](https://travis-ci.org/adibender/coalitions.svg?branch=master)](https://travis-ci.org/adibender/coalitions)
@@ -23,6 +23,9 @@ opts_chunk$set(warning=FALSE)
 The package offers functions that calculate coalition probabilities
 in multi-party elections, based on a survey results:
 
+  - See our [talk](https://adibender.netlify.com/talk/appliedr-meetup/) at the
+[Munich AppliedR MeetUp](https://www.meetup.com/de-DE/Applied-R-Munich/)
+
   - Check out our [interactive shiny app on German elections](http://koala.stat.uni-muenchen.de/)!
 
   - To get started, see our [workflow vignette](https://adibender.github.io/coalitions/articles/workflow.html)
@@ -31,15 +34,15 @@ in multi-party elections, based on a survey results:
 
 Install from GitHub using:
 ```{r, eval=FALSE}
-devtools::install_github("adibender/coalitions", build_vignettes=TRUE)
+devtools::install_github("adibender/coalitions")
 ```
 
 
 ## Usage
 
-Detailed [workflow](https://adibender.github.io/coalitions/articles/workflow.html)
-is outlined in the vignettes enclosed in the package
-(see `browseVignettes(package="coalitions")`).
+Detailed workflow is outlined in the
+[workflow](https://adibender.github.io/coalitions/articles/workflow.html)
+vignette.
 
 A short overview is presented below.
 
@@ -56,7 +59,8 @@ surveys <- get_surveys()
 surveys
 ```
 
-Each row represents a survey insitute and each row in the `surveys` column again contains a nested `tibble` with survey results from different time-points:
+Each row represents a polling agency and each row in the `surveys` column again
+contains a nested `tibble` with survey results from different time-points:
 
 ```{r}
 surveys %>%

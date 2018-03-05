@@ -1,0 +1,81 @@
+---
+title: "Pooling"
+author: "Alexander Bauer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pooling}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  fig.align  = "center",
+  fig.width  = 4,
+  fig.height = 4,
+  warning    = FALSE,
+  crop       = TRUE)
+```
+
+
+```{r message=FALSE, warning=FALSE}
+library(tidyr)
+library(purrr)
+library(dplyr)
+library(coalitions)
+```
+
+
+In this vignette we demonstrate the offered functionality for pooling
+multiple surveys.
+
+
+## Overview
+We offer convenience functions that allow for easily performing the pooling
+approach:
+
+1. `get_surveys`: Wrapper that uses `scrape_wahlrecht` and `collapse_parties`
+to download the most current survey results from http://www.wahlrecht.de/
+and stores the prepared data inside a nested `tibble` (see `tidyr::nest`)
+
+2. `pool_surveys`: Pool all newest surveys (obtained with `get_surveys`), using
+a specified time window that defaults to the last 14 days, and assuming a certain
+correlation between the number of party-specific votes of any two polling agencies,
+which defaults to 0.5. Per polling agency only the newest survey in the time windows
+is considered.
+
+
+## Setting the time window
+The three arguments `last_date`, `period` and `period_extended` define the time window
+used in `pool_surveys`. Using these arguments one can choose between two types of pooling:
+
+1. If `period_extended` equals `NA`: Surveys in the time window from `last_date` to
+`last_date - period` will be considered for each polling agency.
+
+2. If `period_extended` does not equal `NA`: Same as 1. Additionally however, surveys in the time
+window from `last_date - period` to `last_date - period_extended` will also be considered
+for each polling agency, but only after downweighting them by halving their
+true sample size.
+
+The latter option can be especially useful if opinion polls for a specific election
+are only published very rarely. As default, `pool_surveys` uses a time window starting
+from the current date and going 14 days back, not making use of `period_extended`.
+
+
+
+## Read data
+```{r}
+# Scrape current surveys from the major polling agencies in Germany
+surveys <- get_surveys()
+surveys
+```
+
+## Perform pooling
+```{r}
+# Obtain the pooled sample for today, based on the last 14 days
+pool <- pool_surveys(surveys)
+pool %>% select(-start, -end)
+```

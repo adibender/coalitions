@@ -70,22 +70,35 @@ effective_samplesize <- function(
 #' \code{last_date} - period will be considered for each pollster. Defaults
 #' to current date.
 #' @param period See \code{last_date} argument.
+#' @param period_extended Optional. If specified, all surveys in the time-window
+#' from \code{last_date} - period_extended to \code{last_date} - period will
+#' also be considered for each pollster, but only after downweighting them by
+#' halving their true sample size.
 #' @import dplyr checkmate
 #' @keywords internal
 get_eligible <- function(
   surveys,
   pollsters,
-  last_date = Sys.Date(),
-  period    = 14) {
+  last_date       = Sys.Date(),
+  period          = 14,
+  period_extended = NA) {
 
   assert_data_frame(surveys, min.rows = 2, min.cols = 2)
   assert_date(last_date)
   assert_character(pollsters, null.ok = TRUE)
   assert_number(period, lower = 1, finite = TRUE)
+  assert_number(period_extended, lower = 1, finite = TRUE, na.ok = TRUE)
+  assert_true(period < period_extended, na.ok = TRUE)
+
+  first_date <- last_date - ifelse(!is.na(period_extended), period_extended, period)
 
   surveys %>% filter(.data$pollster %in% pollsters) %>%
     unnest(surveys) %>%
-    filter(date >= last_date - period & date <= last_date) %>%
+    filter(date >= first_date & date <= last_date) %>%
+    unnest() %>%
+    mutate(respondents = .data$respondents * ifelse(date >= last_date - period, 1, 0.5),
+           votes = .data$votes * ifelse(date >= last_date - period, 1, 0.5)) %>%
+    nest(-one_of("pollster", "date", "start", "end", "respondents")) %>%
     group_by(.data$pollster) %>%
     filter(date == max(date)) %>%
     filter(row_number() == 1)
@@ -105,26 +118,30 @@ get_eligible <- function(
 #' @keywords internal
 get_pooled <- function(
   surveys,
-  last_date  = Sys.Date(),
-  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest",
-    "dimap", "infratestdimap", "insa"),
-  period     = 14,
-  corr       = 0.5,
-  weights    = NULL) {
+  last_date       = Sys.Date(),
+  pollsters       = c("allensbach", "emnid", "forsa", "fgw", "gms",
+    "infratest", "dimap", "infratestdimap", "insa"),
+  period          = 14,
+  period_extended = NA,
+  corr            = 0.5,
+  weights         = NULL) {
 
   assert_data_frame(surveys, min.rows = 2, min.cols = 2)
   assert_date(last_date)
   assert_character(pollsters, any.missing = FALSE)
   assert_number(period, lower = 1, finite = TRUE)
+  assert_number(period_extended, lower = 1, finite = TRUE, na.ok = TRUE)
+  assert_true(period < period_extended, na.ok = TRUE)
   assert_number(corr, lower = -1, upper = 1)
   assert_numeric(weights, finite = TRUE, null.ok = TRUE)
 
 
   elg_udf <- surveys %>%
     get_eligible(
-      pollsters = pollsters,
-      last_date  = last_date,
-      period     = period) %>%
+      pollsters       = pollsters,
+      last_date       = last_date,
+      period          = period,
+      period_extended = period_extended) %>%
     unnest()
 
   elg_udf %>%
@@ -160,27 +177,32 @@ get_pooled <- function(
 #' @export
 pool_surveys <- function(
   surveys,
-  last_date  = Sys.Date(),
-  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest",
-    "dimap", "infratestdimap", "insa"),
-  period     = 14,
-  corr       = 0.5,
-  weights    = NULL) {
+  last_date       = Sys.Date(),
+  pollsters       = c("allensbach", "emnid", "forsa", "fgw", "gms",
+    "infratest", "dimap", "infratestdimap", "insa"),
+  period          = 14,
+  period_extended = NA,
+  corr            = 0.5,
+  weights         = NULL) {
 
   assert_data_frame(surveys, min.rows = 2, min.cols = 2)
   assert_date(last_date)
   assert_character(pollsters, any.missing = FALSE)
   assert_number(period, lower = 1, finite = TRUE)
+  assert_number(period_extended, lower = 1, finite = TRUE, na.ok = TRUE)
+  assert_true(period < period_extended, na.ok = TRUE)
   assert_number(corr, lower = -1, upper = 1)
   assert_numeric(weights, finite = TRUE, null.ok = TRUE)
 
-  pooled_df <- get_pooled(surveys, last_date, pollsters, period, corr, weights)
+  pooled_df <- get_pooled(surveys, last_date, pollsters, period,
+                          period_extended, corr, weights)
 
   elg_udf <- surveys %>%
     get_eligible(
-      pollsters = pollsters,
-      last_date = last_date,
-      period    = period) %>%
+      pollsters       = pollsters,
+      last_date       = last_date,
+      period          = period,
+      period_extended = period_extended) %>%
     unnest() %>%
     filter(!is.na(.data$percent))
   nall <- get_n(elg_udf)

@@ -1,15 +1,20 @@
-# coalitions 0.0.1
+## coalitions 0.6.0 (2018-03)
 
-- first clean version with basic functionality
+- Added vignette on [*pooling*](../articles/pooling.html)
 
-# coalitions 0.5.1
+<hr width="1" size="500" display:inline-block>
+
+## coalitions 0.5.7 (2017-12)
+
+- Added federal Bavarian election scrappers
+
+## coalitions 0.5.1 (2017-03)
 
 - Major overhaul
 - More robust functions, more tests
-- Most functionscomply with *tidyverse*
-- Imroved documentation, added vignettes, created homepage (via `pkgdown`)
+- Most functions comply with *tidyverse*
+- Improved documentation, added vignettes, created homepage (via `pkgdown`)
 
+## coalitions 0.0.1 (2013-12)
 
-# coalitions 0.5.7
-
-- Added federal Bavarian election scrappers
+- first clean version with basic functionality

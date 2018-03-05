@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,7 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Function reference" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -71,6 +74,9 @@
       <a href="../articles/diagnostic.html">Diagnostic</a>
     </li>
     <li>
+      <a href="../articles/pooling.html">Pooling</a>
+    </li>
+    <li>
       <a href="../articles/workflow.html">Workflow</a>
     </li>
   </ul>
@@ -100,7 +106,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;0.5.7</small>
+        <small>version&nbsp;0.6.0</small>
       </h1>
     </div>
 
@@ -115,29 +121,11 @@
       <tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
+            <h2 id="section-seat-distribution" class="hasAnchor"><a href="#section-seat-distribution" class="anchor"></a>Seat distribution</h2>
+            <p class="section-desc"><p>Methods used to distribute seats based on voting percentages.</p></p>
           </th>
         </tr>
         <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="calculate_prob.html">calculate_prob</a></code> </p>
-          </td>
-          <td><p>Calculate coalition probability from majority table</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="calculate_probs.html">calculate_probs</a></code> </p>
-          </td>
-          <td><p>Calculate coalition probabilities for multiple coalitions</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="collapse_parties.html">collapse_parties</a></code> </p>
-          </td>
-          <td><p>Transform surveys in long format</p></td>
-        </tr><tr>
           <!--  -->
           <td>
             <p><code><a href="dHondt.html">dHondt</a></code> </p>
@@ -146,34 +134,44 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="draw_from_posterior.html">draw_from_posterior</a></code> </p>
+            <p><code><a href="sls.html">sls</a></code> </p>
           </td>
-          <td><p>Draw random numbers from posterior distribution</p></td>
+          <td><p>Seat Distribution by Sainte-Lague/Scheppers</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="get_probabilities.html">get_probabilities</a></code> </p>
+            <p><code><a href="hare_niemeyer.html">hare_niemeyer</a></code> </p>
           </td>
-          <td><p>Wrapper for calculation of coalition probabilities from survey</p></td>
+          <td><p>Seat Distribution by Hare/Niemeyer</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-scrappers" class="hasAnchor"><a href="#section-scrappers" class="anchor"></a>Scrappers</h2>
+            <p class="section-desc"><p>Scrappers for various election polls.</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="scrape.html">scrape_wahlrecht</a></code> <code><a href="scrape.html">scrape_by</a></code> <code><a href="scrape.html">scrape_ltw</a></code> </p>
+          </td>
+          <td><p>Scrape surveys from wahlrecht.de</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="get_seats.html">get_seats</a></code> </p>
+            <p><code><a href="scrape_austria.html">scrape_austria</a></code> </p>
           </td>
-          <td><p>Calculate seat distribution from draws from posterior</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_surveys_by.html">get_surveys_by</a></code> </p>
-          </td>
-          <td><p>Obtain (nested) Bavaria surveys object</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_surveys_nds.html">get_surveys_nds</a></code> </p>
-          </td>
-          <td><p>Obtain (nested) Niedersachsen surveys object</p></td>
-        </tr><tr>
+          <td><p>Import austrian survey results</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-workflow" class="hasAnchor"><a href="#section-workflow" class="anchor"></a>Workflow</h2>
+            <p class="section-desc"><p>Get data, perform simulation, redistribute seats, calculate probabilities.</p></p>
+          </th>
+        </tr>
+        <tr>
           <!--  -->
           <td>
             <p><code><a href="get_surveys.html">get_surveys</a></code> <code><a href="get_surveys.html">get_latest</a></code> </p>
@@ -182,27 +180,15 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="hare_niemeyer.html">hare_niemeyer</a></code> </p>
-          </td>
-          <td><p>Seat Distribution by Hare/Niemeyer</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="have_majority.html">have_majority</a></code> </p>
-          </td>
-          <td><p>Do coalitions have a majority</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="party_colors_de.html">party_colors_de</a></code> </p>
-          </td>
-          <td><p>Colors of German parties</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="pool_surveys.html">pool_surveys</a></code> </p>
           </td>
           <td><p>Obtain pooled survey during specified period</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="draw_from_posterior.html">draw_from_posterior</a></code> </p>
+          </td>
+          <td><p>Draw random numbers from posterior distribution</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -213,27 +199,21 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="scrape_austria.html">scrape_austria</a></code> </p>
+            <p><code><a href="have_majority.html">have_majority</a></code> </p>
           </td>
-          <td><p>Import austrian survey results</p></td>
+          <td><p>Do coalitions have a majority</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="scrape.html">scrape_wahlrecht</a></code> <code><a href="scrape.html">scrape_by</a></code> <code><a href="scrape.html">scrape_ltw</a></code> </p>
+            <p><code><a href="get_seats.html">get_seats</a></code> </p>
           </td>
-          <td><p>Scrape surveys from wahlrecht.de</p></td>
+          <td><p>Calculate seat distribution from draws from posterior</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="sls.html">sls</a></code> </p>
+            <p><code><a href="get_probabilities.html">get_probabilities</a></code> </p>
           </td>
-          <td><p>Seat Distribution by Sainte-Lague/Scheppers</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="surveys_sample.html">surveys_sample</a></code> </p>
-          </td>
-          <td><p>Sample of selected surveys</p></td>
+          <td><p>Wrapper for calculation of coalition probabilities from survey</p></td>
         </tr>
       </tbody>
       </table>
@@ -243,14 +223,16 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-seat-distribution">Seat distribution</a></li>
+      <li><a href="#section-scrappers">Scrappers</a></li>
+      <li><a href="#section-workflow">Workflow</a></li>
     </ul>
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Andreas Bender.</p>
+  <p>Developed by Andreas Bender, Alexander Bauer.</p>
 </div>
 
 <div class="pkgdown">

@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,13 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Replace/prettify matching words/terms in one vector by another — prettify_strings" />
+
+<meta property="og:description" content="The function searches for x values, that occur in current
+and replaces them with entries in new. Usefull for quick
+renaming/translation of survey column names and by using internal object
+.trans_df" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -69,6 +78,9 @@
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/diagnostic.html">Diagnostic</a>
+    </li>
+    <li>
+      <a href="../articles/pooling.html">Pooling</a>
     </li>
     <li>
       <a href="../articles/workflow.html">Workflow</a>
@@ -148,7 +160,7 @@ have matches in <code>current</code>.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Andreas Bender.</p>
+  <p>Developed by Andreas Bender, Alexander Bauer.</p>
 </div>
 
 <div class="pkgdown">
