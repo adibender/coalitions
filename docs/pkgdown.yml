@@ -1,0 +1,11 @@
+pandoc: 2.1.1
+pkgdown: 0.1.0.9000
+pkgdown_sha: 516865e0fb793975fe92ccaee154bb7db3b877b4
+articles:
+  diagnostic: diagnostic.html
+  pooling: pooling.html
+  workflow: workflow.html
+urls:
+  reference: http://dplyr.tidyverse.org/reference
+  article: http://dplyr.tidyverse.org/articles
+

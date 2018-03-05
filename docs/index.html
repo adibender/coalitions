@@ -12,6 +12,7 @@
 <script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Coalition Probabilities in Multi-party Democracies">
 <meta property="og:description" content="An Implementation of a MCMC method to calculate
     probabilities for a coalition majority based on survey results.">
+<meta property="og:image" content="http://dplyr.tidyverse.org/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -88,7 +89,8 @@
 <div class="contents">
 <div id="coalitions" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#coalitions" class="anchor"></a>coalitions</h1></div>
+<a href="#coalitions" class="anchor"></a>coalitions <img src="reference/figures/logo.png" align="right">
+</h1></div>
 
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
@@ -124,8 +126,8 @@
 ##   pollster   surveys           
 ##   &lt;chr&gt;      &lt;list&gt;            
 ## 1 allensbach &lt;tibble [42 × 5]&gt; 
-## 2 emnid      &lt;tibble [224 × 5]&gt;
-## 3 forsa      &lt;tibble [233 × 5]&gt;
+## 2 emnid      &lt;tibble [225 × 5]&gt;
+## 3 forsa      &lt;tibble [235 × 5]&gt;
 ## 4 fgw        &lt;tibble [83 × 5]&gt; 
 ## 5 gms        &lt;tibble [96 × 5]&gt; 
 ## 6 infratest  &lt;tibble [110 × 5]&gt;
@@ -170,12 +172,12 @@
 <pre><code>## # A tibble: 6 x 4
 ##   pollster   date       coalition       probability
 ##   &lt;chr&gt;      &lt;date&gt;     &lt;chr&gt;                 &lt;dbl&gt;
-## 1 allensbach 2018-02-23 cdu                   0.   
-## 2 allensbach 2018-02-23 cdu_fdp               0.110
-## 3 allensbach 2018-02-23 cdu_fdp_greens       99.9  
-## 4 allensbach 2018-02-23 spd                   0.   
-## 5 allensbach 2018-02-23 left_spd              0.   
-## 6 allensbach 2018-02-23 greens_left_spd       0.</code></pre>
+## 1 allensbach 2018-02-23 cdu                  0.    
+## 2 allensbach 2018-02-23 cdu_fdp              0.0600
+## 3 allensbach 2018-02-23 cdu_fdp_greens      99.9   
+## 4 allensbach 2018-02-23 spd                  0.    
+## 5 allensbach 2018-02-23 left_spd             0.    
+## 6 allensbach 2018-02-23 greens_left_spd      0.</code></pre>
 </div>
 </div>
 </div>

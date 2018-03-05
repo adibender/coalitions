@@ -65,8 +65,8 @@ surveys
     ##   pollster   surveys           
     ##   <chr>      <list>            
     ## 1 allensbach <tibble [42 × 5]> 
-    ## 2 emnid      <tibble [224 × 5]>
-    ## 3 forsa      <tibble [233 × 5]>
+    ## 2 emnid      <tibble [225 × 5]>
+    ## 3 forsa      <tibble [235 × 5]>
     ## 4 fgw        <tibble [83 × 5]> 
     ## 5 gms        <tibble [96 × 5]> 
     ## 6 infratest  <tibble [110 × 5]>
@@ -126,7 +126,7 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##   pollster   date       coalition       probability
     ##   <chr>      <date>     <chr>                 <dbl>
     ## 1 allensbach 2018-02-23 cdu                  0.    
-    ## 2 allensbach 2018-02-23 cdu_fdp              0.0100
+    ## 2 allensbach 2018-02-23 cdu_fdp              0.0400
     ## 3 allensbach 2018-02-23 cdu_fdp_greens     100.0   
     ## 4 allensbach 2018-02-23 spd                  0.    
     ## 5 allensbach 2018-02-23 left_spd             0.    
