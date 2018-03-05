@@ -1,5 +1,5 @@
 
-# coalitions
+# coalitions <img src="man/figures/logo.png" align="right" />
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
