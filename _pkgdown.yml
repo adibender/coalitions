@@ -1,10 +1,9 @@
+url: http://dplyr.tidyverse.org
+
+home:
+  strip_header: false
+
 reference:
-  - title: "Seat distribution"
-    desc: "Methods used to distribute seats based on voting percentages."
-    contents:
-      - dHondt
-      - sls
-      - hare_niemeyer
   - title: "Scrappers"
     desc: "Scrappers for various election polls."
     contents:
@@ -22,3 +21,9 @@ reference:
       - have_majority
       - get_seats
       - get_probabilities
+  - title: "Seat distribution"
+    desc: "Methods used to distribute seats based on voting percentages."
+    contents:
+      - dHondt
+      - sls
+      - hare_niemeyer
