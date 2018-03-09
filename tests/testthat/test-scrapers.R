@@ -1,4 +1,4 @@
-context("scrappers")
+context("scrapers")
 
 test_that("State wide german scrapers work", {
 hp.vec <- c(
@@ -33,7 +33,7 @@ expect_equal(survey2$respondents, 1403)
 
 })
 
-test_that("Federal german scrappers work", {
+test_that("Federal german scrapers work", {
 	# Bayern
 	by <- scrape_by() %>% filter(date == "2018-02-12")
 	expect_data_frame(by, nrows=1, ncols=13)

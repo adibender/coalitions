@@ -123,7 +123,7 @@ scrape_wahlrecht <- function(
 
 #' Scrape surveys from all pollsters
 #'
-#' @param country Choose country from which surveys should be scrapped.
+#' @param country Choose country from which surveys should be scraped.
 #' Currently \code{"DE"} (Germany) and \code{"AT"} (Austria) are supported.
 #' @import dplyr
 #' @importFrom purrr map

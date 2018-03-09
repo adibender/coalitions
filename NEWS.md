@@ -6,7 +6,7 @@
 
 ## coalitions 0.5.7 (2017-12)
 
-- Added federal Bavarian election scrappers
+- Added federal Bavarian election scrapers
 
 ## coalitions 0.5.1 (2017-03)
 
