@@ -4,8 +4,8 @@ home:
   strip_header: false
 
 reference:
-  - title: "Scrappers"
-    desc: "Scrappers for various election polls."
+  - title: "Scrapers"
+    desc: "Scrapers for various election polls."
     contents:
       - scrape_wahlrecht
       - scrape_by

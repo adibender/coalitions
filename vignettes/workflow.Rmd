@@ -79,6 +79,8 @@ Based on each survey we can now simulate `nsim` elections by drawing from the
 Dirichlet distribution
 
 ```{r}
+set.seed(1)     # for reproducibility
+
 elong <- elong %>%
   mutate(draws = map(survey, draw_from_posterior, nsim=10, correction=0.005))
 elong %>% select(date, survey, draws)
@@ -89,7 +91,7 @@ elong %>% slice(1) %>% select(draws) %>% unnest()
 
 ## Calculate seat distribution
 Given the simulated elections, we can calculate the number of seats each
-party obtained. To do so wee need to have a function that knows how to
+party obtained. To do so we need to have a function that knows how to
 redistribute seats for the particular election. In Germany for example,
 seats are distributed according to the system of *Sainte-Lague-Scheppers*, which
 is implemented in `?sls`.
@@ -108,8 +110,8 @@ elong %>% select(date, survey, draws, seats)
 elong %>% slice(1) %>% select(seats) %>% unnest()
 ```
 
-In the above example, given the latest survey, CDU/CSU would have 225 seats
-in the first simulation, 223 seats in the second simulation, etc.
+In the above example, given the latest survey, CDU/CSU would have `r elong %>% slice(1) %>% select(seats) %>% unnest() %>% filter(party == "cdu" & sim == 1) %>% pull(seats)` seats
+in the first simulation, `r elong %>% slice(1) %>% select(seats) %>% unnest() %>% filter(party == "cdu" & sim == 2) %>% pull(seats)` seats in the second simulation, etc.
 
 
 ## Calculate majorities
@@ -129,7 +131,8 @@ coalitions <- list(
 	c("spd"),
 	c("spd", "left"),
 	c("spd", "greens"),
-	c("spd", "left", "greens"))
+	c("spd", "left", "greens"),
+	c("cdu", "spd"))
 
 
 elong <- elong %>%

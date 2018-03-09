@@ -123,7 +123,7 @@ scrape_wahlrecht <- function(
 
 #' Scrape surveys from all pollsters
 #'
-#' @param country Choose country from which surveys should be scrapped.
+#' @param country Choose country from which surveys should be scraped.
 #' Currently \code{"DE"} (Germany) and \code{"AT"} (Austria) are supported.
 #' @import dplyr
 #' @importFrom purrr map
@@ -309,11 +309,13 @@ get_surveys_nds <- function() {
 #' @importFrom forcats fct_collapse
 #' @importFrom lubridate dmy
 #' @importFrom rlang UQS syms .data
+#' @importFrom stringr str_replace
 #' @export
 scrape_austria <- function(
   address = "https://neuwal.com/wahlumfragen/openwal/neuwal-openwal.json") {
 
-  aut_list <- fromJSON(getURL(address))
+  aut_list <- fromJSON(getURL(address) %>% 
+                           str_replace('\\"\\"(.*)\\"\\",', "\"'\\1'\",")) # fix for double double-quote bug
   out_df   <- as_tibble(aut_list) %>%
     rename(survey = "results") %>%
     select(one_of(c("institute", "date", "n",  "survey"))) %>%
