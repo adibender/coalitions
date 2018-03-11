@@ -25,7 +25,7 @@ scrape_by(address = "http://www.wahlrecht.de/umfragen/landtage/bayern.htm",
 \item{parties}{A character vector containing names of parties to collapse.}
 }
 \description{
-Scrapes survey tables and perfroms sanitization to output tidy data
+Scrapes survey tables and performs sanitation to output tidy data
 
 Scrape Bavarian regional polls
 

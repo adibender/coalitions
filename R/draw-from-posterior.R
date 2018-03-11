@@ -4,17 +4,17 @@
 #' @param nsim number of simulations
 #' @param seed sets seed
 #' @param prior optional prior information. Defaults to 1/2 (Jeffrey's prior).
-#' @param correction A positiv number. If not \code{NULL}, each sample from the
-#' dirichlet distribution will be additionally "corrected" by a random number
+#' @param correction A positive number. If not \code{NULL}, each sample from the
+#' Dirichlet distribution will be additionally "corrected" by a random number
 #' from U(-1*correction, 1*correction). This can be used to introduce extra
-#' variation which might be usefull due to rounding errors from reported survey
-#' results (or add an aditional source of variation in general).
+#' variation which might be useful due to rounding errors from reported survey
+#' results (or add an additional source of variation in general).
 #'
 #' @importFrom gtools rdirichlet
 #' @importFrom dplyr tbl_df
 #' @importFrom lubridate now
 #' @importFrom stats runif
-#' @return \code{data.frame} containing random draws from dirichlet distribution
+#' @return \code{data.frame} containing random draws from Dirichlet distribution
 #' which can be interpreted as election results.
 #' @keywords draw, simulate
 #' @seealso \code{\link{as_survey}}
@@ -37,7 +37,7 @@ draw_from_posterior <- function(
   }
   n_votes <- sum(survey$votes)
   percent <- survey$percent/100
-  # draw n.sim random dirichlet numbers/vectors with concentration weights alpha
+  # draw n.sim random Dirichlet numbers/vectors with concentration weights alpha
   # draws <- rdirichlet(nsim, alpha = survey$votes + prior)
   # colnames(draws) <- survey$party
 
@@ -58,7 +58,7 @@ draw_from_posterior <- function(
       warning(paste0(
         "Some drawn percentages were smaller than 0.\n ",
         "The value of the correction may be to large.\n ",
-        "Draws with negative percentages will be excluded, which may leed to bias."))
+        "Draws with negative percentages will be excluded, which may lead to bias."))
     }
 
     alpha <- corrections * n_votes + prior

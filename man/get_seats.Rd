@@ -14,15 +14,15 @@ get_seats(dirichlet.draws, survey, distrib.fun = sls, samplesize = NULL,
 were based on.}
 
 \item{distrib.fun}{Function to calculate seat distribution. Defaults to
-\code{\link{sls}} (Sainte-Lague/Scheppers).}
+\code{\link{sls}} (Sainte-Lague/Schepers).}
 
 \item{samplesize}{Number of individuals participating in the \code{survey}.}
 
 \item{hurdle}{The percentage threshold which has to be reached by a party
 to enter the parliament.}
 
-\item{others}{A string indecating the name under which parties not listed
-explicitly are subsummed.}
+\item{others}{A string indicating the name under which parties not listed
+explicitly are subsumed.}
 
 \item{...}{Further arguments passed to \code{distrib.fun}.}
 }

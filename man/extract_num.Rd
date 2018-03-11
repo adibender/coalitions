@@ -2,7 +2,7 @@
 % Please edit documentation in R/scrapers.R
 \name{extract_num}
 \alias{extract_num}
-\title{Extract numericals from string or character}
+\title{Extract numerics from string or character}
 \usage{
 extract_num(x, decimal = TRUE)
 }

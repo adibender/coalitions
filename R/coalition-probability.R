@@ -24,7 +24,7 @@ has_majority <- function(
 #' @inheritParams has_majority
 #' @inheritParams paste_coalitions
 #' @inheritParams calculate_probs
-#' @param seats_tab A data frame cotaining number of seats obtained by a party.
+#' @param seats_tab A data frame containing number of seats obtained by a party.
 #' Must have columns \code{party} and \code{seats}.
 #' @importFrom purrr map
 #' @importFrom dplyr bind_cols
@@ -93,7 +93,7 @@ paste_coalitions <- function(coalitions, collapse="_") {
 #'
 #' @param majority_df A data frame containing logical values indicating
 #' if the coalitions (columns) have a majority (rows).
-#' @param coalition The coaliton of interest for which superior coalitions
+#' @param coalition The coalition of interest for which superior coalitions
 #' will be obtained by \code{\link[coalitions]{get_superior}}.
 #' @param exclude_superior Logical. If \code{TRUE}, superior coalitions will
 #' be excluded, otherwise total coalition probabilities will be returned.
@@ -131,7 +131,7 @@ calculate_prob <- function(
 #' Calculate coalition probabilities for multiple coalitions
 #'
 #' @inherit calculate_prob
-#' @param coalitions A list of coaltions for which coalition probabilities should
+#' @param coalitions A list of coalitions for which coalition probabilities should
 #' be calculated. Each list entry must be a vector of party names. Those names
 #' need to correspond to the names in \code{majority_df}.
 #' @importFrom dplyr bind_cols

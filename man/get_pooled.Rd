@@ -24,7 +24,7 @@ for pooling.}
 
 \item{period_extended}{Optional. If specified, all surveys in the time-window
 from \code{last_date} - period_extended to \code{last_date} - period will
-also be considered for each pollster, but only after downweighting them by
+also be considered for each pollster, but only after down-weighting them by
 halving their true sample size.}
 
 \item{corr}{Assumed correlation between surveys (of different pollsters).

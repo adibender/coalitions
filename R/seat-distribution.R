@@ -4,12 +4,12 @@
 #' @param survey The actual survey results on which \code{dirichlet.draws}
 #' were based on.
 #' @param distrib.fun Function to calculate seat distribution. Defaults to
-#' \code{\link{sls}} (Sainte-Lague/Scheppers).
+#' \code{\link{sls}} (Sainte-Lague/Schepers).
 #' @param samplesize Number of individuals participating in the \code{survey}.
 #' @param hurdle The percentage threshold which has to be reached by a party
 #' to enter the parliament.
-#' @param others A string indecating the name under which parties not listed
-#' explicitly are subsummed.
+#' @param others A string indicating the name under which parties not listed
+#' explicitly are subsumed.
 #' @param ... Further arguments passed to \code{distrib.fun}.
 #' @import checkmate dplyr
 #' @return A data frame containing seat distributions for each simulation in
@@ -63,7 +63,7 @@ redistribute <- function(
   others  = "others",
   epsilon = 10e-6) {
 
-  # must be & (we include parties with percent > hurdel and name != others)
+  # must be & (we include parties with percent > hurdle and name != others)
   survey <- survey[survey$percent >= hurdle & survey$party != others, ]
 
   survey$percent <- survey$votes / sum(survey$votes)

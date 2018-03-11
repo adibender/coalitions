@@ -2,7 +2,7 @@
 % Please edit documentation in R/pooling.R
 \name{get_n}
 \alias{get_n}
-\title{Total number of survey participants from surveys elligible for pooling.}
+\title{Total number of survey participants from surveys eligible for pooling.}
 \usage{
 get_n(eligible_df)
 }
@@ -11,6 +11,6 @@ get_n(eligible_df)
 pooling as returned by \code{get_eligible}.}
 }
 \description{
-Total number of survey participants from surveys elligible for pooling.
+Total number of survey participants from surveys eligible for pooling.
 }
 \keyword{internal}

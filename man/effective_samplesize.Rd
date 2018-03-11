@@ -7,7 +7,7 @@
 effective_samplesize(size, share, corr = 0.5, weights = NULL)
 }
 \arguments{
-\item{size}{A vecotr of sample sizes from different surveys (from different
+\item{size}{A vector of sample sizes from different surveys (from different
 pollsters) for one party.}
 
 \item{share}{The relative share of votes for party of interest ([0-1])}
