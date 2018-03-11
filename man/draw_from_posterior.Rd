@@ -16,14 +16,14 @@ draw_from_posterior(survey, nsim = 10000, seed = as.numeric(now()),
 
 \item{prior}{optional prior information. Defaults to 1/2 (Jeffrey's prior).}
 
-\item{correction}{A positiv number. If not \code{NULL}, each sample from the
-dirichlet distribution will be additionally "corrected" by a random number
+\item{correction}{A positive number. If not \code{NULL}, each sample from the
+Dirichlet distribution will be additionally "corrected" by a random number
 from U(-1*correction, 1*correction). This can be used to introduce extra
-variation which might be usefull due to rounding errors from reported survey
-results (or add an aditional source of variation in general).}
+variation which might be useful due to rounding errors from reported survey
+results (or add an additional source of variation in general).}
 }
 \value{
-\code{data.frame} containing random draws from dirichlet distribution
+\code{data.frame} containing random draws from Dirichlet distribution
 which can be interpreted as election results.
 }
 \description{

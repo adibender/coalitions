@@ -1,6 +1,6 @@
-#' Sanitze character vector
+#' Sanitize character vector
 #'
-#' Substitute all german "Umlaute"
+#' Substitute all German "Umlaute"
 #' @param x A character vector.
 #' @keywords internal
 sanitize_strings <- function(x) {
@@ -18,7 +18,7 @@ sanitize_strings <- function(x) {
 
 }
 
-#' Extract numericals from string or character
+#' Extract numerics from string or character
 #'
 #' Removes all characters that are not in [0-9].
 #' @param x A character vector.
@@ -55,7 +55,7 @@ sanitize_colnames <- function(df) {
 
 #' Scrape surveys from wahlrecht.de
 #'
-#' Scrapes survey tables and perfroms sanitization to output tidy data
+#' Scrapes survey tables and performs sanitation to output tidy data
 #' @rdname scrape
 #' @param address http-address from which tables should be scraped.
 #' @param parties A character vector containing names of parties to collapse.
@@ -297,7 +297,7 @@ get_surveys_nds <- function() {
 
 }
 
-#' Import austrian survey results
+#' Import Austrian survey results
 #'
 #' Reads JSON file from neuwal.com
 #' @param address URL of the JSON file
@@ -314,7 +314,7 @@ get_surveys_nds <- function() {
 scrape_austria <- function(
   address = "https://neuwal.com/wahlumfragen/openwal/neuwal-openwal.json") {
 
-  aut_list <- fromJSON(getURL(address) %>% 
+  aut_list <- fromJSON(getURL(address) %>%
                            str_replace('\\"\\"(.*)\\"\\",', "\"'\\1'\",")) # fix for double double-quote bug
   out_df   <- as_tibble(aut_list) %>%
     rename(survey = "results") %>%

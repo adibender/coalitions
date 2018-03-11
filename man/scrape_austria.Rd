@@ -2,7 +2,7 @@
 % Please edit documentation in R/scrapers.R
 \name{scrape_austria}
 \alias{scrape_austria}
-\title{Import austrian survey results}
+\title{Import Austrian survey results}
 \usage{
 
   scrape_austria(address = "https://neuwal.com/wahlumfragen/openwal/neuwal-openwal.json")

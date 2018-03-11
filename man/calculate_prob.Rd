@@ -10,7 +10,7 @@ calculate_prob(majority_df, coalition, exclude_superior = TRUE, ...)
 \item{majority_df}{A data frame containing logical values indicating
 if the coalitions (columns) have a majority (rows).}
 
-\item{coalition}{The coaliton of interest for which superior coalitions
+\item{coalition}{The coalition of interest for which superior coalitions
 will be obtained by \code{\link[coalitions]{get_superior}}.}
 
 \item{exclude_superior}{Logical. If \code{TRUE}, superior coalitions will

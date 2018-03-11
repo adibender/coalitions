@@ -3,7 +3,7 @@
 #' This is the work horse function that calculates the effective sample size.
 #' Should usually not be called by the user directly.
 #'
-#' @param size A vecotr of sample sizes from different surveys (from different
+#' @param size A vector of sample sizes from different surveys (from different
 #' pollsters) for one party.
 #' @param share The relative share of votes for party of interest ([0-1])
 #' @param corr Assumed correlation between surveys (of different pollsters).
@@ -59,7 +59,7 @@ effective_samplesize <- function(
 
 }
 
-#' Extract surveys from insitutes within a specfied time-window
+#' Extract surveys from institutes within a specified time-window
 #'
 #'
 #' @param surveys A \code{tibble} containing survey results for multiple
@@ -72,7 +72,7 @@ effective_samplesize <- function(
 #' @param period See \code{last_date} argument.
 #' @param period_extended Optional. If specified, all surveys in the time-window
 #' from \code{last_date} - period_extended to \code{last_date} - period will
-#' also be considered for each pollster, but only after downweighting them by
+#' also be considered for each pollster, but only after down-weighting them by
 #' halving their true sample size.
 #' @import dplyr checkmate
 #' @keywords internal
@@ -235,7 +235,7 @@ pool_surveys <- function(
 
 }
 
-#' Total number of survey participants from surveys elligible for pooling.
+#' Total number of survey participants from surveys eligible for pooling.
 #'
 #' @param eligible_df A data frame containing surveys that should be used for
 #' pooling as returned by \code{get_eligible}.

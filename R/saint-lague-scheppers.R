@@ -1,4 +1,4 @@
-#' Seat Distribution by Sainte-Lague/Scheppers
+#' Seat Distribution by Sainte-Lague/Schepers
 #'
 #' Calculates number of seats for the respective parties that have received more
 #' than 5\% of votes (according to the method of Sainte-Lague/Schepers,

@@ -12,7 +12,7 @@ dHondt(votes, parties, n_seats = 183)
 \item{parties}{Names of parties (must be same length as votes).}
 
 \item{n_seats}{Number of seats in parliament. Defaults to 183 (seats in
-austrian parliament).}
+Austrian parliament).}
 }
 \value{
 A \code{data.frame} containing parties above the hurdle and the respective

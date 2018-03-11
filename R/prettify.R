@@ -1,7 +1,7 @@
 #' Replace/prettify matching words/terms in one vector by another
 #'
 #' The function searches for \code{x} values, that occur in \code{current}
-#' and replaces them with entries in \code{new}. Usefull for quick
+#' and replaces them with entries in \code{new}. Useful for quick
 #' renaming/translation of survey column names and by using internal object
 #' \code{.trans_df}
 #'
@@ -9,7 +9,7 @@
 #' @param x A character vector (or factor) that should be renamed.
 #' @param current A vector of characters (possibly subset of \code{x}).
 #' Entries in \code{x} that match entries in \code{current} will be renamed
-#' accroding to entries in \code{new}.
+#' according to entries in \code{new}.
 #' @param new A vector of characters that will replace entries in \code{x} which
 #' have matches in \code{current}.
 #' @importFrom purrr map2

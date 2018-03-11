@@ -10,7 +10,7 @@ has_majority(seats_tab, coalition, seats_majority = 300L)
 \item{seats_tab}{A table containing information on how many seats each party
 obtained.}
 
-\item{coalition}{The coaliton of interest for which superior coalitions
+\item{coalition}{The coalition of interest for which superior coalitions
 will be obtained by \code{\link[coalitions]{get_superior}}.}
 
 \item{seats_majority}{The number of seats needed to obtain majority.}

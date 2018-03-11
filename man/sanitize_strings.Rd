@@ -2,7 +2,7 @@
 % Please edit documentation in R/scrapers.R
 \name{sanitize_strings}
 \alias{sanitize_strings}
-\title{Sanitze character vector}
+\title{Sanitize character vector}
 \usage{
 sanitize_strings(x)
 }
@@ -10,6 +10,6 @@ sanitize_strings(x)
 \item{x}{A character vector.}
 }
 \description{
-Substitute all german "Umlaute"
+Substitute all German "Umlaute"
 }
 \keyword{internal}

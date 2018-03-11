@@ -13,24 +13,24 @@ get_probabilities(x, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
 \item{x}{A table containing one row per survey and survey information in
 long format in a separate column named \code{survey}.}
 
-\item{coalitions}{A list of coaltions for which coalition probabilities should
+\item{coalitions}{A list of coalitions for which coalition probabilities should
 be calculated. Each list entry must be a vector of party names. Those names
 need to correspond to the names in \code{majority_df}.}
 
 \item{nsim}{number of simulations}
 
 \item{distrib.fun}{Function to calculate seat distribution. Defaults to
-\code{\link{sls}} (Sainte-Lague/Scheppers).}
+\code{\link{sls}} (Sainte-Lague/Schepers).}
 
 \item{seats_majority}{The number of seats needed to obtain majority.}
 
 \item{seed}{sets seed}
 
-\item{correction}{A positiv number. If not \code{NULL}, each sample from the
-dirichlet distribution will be additionally "corrected" by a random number
+\item{correction}{A positive number. If not \code{NULL}, each sample from the
+Dirichlet distribution will be additionally "corrected" by a random number
 from U(-1*correction, 1*correction). This can be used to introduce extra
-variation which might be usefull due to rounding errors from reported survey
-results (or add an aditional source of variation in general).}
+variation which might be useful due to rounding errors from reported survey
+results (or add an additional source of variation in general).}
 }
 \description{
 Wrapper for calculation of coalition probabilities from survey

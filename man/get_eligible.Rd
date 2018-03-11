@@ -2,7 +2,7 @@
 % Please edit documentation in R/pooling.R
 \name{get_eligible}
 \alias{get_eligible}
-\title{Extract surveys from insitutes within a specfied time-window}
+\title{Extract surveys from institutes within a specified time-window}
 \usage{
 get_eligible(surveys, pollsters, last_date = Sys.Date(), period = 14,
   period_extended = NA)
@@ -22,10 +22,10 @@ to current date.}
 
 \item{period_extended}{Optional. If specified, all surveys in the time-window
 from \code{last_date} - period_extended to \code{last_date} - period will
-also be considered for each pollster, but only after downweighting them by
+also be considered for each pollster, but only after down-weighting them by
 halving their true sample size.}
 }
 \description{
-Extract surveys from insitutes within a specfied time-window
+Extract surveys from institutes within a specified time-window
 }
 \keyword{internal}

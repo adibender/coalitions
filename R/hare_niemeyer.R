@@ -6,7 +6,7 @@
 #' @param votes Number of votes per party.
 #' @param parties Names of parties (must be same length as votes).
 #' @param n_seats Number of seats in parliament. Defaults to 183 (seats in
-#' austrian parliament).
+#' Austrian parliament).
 #' @seealso \code{\link{sls}}
 #' @importFrom reshape2 melt
 #' @return A \code{data.frame} containing parties above the hurdle and the respective
@@ -26,5 +26,5 @@ hare_niemeyer <- function(votes, parties, n_seats = 183) {
     rest[m_i] <- 0
   }
   seats
-  
+
 }

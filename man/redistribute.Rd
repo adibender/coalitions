@@ -14,8 +14,8 @@ were based on.}
 \item{hurdle}{The percentage threshold which has to be reached by a party
 to enter the parliament.}
 
-\item{others}{A string indecating the name under which parties not listed
-explicitly are subsummed.}
+\item{others}{A string indicating the name under which parties not listed
+explicitly are subsumed.}
 
 \item{epsilon}{Percentages should add up to 1. If they do not, within accuracy
 of \code{epsilon}, an error is thrown.}

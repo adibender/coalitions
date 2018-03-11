@@ -2,7 +2,7 @@
 % Please edit documentation in R/saint-lague-scheppers.R
 \name{sls}
 \alias{sls}
-\title{Seat Distribution by Sainte-Lague/Scheppers}
+\title{Seat Distribution by Sainte-Lague/Schepers}
 \usage{
 sls(votes, parties, n_seats = 598L)
 }
