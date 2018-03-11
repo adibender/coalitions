@@ -1,8 +1,20 @@
+# coalitions 0.6
+<hr>
+
+## coalitions 0.6.1
+
+- Minor fixes after [JOSS review](http://joss.theoj.org/), thx to Reviewer
+[@fsolt](https://github.com/fsolt)
+- Updated homepage (via [`pkgdown`](http://pkgdown.r-lib.org/articles/pkgdown.html) )
+- Added current JOSS badge
+
 ## coalitions 0.6.0 (2018-03)
 
 - Added vignette on [*pooling*](../articles/pooling.html)
 
-<hr width="1" size="500" display:inline-block>
+
+# coalitions 0.5
+<hr>
 
 ## coalitions 0.5.7 (2017-12)
 
@@ -14,7 +26,3 @@
 - More robust functions, more tests
 - Most functions comply with *tidyverse*
 - Improved documentation, added vignettes, created homepage (via `pkgdown`)
-
-## coalitions 0.0.1 (2013-12)
-
-- first clean version with basic functionality

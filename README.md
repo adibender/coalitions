@@ -10,10 +10,11 @@ Status](https://travis-ci.org/adibender/coalitions.svg?branch=master)](https://t
 Status](https://ci.appveyor.com/api/projects/status/github/adibender/coalitions?branch=master&svg=true)](https://ci.appveyor.com/project/adibender/coalitions)
 [![Coverage
 Status](https://codecov.io/github/adibender/coalitions/master.svg)](https://codecov.io/github/adibender/coalitions?branch=master)
+[![status](http://joss.theoj.org/papers/6aa04e39492359baa5b988d6bf1d47d8/status.svg)](http://joss.theoj.org/papers/6aa04e39492359baa5b988d6bf1d47d8)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/coalitions)](https://cran.r-project.org/package=coalitions)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1188812.svg)](https://doi.org/10.5281/zenodo.1188812)
 [![MIT
 license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1188812.svg)](https://doi.org/10.5281/zenodo.1188812)
 
 ## Overview
 
@@ -65,12 +66,12 @@ surveys
     ##   pollster   surveys           
     ##   <chr>      <list>            
     ## 1 allensbach <tibble [42 × 5]> 
-    ## 2 emnid      <tibble [225 × 5]>
+    ## 2 emnid      <tibble [226 × 5]>
     ## 3 forsa      <tibble [235 × 5]>
     ## 4 fgw        <tibble [83 × 5]> 
     ## 5 gms        <tibble [96 × 5]> 
     ## 6 infratest  <tibble [110 × 5]>
-    ## 7 insa       <tibble [303 × 5]>
+    ## 7 insa       <tibble [304 × 5]>
 
 Each row represents a polling agency and each row in the `surveys`
 column again contains a nested `tibble` with survey results from
