@@ -21,15 +21,19 @@ license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://open
 The package offers functions that calculate coalition probabilities in
 multi-party elections, based on a survey results:
 
+  - To get started, see our [workflow
+    vignette](https://adibender.github.io/coalitions/articles/workflow.html)
+
   - See our [talk](https://adibender.netlify.com/talk/appliedr-meetup/)
     at the [Munich AppliedR
     MeetUp](https://www.meetup.com/de-DE/Applied-R-Munich/)
 
-  - Check out our [updates on German (state and federal) elections are
-    available on Twitter](https://twitter.com/KOALA_LMU)\!
+  - Check out our [interacitve shiny
+    app](http://koala.stat.uni-muenchen.de/) on German (state and
+    federal) elections/surveys
 
-  - To get started, see our [workflow
-    vignette](https://adibender.github.io/coalitions/articles/workflow.html)
+  - Updates are available on our [KOALA\_LMU twitter
+    account](https://twitter.com/KOALA_LMU)\!
 
 ## Installation
 
