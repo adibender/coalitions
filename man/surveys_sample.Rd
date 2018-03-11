@@ -10,7 +10,7 @@
   \item{surveys}{a list of data frames, each containing one survey}
 }}
 \source{
-\url{http://www.wahlrecht.de/}
+\url{https://www.wahlrecht.de/}
 }
 \usage{
 surveys_sample

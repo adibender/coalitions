@@ -6,16 +6,16 @@
 \alias{scrape_ltw}
 \title{Scrape surveys from wahlrecht.de}
 \usage{
-scrape_wahlrecht(address = "http://www.wahlrecht.de/umfragen/emnid.htm",
+scrape_wahlrecht(address = "https://www.wahlrecht.de/umfragen/emnid.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
   "SONSTIGE"))
 
-scrape_by(address = "http://www.wahlrecht.de/umfragen/landtage/bayern.htm",
+scrape_by(address = "https://www.wahlrecht.de/umfragen/landtage/bayern.htm",
   parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
   "SONSTIGE"))
 
 
-  scrape_ltw(address = "http://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
+  scrape_ltw(address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
   "SONSTIGE"))
 }

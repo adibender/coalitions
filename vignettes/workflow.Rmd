@@ -38,7 +38,7 @@ To this end we provide some convenience functions, the most important of which
 are listed below:
 
 1. `scrape_wahlrecht`: A wrapper function that download the most current
-survey results from http://www.wahlrecht.de/
+survey results from https://www.wahlrecht.de/
 
 2. `collapse_parties`: Transforms information on percentages received by
 individual parties in long format and stores them inside a nested tibble

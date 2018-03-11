@@ -66,7 +66,7 @@ sanitize_colnames <- function(df) {
 #' @importFrom rlang .data
 #' @export
 scrape_wahlrecht <- function(
-  address = "http://www.wahlrecht.de/umfragen/emnid.htm",
+  address = "https://www.wahlrecht.de/umfragen/emnid.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
     "SONSTIGE")) {
 
@@ -74,11 +74,11 @@ scrape_wahlrecht <- function(
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
-  if (address == "http://www.wahlrecht.de/umfragen/politbarometer.htm") {
+  if (address == "https://www.wahlrecht.de/umfragen/politbarometer.htm") {
     colnames(atab) <- atab[2, ]
     ind_row_remove <- -1:-3
-  } else if ( address == "http://www.wahlrecht.de/umfragen/gms.htm" |
-    address == "http://www.wahlrecht.de/umfragen/insa.htm" ) {
+  } else if ( address == "https://www.wahlrecht.de/umfragen/gms.htm" |
+    address == "https://www.wahlrecht.de/umfragen/insa.htm" ) {
     ind_row_remove <- -1:-4
   } else {
     ind_row_remove <- -1:-3
@@ -153,7 +153,7 @@ get_surveys <- function(country = c("DE", "AT")) {
 #' @inherit scrape_wahlrecht
 #' @export
 scrape_by <- function(
-  address = "http://www.wahlrecht.de/umfragen/landtage/bayern.htm",
+  address = "https://www.wahlrecht.de/umfragen/landtage/bayern.htm",
   parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
               "SONSTIGE")) {
 
@@ -230,7 +230,7 @@ get_surveys_by <- function() {
 #' @inherit scrape_wahlrecht
 #' @export
 scrape_ltw <- function(
-  address = "http://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
+  address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
     "SONSTIGE")) {
 
