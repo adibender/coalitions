@@ -21,7 +21,7 @@ A numeric vector giving the number of seats each party obtained.
 \description{
 Calculates number of seats for the respective parties that have received more
 than 5\% of votes (according to the method of Sainte-Lague/Schepers,
-see http://www.wahlrecht.de/verfahren/rangmasszahlen.html).
+see https://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 }
 \seealso{
 \code{\link{dHondt}}

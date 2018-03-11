@@ -38,7 +38,7 @@ We offer convenience functions that allow for easily performing the pooling
 approach:
 
 1. `get_surveys`: Wrapper that uses `scrape_wahlrecht` and `collapse_parties`
-to download the most current survey results from http://www.wahlrecht.de/
+to download the most current survey results from https://www.wahlrecht.de/
 and stores the prepared data inside a nested `tibble` (see `tidyr::nest`)
 
 2. `pool_surveys`: Pool all newest surveys (obtained with `get_surveys`), using

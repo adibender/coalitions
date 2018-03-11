@@ -3,18 +3,18 @@
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
-developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Travis-CI Build
 Status](https://travis-ci.org/adibender/coalitions.svg?branch=master)](https://travis-ci.org/adibender/coalitions)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/adibender/coalitions?branch=master&svg=true)](https://ci.appveyor.com/project/adibender/coalitions)
 [![Coverage
 Status](https://codecov.io/github/adibender/coalitions/master.svg)](https://codecov.io/github/adibender/coalitions?branch=master)
-[![status](http://joss.theoj.org/papers/6aa04e39492359baa5b988d6bf1d47d8/status.svg)](http://joss.theoj.org/papers/6aa04e39492359baa5b988d6bf1d47d8)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/coalitions)](https://cran.r-project.org/package=coalitions)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1188812.svg)](https://doi.org/10.5281/zenodo.1188812)
+[![status](https://joss.theoj.org/papers/6aa04e39492359baa5b988d6bf1d47d8/status.svg)](https://joss.theoj.org/papers/6aa04e39492359baa5b988d6bf1d47d8)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/coalitions)](https://cran.r-project.org/package=coalitions)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1172594.svg)](https://doi.org/10.5281/zenodo.1172594)
 [![MIT
-license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
 
@@ -25,8 +25,8 @@ multi-party elections, based on a survey results:
     at the [Munich AppliedR
     MeetUp](https://www.meetup.com/de-DE/Applied-R-Munich/)
 
-  - Check out our [interactive shiny app on German
-    elections](http://koala.stat.uni-muenchen.de/)\!
+  - Check out our [updates on German (state and federal) elections are
+    available on Twitter](https://twitter.com/KOALA_LMU)\!
 
   - To get started, see our [workflow
     vignette](https://adibender.github.io/coalitions/articles/workflow.html)
@@ -51,7 +51,7 @@ A short overview is presented below.
 
 The wrapper `get_surveys()` which takes no arguments, downloads all
 surveys currently available at
-[wahlrecht.de](http://www.wahlrecht.de/umfragen) and stores them in a
+[wahlrecht.de](https://www.wahlrecht.de/umfragen) and stores them in a
 nested `tibble`:
 
 ``` r
@@ -127,7 +127,7 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##   pollster   date       coalition       probability
     ##   <chr>      <date>     <chr>                 <dbl>
     ## 1 allensbach 2018-02-23 cdu                  0.    
-    ## 2 allensbach 2018-02-23 cdu_fdp              0.0300
+    ## 2 allensbach 2018-02-23 cdu_fdp              0.0100
     ## 3 allensbach 2018-02-23 cdu_fdp_greens     100.0   
     ## 4 allensbach 2018-02-23 spd                  0.    
     ## 5 allensbach 2018-02-23 left_spd             0.    

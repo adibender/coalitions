@@ -101,7 +101,7 @@
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p>We offer convenience functions that allow for easily performing the pooling approach:</p>
 <ol style="list-style-type: decimal">
-<li><p><code>get_surveys</code>: Wrapper that uses <code>scrape_wahlrecht</code> and <code>collapse_parties</code> to download the most current survey results from <a href="http://www.wahlrecht.de/" class="uri">http://www.wahlrecht.de/</a> and stores the prepared data inside a nested <code>tibble</code> (see <code><a href="http://www.rdocumentation.org/packages/tidyr/topics/nest">tidyr::nest</a></code>)</p></li>
+<li><p><code>get_surveys</code>: Wrapper that uses <code>scrape_wahlrecht</code> and <code>collapse_parties</code> to download the most current survey results from <a href="https://www.wahlrecht.de/" class="uri">https://www.wahlrecht.de/</a> and stores the prepared data inside a nested <code>tibble</code> (see <code><a href="http://www.rdocumentation.org/packages/tidyr/topics/nest">tidyr::nest</a></code>)</p></li>
 <li><p><code>pool_surveys</code>: Pool all newest surveys (obtained with <code>get_surveys</code>), using a specified time window that defaults to the last 14 days, and assuming a certain correlation between the number of party-specific votes of any two polling agencies, which defaults to 0.5. Per polling agency only the newest survey in the time windows is considered.</p></li>
 </ol>
 </div>

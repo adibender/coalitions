@@ -2,7 +2,7 @@
 #'
 #' Calculates number of seats for the respective parties that have received more
 #' than 5\% of votes (according to the method of Sainte-Lague/Schepers,
-#' see http://www.wahlrecht.de/verfahren/rangmasszahlen.html).
+#' see https://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 #'
 #' @inheritParams redistribute
 #' @param votes A numeric vector giving the redistributes votes

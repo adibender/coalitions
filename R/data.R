@@ -9,7 +9,7 @@
 #'   \item{institute}{name of the pollster}
 #'   \item{surveys}{a list of data frames, each containing one survey}
 #' }
-#' @source \url{http://www.wahlrecht.de/}
+#' @source \url{https://www.wahlrecht.de/}
 "surveys_sample"
 
 
