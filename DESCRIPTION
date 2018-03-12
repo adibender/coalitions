@@ -1,6 +1,6 @@
 Package: coalitions
 Type: Package
-Title: Coalition Probabilities in Multi-party Democracies
+Title: Coalition Probabilities in Multi-Party Democracies
 Version: 0.6.1
 Authors@R: c(
     person("Andreas", "Bender", , "andreas.bender@stat.uni-muenchen.de", role = c("aut", "cre"), comment=c(ORCID = "0000-0001-5628-8611")),
