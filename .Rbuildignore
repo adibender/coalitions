@@ -16,4 +16,4 @@
 ^_pkgdown\.yml$
 ^vignettes/$
 ^LICENSE\.md$
-^paper/$
+^paper$
