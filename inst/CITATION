@@ -10,7 +10,7 @@ citEntry(
   year = "2018",
   month = "mar",
   volume = "3",
-  number = "10",
+  number = "23",
   url = "http://joss.theoj.org/papers/10.21105/joss.00606",
   doi = "10.21105/joss.00606",
   textVersion = "Bender et al., (2018). coalitions: Coalition probabilities in multi-party democracies. Journal of Open Source Software, 3(23), 606, https://doi.org/10.21105/joss.00606")
