@@ -167,6 +167,29 @@ explicitly are subsumed.</p></td>
 <code><a href='dHondt.html'>dHondt</a></code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>coalitions</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='co'># get the latest survey for the sample German federal election polls</span>
+<span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_surveys.html'>get_latest</a></span>(<span class='no'>surveys_sample</span>)
+<span class='co'># simulate 100 seat distributions</span>
+<span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='no'>surveys</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>draws</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>survey</span>, <span class='no'>draw_from_posterior</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>),
+                              <span class='kw'>seats</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map2'>map2</a></span>(<span class='no'>draws</span>, <span class='no'>survey</span>, <span class='no'>get_seats</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Unrecognized time zone ''</span></div><div class='input'><span class='no'>surveys</span>$<span class='no'>seats</span></div><div class='output co'>#&gt; [[1]]
+#&gt; # A tibble: 600 x 3
+#&gt;      sim party  seats
+#&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
+#&gt;  1     1 cdu      233
+#&gt;  2     1 spd      153
+#&gt;  3     1 greens    54
+#&gt;  4     1 fdp       49
+#&gt;  5     1 left      61
+#&gt;  6     1 afd       48
+#&gt;  7     2 cdu      236
+#&gt;  8     2 spd      158
+#&gt;  9     2 greens    51
+#&gt; 10     2 fdp       52
+#&gt; # ... with 590 more rows
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -176,7 +199,9 @@ explicitly are subsumed.</p></td>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

@@ -64,6 +64,14 @@ sanitize_colnames <- function(df) {
 #' @importFrom xml2 read_html
 #' @importFrom stringr str_sub
 #' @importFrom rlang .data
+#' @examples
+#' library(coalitions)
+#' library(dplyr)
+#' # select a polling agency from .pollster_df that should be scraped ...
+#' coalitions:::.pollster_df
+#' # ... here we choose Forsa
+#' address <- coalitions:::.pollster_df %>% filter(pollster == "forsa") %>% pull(address)
+#' scrape_wahlrecht(address = address)
 #' @export
 scrape_wahlrecht <- function(
   address = "https://www.wahlrecht.de/umfragen/emnid.htm",
@@ -123,10 +131,15 @@ scrape_wahlrecht <- function(
 
 #' Scrape surveys from all pollsters
 #'
+#' @rdname get_surveys
 #' @param country Choose country from which surveys should be scraped.
 #' Currently \code{"DE"} (Germany) and \code{"AT"} (Austria) are supported.
 #' @import dplyr
 #' @importFrom purrr map
+#' @examples
+#' library(coalitions)
+#' # scrape data for the German federal election
+#' # get_surveys()
 #' @export
 get_surveys <- function(country = c("DE", "AT")) {
 
@@ -213,6 +226,7 @@ scrape_by <- function(
 #'
 #' Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
 #'
+#' @rdname get_surveys
 #' @importFrom tidyr nest
 #' @export
 get_surveys_by <- function() {
@@ -224,7 +238,7 @@ get_surveys_by <- function() {
 
 }
 
-#' Scrape regional polls
+#' Scrape Lower Saxony regional polls
 #'
 #' @rdname scrape
 #' @inherit scrape_wahlrecht
@@ -282,10 +296,11 @@ scrape_ltw <- function(
 
 }
 
-#' Obtain (nested) Niedersachsen surveys object
+#' Obtain (nested) Lower Saxony surveys object
 #'
 #' Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
 #'
+#' @rdname get_surveys
 #' @importFrom tidyr nest
 #' @export
 get_surveys_nds <- function() {

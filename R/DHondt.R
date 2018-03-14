@@ -11,6 +11,13 @@
 #' @importFrom reshape2 melt
 #' @return A \code{data.frame} containing parties above the hurdle and the respective
 #' seats/percentages after redistribution via D'Hondt
+#' @examples 
+#' library(coalitions)
+#' library(dplyr) 
+#' # get the latest survey for the sample German federal election polls
+#' surveys <- get_latest(surveys_sample) %>% tidyr::unnest()
+#' # calculate the seat distribution based on D'Hondt for a parliament with 300 seats
+#' dHondt(surveys$votes, surveys$party, n_seats = 300)
 #' @export
 dHondt <- function(votes, parties, n_seats = 183) {
 

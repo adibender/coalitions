@@ -14,6 +14,15 @@
 #' have matches in \code{current}.
 #' @importFrom purrr map2
 #' @keywords internal
+#' @examples 
+#' library(coalitions)
+#' library(dplyr) 
+#' # look at sample German federal election polls
+#' surveys <- surveys_sample %>% tidyr::unnest() %>% group_by(pollster) %>% slice(1)
+#' # prettify the polling agency names
+#' prettify_strings(surveys$pollster)
+#' prettify_en(surveys$pollster)
+#' prettify_de(surveys$pollster)
 #' @export
 prettify_strings <- function(
   x,

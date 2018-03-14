@@ -16,4 +16,5 @@
 ^_pkgdown\.yml$
 ^vignettes/$
 ^LICENSE\.md$
-^paper/$
+^paper$
+^cran-comments\.md$
