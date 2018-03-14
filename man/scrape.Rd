@@ -29,5 +29,14 @@ Scrapes survey tables and performs sanitation to output tidy data
 
 Scrape Bavarian regional polls
 
-Scrape regional polls
+Scrape Lower Saxony regional polls
+}
+\examples{
+library(coalitions)
+library(dplyr)
+# select a polling agency from .pollster_df that should be scraped ...
+coalitions:::.pollster_df
+# ... here we choose Forsa
+address <- coalitions:::.pollster_df \%>\% filter(pollster == "forsa") \%>\% pull(address)
+scrape_wahlrecht(address = address)
 }

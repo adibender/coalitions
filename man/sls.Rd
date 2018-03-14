@@ -23,6 +23,14 @@ Calculates number of seats for the respective parties that have received more
 than 5\% of votes (according to the method of Sainte-Lague/Schepers,
 see https://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 }
+\examples{
+library(coalitions)
+library(dplyr) 
+# get the latest survey for the sample German federal election polls
+surveys <- get_latest(surveys_sample) \%>\% tidyr::unnest()
+# calculate the seat distribution based on Sainte-Lague/Schepers for a parliament with 300 seats
+sls(surveys$votes, surveys$party, n_seats = 300)
+}
 \seealso{
 \code{\link{dHondt}}
 }

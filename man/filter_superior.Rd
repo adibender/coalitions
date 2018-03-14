@@ -2,7 +2,7 @@
 % Please edit documentation in R/coalition-probability.R
 \name{filter_superior}
 \alias{filter_superior}
-\title{Remove rows from table for which superior coalitions possible}
+\title{Remove rows from table for which superior coalitions are possible}
 \usage{
 filter_superior(majority_df, coalition, ...)
 }
@@ -16,7 +16,7 @@ will be obtained by \code{\link[coalitions]{get_superior}}.}
 \item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}
 }
 \description{
-Remove rows from table for which superior coalitions possible
+Remove rows from table for which superior coalitions are possible
 }
 \seealso{
 \code{\link[coalitions]{get_superior}}

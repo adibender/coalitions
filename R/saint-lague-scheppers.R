@@ -14,6 +14,13 @@
 #' @import dplyr
 #' @importFrom reshape2 melt
 #' @seealso \code{\link{dHondt}}
+#' @examples 
+#' library(coalitions)
+#' library(dplyr) 
+#' # get the latest survey for the sample German federal election polls
+#' surveys <- get_latest(surveys_sample) %>% tidyr::unnest()
+#' # calculate the seat distribution based on Sainte-Lague/Schepers for a parliament with 300 seats
+#' sls(surveys$votes, surveys$party, n_seats = 300)
 #' @export
 sls <- function(
   votes,
