@@ -163,16 +163,16 @@
 <pre><code>## # A tibble: 10 x 7
 ##      cdu   spd greens    fdp   left   afd others
 ##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.328 0.185 0.119  0.0686 0.104  0.144 0.0509
-##  2 0.339 0.190 0.117  0.0774 0.104  0.135 0.0380
-##  3 0.334 0.202 0.103  0.0691 0.104  0.127 0.0615
-##  4 0.331 0.186 0.123  0.0796 0.0985 0.139 0.0426
-##  5 0.313 0.198 0.105  0.0893 0.108  0.130 0.0565
-##  6 0.340 0.183 0.114  0.0883 0.101  0.125 0.0492
-##  7 0.326 0.186 0.135  0.0781 0.0942 0.122 0.0581
-##  8 0.336 0.194 0.0930 0.0900 0.105  0.132 0.0508
-##  9 0.325 0.197 0.122  0.0837 0.0932 0.134 0.0448
-## 10 0.314 0.198 0.108  0.0839 0.102  0.140 0.0557</code></pre>
+##  1 0.316 0.198  0.122 0.0842 0.104  0.120 0.0558
+##  2 0.326 0.181  0.124 0.0823 0.108  0.125 0.0534
+##  3 0.333 0.175  0.129 0.0760 0.105  0.129 0.0531
+##  4 0.326 0.191  0.118 0.0703 0.102  0.136 0.0564
+##  5 0.321 0.182  0.127 0.0914 0.0939 0.125 0.0595
+##  6 0.353 0.197  0.120 0.0667 0.0815 0.130 0.0507
+##  7 0.333 0.192  0.127 0.0691 0.0920 0.135 0.0531
+##  8 0.347 0.191  0.118 0.0818 0.0938 0.114 0.0545
+##  9 0.333 0.197  0.112 0.0789 0.0997 0.138 0.0421
+## 10 0.322 0.192  0.118 0.0853 0.0972 0.143 0.0424</code></pre>
 </section><section id="calculate-seat-distribution" class="level2"><h2>Calculate seat distribution</h2>
 <p>Given the simulated elections, we can calculate the number of seats each party obtained. To do so we need to have a function that knows how to redistribute seats for the particular election. In Germany for example, seats are distributed according to the system of <em>Sainte-Lague-Scheppers</em>, which is implemented in <code><a href="../reference/sls.html">?sls</a></code>.</p>
 <p>This makes this package easily extensible to other multi-party systems, as you only need to provide a function that redistributes seats based on percentages obtained by the various parties and provide that function to the <code>distrib.fun</code> argument of the <code>get_seats</code> function:</p>
@@ -193,18 +193,18 @@
 <pre><code>## # A tibble: 60 x 3
 ##      sim party  seats
 ##    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
-##  1     1 cdu      207
-##  2     1 spd      117
-##  3     1 greens    75
-##  4     1 fdp       43
-##  5     1 left      65
-##  6     1 afd       91
-##  7     2 cdu      210
-##  8     2 spd      118
-##  9     2 greens    73
-## 10     2 fdp       48
+##  1     1 cdu      201
+##  2     1 spd      125
+##  3     1 greens    77
+##  4     1 fdp       53
+##  5     1 left      66
+##  6     1 afd       76
+##  7     2 cdu      206
+##  8     2 spd      114
+##  9     2 greens    79
+## 10     2 fdp       52
 ## # ... with 50 more rows</code></pre>
-<p>In the above example, given the latest survey, CDU/CSU would have 207 seats in the first simulation, 210 seats in the second simulation, etc.</p>
+<p>In the above example, given the latest survey, CDU/CSU would have 201 seats in the first simulation, 206 seats in the second simulation, etc.</p>
 </section><section id="calculate-majorities" class="level2"><h2>Calculate majorities</h2>
 <p>The next step is to define coalitions of interest, then calculate in what percentage of the simulations the coalition would obtain enough seats for a majority.</p>
 <p>Below, each list element defines one coalition of interest (one party could potentially obtain absolute majority on their own):</p>
