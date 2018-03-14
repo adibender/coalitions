@@ -1,6 +1,10 @@
 # coalitions 0.6
 <hr>
 
+## coalitions 0.6.2
+
+- Added reference to Description and examples to functions as per CRAN request
+
 ## coalitions 0.6.1
 
 - Minor fixes after [JOSS review](http://joss.theoj.org/), thx to Reviewer
