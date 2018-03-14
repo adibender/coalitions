@@ -19,44 +19,17 @@ Vector of (named) entry probabilities.
 \description{
 Get probabilities to enter the parliament.
 }
+\examples{
+library(coalitions)
+library(dplyr) 
+# get the latest survey for the sample German federal election polls
+surveys <- get_latest(surveys_sample)
+# use 100 simulations for a fast runtime
+surveys <- surveys \%>\% mutate(draws = purrr::map(survey, draw_from_posterior, nsim = 100),
+                              entryProbs = purrr::map(draws, get_entryprobability))
+surveys$entryProbs
+}
 \seealso{
 \code{\link{draw_from_posterior}}
 }
-\keyword{"emnid")}
-\keyword{#}
-\keyword{%>%}
-\keyword{100}
-\keyword{100),}
-\keyword{<-}
-\keyword{=}
-\keyword{==}
-\keyword{Emnid}
-\keyword{a}
-\keyword{agency}
-\keyword{draw_from_posterior,}
-\keyword{entryProbs}
-\keyword{fast}
-\keyword{filter(pollster}
-\keyword{for}
-\keyword{from}
-\keyword{get_entryprobability))}
-\keyword{get_surveys()}
 \keyword{internal}
-\keyword{library(coalitions)}
-\keyword{library(dplyr)}
-\keyword{mutate(draws}
-\keyword{newest}
-\keyword{nsim}
-\keyword{polling}
-\keyword{purrr::map(draws,}
-\keyword{purrr::map(survey,}
-\keyword{runtime}
-\keyword{scrape}
-\keyword{simulations}
-\keyword{slice(1)}
-\keyword{survey}
-\keyword{surveys}
-\keyword{surveys$entryProbs}
-\keyword{the}
-\keyword{tidyr::unnest()}
-\keyword{use}

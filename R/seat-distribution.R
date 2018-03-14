@@ -20,8 +20,8 @@
 #' @examples 
 #' library(coalitions)
 #' library(dplyr) 
-#' # scrape the newest survey from the Emnid polling agency
-#' surveys <- get_surveys() %>% filter(pollster == "emnid") %>% tidyr::unnest() %>% slice(1)
+#' # get the latest survey for the sample German federal election polls
+#' surveys <- get_latest(surveys_sample)
 #' # simulate 100 seat distributions
 #' surveys <- surveys %>% mutate(draws = purrr::map(survey, draw_from_posterior, nsim = 100),
 #'                               seats = purrr::map2(draws, survey, get_seats))
@@ -68,8 +68,8 @@ get_seats <- function(
 #' @examples
 #' library(coalitions)
 #' library(dplyr) 
-#' # scrape the newest survey from the Emnid polling agency
-#' surveys <- get_surveys() %>% filter(pollster == "emnid") %>% tidyr::unnest() %>% slice(1)
+#' # get the latest survey for the sample German federal election polls
+#' surveys <- get_latest(surveys_sample)
 #' # redistribute the shares of 'others' parties and parties with a share of under 5\%
 #' surveys <- surveys %>% mutate(survey_redist = purrr::map(survey, redistribute))
 #' surveys$survey # results before redistribution

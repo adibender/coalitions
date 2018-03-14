@@ -28,8 +28,8 @@ Do coalitions have a majority
 library(coalitions)
 library(dplyr) 
 library(purrr)
-# scrape the newest survey from the Emnid polling agency
-surveys <- get_surveys() \%>\% filter(pollster == "emnid") \%>\% tidyr::unnest() \%>\% slice(1)
+# get the latest survey for the sample German federal election polls
+surveys <- get_latest(surveys_sample)
 # check for majorities of two coalitions
 coals <- list(c("cdu", "fdp"),
               c("spd", "left", "greens"))

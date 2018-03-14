@@ -25,9 +25,8 @@ than \code{hurdle} percent of votes (according to the method of Hare/Niemeyer)
 \examples{
 library(coalitions)
 library(dplyr)
-# scrape the newest survey from the Emnid polling agency
-surveys <- get_surveys() \%>\% filter(pollster == "emnid") \%>\% tidyr::unnest() \%>\%
-  slice(1) \%>\% tidyr::unnest()
+# get the latest survey for the sample German federal election polls
+surveys <- get_latest(surveys_sample) \%>\% tidyr::unnest()
 # calculate the seat distribution based on Hare/Niemeyer for a parliament with 300 seats
 hare_niemeyer(surveys$votes, surveys$party, n_seats = 300)
 }

@@ -26,9 +26,8 @@ see https://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 \examples{
 library(coalitions)
 library(dplyr) 
-# scrape the newest survey from the Emnid polling agency
-surveys <- get_surveys() \%>\% filter(pollster == "emnid") \%>\% tidyr::unnest() \%>\% 
-  slice(1) \%>\% tidyr::unnest()
+# get the latest survey for the sample German federal election polls
+surveys <- get_latest(surveys_sample) \%>\% tidyr::unnest()
 # calculate the seat distribution based on Sainte-Lague/Schepers for a parliament with 300 seats
 sls(surveys$votes, surveys$party, n_seats = 300)
 }

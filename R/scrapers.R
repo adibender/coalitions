@@ -68,9 +68,9 @@ sanitize_colnames <- function(df) {
 #' library(coalitions)
 #' library(dplyr)
 #' # select a polling agency from .pollster_df that should be scraped ...
-#' coalitions::.pollster_df
+#' coalitions:::.pollster_df
 #' # ... here we choose Forsa
-#' address <- coalitions::.pollster_df %>% filter(pollster == "forsa") %>% pull(address)
+#' address <- coalitions:::.pollster_df %>% filter(pollster == "forsa") %>% pull(address)
 #' scrape_wahlrecht(address = address)
 #' @export
 scrape_wahlrecht <- function(
@@ -139,9 +139,7 @@ scrape_wahlrecht <- function(
 #' @examples
 #' library(coalitions)
 #' # scrape data for the German federal election
-#' get_surveys()
-#' # scrape data for the Austria legislative election
-#' get_surveys(country = "AT")
+#' # get_surveys()
 #' @export
 get_surveys <- function(country = c("DE", "AT")) {
 

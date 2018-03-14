@@ -38,14 +38,10 @@ before this date.
 \examples{
 library(coalitions)
 # scrape data for the German federal election
-get_surveys()
-# scrape data for the Austria legislative election
-get_surveys(country = "AT")
+# get_surveys()
 library(coalitions)
 ### Scrape the newest poll for the German federal election
-# Possibility 1
-get_latest()
-# Possibility 2
-surveys <- get_surveys()
-get_latest(surveys)
+# Possibility 1: Calling get_latest without arguments scrapes surveys from the web
+# Possibility 2: Use get_latest() on an already scraped dataset
+surveys <- get_latest(surveys_sample)
 }

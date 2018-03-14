@@ -35,8 +35,8 @@ Scrape Lower Saxony regional polls
 library(coalitions)
 library(dplyr)
 # select a polling agency from .pollster_df that should be scraped ...
-coalitions::.pollster_df
+coalitions:::.pollster_df
 # ... here we choose Forsa
-address <- coalitions::.pollster_df \%>\% filter(pollster == "forsa") \%>\% pull(address)
+address <- coalitions:::.pollster_df \%>\% filter(pollster == "forsa") \%>\% pull(address)
 scrape_wahlrecht(address = address)
 }

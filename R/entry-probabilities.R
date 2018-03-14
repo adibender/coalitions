@@ -6,10 +6,11 @@
 #' @return Vector of (named) entry probabilities.
 #' @seealso \code{\link{draw_from_posterior}}
 #' @keywords internal
+#' @examples
 #' library(coalitions)
 #' library(dplyr) 
-#' # scrape the newest survey from the Emnid polling agency
-#' surveys <- get_surveys() %>% filter(pollster == "emnid") %>% tidyr::unnest() %>% slice(1)
+#' # get the latest survey for the sample German federal election polls
+#' surveys <- get_latest(surveys_sample)
 #' # use 100 simulations for a fast runtime
 #' surveys <- surveys %>% mutate(draws = purrr::map(survey, draw_from_posterior, nsim = 100),
 #'                               entryProbs = purrr::map(draws, get_entryprobability))

@@ -17,8 +17,8 @@
 #' @examples 
 #' library(coalitions)
 #' library(dplyr) 
-#' # scrape some surveys
-#' surveys <- get_surveys() %>% group_by(pollster) %>% slice(1)
+#' # look at sample German federal election polls
+#' surveys <- surveys_sample %>% tidyr::unnest() %>% group_by(pollster) %>% slice(1)
 #' # prettify the polling agency names
 #' prettify_strings(surveys$pollster)
 #' prettify_en(surveys$pollster)
