@@ -153,6 +153,35 @@ of <code>epsilon</code>, an error is thrown.</p></td>
     <p><code><a href='get_seats.html'>get_seats</a></code>, <code><a href='sls.html'>sls</a></code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>coalitions</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='co'># get the latest survey for the sample German federal election polls</span>
+<span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_surveys.html'>get_latest</a></span>(<span class='no'>surveys_sample</span>)
+<span class='co'># redistribute the shares of 'others' parties and parties with a share of under 5\%</span>
+<span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='no'>surveys</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>survey_redist</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>survey</span>, <span class='no'>redistribute</span>))
+<span class='no'>surveys</span>$<span class='no'>survey</span> <span class='co'># results before redistribution</span></div><div class='output co'>#&gt; [[1]]
+#&gt; # A tibble: 7 x 3
+#&gt;   party  percent votes
+#&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 cdu      38.0  718  
+#&gt; 2 spd      24.0  453  
+#&gt; 3 greens    8.00 151  
+#&gt; 4 fdp       8.00 151  
+#&gt; 5 left      9.00 170  
+#&gt; 6 afd       8.00 151  
+#&gt; 7 others    5.00  94.4
+#&gt; </div><div class='input'><span class='no'>surveys</span>$<span class='no'>survey_redist</span> <span class='co'># results after redistribution</span></div><div class='output co'>#&gt; [[1]]
+#&gt; # A tibble: 6 x 3
+#&gt;   party  percent votes
+#&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 cdu     0.400    718
+#&gt; 2 spd     0.253    453
+#&gt; 3 greens  0.0842   151
+#&gt; 4 fdp     0.0842   151
+#&gt; 5 left    0.0947   170
+#&gt; 6 afd     0.0842   151
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -160,7 +189,9 @@ of <code>epsilon</code>, an error is thrown.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

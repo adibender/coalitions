@@ -30,6 +30,8 @@
 <meta property="og:title" content="Scrape surveys from all pollsters — get_surveys" />
 
 <meta property="og:description" content="Scrape surveys from all pollsters
+Scrapes data from wahlrecht.de and performs some sanitizing.
+Scrapes data from wahlrecht.de and performs some sanitizing.
 Given a specific date, extract the survey from this date or the last one
 before this date." />
 
@@ -116,11 +118,17 @@ before this date." />
 
     
     <p>Scrape surveys from all pollsters</p>
+<p>Scrapes data from <a href='wahlrecht.de'>wahlrecht.de</a> and performs some sanitizing.</p>
+<p>Scrapes data from <a href='wahlrecht.de'>wahlrecht.de</a> and performs some sanitizing.</p>
 <p>Given a specific date, extract the survey from this date or the last one
 before this date.</p>
     
 
     <pre class="usage"><span class='fu'>get_surveys</span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"DE"</span>, <span class='st'>"AT"</span>))
+
+<span class='fu'>get_surveys_by</span>()
+
+<span class='fu'>get_surveys_nds</span>()
 
 <span class='fu'>get_latest</span>(<span class='kw'>surveys</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>())</pre>
     
@@ -145,12 +153,23 @@ be searched for. Defaults to <code>Sys.Date</code>.</p></td>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>coalitions</span>)
+<span class='co'># scrape data for the German federal election</span>
+<span class='co'># get_surveys()</span>
+<span class='fu'>library</span>(<span class='no'>coalitions</span>)
+<span class='co'>### Scrape the newest poll for the German federal election</span>
+<span class='co'># Possibility 1: Calling get_latest without arguments scrapes surveys from the web</span>
+<span class='co'># Possibility 2: Use get_latest() on an already scraped dataset</span>
+<span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='fu'>get_latest</span>(<span class='no'>surveys_sample</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

@@ -71,11 +71,11 @@ surveys
     ##   <chr>      <list>            
     ## 1 allensbach <tibble [42 × 5]> 
     ## 2 emnid      <tibble [226 × 5]>
-    ## 3 forsa      <tibble [235 × 5]>
+    ## 3 forsa      <tibble [236 × 5]>
     ## 4 fgw        <tibble [83 × 5]> 
     ## 5 gms        <tibble [96 × 5]> 
     ## 6 infratest  <tibble [110 × 5]>
-    ## 7 insa       <tibble [304 × 5]>
+    ## 7 insa       <tibble [305 × 5]>
 
 Each row represents a polling agency and each row in the `surveys`
 column again contains a nested `tibble` with survey results from
@@ -90,16 +90,16 @@ surveys %>%
     ## # A tibble: 42 x 6
     ##    pollster   date       start      end        respondents survey         
     ##    <chr>      <date>     <date>     <date>           <dbl> <list>         
-    ##  1 allensbach 2018-02-23 2018-02-02 2018-02-15       1271. <tibble [7 × 3…
-    ##  2 allensbach 2018-01-25 2018-01-05 2018-01-18       1221. <tibble [7 × 3…
-    ##  3 allensbach 2017-12-21 2017-12-01 2017-12-14       1443. <tibble [7 × 3…
-    ##  4 allensbach 2017-11-30 2017-11-22 2017-11-27       1299. <tibble [7 × 3…
-    ##  5 allensbach 2017-10-25 2017-10-07 2017-10-19       1454. <tibble [7 × 3…
-    ##  6 allensbach 2017-09-22 2017-09-13 2017-09-20       1074. <tibble [7 × 3…
-    ##  7 allensbach 2017-09-19 2017-09-06 2017-09-14       1083. <tibble [7 × 3…
-    ##  8 allensbach 2017-09-06 2017-08-22 2017-08-31       1043. <tibble [7 × 3…
-    ##  9 allensbach 2017-08-22 2017-08-04 2017-08-17       1421. <tibble [7 × 3…
-    ## 10 allensbach 2017-07-18 2017-07-01 2017-07-12       1403. <tibble [7 × 3…
+    ##  1 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 <tibble [7 × 3…
+    ##  2 allensbach 2018-01-25 2018-01-05 2018-01-18        1221 <tibble [7 × 3…
+    ##  3 allensbach 2017-12-21 2017-12-01 2017-12-14        1443 <tibble [7 × 3…
+    ##  4 allensbach 2017-11-30 2017-11-22 2017-11-27        1299 <tibble [7 × 3…
+    ##  5 allensbach 2017-10-25 2017-10-07 2017-10-19        1454 <tibble [7 × 3…
+    ##  6 allensbach 2017-09-22 2017-09-13 2017-09-20        1074 <tibble [7 × 3…
+    ##  7 allensbach 2017-09-19 2017-09-06 2017-09-14        1083 <tibble [7 × 3…
+    ##  8 allensbach 2017-09-06 2017-08-22 2017-08-31        1043 <tibble [7 × 3…
+    ##  9 allensbach 2017-08-22 2017-08-04 2017-08-17        1421 <tibble [7 × 3…
+    ## 10 allensbach 2017-07-18 2017-07-01 2017-07-12        1403 <tibble [7 × 3…
     ## # ... with 32 more rows
 
 ``` r
@@ -110,13 +110,13 @@ survey %>% unnest()
     ## # A tibble: 7 x 8
     ##   pollster   date       start      end        respondents party  percent
     ##   <chr>      <date>     <date>     <date>           <dbl> <chr>    <dbl>
-    ## 1 allensbach 2018-02-23 2018-02-02 2018-02-15       1271. cdu      32.0 
-    ## 2 allensbach 2018-02-23 2018-02-02 2018-02-15       1271. spd      17.5 
-    ## 3 allensbach 2018-02-23 2018-02-02 2018-02-15       1271. greens   12.0 
-    ## 4 allensbach 2018-02-23 2018-02-02 2018-02-15       1271. fdp      11.0 
-    ## 5 allensbach 2018-02-23 2018-02-02 2018-02-15       1271. left      9.50
-    ## 6 allensbach 2018-02-23 2018-02-02 2018-02-15       1271. afd      13.0 
-    ## 7 allensbach 2018-02-23 2018-02-02 2018-02-15       1271. others    5.00
+    ## 1 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 cdu      32.0 
+    ## 2 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 spd      17.5 
+    ## 3 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 greens   12.0 
+    ## 4 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 fdp      11.0 
+    ## 5 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 left      9.50
+    ## 6 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 afd      13.0 
+    ## 7 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 others    5.00
     ## # ... with 1 more variable: votes <dbl>
 
 ### Calculate coalition probabilities
@@ -130,9 +130,9 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ## # A tibble: 6 x 4
     ##   pollster   date       coalition       probability
     ##   <chr>      <date>     <chr>                 <dbl>
-    ## 1 allensbach 2018-02-23 cdu                  0.    
-    ## 2 allensbach 2018-02-23 cdu_fdp              0.0500
+    ## 1 allensbach 2018-02-23 cdu                  0     
+    ## 2 allensbach 2018-02-23 cdu_fdp              0.0400
     ## 3 allensbach 2018-02-23 cdu_fdp_greens     100.0   
-    ## 4 allensbach 2018-02-23 spd                  0.    
-    ## 5 allensbach 2018-02-23 left_spd             0.    
-    ## 6 allensbach 2018-02-23 greens_left_spd      0.
+    ## 4 allensbach 2018-02-23 spd                  0     
+    ## 5 allensbach 2018-02-23 left_spd             0     
+    ## 6 allensbach 2018-02-23 greens_left_spd      0

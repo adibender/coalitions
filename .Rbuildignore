@@ -17,3 +17,4 @@
 ^vignettes/$
 ^LICENSE\.md$
 ^paper$
+^cran-comments\.md$
