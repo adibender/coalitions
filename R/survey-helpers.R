@@ -63,6 +63,14 @@ collapse_parties <- function(
 #' be searched for. Defaults to \code{Sys.Date}.
 #' @importFrom tidyr unnest
 #' @importFrom dplyr filter
+#' @examples
+#' library(coalitions)
+#' ### Scrape the newest poll for the German federal election
+#' # Possibility 1
+#' get_latest()
+#' # Possibility 2
+#' surveys <- get_surveys()
+#' get_latest(surveys)
 #' @export
 get_latest <- function(
   surveys  = NULL,

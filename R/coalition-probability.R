@@ -28,6 +28,20 @@ has_majority <- function(
 #' Must have columns \code{party} and \code{seats}.
 #' @importFrom purrr map
 #' @importFrom dplyr bind_cols
+#' @examples
+#' library(coalitions)
+#' library(dplyr) 
+#' library(purrr)
+#' # scrape the newest survey from the Emnid polling agency
+#' surveys <- get_surveys() %>% filter(pollster == "emnid") %>% tidyr::unnest() %>% slice(1)
+#' # check for majorities of two coalitions
+#' coals <- list(c("cdu", "fdp"),
+#'               c("spd", "left", "greens"))
+#' # only use 100 simulations for a fast runtime
+#' surveys <- surveys %>% mutate(draws = map(survey, draw_from_posterior, nsim = 100),
+#'                               seats = map2(draws, survey, get_seats),
+#'                               majorities = map(seats, have_majority, coalitions = coals))
+#' surveys$majorities
 #' @export
 have_majority <- function(
   seats_tab,
@@ -168,7 +182,7 @@ calculate_probs <- function(
 }
 
 
-#' Remove rows from table for which superior coalitions possible
+#' Remove rows from table for which superior coalitions are possible
 #'
 #' @inherit calculate_prob
 #' @seealso \code{\link[coalitions]{get_superior}}
@@ -222,6 +236,17 @@ get_superior <- function(
 #' @importFrom purrr map map2
 #' @importFrom lubridate now
 #' @importFrom rlang .data
+#' @examples
+#' library(coalitions)
+#' library(dplyr)
+#' # scrape the newest survey from the Emnid polling agency
+#' surveys <- get_surveys() %>% filter(pollster == "emnid") %>% tidyr::unnest() %>% slice(1)
+#' # calculate probabilities for two coalitions
+#' probs <- get_probabilities(surveys,
+#'                            coalitions = list(c("cdu", "fdp"),
+#'                                              c("spd", "left", "greens")),
+#'                            nsim = 100) # ensure fast runtime with only 100 simulations
+#' probs %>% tidyr::unnest()
 #' @export
 get_probabilities <- function(
   x,

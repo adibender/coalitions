@@ -33,6 +33,16 @@ A data frame containing seat distributions for each simulation in
 \description{
 Calculate seat distribution from draws from posterior
 }
+\examples{
+library(coalitions)
+library(dplyr) 
+# scrape the newest survey from the Emnid polling agency
+surveys <- get_surveys() \%>\% filter(pollster == "emnid") \%>\% tidyr::unnest() \%>\% slice(1)
+# simulate 100 seat distributions
+surveys <- surveys \%>\% mutate(draws = map(survey, draw_from_posterior, nsim = 100),
+                              seats = map2(draws, survey, get_seats))
+surveys$seats
+}
 \seealso{
 \code{\link{draw_from_posterior}}, \code{\link{sls}},
 \code{\link{dHondt}}

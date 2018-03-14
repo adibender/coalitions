@@ -2,10 +2,16 @@
 % Please edit documentation in R/scrapers.R, R/survey-helpers.R
 \name{get_surveys}
 \alias{get_surveys}
+\alias{get_surveys_by}
+\alias{get_surveys_nds}
 \alias{get_latest}
 \title{Scrape surveys from all pollsters}
 \usage{
 get_surveys(country = c("DE", "AT"))
+
+get_surveys_by()
+
+get_surveys_nds()
 
 get_latest(surveys = NULL, max_date = Sys.Date())
 }
@@ -22,6 +28,24 @@ be searched for. Defaults to \code{Sys.Date}.}
 \description{
 Scrape surveys from all pollsters
 
+Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
+
+Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
+
 Given a specific date, extract the survey from this date or the last one
 before this date.
+}
+\examples{
+library(coalitions)
+# scrape data for the German federal election
+get_surveys()
+# scrape data for the Austria legislative election
+get_surveys(country = "AT")
+library(coalitions)
+### Scrape the newest poll for the German federal election
+# Possibility 1
+get_latest()
+# Possibility 2
+surveys <- get_surveys()
+get_latest(surveys)
 }

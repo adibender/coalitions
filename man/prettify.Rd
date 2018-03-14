@@ -29,4 +29,14 @@ and replaces them with entries in \code{new}. Useful for quick
 renaming/translation of survey column names and by using internal object
 \code{.trans_df}
 }
+\examples{
+library(coalitions)
+library(dplyr) 
+# scrape some surveys
+surveys <- get_surveys() \%>\% group_by(pollster) \%>\% slice(1)
+# prettify the polling agency names
+prettify_strings(surveys$pollster)
+prettify_en(surveys$pollster)
+prettify_de(surveys$pollster)
+}
 \keyword{internal}
