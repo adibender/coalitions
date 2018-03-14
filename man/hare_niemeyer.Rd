@@ -22,6 +22,14 @@ seats/percentages after redistribution via Hare/Niemeyer
 Calculates number of seats for the respective parties that have received more
 than \code{hurdle} percent of votes (according to the method of Hare/Niemeyer)
 }
+\examples{
+library(coalitions)
+library(dplyr)
+# get the latest survey for the sample German federal election polls
+surveys <- get_latest(surveys_sample) \%>\% tidyr::unnest()
+# calculate the seat distribution based on Hare/Niemeyer for a parliament with 300 seats
+hare_niemeyer(surveys$votes, surveys$party, n_seats = 300)
+}
 \seealso{
 \code{\link{sls}}
 }

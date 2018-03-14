@@ -22,6 +22,14 @@ seats/percentages after redistribution via D'Hondt
 Calculates number of seats for the respective parties that have received more
 than \code{hurdle} percent of votes (according to the method of D'Hondt)
 }
+\examples{
+library(coalitions)
+library(dplyr) 
+# get the latest survey for the sample German federal election polls
+surveys <- get_latest(surveys_sample) \%>\% tidyr::unnest()
+# calculate the seat distribution based on D'Hondt for a parliament with 300 seats
+dHondt(surveys$votes, surveys$party, n_seats = 300)
+}
 \seealso{
 \code{\link{sls}}
 }
