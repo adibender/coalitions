@@ -174,20 +174,21 @@ explicitly are subsumed.</p></td>
 <span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_surveys.html'>get_latest</a></span>(<span class='no'>surveys_sample</span>)
 <span class='co'># simulate 100 seat distributions</span>
 <span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='no'>surveys</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>draws</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>survey</span>, <span class='no'>draw_from_posterior</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>),
-                              <span class='kw'>seats</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map2'>map2</a></span>(<span class='no'>draws</span>, <span class='no'>survey</span>, <span class='no'>get_seats</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Unrecognized time zone ''</span></div><div class='input'><span class='no'>surveys</span>$<span class='no'>seats</span></div><div class='output co'>#&gt; [[1]]
+                              <span class='kw'>seats</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map2'>map2</a></span>(<span class='no'>draws</span>, <span class='no'>survey</span>, <span class='no'>get_seats</span>))
+<span class='no'>surveys</span>$<span class='no'>seats</span></div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 600 x 3
 #&gt;      sim party  seats
 #&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
-#&gt;  1     1 cdu      235
-#&gt;  2     1 spd      159
-#&gt;  3     1 greens    49
-#&gt;  4     1 fdp       49
-#&gt;  5     1 left      54
-#&gt;  6     1 afd       52
-#&gt;  7     2 cdu      234
-#&gt;  8     2 spd      154
-#&gt;  9     2 greens    44
-#&gt; 10     2 fdp       51
+#&gt;  1     1 cdu      241
+#&gt;  2     1 spd      147
+#&gt;  3     1 greens    57
+#&gt;  4     1 fdp       52
+#&gt;  5     1 left      56
+#&gt;  6     1 afd       45
+#&gt;  7     2 cdu      238
+#&gt;  8     2 spd      143
+#&gt;  9     2 greens    52
+#&gt; 10     2 fdp       57
 #&gt; # ... with 590 more rows
 #&gt; </div></pre>
   </div>
