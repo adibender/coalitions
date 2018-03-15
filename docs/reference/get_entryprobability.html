@@ -31,7 +31,7 @@
 
 <meta property="og:description" content="Get probabilities to enter the parliament." />
 
-<meta property="og:image" content="http://dplyr.tidyverse.org/logo.png" />
+<meta property="og:image" content="https://adibender.github.io/coalitions/logo.png" />
 <meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -151,7 +151,7 @@ to enter the parliament.</p></td>
 <span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='no'>surveys</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>draws</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>survey</span>, <span class='no'>draw_from_posterior</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>),
                               <span class='kw'>entryProbs</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>draws</span>, <span class='no'>get_entryprobability</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Unrecognized time zone ''</span></div><div class='input'><span class='no'>surveys</span>$<span class='no'>entryProbs</span></div><div class='output co'>#&gt; [[1]]
 #&gt;    cdu    spd greens    fdp   left    afd others 
-#&gt;   1.00   1.00   1.00   1.00   1.00   1.00   0.49 
+#&gt;   1.00   1.00   1.00   1.00   1.00   1.00   0.48 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

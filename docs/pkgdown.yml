@@ -1,6 +1,6 @@
 urls:
-  reference: http://dplyr.tidyverse.org/reference
-  article: http://dplyr.tidyverse.org/articles
+  reference: https://adibender.github.io/coalitions//reference
+  article: https://adibender.github.io/coalitions//articles
 articles:
   diagnostic: diagnostic.html
   pooling: pooling.html
