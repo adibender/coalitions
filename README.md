@@ -11,8 +11,9 @@ Status](https://ci.appveyor.com/api/projects/status/github/adibender/coalitions?
 [![Coverage
 Status](https://codecov.io/github/adibender/coalitions/master.svg)](https://codecov.io/github/adibender/coalitions?branch=master)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00606/status.svg)](https://doi.org/10.21105/joss.00606)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/coalitions)](https://cran.r-project.org/package=coalitions)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1172594.svg)](https://doi.org/10.5281/zenodo.1172594)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/coalitions)](https://cran.r-project.org/package=coalitions)
+[![](https://cranlogs.r-pkg.org/badges/coalitions)](https://cran.r-project.org/package=coalitions)
 [![MIT
 license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
@@ -131,7 +132,7 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ##   pollster   date       coalition       probability
     ##   <chr>      <date>     <chr>                 <dbl>
     ## 1 allensbach 2018-02-23 cdu                  0     
-    ## 2 allensbach 2018-02-23 cdu_fdp              0.0400
+    ## 2 allensbach 2018-02-23 cdu_fdp              0.0300
     ## 3 allensbach 2018-02-23 cdu_fdp_greens     100.0   
     ## 4 allensbach 2018-02-23 spd                  0     
     ## 5 allensbach 2018-02-23 left_spd             0     

@@ -9,7 +9,7 @@ Authors@R: c(
 Maintainer: Andreas Bender <andreas.bender@stat.uni-muenchen.de>
 Description: An implementation of a MCMC method to calculate
     probabilities for a coalition majority based on survey results,
-    see Bender \& Bauer (2018) <doi:10.21105/joss.00606>.
+    see Bender and Bauer (2018) <doi:10.21105/joss.00606>.
 Depends:
     R (>= 3.2.1)
 Imports:
