@@ -1,7 +1,8 @@
 url: https://adibender.github.io/coalitions/
 
 template:
-  ganalytics: "UA-44545040-2"
+  params:
+    ganalytics: "UA-44545040-2"
 
 home:
   strip_header: false

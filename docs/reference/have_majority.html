@@ -42,6 +42,18 @@
 <![endif]-->
 
 
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44545040-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 
 
   </head>
@@ -59,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -113,11 +125,12 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Do coalitions have a majority</h1>
     <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/coalition-probability.R'><code>R/coalition-probability.R</code></a></small>
+    <div class="hidden name"><code>have_majority.Rd</code></div>
     </div>
 
     
@@ -170,16 +183,16 @@ need to correspond to the names in <code>majority_df</code>.</p></td>
 #&gt; # A tibble: 100 x 2
 #&gt;    cdu_fdp greens_left_spd
 #&gt;    &lt;lgl&gt;   &lt;lgl&gt;          
-#&gt;  1 F       F              
-#&gt;  2 T       F              
-#&gt;  3 F       F              
-#&gt;  4 F       F              
-#&gt;  5 F       F              
-#&gt;  6 F       F              
-#&gt;  7 F       F              
-#&gt;  8 F       F              
-#&gt;  9 F       F              
-#&gt; 10 F       F              
+#&gt;  1 FALSE   FALSE          
+#&gt;  2 FALSE   FALSE          
+#&gt;  3 FALSE   FALSE          
+#&gt;  4 FALSE   FALSE          
+#&gt;  5 FALSE   FALSE          
+#&gt;  6 FALSE   FALSE          
+#&gt;  7 FALSE   FALSE          
+#&gt;  8 FALSE   FALSE          
+#&gt;  9 FALSE   FALSE          
+#&gt; 10 FALSE   FALSE          
 #&gt; # ... with 90 more rows
 #&gt; </div></pre>
   </div>

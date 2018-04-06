@@ -42,6 +42,18 @@
 <![endif]-->
 
 
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44545040-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 
 
   </head>
@@ -59,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -113,11 +125,12 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Wrapper for calculation of coalition probabilities from survey</h1>
     <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/coalition-probability.R'><code>R/coalition-probability.R</code></a></small>
+    <div class="hidden name"><code>get_probabilities.Rd</code></div>
     </div>
 
     
@@ -172,7 +185,7 @@ results (or add an additional source of variation in general).</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='calculate_prob.html'>calculate_prob</a></code></p>
+    <div class='dont-index'><p><code><a href='calculate_prob.html'>calculate_prob</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -187,8 +200,8 @@ results (or add an additional source of variation in general).</p></td>
                            <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>) <span class='co'># ensure fast runtime with only 100 simulations</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unrecognized time zone ''</span></div><div class='input'><span class='no'>probs</span> <span class='kw'>%&gt;%</span> <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tidyr/topics/unnest'>unnest</a></span>()</div><div class='output co'>#&gt; # A tibble: 2 x 4
 #&gt;   pollster date       coalition       probability
 #&gt;   &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;                 &lt;dbl&gt;
-#&gt; 1 emnid    2017-09-02 cdu_fdp                11.0
-#&gt; 2 emnid    2017-09-02 greens_left_spd         0  </div></pre>
+#&gt; 1 emnid    2017-09-02 cdu_fdp                  5.
+#&gt; 2 emnid    2017-09-02 greens_left_spd          0.</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
