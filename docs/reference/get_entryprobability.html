@@ -25,14 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Get probabilities to enter the parliament. — get_entryprobability" />
 
 <meta property="og:description" content="Get probabilities to enter the parliament." />
 
 <meta property="og:image" content="https://adibender.github.io/coalitions/logo.png" />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -40,6 +40,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -55,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">coalitions</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">coalitions</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -87,7 +93,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -99,6 +105,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -110,6 +117,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get probabilities to enter the parliament.</h1>
+    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/entry-probabilities.R'><code>R/entry-probabilities.R</code></a></small>
     </div>
 
     
@@ -118,7 +126,7 @@
 
     <pre class="usage"><span class='fu'>get_entryprobability</span>(<span class='no'>dirichlet.draws</span>, <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -149,10 +157,9 @@ to enter the parliament.</p></td>
 <span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_surveys.html'>get_latest</a></span>(<span class='no'>surveys_sample</span>)
 <span class='co'># use 100 simulations for a fast runtime</span>
 <span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='no'>surveys</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>draws</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>survey</span>, <span class='no'>draw_from_posterior</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>),
-                              <span class='kw'>entryProbs</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>draws</span>, <span class='no'>get_entryprobability</span>))
-<span class='no'>surveys</span>$<span class='no'>entryProbs</span></div><div class='output co'>#&gt; [[1]]
+                              <span class='kw'>entryProbs</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>draws</span>, <span class='no'>get_entryprobability</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Unrecognized time zone ''</span></div><div class='input'><span class='no'>surveys</span>$<span class='no'>entryProbs</span></div><div class='output co'>#&gt; [[1]]
 #&gt;    cdu    spd greens    fdp   left    afd others 
-#&gt;   1.00   1.00   1.00   1.00   1.00   1.00   0.55 
+#&gt;   1.00   1.00   1.00   1.00   1.00   1.00   0.45 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -182,5 +189,8 @@ to enter the parliament.</p></td>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

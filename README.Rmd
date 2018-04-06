@@ -81,3 +81,5 @@ For each survey (row) we can calculate the coalition probabilities
 ```{r}
 survey %>% get_probabilities(nsim=1e4) %>% unnest()
 ```
+
+<link rel="icon" href="favicon.ico" />

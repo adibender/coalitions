@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Transform surveys in long format — collapse_parties" />
 
 <meta property="og:description" content="Given a data frame containing multiple surveys (one row per survey), transforms
@@ -34,6 +32,8 @@ the data into long format with one row per party." />
 
 <meta property="og:image" content="https://adibender.github.io/coalitions/logo.png" />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -41,6 +41,8 @@ the data into long format with one row per party." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -56,8 +58,12 @@ the data into long format with one row per party." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">coalitions</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">coalitions</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -88,7 +94,7 @@ the data into long format with one row per party." />
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -100,6 +106,7 @@ the data into long format with one row per party." />
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -111,6 +118,7 @@ the data into long format with one row per party." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Transform surveys in long format</h1>
+    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/survey-helpers.R'><code>R/survey-helpers.R</code></a></small>
     </div>
 
     
@@ -121,7 +129,7 @@ the data into long format with one row per party.</p>
     <pre class="usage"><span class='fu'>collapse_parties</span>(<span class='no'>surveys</span>, <span class='kw'>parties</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"cdu"</span>, <span class='st'>"spd"</span>, <span class='st'>"greens"</span>, <span class='st'>"fdp"</span>, <span class='st'>"left"</span>,
   <span class='st'>"pirates"</span>, <span class='st'>"fw"</span>, <span class='st'>"afd"</span>, <span class='st'>"others"</span>))</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -167,5 +175,8 @@ the data into long format with one row per party.</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

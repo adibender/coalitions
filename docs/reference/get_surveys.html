@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Scrape surveys from all pollsters — get_surveys" />
 
 <meta property="og:description" content="Scrape surveys from all pollsters
@@ -37,6 +35,8 @@ before this date." />
 
 <meta property="og:image" content="https://adibender.github.io/coalitions/logo.png" />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -44,6 +44,8 @@ before this date." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -59,8 +61,12 @@ before this date." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">coalitions</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">coalitions</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -91,7 +97,7 @@ before this date." />
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -103,6 +109,7 @@ before this date." />
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -114,6 +121,7 @@ before this date." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Scrape surveys from all pollsters</h1>
+    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/scrapers.R'><code>R/scrapers.R</code></a>, <a href='https://github.com/adibender/coalitions//blob/master/R/survey-helpers.R'><code>R/survey-helpers.R</code></a></small>
     </div>
 
     
@@ -132,7 +140,7 @@ before this date.</p>
 
 <span class='fu'>get_latest</span>(<span class='kw'>surveys</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>())</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -186,5 +194,8 @@ be searched for. Defaults to <code>Sys.Date</code>.</p></td>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

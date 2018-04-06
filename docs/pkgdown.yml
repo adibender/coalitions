@@ -1,8 +1,11 @@
-urls:
-  reference: https://adibender.github.io/coalitions//reference
-  article: https://adibender.github.io/coalitions//articles
+pandoc: 2.1.2
+pkgdown: 0.1.0.9000
+pkgdown_sha: ba364393708b38fd6368f1d089586e54df3e1948
 articles:
   diagnostic: diagnostic.html
   pooling: pooling.html
   workflow: workflow.html
+urls:
+  reference: https://adibender.github.io/coalitions//reference
+  article: https://adibender.github.io/coalitions//articles
 

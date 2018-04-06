@@ -28,8 +28,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">coalitions</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">coalitions</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -60,7 +64,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -85,8 +89,11 @@
       <h1>Workflow</h1>
                         <h4 class="author">Andreas Bender</h4>
             
-            <h4 class="date">2018-03-15</h4>
-          </div>
+            <h4 class="date">2018-03-29</h4>
+      
+      <small>Source: <a href="https://github.com/adibender/coalitions//blob/master/vignettes/workflow.Rmd"><code>vignettes/workflow.Rmd</code></a></small>
+
+    </div>
 
     
     
@@ -96,53 +103,65 @@
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(dplyr)</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(coalitions)</a></code></pre></div>
 <p>In this vignette we demonstrate the basic workflow using the most recent <em>Emnid</em> survey.</p>
-<section id="overview" class="level2"><h2>Overview</h2>
+<div id="overview" class="section level2">
+<h2 class="hasAnchor">
+<a href="#overview" class="anchor"></a>Overview</h2>
 <p>This package calculates coalition probabilities in multi-party systems. To this end we provide some convenience functions, the most important of which are listed below:</p>
-<ol type="1">
+<ol style="list-style-type: decimal">
 <li><p><code>scrape_wahlrecht</code>: A wrapper function that download the most current survey results from <a href="https://www.wahlrecht.de/" class="uri">https://www.wahlrecht.de/</a></p></li>
 <li><p><code>collapse_parties</code>: Transforms information on percentages received by individual parties in long format and stores them inside a nested tibble (see <code><a href="http://www.rdocumentation.org/packages/tidyr/topics/nest">tidyr::nest</a></code>)</p></li>
 <li><p><code>draw_from_posterior</code>: Draws <code>nsim</code> samples from the posterior distribution (i.e. <code>nsim</code> simulated election results based on provided survey)</p></li>
 <li><p><code>get_seats</code>: Obtain seat distributions for each simulation (see also <code><a href="../reference/sls.html">?sls</a></code>)</p></li>
 <li><p><code>have_majority</code>: Given a list of coalitions of interest, calculates if the respective coalition would have enough seats for a majority</p></li>
 <li><p><code>calculate_probs</code>: Given majority tables obtained from <code>have_majority</code>, calculates the probabilities for the respective coalitions to have enough seats for a majority</p></li>
-</ol></section><section id="read-in-data" class="level2"><h2>Read in data</h2>
+</ol>
+</div>
+<div id="read-in-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#read-in-data" class="anchor"></a>Read in data</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># one line per survey (party information in wide format)</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">emnid &lt;-<span class="st"> </span><span class="kw"><a href="../reference/scrape.html">scrape_wahlrecht</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">emnid <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="op">-</span>start, <span class="op">-</span>end)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##   date         cdu   spd greens   fdp  left   afd others respondents
 ##   &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
-## 1 2018-03-10  33.0  19.0   12.0  8.00 10.0   13.0   5.00        1869
-## 2 2018-03-03  33.0  16.0   12.0  9.00 11.0   15.0   4.00        1890
-## 3 2018-02-24  33.0  17.0   11.0 10.0  11.0   15.0   3.00        1985
-## 4 2018-02-17  33.0  19.0   11.0  9.00 10.0   14.0   4.00        1478
-## 5 2018-02-10  34.0  20.0   11.0  9.00  9.00  12.0   5.00        1226
-## 6 2018-02-03  33.0  20.0   11.0  9.00 10.0   13.0   4.00        1247</code></pre>
-</section><section id="collapse-survey-data" class="level2"><h2>Collapse survey data</h2>
+## 1 2018-03-24  34.0  18.0   12.0  9.00  10.0  13.0   4.00        1972
+## 2 2018-03-17  33.0  19.0   11.0  9.00  10.0  14.0   4.00        1959
+## 3 2018-03-10  33.0  19.0   12.0  8.00  10.0  13.0   5.00        1869
+## 4 2018-03-03  33.0  16.0   12.0  9.00  11.0  15.0   4.00        1890
+## 5 2018-02-24  33.0  17.0   11.0 10.0   11.0  15.0   3.00        1985
+## 6 2018-02-17  33.0  19.0   11.0  9.00  10.0  14.0   4.00        1478</code></pre>
+</div>
+<div id="collapse-survey-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#collapse-survey-data" class="anchor"></a>Collapse survey data</h2>
 <p>After applying <code>collapse_parties</code> we still have one row per survey, but information on parties and percentage of votes they received is stored in a long format in a separate column (see <code><a href="http://www.rdocumentation.org/packages/tidyr/topics/nest">?tidyr::nest</a></code>):</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">elong &lt;-<span class="st"> </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>(emnid)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">head</span>(elong)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   date       start      end        respondents survey          
 ##   &lt;date&gt;     &lt;date&gt;     &lt;date&gt;           &lt;dbl&gt; &lt;list&gt;          
-## 1 2018-03-10 2018-03-01 2018-03-07        1869 &lt;tibble [7 × 3]&gt;
-## 2 2018-03-03 2018-02-22 2018-02-28        1890 &lt;tibble [7 × 3]&gt;
-## 3 2018-02-24 2018-02-15 2018-02-21        1985 &lt;tibble [7 × 3]&gt;
-## 4 2018-02-17 2018-02-08 2018-02-14        1478 &lt;tibble [7 × 3]&gt;
-## 5 2018-02-10 2018-02-01 2018-02-07        1226 &lt;tibble [7 × 3]&gt;
-## 6 2018-02-03 2018-01-25 2018-01-31        1247 &lt;tibble [7 × 3]&gt;</code></pre>
+## 1 2018-03-24 2018-03-15 2018-03-21        1972 &lt;tibble [7 × 3]&gt;
+## 2 2018-03-17 2018-03-08 2018-03-14        1959 &lt;tibble [7 × 3]&gt;
+## 3 2018-03-10 2018-03-01 2018-03-07        1869 &lt;tibble [7 × 3]&gt;
+## 4 2018-03-03 2018-02-22 2018-02-28        1890 &lt;tibble [7 × 3]&gt;
+## 5 2018-02-24 2018-02-15 2018-02-21        1985 &lt;tibble [7 × 3]&gt;
+## 6 2018-02-17 2018-02-08 2018-02-14        1478 &lt;tibble [7 × 3]&gt;</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(survey) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</a></code></pre></div>
 <pre><code>## # A tibble: 7 x 3
 ##   party  percent votes
 ##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-## 1 cdu      33.0  617  
-## 2 spd      19.0  355  
-## 3 greens   12.0  224  
-## 4 fdp       8.00 150  
-## 5 left     10.0  187  
-## 6 afd      13.0  243  
-## 7 others    5.00  93.4</code></pre>
-</section><section id="simulate-elections" class="level2"><h2>Simulate elections</h2>
+## 1 cdu      34.0  670  
+## 2 spd      18.0  355  
+## 3 greens   12.0  237  
+## 4 fdp       9.00 177  
+## 5 left     10.0  197  
+## 6 afd      13.0  256  
+## 7 others    4.00  78.9</code></pre>
+</div>
+<div id="simulate-elections" class="section level2">
+<h2 class="hasAnchor">
+<a href="#simulate-elections" class="anchor"></a>Simulate elections</h2>
 <p>Based on each survey we can now simulate <code>nsim</code> elections by drawing from the Dirichlet distribution</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)     <span class="co"># for reproducibility</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"></a>
@@ -152,28 +171,31 @@
 <pre><code>## # A tibble: 6 x 3
 ##   date       survey           draws            
 ##   &lt;date&gt;     &lt;list&gt;           &lt;list&gt;           
-## 1 2018-03-10 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
-## 2 2018-03-03 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
-## 3 2018-02-24 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
-## 4 2018-02-17 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
-## 5 2018-02-10 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
-## 6 2018-02-03 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;</code></pre>
+## 1 2018-03-24 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
+## 2 2018-03-17 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
+## 3 2018-03-10 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
+## 4 2018-03-03 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
+## 5 2018-02-24 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;
+## 6 2018-02-17 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt;</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># each row is one election simulation</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(draws) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 7
 ##      cdu   spd greens    fdp   left   afd others
 ##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.328 0.182  0.119 0.0839 0.107  0.124 0.0562
-##  2 0.329 0.189  0.117 0.0760 0.0915 0.142 0.0554
-##  3 0.331 0.189  0.117 0.0906 0.0930 0.131 0.0483
-##  4 0.353 0.187  0.116 0.0799 0.0853 0.125 0.0545
-##  5 0.310 0.198  0.125 0.0793 0.1000 0.139 0.0492
-##  6 0.352 0.175  0.108 0.0810 0.105  0.127 0.0517
-##  7 0.347 0.182  0.122 0.0783 0.107  0.116 0.0475
-##  8 0.336 0.184  0.117 0.0851 0.104  0.130 0.0443
-##  9 0.319 0.186  0.106 0.0916 0.0980 0.145 0.0541
-## 10 0.327 0.186  0.127 0.0764 0.104  0.127 0.0521</code></pre>
-</section><section id="calculate-seat-distribution" class="level2"><h2>Calculate seat distribution</h2>
+##  1 0.311 0.187  0.121 0.0924 0.107  0.136 0.0465
+##  2 0.349 0.174  0.117 0.0928 0.0880 0.140 0.0391
+##  3 0.346 0.161  0.127 0.0855 0.107  0.132 0.0407
+##  4 0.341 0.194  0.124 0.0871 0.0891 0.128 0.0366
+##  5 0.332 0.180  0.129 0.0810 0.109  0.123 0.0451
+##  6 0.333 0.193  0.123 0.0884 0.103  0.122 0.0373
+##  7 0.332 0.188  0.123 0.0906 0.0934 0.130 0.0435
+##  8 0.357 0.174  0.115 0.0857 0.103  0.122 0.0438
+##  9 0.335 0.184  0.122 0.0816 0.0985 0.144 0.0350
+## 10 0.361 0.177  0.102 0.0941 0.111  0.125 0.0296</code></pre>
+</div>
+<div id="calculate-seat-distribution" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculate-seat-distribution" class="anchor"></a>Calculate seat distribution</h2>
 <p>Given the simulated elections, we can calculate the number of seats each party obtained. To do so we need to have a function that knows how to redistribute seats for the particular election. In Germany for example, seats are distributed according to the system of <em>Sainte-Lague-Scheppers</em>, which is implemented in <code><a href="../reference/sls.html">?sls</a></code>.</p>
 <p>This makes this package easily extensible to other multi-party systems, as you only need to provide a function that redistributes seats based on percentages obtained by the various parties and provide that function to the <code>distrib.fun</code> argument of the <code>get_seats</code> function:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">elong &lt;-<span class="st"> </span>elong <span class="op">%&gt;%</span></a>
@@ -182,30 +204,33 @@
 <pre><code>## # A tibble: 6 x 4
 ##   date       survey           draws             seats            
 ##   &lt;date&gt;     &lt;list&gt;           &lt;list&gt;            &lt;list&gt;           
-## 1 2018-03-10 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
-## 2 2018-03-03 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
-## 3 2018-02-24 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
-## 4 2018-02-17 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
-## 5 2018-02-10 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
-## 6 2018-02-03 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;</code></pre>
+## 1 2018-03-24 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
+## 2 2018-03-17 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
+## 3 2018-03-10 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
+## 4 2018-03-03 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
+## 5 2018-02-24 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;
+## 6 2018-02-17 &lt;tibble [7 × 3]&gt; &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt;</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">## sim column indicates simulated elections (rows in draws column)</a>
 <a class="sourceLine" id="cb14-2" data-line-number="2">elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(seats) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</a></code></pre></div>
 <pre><code>## # A tibble: 60 x 3
 ##      sim party  seats
 ##    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
-##  1     1 cdu      208
-##  2     1 spd      115
+##  1     1 cdu      195
+##  2     1 spd      117
 ##  3     1 greens    76
-##  4     1 fdp       53
-##  5     1 left      68
-##  6     1 afd       78
-##  7     2 cdu      208
-##  8     2 spd      120
-##  9     2 greens    74
-## 10     2 fdp       48
+##  4     1 fdp       58
+##  5     1 left      67
+##  6     1 afd       85
+##  7     2 cdu      217
+##  8     2 spd      108
+##  9     2 greens    73
+## 10     2 fdp       58
 ## # ... with 50 more rows</code></pre>
-<p>In the above example, given the latest survey, CDU/CSU would have 208 seats in the first simulation, 208 seats in the second simulation, etc.</p>
-</section><section id="calculate-majorities" class="level2"><h2>Calculate majorities</h2>
+<p>In the above example, given the latest survey, CDU/CSU would have 195 seats in the first simulation, 217 seats in the second simulation, etc.</p>
+</div>
+<div id="calculate-majorities" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculate-majorities" class="anchor"></a>Calculate majorities</h2>
 <p>The next step is to define coalitions of interest, then calculate in what percentage of the simulations the coalition would obtain enough seats for a majority.</p>
 <p>Below, each list element defines one coalition of interest (one party could potentially obtain absolute majority on their own):</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">coalitions &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
@@ -226,12 +251,12 @@
 <pre><code>## # A tibble: 6 x 4
 ##   date       draws             seats             majorities       
 ##   &lt;date&gt;     &lt;list&gt;            &lt;list&gt;            &lt;list&gt;           
-## 1 2018-03-10 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
-## 2 2018-03-03 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
-## 3 2018-02-24 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
-## 4 2018-02-17 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
-## 5 2018-02-10 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
-## 6 2018-02-03 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;</code></pre>
+## 1 2018-03-24 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
+## 2 2018-03-17 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
+## 3 2018-03-10 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
+## 4 2018-03-03 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
+## 5 2018-02-24 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;
+## 6 2018-02-17 &lt;tibble [10 × 7]&gt; &lt;tibble [60 × 3]&gt; &lt;tibble [10 × 9]&gt;</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># The majorities table for each date will have 1 row per simulation</span></a>
 <a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co"># and one column per coalition</span></a>
 <a class="sourceLine" id="cb18-3" data-line-number="3">elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(majorities) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</a></code></pre></div>
@@ -249,7 +274,10 @@
 ##  9 F     F       F          T              F     F        F         
 ## 10 F     F       F          T              F     F        F         
 ## # ... with 2 more variables: greens_left_spd &lt;lgl&gt;, cdu_spd &lt;lgl&gt;</code></pre>
-</section><section id="calculate-coalition-probabilities" class="level2"><h2>Calculate coalition probabilities</h2>
+</div>
+<div id="calculate-coalition-probabilities" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculate-coalition-probabilities" class="anchor"></a>Calculate coalition probabilities</h2>
 <p>The last step is to calculate the coalition probabilities (note that by default we exclude “superior” coalitions, i.e. if “cdu/csu” have a majority on their own, this simulation will not be counted to the simulation with majority for “cdu/csu” and “fdp”, see example in <code><a href="../reference/calculate_probs.html">?calculate_probs</a></code>):</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">elong &lt;-<span class="st"> </span>elong <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">    </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</a>
@@ -258,12 +286,12 @@
 <pre><code>## # A tibble: 6 x 3
 ##   date       majorities        probabilities   
 ##   &lt;date&gt;     &lt;list&gt;            &lt;list&gt;          
-## 1 2018-03-10 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
-## 2 2018-03-03 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
-## 3 2018-02-24 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
-## 4 2018-02-17 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
-## 5 2018-02-10 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
-## 6 2018-02-03 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;</code></pre>
+## 1 2018-03-24 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
+## 2 2018-03-17 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
+## 3 2018-03-10 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
+## 4 2018-03-03 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
+## 5 2018-02-24 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;
+## 6 2018-02-17 &lt;tibble [10 × 9]&gt; &lt;tibble [9 × 2]&gt;</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="co"># one row per coalition</span></a>
 <a class="sourceLine" id="cb22-2" data-line-number="2">elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(probabilities) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</a></code></pre></div>
 <pre><code>## # A tibble: 9 x 2
@@ -278,25 +306,28 @@
 ## 7 greens_spd                0
 ## 8 greens_left_spd           0
 ## 9 cdu_spd                 100</code></pre>
-</section><section id="wrapper" class="level2"><h2>Wrapper</h2>
+</div>
+<div id="wrapper" class="section level2">
+<h2 class="hasAnchor">
+<a href="#wrapper" class="anchor"></a>Wrapper</h2>
 <p>There is a wrapper function that directly returns probabilities:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">elong &lt;-<span class="st"> </span><span class="kw"><a href="../reference/collapse_parties.html">collapse_parties</a></span>(emnid)</a>
 <a class="sourceLine" id="cb24-2" data-line-number="2">elong <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/get_probabilities.html">get_probabilities</a></span>(., <span class="dt">nsim=</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/unnest">unnest</a></span>()</a></code></pre></div>
 <pre><code>## # A tibble: 36 x 3
 ##    date       coalition       probability
 ##    &lt;date&gt;     &lt;chr&gt;                 &lt;dbl&gt;
-##  1 2018-03-10 cdu                       0
-##  2 2018-03-10 cdu_fdp                   0
-##  3 2018-03-10 cdu_fdp_greens          100
-##  4 2018-03-10 spd                       0
-##  5 2018-03-10 left_spd                  0
-##  6 2018-03-10 greens_left_spd           0
-##  7 2018-03-03 cdu                       0
-##  8 2018-03-03 cdu_fdp                   0
-##  9 2018-03-03 cdu_fdp_greens          100
-## 10 2018-03-03 spd                       0
+##  1 2018-03-24 cdu                       0
+##  2 2018-03-24 cdu_fdp                   0
+##  3 2018-03-24 cdu_fdp_greens          100
+##  4 2018-03-24 spd                       0
+##  5 2018-03-24 left_spd                  0
+##  6 2018-03-24 greens_left_spd           0
+##  7 2018-03-17 cdu                       0
+##  8 2018-03-17 cdu_fdp                   0
+##  9 2018-03-17 cdu_fdp_greens          100
+## 10 2018-03-17 spd                       0
 ## # ... with 26 more rows</code></pre>
-</section>
+</div>
 </div>
   </div>
 
@@ -330,6 +361,8 @@
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

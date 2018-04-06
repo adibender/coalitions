@@ -25,12 +25,12 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Function reference" />
 
 <meta property="og:image" content="https://adibender.github.io/coalitions/logo.png" />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -38,6 +38,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -53,8 +55,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">coalitions</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">coalitions</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -85,7 +91,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -97,6 +103,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -107,10 +114,7 @@
       <div class="row">
   <div class="col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.6.2</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
     <div class="contents">
@@ -131,13 +135,13 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="scrape.html">scrape_wahlrecht</a></code> <code><a href="scrape.html">scrape_by</a></code> <code><a href="scrape.html">scrape_ltw</a></code> </p>
+            <p><code><a href="scrape.html">scrape_wahlrecht()</a></code> <code><a href="scrape.html">scrape_by()</a></code> <code><a href="scrape.html">scrape_ltw()</a></code> </p>
           </td>
           <td><p>Scrape surveys from wahlrecht.de</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="scrape_austria.html">scrape_austria</a></code> </p>
+            <p><code><a href="scrape_austria.html">scrape_austria()</a></code> </p>
           </td>
           <td><p>Import Austrian survey results</p></td>
         </tr>
@@ -151,44 +155,44 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="get_surveys.html">get_surveys</a></code> <code><a href="get_surveys.html">get_surveys_by</a></code> <code><a href="get_surveys.html">get_surveys_nds</a></code> <code><a href="get_surveys.html">get_latest</a></code> </p>
+            <p><code><a href="get_surveys.html">get_surveys()</a></code> <code><a href="get_surveys.html">get_surveys_by()</a></code> <code><a href="get_surveys.html">get_surveys_nds()</a></code> <code><a href="get_surveys.html">get_latest()</a></code> </p>
           </td>
           <td><p>Scrape surveys from all pollsters</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="pool_surveys.html">pool_surveys</a></code> </p>
+            <p><code><a href="pool_surveys.html">pool_surveys()</a></code> </p>
           </td>
           <td><p>Obtain pooled survey during specified period</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="draw_from_posterior.html">draw_from_posterior</a></code> </p>
+            <p><code><a href="draw_from_posterior.html">draw_from_posterior()</a></code> </p>
           </td>
           <td><p>Draw random numbers from posterior distribution</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="redistribute.html">redistribute</a></code> </p>
+            <p><code><a href="redistribute.html">redistribute()</a></code> </p>
           </td>
           <td><p>Calculate percentage of votes/seats after excluding parties with
 <code>votes &lt; hurdle</code></p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="have_majority.html">have_majority</a></code> </p>
+            <p><code><a href="have_majority.html">have_majority()</a></code> </p>
           </td>
           <td><p>Do coalitions have a majority</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="get_seats.html">get_seats</a></code> </p>
+            <p><code><a href="get_seats.html">get_seats()</a></code> </p>
           </td>
           <td><p>Calculate seat distribution from draws from posterior</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="get_probabilities.html">get_probabilities</a></code> </p>
+            <p><code><a href="get_probabilities.html">get_probabilities()</a></code> </p>
           </td>
           <td><p>Wrapper for calculation of coalition probabilities from survey</p></td>
         </tr>
@@ -202,19 +206,19 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="dHondt.html">dHondt</a></code> </p>
+            <p><code><a href="dHondt.html">dHondt()</a></code> </p>
           </td>
           <td><p>Seat Distribution by D'Hondt</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="sls.html">sls</a></code> </p>
+            <p><code><a href="sls.html">sls()</a></code> </p>
           </td>
           <td><p>Seat Distribution by Sainte-Lague/Schepers</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="hare_niemeyer.html">hare_niemeyer</a></code> </p>
+            <p><code><a href="hare_niemeyer.html">hare_niemeyer()</a></code> </p>
           </td>
           <td><p>Seat Distribution by Hare/Niemeyer</p></td>
         </tr>
@@ -245,5 +249,8 @@
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

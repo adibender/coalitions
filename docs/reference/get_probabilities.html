@@ -25,14 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Wrapper for calculation of coalition probabilities from survey — get_probabilities" />
 
 <meta property="og:description" content="Wrapper for calculation of coalition probabilities from survey" />
 
 <meta property="og:image" content="https://adibender.github.io/coalitions/logo.png" />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -40,6 +40,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -55,8 +57,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">coalitions</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">coalitions</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -87,7 +93,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -99,6 +105,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -110,6 +117,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Wrapper for calculation of coalition probabilities from survey</h1>
+    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/coalition-probability.R'><code>R/coalition-probability.R</code></a></small>
     </div>
 
     
@@ -121,7 +129,7 @@
   <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>, <span class='kw'>distrib.fun</span> <span class='kw'>=</span> <span class='no'>sls</span>, <span class='kw'>seats_majority</span> <span class='kw'>=</span> <span class='fl'>300L</span>,
   <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'>as.numeric</span>(<span class='fu'>now</span>()), <span class='kw'>correction</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -176,11 +184,10 @@ results (or add an additional source of variation in general).</p></td>
 <span class='no'>probs</span> <span class='kw'>&lt;-</span> <span class='fu'>get_probabilities</span>(<span class='no'>surveys</span>,
                            <span class='kw'>coalitions</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='st'>"cdu"</span>, <span class='st'>"fdp"</span>),
                                              <span class='fu'>c</span>(<span class='st'>"spd"</span>, <span class='st'>"left"</span>, <span class='st'>"greens"</span>)),
-                           <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>) <span class='co'># ensure fast runtime with only 100 simulations</span>
-<span class='no'>probs</span> <span class='kw'>%&gt;%</span> <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tidyr/topics/unnest'>unnest</a></span>()</div><div class='output co'>#&gt; # A tibble: 2 x 4
+                           <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>) <span class='co'># ensure fast runtime with only 100 simulations</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unrecognized time zone ''</span></div><div class='input'><span class='no'>probs</span> <span class='kw'>%&gt;%</span> <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tidyr/topics/unnest'>unnest</a></span>()</div><div class='output co'>#&gt; # A tibble: 2 x 4
 #&gt;   pollster date       coalition       probability
 #&gt;   &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;                 &lt;dbl&gt;
-#&gt; 1 emnid    2017-09-02 cdu_fdp                10.0
+#&gt; 1 emnid    2017-09-02 cdu_fdp                11.0
 #&gt; 2 emnid    2017-09-02 greens_left_spd         0  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -208,5 +215,8 @@ results (or add an additional source of variation in general).</p></td>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
