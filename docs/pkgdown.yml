@@ -1,11 +1,11 @@
 pandoc: 2.1.1
 pkgdown: 0.1.0.9000
-pkgdown_sha: 4e194be97890ace7225932cbc3b4380085aedcf8
+pkgdown_sha: cfc0f1dbfd535cfad839cc90cd1c41d3c9db26a7
 articles:
   diagnostic: diagnostic.html
   pooling: pooling.html
   workflow: workflow.html
 urls:
-  reference: https://adibender.github.io/coalitions//reference
-  article: https://adibender.github.io/coalitions//articles
+  reference: https://adibender.github.io/coalitions/reference
+  article: https://adibender.github.io/coalitions/articles
 

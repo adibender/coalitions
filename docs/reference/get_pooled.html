@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -44,16 +46,14 @@ pollsters." />
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-44545040-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-44545040-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-44545040-2');
 </script>
 
 
@@ -131,15 +131,17 @@ pollsters." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Extract effective sample size for pooled sample</h1>
-    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/pooling.R'><code>R/pooling.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/adibender/coalitions//blob/master/R/pooling.R'><code>R/pooling.R</code></a></small>
     <div class="hidden name"><code>get_pooled.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Given a specified time window (defaults to current day - 14 days).
 calculate the effective sample size of the pooled sample over multiple
 pollsters.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>get_pooled</span>(<span class='no'>surveys</span>, <span class='kw'>last_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>(), <span class='kw'>pollsters</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"allensbach"</span>,
   <span class='st'>"emnid"</span>, <span class='st'>"forsa"</span>, <span class='st'>"fgw"</span>, <span class='st'>"gms"</span>, <span class='st'>"infratest"</span>, <span class='st'>"dimap"</span>, <span class='st'>"infratestdimap"</span>,

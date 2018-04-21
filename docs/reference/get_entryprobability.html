@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -42,16 +44,14 @@
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-44545040-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-44545040-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-44545040-2');
 </script>
 
 
@@ -129,13 +129,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get probabilities to enter the parliament.</h1>
-    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/entry-probabilities.R'><code>R/entry-probabilities.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/adibender/coalitions//blob/master/R/entry-probabilities.R'><code>R/entry-probabilities.R</code></a></small>
     <div class="hidden name"><code>get_entryprobability.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Get probabilities to enter the parliament.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>get_entryprobability</span>(<span class='no'>dirichlet.draws</span>, <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)</pre>
     
@@ -170,9 +172,10 @@ to enter the parliament.</p></td>
 <span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_surveys.html'>get_latest</a></span>(<span class='no'>surveys_sample</span>)
 <span class='co'># use 100 simulations for a fast runtime</span>
 <span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='no'>surveys</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>draws</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>survey</span>, <span class='no'>draw_from_posterior</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>),
-                              <span class='kw'>entryProbs</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>draws</span>, <span class='no'>get_entryprobability</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Unrecognized time zone ''</span></div><div class='input'><span class='no'>surveys</span>$<span class='no'>entryProbs</span></div><div class='output co'>#&gt; [[1]]
+                              <span class='kw'>entryProbs</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>draws</span>, <span class='no'>get_entryprobability</span>))
+<span class='no'>surveys</span>$<span class='no'>entryProbs</span></div><div class='output co'>#&gt; [[1]]
 #&gt;    cdu    spd greens    fdp   left    afd others 
-#&gt;   1.00   1.00   1.00   1.00   1.00   1.00   0.43 
+#&gt;    1.0    1.0    1.0    1.0    1.0    1.0    0.5 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
