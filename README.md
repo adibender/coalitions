@@ -3,9 +3,7 @@
 
 # coalitions <img src="man/figures/logo.png" align="right" />
 
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Travis-CI Build
 Status](https://travis-ci.org/adibender/coalitions.svg?branch=master)](https://travis-ci.org/adibender/coalitions)
 [![AppVeyor Build
@@ -70,13 +68,13 @@ surveys
 ```
 
     ## # A tibble: 7 x 2
-    ##   pollster   surveys           
-    ##   <chr>      <list>            
-    ## 1 allensbach <tibble [42 × 5]> 
+    ##   pollster   surveys
+    ##   <chr>      <list>
+    ## 1 allensbach <tibble [42 × 5]>
     ## 2 emnid      <tibble [226 × 5]>
     ## 3 forsa      <tibble [236 × 5]>
-    ## 4 fgw        <tibble [84 × 5]> 
-    ## 5 gms        <tibble [96 × 5]> 
+    ## 4 fgw        <tibble [84 × 5]>
+    ## 5 gms        <tibble [96 × 5]>
     ## 6 infratest  <tibble [110 × 5]>
     ## 7 insa       <tibble [305 × 5]>
 
@@ -91,8 +89,8 @@ surveys %>%
 ```
 
     ## # A tibble: 42 x 6
-    ##    pollster   date       start      end        respondents survey         
-    ##    <chr>      <date>     <date>     <date>           <dbl> <list>         
+    ##    pollster   date       start      end        respondents survey
+    ##    <chr>      <date>     <date>     <date>           <dbl> <list>
     ##  1 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 <tibble [7 × 3…
     ##  2 allensbach 2018-01-25 2018-01-05 2018-01-18        1221 <tibble [7 × 3…
     ##  3 allensbach 2017-12-21 2017-12-01 2017-12-14        1443 <tibble [7 × 3…
@@ -113,12 +111,12 @@ survey %>% unnest()
     ## # A tibble: 7 x 8
     ##   pollster   date       start      end        respondents party  percent
     ##   <chr>      <date>     <date>     <date>           <dbl> <chr>    <dbl>
-    ## 1 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 cdu      32.0 
-    ## 2 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 spd      17.5 
-    ## 3 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 greens   12.0 
-    ## 4 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 fdp      11.0 
+    ## 1 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 cdu      32.0
+    ## 2 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 spd      17.5
+    ## 3 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 greens   12.0
+    ## 4 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 fdp      11.0
     ## 5 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 left      9.50
-    ## 6 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 afd      13.0 
+    ## 6 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 afd      13.0
     ## 7 allensbach 2018-02-23 2018-02-02 2018-02-15        1271 others    5.00
     ## # ... with 1 more variable: votes <dbl>
 
@@ -133,9 +131,9 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ## # A tibble: 6 x 4
     ##   pollster   date       coalition       probability
     ##   <chr>      <date>     <chr>                 <dbl>
-    ## 1 allensbach 2018-02-23 cdu                  0     
+    ## 1 allensbach 2018-02-23 cdu                  0
     ## 2 allensbach 2018-02-23 cdu_fdp              0.0500
-    ## 3 allensbach 2018-02-23 cdu_fdp_greens     100.0   
-    ## 4 allensbach 2018-02-23 spd                  0     
-    ## 5 allensbach 2018-02-23 left_spd             0     
+    ## 3 allensbach 2018-02-23 cdu_fdp_greens     100.0
+    ## 4 allensbach 2018-02-23 spd                  0
+    ## 5 allensbach 2018-02-23 left_spd             0
     ## 6 allensbach 2018-02-23 greens_left_spd      0
