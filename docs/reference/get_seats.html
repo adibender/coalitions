@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -42,6 +44,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-44545040-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-44545040-2');
+</script>
+
 
 
   </head>
@@ -59,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -113,16 +125,19 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calculate seat distribution from draws from posterior</h1>
-    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/seat-distribution.R'><code>R/seat-distribution.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/adibender/coalitions//blob/master/R/seat-distribution.R'><code>R/seat-distribution.R</code></a></small>
+    <div class="hidden name"><code>get_seats.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Calculate seat distribution from draws from posterior</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>get_seats</span>(<span class='no'>dirichlet.draws</span>, <span class='no'>survey</span>, <span class='kw'>distrib.fun</span> <span class='kw'>=</span> <span class='no'>sls</span>, <span class='kw'>samplesize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>others</span> <span class='kw'>=</span> <span class='st'>"others"</span>, <span class='no'>...</span>)</pre>
@@ -171,8 +186,8 @@ explicitly are subsumed.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='draw_from_posterior.html'>draw_from_posterior</a></code>, <code><a href='sls.html'>sls</a></code>,
-<code><a href='dHondt.html'>dHondt</a></code></p>
+    <div class='dont-index'><p><code><a href='draw_from_posterior.html'>draw_from_posterior</a></code>, <code><a href='sls.html'>sls</a></code>,
+<code><a href='dHondt.html'>dHondt</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -182,20 +197,21 @@ explicitly are subsumed.</p></td>
 <span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_surveys.html'>get_latest</a></span>(<span class='no'>surveys_sample</span>)
 <span class='co'># simulate 100 seat distributions</span>
 <span class='no'>surveys</span> <span class='kw'>&lt;-</span> <span class='no'>surveys</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>draws</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>survey</span>, <span class='no'>draw_from_posterior</span>, <span class='kw'>nsim</span> <span class='kw'>=</span> <span class='fl'>100</span>),
-                              <span class='kw'>seats</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map2'>map2</a></span>(<span class='no'>draws</span>, <span class='no'>survey</span>, <span class='no'>get_seats</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Unrecognized time zone ''</span></div><div class='input'><span class='no'>surveys</span>$<span class='no'>seats</span></div><div class='output co'>#&gt; [[1]]
+                              <span class='kw'>seats</span> <span class='kw'>=</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map2'>map2</a></span>(<span class='no'>draws</span>, <span class='no'>survey</span>, <span class='no'>get_seats</span>))
+<span class='no'>surveys</span>$<span class='no'>seats</span></div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 600 x 3
 #&gt;      sim party  seats
 #&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
-#&gt;  1     1 cdu      238
-#&gt;  2     1 spd      154
-#&gt;  3     1 greens    43
-#&gt;  4     1 fdp       50
-#&gt;  5     1 left      63
-#&gt;  6     1 afd       50
-#&gt;  7     2 cdu      247
-#&gt;  8     2 spd      145
-#&gt;  9     2 greens    50
-#&gt; 10     2 fdp       46
+#&gt;  1     1 cdu      244
+#&gt;  2     1 spd      145
+#&gt;  3     1 greens    49
+#&gt;  4     1 fdp       58
+#&gt;  5     1 left      55
+#&gt;  6     1 afd       47
+#&gt;  7     2 cdu      238
+#&gt;  8     2 spd      146
+#&gt;  9     2 greens    55
+#&gt; 10     2 fdp       54
 #&gt; # ... with 590 more rows
 #&gt; </div></pre>
   </div>

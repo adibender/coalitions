@@ -22,6 +22,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -45,6 +47,16 @@ votes &lt; hurdle" />
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-44545040-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-44545040-2');
+</script>
+
 
 
   </head>
@@ -62,7 +74,7 @@ votes &lt; hurdle" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -116,18 +128,21 @@ votes &lt; hurdle" />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calculate percentage of votes/seats after excluding parties with
 <code>votes &lt; hurdle</code></h1>
-    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/seat-distribution.R'><code>R/seat-distribution.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/adibender/coalitions//blob/master/R/seat-distribution.R'><code>R/seat-distribution.R</code></a></small>
+    <div class="hidden name"><code>redistribute.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Calculate percentage of votes/seats after excluding parties with
 <code>votes &lt; hurdle</code></p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>redistribute</span>(<span class='no'>survey</span>, <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>others</span> <span class='kw'>=</span> <span class='st'>"others"</span>, <span class='kw'>epsilon</span> <span class='kw'>=</span> <span class='fl'>1e-05</span>)</pre>
     
@@ -158,7 +173,7 @@ of <code>epsilon</code>, an error is thrown.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='get_seats.html'>get_seats</a></code>, <code><a href='sls.html'>sls</a></code></p>
+    <div class='dont-index'><p><code><a href='get_seats.html'>get_seats</a></code>, <code><a href='sls.html'>sls</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -172,23 +187,23 @@ of <code>epsilon</code>, an error is thrown.</p></td>
 #&gt; # A tibble: 7 x 3
 #&gt;   party  percent votes
 #&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 cdu      38.0  718  
-#&gt; 2 spd      24.0  453  
-#&gt; 3 greens    8.00 151  
-#&gt; 4 fdp       8.00 151  
-#&gt; 5 left      9.00 170  
-#&gt; 6 afd       8.00 151  
-#&gt; 7 others    5.00  94.4
+#&gt; 1 cdu        38. 718. 
+#&gt; 2 spd        24. 453. 
+#&gt; 3 greens      8. 151. 
+#&gt; 4 fdp         8. 151. 
+#&gt; 5 left        9. 170. 
+#&gt; 6 afd         8. 151. 
+#&gt; 7 others      5.  94.4
 #&gt; </div><div class='input'><span class='no'>surveys</span>$<span class='no'>survey_redist</span> <span class='co'># results after redistribution</span></div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 6 x 3
 #&gt;   party  percent votes
 #&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 cdu     0.400    718
-#&gt; 2 spd     0.253    453
-#&gt; 3 greens  0.0842   151
-#&gt; 4 fdp     0.0842   151
-#&gt; 5 left    0.0947   170
-#&gt; 6 afd     0.0842   151
+#&gt; 1 cdu     0.400   718.
+#&gt; 2 spd     0.253   453.
+#&gt; 3 greens  0.0842  151.
+#&gt; 4 fdp     0.0842  151.
+#&gt; 5 left    0.0947  170.
+#&gt; 6 afd     0.0842  151.
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

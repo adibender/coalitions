@@ -1,7 +1,8 @@
-url: https://adibender.github.io/coalitions/
+url: https://adibender.github.io/coalitions
 
 template:
-  ganalytics: "UA-44545040-2"
+  params:
+    ganalytics: "UA-44545040-2"
 
 home:
   strip_header: false
@@ -25,7 +26,7 @@ reference:
       - get_seats
       - get_probabilities
   - title: "Seat distribution"
-    desc: "Methods used to distribute seats based on voting percentages."
+    desc: "Methods used to distribute seats across parties based on voting percentages."
     contents:
       - dHondt
       - sls

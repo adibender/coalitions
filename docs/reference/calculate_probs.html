@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -42,6 +44,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-44545040-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-44545040-2');
+</script>
+
 
 
   </head>
@@ -59,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -113,16 +125,19 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calculate coalition probabilities for multiple coalitions</h1>
-    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/coalition-probability.R'><code>R/coalition-probability.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/adibender/coalitions//blob/master/R/coalition-probability.R'><code>R/coalition-probability.R</code></a></small>
+    <div class="hidden name"><code>calculate_probs.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Calculate coalition probabilities for multiple coalitions</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>calculate_probs</span>(<span class='no'>majority_df</span>, <span class='no'>coalitions</span>, <span class='kw'>exclude_superior</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
@@ -154,7 +169,7 @@ Usually it makes sense to exclude superior coalitions.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='calculate_prob.html'>calculate_prob</a></code></p>
+    <div class='dont-index'><p><code><a href='calculate_prob.html'>calculate_prob</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

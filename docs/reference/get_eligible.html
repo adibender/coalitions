@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -42,6 +44,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-44545040-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-44545040-2');
+</script>
+
 
 
   </head>
@@ -59,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -113,16 +125,19 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Extract surveys from institutes within a specified time-window</h1>
-    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/pooling.R'><code>R/pooling.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/adibender/coalitions//blob/master/R/pooling.R'><code>R/pooling.R</code></a></small>
+    <div class="hidden name"><code>get_eligible.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Extract surveys from institutes within a specified time-window</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>get_eligible</span>(<span class='no'>surveys</span>, <span class='no'>pollsters</span>, <span class='kw'>last_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>(), <span class='kw'>period</span> <span class='kw'>=</span> <span class='fl'>14</span>,
   <span class='kw'>period_extended</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>

@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -44,6 +46,16 @@ is used." />
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-44545040-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-44545040-2');
+</script>
+
 
 
   </head>
@@ -61,7 +73,7 @@ is used." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.3</span>
       </span>
     </div>
 
@@ -115,18 +127,21 @@ is used." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Obtain pooled survey during specified period</h1>
-    <small>Source: <a href='https://github.com/adibender/coalitions//blob/master/R/pooling.R'><code>R/pooling.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/adibender/coalitions//blob/master/R/pooling.R'><code>R/pooling.R</code></a></small>
+    <div class="hidden name"><code>pool_surveys.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Per default, pools surveys starting from current date and going 14 days back.
 For each pollster within the defined time-frame, only the most recent survey
 is used.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>pool_surveys</span>(<span class='no'>surveys</span>, <span class='kw'>last_date</span> <span class='kw'>=</span> <span class='fu'>Sys.Date</span>(), <span class='kw'>pollsters</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"allensbach"</span>,
   <span class='st'>"emnid"</span>, <span class='st'>"forsa"</span>, <span class='st'>"fgw"</span>, <span class='st'>"gms"</span>, <span class='st'>"infratest"</span>, <span class='st'>"dimap"</span>, <span class='st'>"infratestdimap"</span>,
@@ -182,13 +197,13 @@ Defaults to 0.5.</p></td>
 <span class='fu'>pool_surveys</span>(<span class='no'>surveys_sample</span>, <span class='kw'>last_date</span><span class='kw'>=</span><span class='fu'>as.Date</span>(<span class='st'>"2017-09-02"</span>))</div><div class='output co'>#&gt; # A tibble: 7 x 8
 #&gt;   pollster date       start      end        respondents party  percent votes
 #&gt;   &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;     &lt;date&gt;           &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 pooled   2017-09-02 2017-08-22 2017-09-02        3055 afd       8.89   272
-#&gt; 2 pooled   2017-09-02 2017-08-22 2017-09-02        3055 cdu      38.0   1161
-#&gt; 3 pooled   2017-09-02 2017-08-22 2017-09-02        3055 fdp       8.52   260
-#&gt; 4 pooled   2017-09-02 2017-08-22 2017-09-02        3055 greens    7.41   226
-#&gt; 5 pooled   2017-09-02 2017-08-22 2017-09-02        3055 left      9.06   277
-#&gt; 6 pooled   2017-09-02 2017-08-22 2017-09-02        3055 others    4.51   138
-#&gt; 7 pooled   2017-09-02 2017-08-22 2017-09-02        3055 spd      23.6    722</div></pre>
+#&gt; 1 pooled   2017-09-02 2017-08-22 2017-09-02       3055. afd       8.89  272.
+#&gt; 2 pooled   2017-09-02 2017-08-22 2017-09-02       3055. cdu      38.0  1161.
+#&gt; 3 pooled   2017-09-02 2017-08-22 2017-09-02       3055. fdp       8.52  260.
+#&gt; 4 pooled   2017-09-02 2017-08-22 2017-09-02       3055. greens    7.41  226.
+#&gt; 5 pooled   2017-09-02 2017-08-22 2017-09-02       3055. left      9.06  277.
+#&gt; 6 pooled   2017-09-02 2017-08-22 2017-09-02       3055. others    4.51  138.
+#&gt; 7 pooled   2017-09-02 2017-08-22 2017-09-02       3055. spd      23.6   722.</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
