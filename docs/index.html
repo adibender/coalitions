@@ -8,7 +8,9 @@
 <title>Coalition Probabilities in Multi-Party Democracies • coalitions</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<link href="docsearch.css" rel="stylesheet">
+<!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Coalition Probabilities in Multi-Party Democracies">
 <meta property="og:description" content="An implementation of a MCMC method to calculate
     probabilities for a coalition majority based on survey results,
@@ -24,7 +26,7 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-44545040-2');
-</script>
+</script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 </head>
 <body>
     <div class="container template-article">
@@ -83,7 +85,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -137,7 +145,7 @@
 ##   pollster   surveys           
 ##   &lt;chr&gt;      &lt;list&gt;            
 ## 1 allensbach &lt;tibble [43 × 5]&gt; 
-## 2 emnid      &lt;tibble [231 × 5]&gt;
+## 2 emnid      &lt;tibble [232 × 5]&gt;
 ## 3 forsa      &lt;tibble [241 × 5]&gt;
 ## 4 fgw        &lt;tibble [85 × 5]&gt; 
 ## 5 gms        &lt;tibble [97 × 5]&gt; 
@@ -183,12 +191,12 @@
 <pre><code>## # A tibble: 6 x 4
 ##   pollster   date       coalition       probability
 ##   &lt;chr&gt;      &lt;date&gt;     &lt;chr&gt;                 &lt;dbl&gt;
-## 1 allensbach 2018-03-21 cdu                   0.   
-## 2 allensbach 2018-03-21 cdu_fdp               0.100
-## 3 allensbach 2018-03-21 cdu_fdp_greens       99.9  
-## 4 allensbach 2018-03-21 spd                   0.   
-## 5 allensbach 2018-03-21 left_spd              0.   
-## 6 allensbach 2018-03-21 greens_left_spd       0.</code></pre>
+## 1 allensbach 2018-03-21 cdu                  0.    
+## 2 allensbach 2018-03-21 cdu_fdp              0.0700
+## 3 allensbach 2018-03-21 cdu_fdp_greens      99.9   
+## 4 allensbach 2018-03-21 spd                  0.    
+## 5 allensbach 2018-03-21 left_spd             0.    
+## 6 allensbach 2018-03-21 greens_left_spd      0.</code></pre>
 <p><link rel="icon" href="favicon.ico"></p>
 </div>
 </div>
@@ -259,6 +267,14 @@
 </div>
 
   
-
-  </body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    
+    apiKey: 'b07f33bbc5aa2eddd7d63f5c8473e333',
+    indexName: 'coalitions',
+    inputSelector: 'input#search-input.form-control'
+  });
+</script>
+</body>
 </html>

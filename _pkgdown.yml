@@ -3,6 +3,9 @@ url: https://adibender.github.io/coalitions
 template:
   params:
     ganalytics: "UA-44545040-2"
+    docsearch:
+      api_key: b07f33bbc5aa2eddd7d63f5c8473e333
+      index_name: coalitions
 
 home:
   strip_header: false
