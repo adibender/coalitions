@@ -38,9 +38,11 @@ multi-party elections, based on a survey results:
 
 ## Installation
 
-Install from GitHub using:
+```r
+# To install from CRAN use:
+install.packages("coalitions")
 
-``` r
+# To install the most current version from GitHub use:
 devtools::install_github("adibender/coalitions")
 ```
 
