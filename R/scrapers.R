@@ -71,7 +71,7 @@ sanitize_colnames <- function(df) {
 #' coalitions:::.pollster_df
 #' # ... here we choose Forsa
 #' address <- coalitions:::.pollster_df %>% filter(pollster == "forsa") %>% pull(address)
-#' scrape_wahlrecht(address = address)
+#' scrape_wahlrecht(address = address) %>% slice(1:5)
 #' @export
 scrape_wahlrecht <- function(
   address = "https://www.wahlrecht.de/umfragen/emnid.htm",
@@ -245,8 +245,11 @@ get_surveys_by <- function() {
 #' @param ind_row_remove Negative vector of rows that will be skipped at the begining.
 #' @export
 #' @examples
-#' niedersachsen <- scrape_ltw()
-#' hessen <- scrape_ltw("http://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1))
+#' # Niedersachsen
+#' scrape_ltw() %>% slice(1:5)
+#' # Hessen
+#' scrape_ltw("http://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1)) %>%
+#'  slice(1:5)
 scrape_ltw <- function(
   address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",

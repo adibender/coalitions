@@ -40,7 +40,10 @@ library(dplyr)
 coalitions:::.pollster_df
 # ... here we choose Forsa
 address <- coalitions:::.pollster_df \%>\% filter(pollster == "forsa") \%>\% pull(address)
-scrape_wahlrecht(address = address)
-niedersachsen <- scrape_ltw()
-hessen <- scrape_ltw("http://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1))
+scrape_wahlrecht(address = address) \%>\% slice(1:5)
+# Niedersachsen
+scrape_ltw() \%>\% slice(1:5)
+# Hessen
+scrape_ltw("http://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1)) \%>\%
+ slice(1:5)
 }
