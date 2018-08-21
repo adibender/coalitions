@@ -1,6 +1,3 @@
-
-<link rel="icon" href="favicon.ico" />
-
 # coalitions <img src="man/figures/logo.png" align="right" />
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)

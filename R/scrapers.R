@@ -71,7 +71,7 @@ sanitize_colnames <- function(df) {
 #' coalitions:::.pollster_df
 #' # ... here we choose Forsa
 #' address <- coalitions:::.pollster_df %>% filter(pollster == "forsa") %>% pull(address)
-#' scrape_wahlrecht(address = address)
+#' scrape_wahlrecht(address = address) %>% slice(1:5)
 #' @export
 scrape_wahlrecht <- function(
   address = "https://www.wahlrecht.de/umfragen/emnid.htm",
@@ -242,23 +242,30 @@ get_surveys_by <- function() {
 #'
 #' @rdname scrape
 #' @inherit scrape_wahlrecht
+#' @param ind_row_remove Negative vector of rows that will be skipped at the begining.
 #' @export
+#' @examples
+#' # Niedersachsen
+#' scrape_ltw() %>% slice(1:5)
+#' # Hessen
+#' scrape_ltw("http://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1)) %>%
+#'  slice(1:5)
 scrape_ltw <- function(
   address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
-    "SONSTIGE")) {
+    "SONSTIGE"),
+  ind_row_remove = -c(1:2)) {
 
   atab <- read_html(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
-  ind_row_remove <- -c(1:2)
-
   atab <- atab[ind_row_remove, ]
   atab <- atab[-nrow(atab), ]
   atab <- atab[, -2]
 
-  atab$Befragte <- extract_num(substr(atab$Befragte, 5, 9), decimal = FALSE)
+  atab$Befragte <- gsub(".*\u2022", "", atab$Befragte)
+  atab$Befragte <- extract_num(substr(atab$Befragte, 2, 6), decimal = FALSE)
   ind.empty     <- sapply(atab, function(z) all(z == "")) |
     sapply(colnames(atab), function(z) z == "")
   atab          <- atab[, !ind.empty]
