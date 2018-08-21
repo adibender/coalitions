@@ -52,6 +52,14 @@ test_that("Federal german scrapers work", {
 	surveys_nds <- get_surveys_nds()
 	expect_data_frame(surveys_nds, nrows = 6, ncols = 2)
 
+	# Hessen
+	he <- scrape_ltw(
+		address = "http://www.wahlrecht.de/umfragen/landtage/hessen.htm",
+		ind_row_remove = -1) %>%
+		filter(date <= "2018-06-21")
+	expect_data_frame(he, nrows = 14, ncols = 12)
+	expect_identical(he$respondents[3], 1067)
+
 })
 
 
