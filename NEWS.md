@@ -1,5 +1,8 @@
 # coalitions 0.6
 
+## coalitions 0.6.4
+- Add scrapers for local German "Hessen" election
+
 ## coalitions 0.6.3
 - Update HP with new `pkgdown` version
 

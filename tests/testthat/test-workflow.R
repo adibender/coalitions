@@ -11,7 +11,7 @@ test_that("workflow stable", {
 	coalas <- coalitions:::paste_coalitions(coalitions)
 
 	## collapse
-	survey <- .survey_sample %>%
+	survey <- coalitions:::.survey_sample %>%
 		filter(pollster=="insa") %>%
 		unnest() %>%
 		filter(date == as.Date("2017-08-29"))
@@ -32,7 +32,9 @@ test_that("workflow stable", {
 	expect_data_frame(survey$draws[[1]], nrows=10, ncols=7)
 	expect_equal(colnames(survey$draws[[1]]), survey$survey[[1]]$party)
 
-	expect_warning(draw_from_posterior(survey$survey[[1]], nsim=10, correction=.10))
+	if(capabilities("long.double")) {
+		expect_warning(drp <- draw_from_posterior(survey$survey[[1]], nsim=10, correction=.1))
+	}
 
 	entry_probs <- get_entryprobability(survey$draws[[1]])
 	expect_numeric(entry_probs, lower=0, upper=1, all.missing=FALSE, len=7,
