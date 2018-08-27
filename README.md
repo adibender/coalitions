@@ -10,7 +10,7 @@ Status](https://codecov.io/github/adibender/coalitions/master.svg)](https://code
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.00606/status.svg)](https://doi.org/10.21105/joss.00606)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1172594.svg)](https://doi.org/10.5281/zenodo.1172594)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/coalitions)](https://cran.r-project.org/package=coalitions)
-[![](https://cranlogs.r-pkg.org/badges/coalitions)](https://cran.r-project.org/package=coalitions)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/coalitions)](https://cran.r-project.org/package=coalitions)
 [![MIT
 license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
