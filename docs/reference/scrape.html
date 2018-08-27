@@ -190,12 +190,8 @@ Scrape Lower Saxony regional polls" />
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>coalitions</span>)
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='co'># select a polling agency from .pollster_df that should be scraped ...</span>
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='co'># select a polling agency from .pollster_df that should be scraped ...</span>
 <span class='kw pkg'>coalitions</span><span class='kw ns'>:::</span><span class='no'>.pollster_df</span></div><div class='output co'>#&gt; # A tibble: 7 x 2
 #&gt;   pollster   address                                             
 #&gt;   &lt;chr&gt;      &lt;chr&gt;                                               
@@ -210,11 +206,11 @@ Scrape Lower Saxony regional polls" />
 <span class='fu'>scrape_wahlrecht</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='no'>address</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/slice.html'>slice</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning:  1 failed to parse.</span></div><div class='output co'>#&gt; <span class='warning'>Warning:  3 failed to parse.</span></div><div class='output co'>#&gt; # A tibble: 5 x 11
 #&gt;   date       start      end          cdu   spd greens   fdp  left   afd others
 #&gt;   &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1 2018-08-18 2018-08-13 2018-08-17   30.   18.    15.    9.   10.   14.     4.
-#&gt; 2 2018-08-11 2018-08-06 2018-08-10   30.   18.    15.   10.    9.   14.     4.
-#&gt; 3 2018-08-04 2018-07-30 2018-08-03   31.   18.    13.   10.    9.   14.     5.
-#&gt; 4 2018-07-28 2018-07-23 2018-07-27   32.   18.    13.    9.    9.   14.     5.
-#&gt; 5 2018-07-21 2018-07-16 2018-07-20   31.   18.    13.    8.   10.   15.     5.
+#&gt; 1 2018-08-25 2018-08-20 2018-08-24   30.   18.    15.    8.   10.   14.     5.
+#&gt; 2 2018-08-18 2018-08-13 2018-08-17   30.   18.    15.    9.   10.   14.     4.
+#&gt; 3 2018-08-11 2018-08-06 2018-08-10   30.   18.    15.   10.    9.   14.     4.
+#&gt; 4 2018-08-04 2018-07-30 2018-08-03   31.   18.    13.   10.    9.   14.     5.
+#&gt; 5 2018-07-28 2018-07-23 2018-07-27   32.   18.    13.    9.    9.   14.     5.
 #&gt; # ... with 1 more variable: respondents &lt;dbl&gt;</div><div class='input'><span class='co'># Niedersachsen</span>
 <span class='fu'>scrape_ltw</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/slice.html'>slice</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 12
 #&gt;   pollster      date       start      end          cdu   spd greens   fdp  left
