@@ -18,6 +18,33 @@ sanitize_strings <- function(x) {
 
 }
 
+exctract_num_befragte <- function(x) {
+
+}
+
+#' @importFrom purrr map_dbl
+sanitize_befragte <- function(x) {
+
+  x <- gsub(".*\u2022", "", x)
+  x <- substr(x, 2, 6)
+  x <- map_dbl(x, ~if_else(grepl(".", .x, fixed = TRUE),
+    extract_num(.x, decimal = FALSE), extract_num(substr(.x, 1, 3))))
+
+}
+
+#' @importFrom stringr regex str_extract_all
+sanitize_sonstige <- function(x) {
+
+  q_ind <- grepl("?", x, fixed = TRUE)
+  x <- map(x, ~str_extract_all(.x, regex("[0-9],?[0-9]?")))
+  x <- map(x, ~map(.x, extract_num))
+  x <- map(x, ~sum(unlist(.x)))
+  x[q_ind] <- NA
+
+  x
+
+}
+
 #' Extract numerics from string or character
 #'
 #' Removes all characters that are not in [0-9].
@@ -109,8 +136,10 @@ scrape_wahlrecht <- function(
   atab <- mutate(atab, datum = dmy(.data$datum))
   atab <- atab %>%
     mutate(
-      start = dmy(paste0(str_sub(.data$zeitraum, 1, 6), str_sub(.data$datum, 1, 4))),
-      end   = dmy(paste0(str_sub(.data$zeitraum, 8, 13), str_sub(.data$datum, 1, 4))),
+      start = dmy(paste0(str_sub(.data$zeitraum, 1, 6),
+        str_sub(.data$datum, 1, 4))),
+      end   = dmy(paste0(str_sub(.data$zeitraum, 8, 13),
+        str_sub(.data$datum, 1, 4))),
       end   = case_when(
         is.na(end) ~ start,
         TRUE ~ end))
@@ -242,7 +271,7 @@ get_surveys_by <- function() {
 #'
 #' @rdname scrape
 #' @inherit scrape_wahlrecht
-#' @param ind_row_remove Negative vector of rows that will be skipped at the begining.
+#' @param ind_row_remove Negative vector of rows that will be skipped at the beginning.
 #' @export
 #' @examples
 #' # Niedersachsen
@@ -264,8 +293,7 @@ scrape_ltw <- function(
   atab <- atab[-nrow(atab), ]
   atab <- atab[, -2]
 
-  atab$Befragte <- gsub(".*\u2022", "", atab$Befragte)
-  atab$Befragte <- extract_num(substr(atab$Befragte, 2, 6), decimal = FALSE)
+  atab$Befragte <- sanitize_befragte(atab$Befragte)
   ind.empty     <- sapply(atab, function(z) all(z == "")) |
     sapply(colnames(atab), function(z) z == "")
   atab          <- atab[, !ind.empty]
@@ -274,6 +302,7 @@ scrape_ltw <- function(
   parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
   # transform percentage string to numerics
   atab <- atab %>%
+    mutate(sonstige = sanitize_sonstige(.data$sonstige)) %>%
     mutate_at(c(parties), extract_num) %>%
     mutate_at("befragte", extract_num, decimal = FALSE)
 
@@ -292,7 +321,7 @@ scrape_ltw <- function(
         pollster = tolower(.data$pollster),
         pollster = case_when(
           .data$pollster == "forschungs-gruppe wahlen" ~ "fgw",
-          TRUE                                   ~ .data$pollster))
+          TRUE                                         ~ .data$pollster))
 
   colnames(atab) <- prettify_strings(
     colnames(atab),

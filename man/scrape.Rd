@@ -24,7 +24,7 @@ scrape_by(address = "https://www.wahlrecht.de/umfragen/landtage/bayern.htm",
 
 \item{parties}{A character vector containing names of parties to collapse.}
 
-\item{ind_row_remove}{Negative vector of rows that will be skipped at the begining.}
+\item{ind_row_remove}{Negative vector of rows that will be skipped at the beginning.}
 }
 \description{
 Scrapes survey tables and performs sanitation to output tidy data
