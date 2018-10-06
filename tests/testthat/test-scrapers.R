@@ -43,7 +43,7 @@ test_that("Federal german scrapers work", {
   expect_equal(by$respondents, 1510)
 
   surveys_by <- get_surveys_by()
-  expect_data_frame(surveys_by, nrows = 6, ncols = 2)
+  expect_data_frame(surveys_by, nrows = 7, ncols = 2)
 
   # Niedersachsen
   nds <- scrape_ltw() %>% filter(date == as.Date("2017-10-12"))

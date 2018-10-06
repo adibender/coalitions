@@ -5,7 +5,8 @@
 \title{Calculate percentage of votes/seats after excluding parties with
 \code{votes < hurdle}}
 \usage{
-redistribute(survey, hurdle = 0.05, others = "others", epsilon = 1e-05)
+redistribute(survey, hurdle = 0.05, others = "others",
+  epsilon = 1e-05)
 }
 \arguments{
 \item{survey}{The actual survey results on which \code{dirichlet.draws}

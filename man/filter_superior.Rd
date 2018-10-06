@@ -16,7 +16,17 @@ will be obtained by \code{\link[coalitions]{get_superior}}.}
 \item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}
 }
 \description{
-Remove rows from table for which superior coalitions are possible
+Given a table with simulations in the rows and coalitions in the columns,
+this function returns the coalition probabilities for a specified coalition,
+by default excluding superior coalitions first
+}
+\examples{
+test_df <- data.frame(
+ cdu            = c(rep(FALSE, 9), TRUE),
+ cdu_fdp        = c(rep(FALSE, 8), TRUE, TRUE),
+ cdu_fdp_greens = c(TRUE, TRUE, rep(FALSE, 6), TRUE, TRUE))
+calculate_prob(test_df, "cdu_fdp_greens") # exclude_superior defaults to TRUE
+calculate_prob(test_df, "cdu_fdp_greens", exclude_superior=FALSE)
 }
 \seealso{
 \code{\link[coalitions]{get_superior}}

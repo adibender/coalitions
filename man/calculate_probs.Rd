@@ -21,7 +21,9 @@ Usually it makes sense to exclude superior coalitions.}
 \item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}
 }
 \description{
-Calculate coalition probabilities for multiple coalitions
+Given a table with simulations in the rows and coalitions in the columns,
+this function returns the coalition probabilities for a specified coalition,
+by default excluding superior coalitions first
 }
 \examples{
 test_df <- data.frame(
