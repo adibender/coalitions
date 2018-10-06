@@ -1,5 +1,10 @@
 # coalitions 0.6
 
+## coalitions 0.6.5
+- Fixed scrapper for local German "Hessen" election
+- Fixed tests
+
+
 ## coalitions 0.6.4
 - Add scrapers for local German "Hessen" election
 
