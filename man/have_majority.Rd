@@ -4,9 +4,9 @@
 \alias{have_majority}
 \title{Do coalitions have a majority}
 \usage{
-have_majority(seats_tab, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
-  "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left", "greens")),
-  seats_majority = 300L, collapse = "_")
+have_majority(seats_tab, coalitions = list(c("cdu"), c("cdu", "fdp"),
+  c("cdu", "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left",
+  "greens")), seats_majority = 300L, collapse = "_")
 }
 \arguments{
 \item{seats_tab}{A data frame containing number of seats obtained by a party.

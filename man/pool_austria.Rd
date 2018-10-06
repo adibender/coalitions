@@ -12,7 +12,15 @@ pool_austria(..., pollsters = c("Market", "Research Affairs",
 for pooling.}
 }
 \description{
-Pool surveys from different pollsters
+Per default, pools surveys starting from current date and going 14 days back.
+For each pollster within the defined time-frame, only the most recent survey
+is used.
+}
+\examples{
+library(coalitions)
+library(dplyr)
+latest <- get_latest(surveys_sample)
+pool_surveys(surveys_sample, last_date=as.Date("2017-09-02"))
 }
 \seealso{
 pool_surveys

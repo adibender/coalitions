@@ -38,7 +38,9 @@
 
 <meta property="og:title" content="Remove rows from table for which superior coalitions are possible — filter_superior" />
 
-<meta property="og:description" content="Remove rows from table for which superior coalitions are possible" />
+<meta property="og:description" content="Given a table with simulations in the rows and coalitions in the columns,
+this function returns the coalition probabilities for a specified coalition,
+by default excluding superior coalitions first" />
 
 <meta property="og:image" content="https://adibender.github.io/coalitions/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -79,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.5</span>
       </span>
     </div>
 
@@ -149,7 +151,9 @@
 
     <div class="ref-description">
     
-    <p>Remove rows from table for which superior coalitions are possible</p>
+    <p>Given a table with simulations in the rows and coalitions in the columns,
+this function returns the coalition probabilities for a specified coalition,
+by default excluding superior coalitions first</p>
     
     </div>
 
@@ -179,6 +183,14 @@ will be obtained by <code><a href='get_superior.html'>get_superior</a></code>.</
     <div class='dont-index'><p><code><a href='get_superior.html'>get_superior</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>test_df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+ <span class='kw'>cdu</span>            <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fu'>rep</span>(<span class='fl'>FALSE</span>, <span class='fl'>9</span>), <span class='fl'>TRUE</span>),
+ <span class='kw'>cdu_fdp</span>        <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fu'>rep</span>(<span class='fl'>FALSE</span>, <span class='fl'>8</span>), <span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>),
+ <span class='kw'>cdu_fdp_greens</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>, <span class='fu'>rep</span>(<span class='fl'>FALSE</span>, <span class='fl'>6</span>), <span class='fl'>TRUE</span>, <span class='fl'>TRUE</span>))
+<span class='fu'><a href='calculate_prob.html'>calculate_prob</a></span>(<span class='no'>test_df</span>, <span class='st'>"cdu_fdp_greens"</span>) <span class='co'># exclude_superior defaults to TRUE</span></div><div class='output co'>#&gt;   cdu_fdp_greens
+#&gt; 1             20</div><div class='input'><span class='fu'><a href='calculate_prob.html'>calculate_prob</a></span>(<span class='no'>test_df</span>, <span class='st'>"cdu_fdp_greens"</span>, <span class='kw'>exclude_superior</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;   cdu_fdp_greens
+#&gt; 1             40</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -186,7 +198,9 @@ will be obtained by <code><a href='get_superior.html'>get_superior</a></code>.</
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

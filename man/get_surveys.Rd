@@ -26,8 +26,6 @@ otherwise calls \code{\link{get_surveys}}.}
 be searched for. Defaults to \code{Sys.Date}.}
 }
 \description{
-Scrape surveys from all pollsters
-
 Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
 
 Scrapes data from \url{wahlrecht.de} and performs some sanitizing.

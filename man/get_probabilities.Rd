@@ -4,9 +4,9 @@
 \alias{get_probabilities}
 \title{Wrapper for calculation of coalition probabilities from survey}
 \usage{
-get_probabilities(x, coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu",
-  "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left", "greens")),
-  nsim = 1e+05, distrib.fun = sls, seats_majority = 300L,
+get_probabilities(x, coalitions = list(c("cdu"), c("cdu", "fdp"),
+  c("cdu", "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left",
+  "greens")), nsim = 1e+05, distrib.fun = sls, seats_majority = 300L,
   seed = as.numeric(now()), correction = NULL)
 }
 \arguments{
@@ -33,7 +33,9 @@ variation which might be useful due to rounding errors from reported survey
 results (or add an additional source of variation in general).}
 }
 \description{
-Wrapper for calculation of coalition probabilities from survey
+Given a table with simulations in the rows and coalitions in the columns,
+this function returns the coalition probabilities for a specified coalition,
+by default excluding superior coalitions first
 }
 \examples{
 library(coalitions)
