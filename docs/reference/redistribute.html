@@ -82,7 +82,7 @@ votes &amp;lt; hurdle" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.5</span>
       </span>
     </div>
 
@@ -158,7 +158,8 @@ votes &amp;lt; hurdle" />
     
     </div>
 
-    <pre class="usage"><span class='fu'>redistribute</span>(<span class='no'>survey</span>, <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>others</span> <span class='kw'>=</span> <span class='st'>"others"</span>, <span class='kw'>epsilon</span> <span class='kw'>=</span> <span class='fl'>1e-05</span>)</pre>
+    <pre class="usage"><span class='fu'>redistribute</span>(<span class='no'>survey</span>, <span class='kw'>hurdle</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>others</span> <span class='kw'>=</span> <span class='st'>"others"</span>,
+  <span class='kw'>epsilon</span> <span class='kw'>=</span> <span class='fl'>1e-05</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,18 +202,18 @@ of <code>epsilon</code>, an error is thrown.</p></td>
 #&gt; # A tibble: 7 x 3
 #&gt;   party  percent votes
 #&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 cdu        38. 718. 
-#&gt; 2 spd        24. 453. 
-#&gt; 3 greens      8. 151. 
-#&gt; 4 fdp         8. 151. 
-#&gt; 5 left        9. 170. 
-#&gt; 6 afd         8. 151. 
-#&gt; 7 others      5.  94.4
+#&gt; 1 cdu         38 718. 
+#&gt; 2 spd         24 453. 
+#&gt; 3 greens       8 151. 
+#&gt; 4 fdp          8 151. 
+#&gt; 5 left         9 170. 
+#&gt; 6 afd          8 151. 
+#&gt; 7 others       5  94.4
 #&gt; </div><div class='input'><span class='no'>surveys</span>$<span class='no'>survey_redist</span> <span class='co'># results after redistribution</span></div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 6 x 3
 #&gt;   party  percent votes
 #&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 cdu     0.400   718.
+#&gt; 1 cdu     0.4     718.
 #&gt; 2 spd     0.253   453.
 #&gt; 3 greens  0.0842  151.
 #&gt; 4 fdp     0.0842  151.

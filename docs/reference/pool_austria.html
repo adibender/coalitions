@@ -38,7 +38,9 @@
 
 <meta property="og:title" content="Pool surveys from different pollsters — pool_austria" />
 
-<meta property="og:description" content="Pool surveys from different pollsters" />
+<meta property="og:description" content="Per default, pools surveys starting from current date and going 14 days back.
+For each pollster within the defined time-frame, only the most recent survey
+is used." />
 
 <meta property="og:image" content="https://adibender.github.io/coalitions/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -79,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.5</span>
       </span>
     </div>
 
@@ -149,7 +151,9 @@
 
     <div class="ref-description">
     
-    <p>Pool surveys from different pollsters</p>
+    <p>Per default, pools surveys starting from current date and going 14 days back.
+For each pollster within the defined time-frame, only the most recent survey
+is used.</p>
     
     </div>
 
@@ -171,6 +175,20 @@ for pooling.</p></td>
     <div class='dont-index'><p>pool_surveys</p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>coalitions</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='no'>latest</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_surveys.html'>get_latest</a></span>(<span class='no'>surveys_sample</span>)
+<span class='fu'><a href='pool_surveys.html'>pool_surveys</a></span>(<span class='no'>surveys_sample</span>, <span class='kw'>last_date</span><span class='kw'>=</span><span class='fu'>as.Date</span>(<span class='st'>"2017-09-02"</span>))</div><div class='output co'>#&gt; # A tibble: 7 x 8
+#&gt;   pollster date       start      end        respondents party  percent votes
+#&gt;   &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;     &lt;date&gt;           &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1 pooled   2017-09-02 2017-08-22 2017-09-02       3055. afd       8.89  272.
+#&gt; 2 pooled   2017-09-02 2017-08-22 2017-09-02       3055. cdu      38.0  1161.
+#&gt; 3 pooled   2017-09-02 2017-08-22 2017-09-02       3055. fdp       8.52  260.
+#&gt; 4 pooled   2017-09-02 2017-08-22 2017-09-02       3055. greens    7.41  226.
+#&gt; 5 pooled   2017-09-02 2017-08-22 2017-09-02       3055. left      9.06  277.
+#&gt; 6 pooled   2017-09-02 2017-08-22 2017-09-02       3055. others    4.51  138.
+#&gt; 7 pooled   2017-09-02 2017-08-22 2017-09-02       3055. spd      23.6   722.</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -178,7 +196,9 @@ for pooling.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

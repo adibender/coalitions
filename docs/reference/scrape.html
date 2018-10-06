@@ -38,9 +38,7 @@
 
 <meta property="og:title" content="Scrape surveys from wahlrecht.de — scrape_wahlrecht" />
 
-<meta property="og:description" content="Scrapes survey tables and performs sanitation to output tidy data
-Scrape Bavarian regional polls
-Scrape Lower Saxony regional polls" />
+<meta property="og:description" content="Scrapes survey tables and performs sanitation to output tidy data" />
 
 <meta property="og:image" content="https://adibender.github.io/coalitions/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -81,7 +79,7 @@ Scrape Lower Saxony regional polls" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.4</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.6.5</span>
       </span>
     </div>
 
@@ -152,23 +150,22 @@ Scrape Lower Saxony regional polls" />
     <div class="ref-description">
     
     <p>Scrapes survey tables and performs sanitation to output tidy data</p>
-<p>Scrape Bavarian regional polls</p>
-<p>Scrape Lower Saxony regional polls</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>scrape_wahlrecht</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='st'>"https://www.wahlrecht.de/umfragen/emnid.htm"</span>,
-  <span class='kw'>parties</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CDU"</span>, <span class='st'>"SPD"</span>, <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, <span class='st'>"PIRATEN"</span>, <span class='st'>"FW"</span>, <span class='st'>"AFD"</span>,
-  <span class='st'>"SONSTIGE"</span>))
+  <span class='kw'>parties</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CDU"</span>, <span class='st'>"SPD"</span>, <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, <span class='st'>"PIRATEN"</span>, <span class='st'>"FW"</span>,
+  <span class='st'>"AFD"</span>, <span class='st'>"SONSTIGE"</span>))
 
-<span class='fu'>scrape_by</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='st'>"https://www.wahlrecht.de/umfragen/landtage/bayern.htm"</span>,
-  <span class='kw'>parties</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CSU"</span>, <span class='st'>"SPD"</span>, <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, <span class='st'>"PIRATEN"</span>, <span class='st'>"FW"</span>, <span class='st'>"AFD"</span>,
-  <span class='st'>"SONSTIGE"</span>))
+
+  <span class='fu'>scrape_by</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='st'>"https://www.wahlrecht.de/umfragen/landtage/bayern.htm"</span>,
+  <span class='kw'>parties</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CSU"</span>, <span class='st'>"SPD"</span>, <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, <span class='st'>"PIRATEN"</span>, <span class='st'>"FW"</span>,
+  <span class='st'>"AFD"</span>, <span class='st'>"SONSTIGE"</span>))
 
 
   <span class='fu'>scrape_ltw</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='st'>"https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm"</span>,
-  <span class='kw'>parties</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CDU"</span>, <span class='st'>"SPD"</span>, <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, <span class='st'>"PIRATEN"</span>, <span class='st'>"FW"</span>, <span class='st'>"AFD"</span>,
-  <span class='st'>"SONSTIGE"</span>), <span class='kw'>ind_row_remove</span> <span class='kw'>=</span> -<span class='fu'>c</span>(<span class='fl'>1</span>:<span class='fl'>2</span>))</pre>
+  <span class='kw'>parties</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"CDU"</span>, <span class='st'>"SPD"</span>, <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, <span class='st'>"PIRATEN"</span>, <span class='st'>"FW"</span>,
+  <span class='st'>"AFD"</span>, <span class='st'>"SONSTIGE"</span>), <span class='kw'>ind_row_remove</span> <span class='kw'>=</span> -<span class='fu'>c</span>(<span class='fl'>1</span>:<span class='fl'>2</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,7 +180,7 @@ Scrape Lower Saxony regional polls" />
     </tr>
     <tr>
       <th>ind_row_remove</th>
-      <td><p>Negative vector of rows that will be skipped at the begining.</p></td>
+      <td><p>Negative vector of rows that will be skipped at the beginning.</p></td>
     </tr>
     </table>
     
@@ -203,34 +200,43 @@ Scrape Lower Saxony regional polls" />
 #&gt; 6 infratest  https://www.wahlrecht.de/umfragen/dimap.htm         
 #&gt; 7 insa       https://www.wahlrecht.de/umfragen/insa.htm          </div><div class='input'><span class='co'># ... here we choose Forsa</span>
 <span class='no'>address</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>coalitions</span><span class='kw ns'>:::</span><span class='no'>.pollster_df</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>pollster</span> <span class='kw'>==</span> <span class='st'>"forsa"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/pull.html'>pull</a></span>(<span class='no'>address</span>)
-<span class='fu'>scrape_wahlrecht</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='no'>address</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/slice.html'>slice</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning:  1 failed to parse.</span></div><div class='output co'>#&gt; <span class='warning'>Warning:  3 failed to parse.</span></div><div class='output co'>#&gt; # A tibble: 5 x 11
-#&gt;   date       start      end          cdu   spd greens   fdp  left   afd others
-#&gt;   &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1 2018-08-25 2018-08-20 2018-08-24   30.   18.    15.    8.   10.   14.     5.
-#&gt; 2 2018-08-18 2018-08-13 2018-08-17   30.   18.    15.    9.   10.   14.     4.
-#&gt; 3 2018-08-11 2018-08-06 2018-08-10   30.   18.    15.   10.    9.   14.     4.
-#&gt; 4 2018-08-04 2018-07-30 2018-08-03   31.   18.    13.   10.    9.   14.     5.
-#&gt; 5 2018-07-28 2018-07-23 2018-07-27   32.   18.    13.    9.    9.   14.     5.
-#&gt; # ... with 1 more variable: respondents &lt;dbl&gt;</div><div class='input'><span class='co'># Niedersachsen</span>
-<span class='fu'>scrape_ltw</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/slice.html'>slice</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 12
-#&gt;   pollster      date       start      end          cdu   spd greens   fdp  left
-#&gt;   &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 forsa         2018-02-25 2018-02-25 2018-02-25   33.  33.0  10.0     8.  6.00
-#&gt; 2 fgw           2017-10-12 2017-10-12 2017-10-12   33.  34.5   9.00    9.  5.00
-#&gt; 3 insa          2017-10-09 2017-10-09 2017-10-09   32.  33.0  10.0    10.  5.00
-#&gt; 4 fgw           2017-10-05 2017-10-05 2017-10-05   33.  33.0   9.00   10.  5.00
-#&gt; 5 infratestdim… 2017-10-05 2017-10-05 2017-10-05   34.  34.0   8.50    8.  4.50
-#&gt; # ... with 3 more variables: afd &lt;dbl&gt;, others &lt;dbl&gt;, respondents &lt;dbl&gt;</div><div class='input'><span class='co'># Hessen</span>
+<span class='fu'>scrape_wahlrecht</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='no'>address</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/slice.html'>slice</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning:  2 failed to parse.</span></div><div class='output co'>#&gt; <span class='warning'>Warning:  4 failed to parse.</span></div><div class='output co'>#&gt;         date      start        end cdu spd greens fdp left afd others
+#&gt; 1 2018-09-29 2018-09-24 2018-09-28  28  16     17   9   10  15      5
+#&gt; 2 2018-09-22 2018-09-17 2018-09-21  28  17     16   9   10  15      5
+#&gt; 3 2018-09-15 2018-09-10 2018-09-14  30  18     16   8   10  13      5
+#&gt; 4 2018-09-08 2018-09-03 2018-09-07  31  16     15   9   10  14      5
+#&gt; 5 2018-09-01 2018-08-27 2018-08-31  30  17     16   8    8  16      5
+#&gt;   respondents
+#&gt; 1        2501
+#&gt; 2        2502
+#&gt; 3        2507
+#&gt; 4        2507
+#&gt; 5        2503</div><div class='input'><span class='co'># Niedersachsen</span>
+<span class='fu'>scrape_ltw</span>() <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/slice.html'>slice</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt;         pollster       date      start        end cdu  spd greens fdp left afd
+#&gt; 1          forsa 2018-02-25 2018-02-25 2018-02-25  33 33.0   10.0   8  6.0   6
+#&gt; 2            fgw 2017-10-12 2017-10-12 2017-10-12  33 34.5    9.0   9  5.0   7
+#&gt; 3           insa 2017-10-09 2017-10-09 2017-10-09  32 33.0   10.0  10  5.0   7
+#&gt; 4            fgw 2017-10-05 2017-10-05 2017-10-05  33 33.0    9.0  10  5.0   7
+#&gt; 5 infratestdimap 2017-10-05 2017-10-05 2017-10-05  34 34.0    8.5   8  4.5   8
+#&gt;   others respondents
+#&gt; 1    4.0        1004
+#&gt; 2    2.5        1001
+#&gt; 3    3.0        1005
+#&gt; 4    3.0        1083
+#&gt; 5    3.0        1002</div><div class='input'><span class='co'># Hessen</span>
 <span class='fu'>scrape_ltw</span>(<span class='st'>"http://www.wahlrecht.de/umfragen/landtage/hessen.htm"</span>, <span class='kw'>ind_row_remove</span><span class='kw'>=</span>-<span class='fu'>c</span>(<span class='fl'>1</span>)) <span class='kw'>%&gt;%</span>
- <span class='fu'><a href='http://dplyr.tidyverse.org/reference/slice.html'>slice</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 12
-#&gt;   pollster      date       start      end          cdu   spd greens   fdp  left
-#&gt;   &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 infratestdim… 2018-06-21 2018-06-21 2018-06-21   31.   22.    14.    7.    7.
-#&gt; 2 forschungsgr… 2018-06-12 2018-06-12 2018-06-12   31.   25.    13.    8.    8.
-#&gt; 3 insa          2018-05-17 2018-05-17 2018-05-17   33.   24.    13.    7.    8.
-#&gt; 4 forschungsgr… 2018-03-22 2018-03-22 2018-03-22   31.   26.    13.    7.    8.
-#&gt; 5 forsa         2018-02-25 2018-02-25 2018-02-25   33.   23.    14.    8.    7.
-#&gt; # ... with 3 more variables: afd &lt;dbl&gt;, others &lt;dbl&gt;, respondents &lt;dbl&gt;</div></pre>
+ <span class='fu'><a href='http://dplyr.tidyverse.org/reference/slice.html'>slice</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt;                 pollster       date      start        end cdu spd greens fdp
+#&gt; 1 forschungsgruppewahlen 2018-10-03 2018-10-03 2018-10-03  29  23     18   6
+#&gt; 2         infratestdimap 2018-09-24 2018-09-24 2018-09-24  28  23     17   7
+#&gt; 3 forschungsgruppewahlen 2018-09-21 2018-09-21 2018-09-21  32  25     15   6
+#&gt; 4                   insa 2018-09-07 2018-09-07 2018-09-07  29  24     14   7
+#&gt; 5         infratestdimap 2018-06-21 2018-06-21 2018-06-21  31  22     14   7
+#&gt;   left afd others respondents
+#&gt; 1    8  13      3        1038
+#&gt; 2    8  14      3        1000
+#&gt; 3    8  11      3        1039
+#&gt; 4    8  14      4        1039
+#&gt; 5    7  15      4        1003</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
