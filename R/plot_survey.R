@@ -23,7 +23,11 @@
 #' @import ggplot2
 #' @export
 #' @examples
-#' library(tidyverse)
+#' library(tidyr)
+#' library(purrr)
+#' library(dplyr)
+#' library(coalitions)
+#' 
 #' dat <- scrape_wahlrecht() %>% collapse_parties() %>%
 #'   slice(1) %>% select(survey) %>% unnest()
 #'
@@ -37,7 +41,7 @@ plot_survey <- function(data, cols = NULL, labels = NULL, focus = NULL, base_siz
                         minimal = FALSE, ylim, ylab = "Voter share in %", main = NULL, perc_labels = TRUE,
                         hurdle = 5) {
   if (!is.factor(data$party))
-    data <- data %>% mutate(party = factor(party, levels = party))
+    data$party <- factor(data$party, levels = data$party)
   if (missing(ylim)) {
     if (perc_labels) # if we need extra space for the percentage labels
       ylim <- c(0,max(data$percent) + 4)
@@ -59,9 +63,9 @@ plot_survey <- function(data, cols = NULL, labels = NULL, focus = NULL, base_siz
     data$label_position <- apply(data, 1, function(x) max(hurdle, as.numeric(x["percent"]), na.rm = T))
   }
   
-  gg <- ggplot(data, aes(x = party, y = percent, fill = party))
+  gg <- ggplot(data, aes_string(x = "party", y = "percent", fill = "party"))
   if (minimal)
-    gg <- gg + geom_hline(yintercept = seq(0,max(ylim),by = 10), col = gray(0.9), lty = 2)
+    gg <- gg + geom_hline(yintercept = seq(0,max(ylim),by = 10), col = grDevices::gray(0.9), lty = 2)
   gg <- gg + geom_bar(stat = "identity") +
     scale_fill_manual(name="Partei", values=cols) +
     scale_x_discrete(labels = labels)
@@ -75,10 +79,11 @@ plot_survey <- function(data, cols = NULL, labels = NULL, focus = NULL, base_siz
           axis.ticks.x = element_blank(),
           plot.title = element_text(hjust = 0.5, size = 0.95 * base_size))
   if (!minimal & perc_labels) {
+    data$percent_label <- as.character(round(data$percent, 1))
     # positive labels
-    gg <- gg + geom_text(data = data[data$percent >= 0,], aes(y = label_position, label = round(percent,1)), vjust = -0.5, hjust = 0.5, size = base_size / 4, col = "darkgray")
+    gg <- gg + geom_text(data = data[data$percent >= 0,], aes_string(y = "label_position", label = "percent_label"), vjust = -0.5, hjust = 0.5, size = base_size / 4, col = "darkgray")
     # negative labels (e.g. if differences and not shares are plotted)
-    gg <- gg + geom_text(data = data[data$percent < 0,], aes(y = label_position, label = round(percent,1)), vjust = 1.5, hjust = 0.5, size = base_size / 4, col = "darkgray")
+    gg <- gg + geom_text(data = data[data$percent < 0,], aes_string(y = "label_position", label = "percent_label"), vjust = 1.5, hjust = 0.5, size = base_size / 4, col = "darkgray")
   }
   if(minimal) {
     gg <- gg +

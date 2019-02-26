@@ -41,7 +41,11 @@ the function can be used to plot party-specific differences (e.g. between
 a survey and the election result), including negative numbers.
 }
 \examples{
-library(tidyverse)
+library(tidyr)
+library(purrr)
+library(dplyr)
+library(coalitions)
+
 dat <- scrape_wahlrecht() \%>\% collapse_parties() \%>\%
   slice(1) \%>\% select(survey) \%>\% unnest()
 
