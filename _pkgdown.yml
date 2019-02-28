@@ -34,3 +34,6 @@ reference:
       - dHondt
       - sls
       - hare_niemeyer
+
+development:
+  mode: auto

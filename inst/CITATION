@@ -1,6 +1,14 @@
 ## -*- mode: r-*-
 
-citHeader("To cite coalitions in publications sue:")
+citHeader("To cite coalitions in publications use:")
+
+citEntry(entry = "Article",
+  author = "Alexander Bauer and Andreas Bender and Andre Klima and Helmut Kuechenhoff",
+  title = "KOALA: A new paradigm for election coverage",
+  year = "2018",
+  journal = " arXiv:1807.09665 [stat.AP]",
+  textVersion = "Bauer et. al., KOALA: A new paradigm for election coverage. arXiv:1807.09665 [stat.AP]",
+  url = "https://arxiv.org/abs/1807.09665")
 
 citEntry(
   entry = "Article",

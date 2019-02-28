@@ -9,6 +9,9 @@ r:
   - devel
   - release
 
+r_packages:
+  - coalitions # for building pkgdown vignettes via travis
+
 r_github_packages:
   - jimhester/covr
 
@@ -18,4 +21,14 @@ branches:
     - master
 
 after_success:
-  - Rscript -e 'covr::codecov(line_exclusions="R/zzz.R", type="all")'
+  - Rscript -e 'covr::codecov(type="all", line_exclusions="R/zzz.R")'
+  - Rscript -e 'pkgdown::build_site()'
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_PAT
+  keep-history: false
+  local-dir: docs
+  on:
+    branch: master
