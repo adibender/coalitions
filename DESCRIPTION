@@ -33,7 +33,8 @@ Suggests:
     testthat,
     covr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    pkgdown
 Encoding: UTF-8
 License: MIT + file LICENSE
 URL: https://github.com/adibender/coalitions/, http://adibender.github.io/coalitions/
