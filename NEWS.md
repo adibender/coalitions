@@ -1,3 +1,5 @@
+# coalitions 0.6.7.9000
+
 # coalitions 0.6
 
 ## coalitions 0.6.5
