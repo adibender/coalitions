@@ -65,6 +65,15 @@ div_vec <- 0.5:(598 + 0.5)
   "fdp_gruene_spd"   , "SPD - FDP - Gr\u00fcne"       , "fdp_greens_spd"  , "SPD - FDP - Greens"        ,
   "gruene_linke_spd" , "SPD - Die Linke - Gr\u00fcne" , "greens_left_spd" , "SPD - The Left - Greens")
 
+party_labels_de <- c(
+  "cdu"    = "Union",
+  "spd"    = "SPD",
+  "greens" = "Greens",
+  "fdp"    = "FDP",
+  "left"   = "Left",
+  "afd"    = "AfD",
+  "others" = "Others"
+)
 
 .party_cols_de <- party_colors_de <- c(
   "cdu"     = "black",
@@ -96,6 +105,7 @@ devtools::use_data(
   overwrite = TRUE)
 
 devtools::use_data(
+  party_labels_de,
   party_colors_de,
   surveys_sample,
   overwrite = TRUE)
