@@ -4,26 +4,23 @@
 \alias{gg_survey}
 \title{Plot voter shares observed in one survey}
 \usage{
-gg_survey(data, cols = party_colors_de, labels = party_labels_de,
-  focus = NULL, perc_labels = TRUE, hurdle = 5)
+gg_survey(data, colors = NULL, labels = NULL, annotate_bars = TRUE,
+  hurdle = 5)
 }
 \arguments{
-\item{data}{scraped dataset containing one row per party in the column 
+\item{data}{Scraped dataset containing one row per party in the column
 \code{party} and the observed voter share in the column \code{percent}}
 
-\item{cols}{named vector containing party colours. If set to NULL all
-parties get the same colour.}
+\item{colors}{Named vector containing party colours. If \code{NULL}
+(deftault) tries to guess color based on party names, grey otherwise.}
 
-\item{labels}{named vector containing party labels. If set to NULL the
-party names from \code{data} are used.}
+\item{labels}{Named vector containing party labels. If \code{NULL} (default)
+tries to guess party names from \code{data}.}
 
-\item{focus}{optional name of one party ("cdu","spd", etc.) that should be 
-highlighted}
+\item{annotate_bars}{If \code{TRUE} (default) bars are annotated by the
+respective vote share (percentage).}
 
-\item{perc_labels}{if TRUE (default) percentage labels are drawn above the
-horziontal line for \code{hurdle}}
-
-\item{hurdle}{hurdle for single parties to get into the parliament, e.g. '5'
+\item{hurdle}{Hurdle for single parties to get into the parliament, e.g. '5'
 for '5\%'. If set to NULL no horizontal line is plotted.
 The horizontal line can be suppressed using \code{NULL}.}
 }
@@ -35,12 +32,11 @@ a survey and the election result), including negative numbers.
 }
 \examples{
 library(tidyr)
-library(purrr)
 library(dplyr)
 library(coalitions)
 
-dat <- scrape_wahlrecht() \%>\% collapse_parties() \%>\%
+survey <- scrape_wahlrecht() \%>\% collapse_parties() \%>\%
   slice(1) \%>\% select(survey) \%>\% unnest()
 
-gg_survey(dat)
+gg_survey(survey)
 }
