@@ -332,10 +332,7 @@ scrape_ltw <- function(
 
 }
 
-#' Obtain (nested) Lower Saxony surveys object
-#'
-#' Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
-#'
+
 #' @rdname get_surveys
 #' @importFrom tidyr nest
 #' @export
@@ -347,6 +344,45 @@ get_surveys_nds <- function() {
     nest(-one_of("pollster"), .key = "surveys")
 
 }
+
+
+#' @rdname get_surveys
+#' @inherit get_surveys
+#' @export
+get_surveys_saxony <- function() {
+
+  saxony <- scrape_ltw(
+    "https://www.wahlrecht.de/umfragen/landtage/sachsen.htm",
+    ind_row_remove = -1)
+  saxony %>% collapse_parties() %>%
+    nest(-one_of("pollster"), .key = "surveys")
+
+}
+
+#' @rdname get_surveys
+#' @inherit get_surveys
+#' @export
+get_surveys_brb <- function() {
+
+  brb <- scrape_ltw("https://www.wahlrecht.de/umfragen/landtage/brandenburg.htm")
+  brb %>% collapse_parties() %>%
+    nest(-one_of("pollster"), .key = "surveys")
+
+}
+
+#' @rdname get_surveys
+#' @inherit get_surveys
+#' @export
+get_surveys_thuringen <- function() {
+
+  thuringen <- scrape_ltw(
+    "https://www.wahlrecht.de/umfragen/landtage/thueringen.htm",
+    ind_row_remove = -1)
+  thuringen %>% collapse_parties() %>%
+    nest(-one_of("pollster"), .key = "surveys")
+
+}
+
 
 #' Import Austrian survey results
 #'

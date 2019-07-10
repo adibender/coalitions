@@ -4,6 +4,9 @@
 \alias{get_surveys}
 \alias{get_surveys_by}
 \alias{get_surveys_nds}
+\alias{get_surveys_saxony}
+\alias{get_surveys_brb}
+\alias{get_surveys_thuringen}
 \alias{get_latest}
 \title{Scrape surveys from all pollsters}
 \usage{
@@ -12,6 +15,12 @@ get_surveys(country = c("DE", "AT"))
 get_surveys_by()
 
 get_surveys_nds()
+
+get_surveys_saxony()
+
+get_surveys_brb()
+
+get_surveys_thuringen()
 
 get_latest(surveys = NULL, max_date = Sys.Date())
 }
@@ -26,8 +35,6 @@ otherwise calls \code{\link{get_surveys}}.}
 be searched for. Defaults to \code{Sys.Date}.}
 }
 \description{
-Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
-
 Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
 
 Given a specific date, extract the survey from this date or the last one
