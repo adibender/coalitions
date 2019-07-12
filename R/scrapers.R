@@ -26,7 +26,8 @@ exctract_num_befragte <- function(x) {
 sanitize_befragte <- function(x) {
 
   x <- gsub(".*\u2022", "", x)
-  x <- substr(x, 2, 6)
+  x <- gsub(" ", "", x)
+  x <- substr(x, 1, 5)
   x <- map_dbl(x, ~if_else(grepl(".", .x, fixed = TRUE),
     extract_num(.x, decimal = FALSE), extract_num(substr(.x, 1, 3))))
 
