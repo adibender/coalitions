@@ -3,12 +3,12 @@
 citHeader("To cite coalitions in publications use:")
 
 citEntry(entry = "Article",
-  author = "Alexander Bauer and Andreas Bender and Andre Klima and Helmut Kuechenhoff",
+  author = "Alexander Bauer and Andreas Bender and Andre Klima and Helmut Küchenhoff",
   title = "KOALA: A new paradigm for election coverage",
-  year = "2018",
-  journal = " arXiv:1807.09665 [stat.AP]",
-  textVersion = "Bauer et. al., KOALA: A new paradigm for election coverage. arXiv:1807.09665 [stat.AP]",
-  url = "https://arxiv.org/abs/1807.09665")
+  year = "2019",
+  journal = "AStA Adv Stat Anal",
+  textVersion = "Bauer, A., Bender, A., Klima, A. Küchenhoff, H., KOALA: A new paradigm for election coverage. AStA Adv Stat Anal (2019). https://doi.org/10.1007/s10182-019-00352-6",
+  url = "https://doi.org/10.1007/s10182-019-00352-6")
 
 citEntry(
   entry = "Article",
