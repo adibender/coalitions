@@ -400,31 +400,44 @@ get_surveys_thuringen <- function() {
 #' @importFrom stringr str_replace
 #' @export
 scrape_austria <- function(
-  address = "https://neuwal.com/wahlumfragen/openwal/neuwal-openwal.json") {
+  address = "https://neuwal.com/wahlumfragen/data/neuwal-wahlumfragen-user.json") {
 
   aut_list <- fromJSON(getURL(address) %>%
-                           str_replace('\\"\\"(.*)\\"\\",', "\"'\\1'\",")) # fix for double double-quote bug
-  out_df   <- as_tibble(aut_list) %>%
-    rename(survey = "results") %>%
-    select(one_of(c("institute", "date", "n",  "survey"))) %>%
+    str_replace('\\"\\"(.*)\\"\\",', "\"'\\1'\",")) # fix for double double-quote bug
+  out_df <- as_tibble(aut_list[[1]]) %>%
+    filter(.data$regionID == 1)
+  party <- out_df %>%
+    select(one_of("id"), contains("Party")) %>%
+    gather("key", "party", contains("Party")) %>%
+    arrange(desc(.data$id)) %>%
+    select(-.data$key)
+  party <- party %>% nest(.data$party) %>%
+    mutate(data = map(.data$data, ~rbind(.x, data.frame(party = "Others")))) %>%
+    unnest()
+  percent <- out_df %>%
+    select(one_of(c("id", "n")), contains("Value")) %>%
+    gather("key", "percent", contains("Value")) %>%
+    arrange(desc(.data$id)) %>%
+    mutate(percent = as.numeric(.data$percent)) %>%
+    select(-one_of("key"))
+  percent <- percent %>% nest(.data$percent) %>%
+    mutate(data = map(.data$data, ~rbind(.x, data.frame(percent = 100 - sum(.x$percent))))) %>%
     unnest() %>%
-    rename(pollster = "institute", respondents = "n", party = "partyName",
-      percent = "percentage") %>%
-    mutate(
-      votes = .data$respondents * .data$percent / 100,
-      date  = dmy(.data$date)) %>%
-    mutate(
-      start = .data$date,
-      end   = .data$date,
-      party = fct_collapse(.data$party, others = c("? ", "So"))) %>%
-    mutate(party = as.character(.data$party)) %>%
-    group_by(UQS(
-      syms(c("pollster", "respondents", "date", "start", "end", "party")))) %>%
-    summarize(
-      percent = sum(.data$percent),
-      votes   = sum(.data$votes)) %>%
-    ungroup() %>%
-    nest(one_of(c("party", "percent", "votes")), .key = "survey") %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    mutate(votes   = .data$n * .data$percent / 100) %>%
+    select(-n)
+  pp <- cbind(party, percent[, -1]) %>%
+    nest(-.data$id, .key = "survey")
 
-}
+  out_df <- out_df %>%
+    select(one_of(c("id", "institut", "n", "datum"))) %>%
+    rename(pollster = "institut", date = "datum", respondents = "n")
+  out_df <- out_df %>% left_join(pp)
+  out_df %>%
+    mutate(
+      date  = as.Date(.data$date),
+      start = .data$date,
+      end   = .data$date) %>%
+    select(one_of(c("pollster", "date", "start", "end", "respondents", "survey"))) %>%
+    nest(-.data$pollster, .key = "surveys")
+
+  }
