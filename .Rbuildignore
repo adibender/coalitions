@@ -18,3 +18,4 @@
 ^LICENSE\.md$
 ^paper$
 ^cran-comments\.md$
+^pkgdown$
