@@ -13,6 +13,7 @@ r: release
 
 r_packages:
   - coalitions # for building pkgdown vignettes via travis
+  - pkgdown # for building homepage
 
 r_github_packages:
   - jimhester/covr
