@@ -1,6 +1,7 @@
-# coalitions 0.6.8
-- added convenience plot functions
-- Fixed [#113](https://github.com/adibender/coalitions/issues/113)
+# coalitions 0.6.9
+- fixed scrapper for austrian general election [#110](https://github.com/adibender/coalitions/issues/110)
+- added more federal election scrappers [#113](https://github.com/adibender/coalitions/issues/113)
+- documentation updates
 
 # coalitions 0.6.5
 - Fixed scrapper for federal German "Hessen" election
