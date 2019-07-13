@@ -7,8 +7,8 @@
 #'
 #' @param data Scraped dataset containing one row per party in the column
 #' \code{party} and the observed voter share in the column \code{percent}
-#' @param colors Named vector containing party colours. If \code{NULL}
-#' (deftault) tries to guess color based on party names, grey otherwise.
+#' @param colors Named vector containing party colors. If \code{NULL}
+#' (default) tries to guess color based on party names, gray otherwise.
 #' @param labels Named vector containing party labels. If \code{NULL} (default)
 #' tries to guess party names from \code{data}.
 #' @param annotate_bars If \code{TRUE} (default) bars are annotated by the
