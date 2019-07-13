@@ -42,6 +42,15 @@ navbar:
   - text: Reference
     href: reference/index.html
   - text: Articles
+    menu:
+    - text: Diagnostics
+      href: articles/diagnostic.html
+    - text: Workflow
+      href: articles/workflow.html
+    - text: Pooling
+      href: articles/pooling.html
+  - text: News
+    href: news/index.html
   right:
   - icon: fa-github fa-lg
     href: https://github.com/adibender/coalitions

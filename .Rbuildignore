@@ -19,3 +19,4 @@
 ^paper$
 ^cran-comments\.md$
 ^pkgdown$
+^CRAN-RELEASE$
