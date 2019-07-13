@@ -12,7 +12,7 @@
 ## Overview
 
 The `coalitions` package implements a Bayesian framework for the estimation of
-event probabilities in multi-party electoral systems (Bauer et al., 2019) like Germany, Austria etc. Current results are available through a [shiny app](https://koala.stat.uni-muenchen.de/).
+event probabilities in multi-party electoral systems (Bauer et al., 2019) like Germany, Austria etc.
 To support estimation the package also implements scrappers that
 obtain data for German federal and general elections as well as Austrian
 general election. The implementation can be extended to support other elections.
@@ -22,7 +22,7 @@ general election. The implementation can be extended to support other elections.
   - Check out our [interacitve shiny app](http://koala.stat.uni-muenchen.de/) on
   German (state and federal) elections/surveys
 
-  - Updates are available on our [KOALA_LMU twitter account](https://twitter.com/KOALA_LMU)!
+  - Updates are available from our [KOALA_LMU twitter account](https://twitter.com/KOALA_LMU)!
 ## Installation
 
 ```r
