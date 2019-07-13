@@ -225,8 +225,8 @@ pool_surveys <- function(
     mutate(
       pollster    = "pooled",
       date        = last_date,
-      start       = unique(pooled_df$from),
-      end         = unique(pooled_df$to),
+      start       = min(pooled_df$from),
+      end         = max(pooled_df$to),
       respondents = Neff,
       percent     = .data$votes / nall * 100,
       votes       = .data$percent / 100 * Neff) %>%
