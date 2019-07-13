@@ -36,5 +36,14 @@ reference:
       - sls
       - hare_niemeyer
 
+navbar:
+  type: default
+  left:
+  - text: Reference
+    href: reference/index.html
+  - text: Articles
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/adibender/coalitions
 development:
   mode: auto
