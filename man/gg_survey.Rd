@@ -11,8 +11,8 @@ gg_survey(data, colors = NULL, labels = NULL, annotate_bars = TRUE,
 \item{data}{Scraped dataset containing one row per party in the column
 \code{party} and the observed voter share in the column \code{percent}}
 
-\item{colors}{Named vector containing party colours. If \code{NULL}
-(deftault) tries to guess color based on party names, grey otherwise.}
+\item{colors}{Named vector containing party colors. If \code{NULL}
+(default) tries to guess color based on party names, gray otherwise.}
 
 \item{labels}{Named vector containing party labels. If \code{NULL} (default)
 tries to guess party names from \code{data}.}

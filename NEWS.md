@@ -27,7 +27,7 @@
 
 # coalitions 0.6.0 (2018-03)
 
-- Added vignette on [*pooling*](../articles/pooling.html)
+- Added vignette on [*pooling*](https://adibender.github.io/coalitions/articles/pooling.html)
 
 
 # coalitions 0.5.7 (2017-12)

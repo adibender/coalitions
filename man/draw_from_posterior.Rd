@@ -32,5 +32,3 @@ Draw random numbers from posterior distribution
 \seealso{
 \code{\link{as_survey}}
 }
-\keyword{draw,}
-\keyword{simulate}

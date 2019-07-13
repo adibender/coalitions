@@ -16,7 +16,6 @@
 #' @importFrom stats runif
 #' @return \code{data.frame} containing random draws from Dirichlet distribution
 #' which can be interpreted as election results.
-#' @keywords draw, simulate
 #' @seealso \code{\link{as_survey}}
 #' @export
 draw_from_posterior <- function(
@@ -36,7 +35,7 @@ draw_from_posterior <- function(
       stop("length of prior weights and number of observations differ")
   }
   n_votes <- sum(survey$votes)
-  percent <- survey$percent/100
+  percent <- survey$percent / 100
   # draw n.sim random Dirichlet numbers/vectors with concentration weights alpha
   # draws <- rdirichlet(nsim, alpha = survey$votes + prior)
   # colnames(draws) <- survey$party

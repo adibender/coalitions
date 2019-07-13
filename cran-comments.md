@@ -1,6 +1,6 @@
 ## Release summary
-* Added scrappers for german fedral election
-* Fixed scrapper for austrian general election
+* Added scrappers for German fedral election
+* Fixed scrapper for Austrian general election
 * Documentation and README updates
 
 ## Test environments
@@ -12,9 +12,10 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 notes
+0 errors | 0 warnings | 2 notes
 
-Maintainer email changed
+* Maintainer email changed
+* Rd line width > 90 characters due to URL length
 
 
 ## Reverse dependencies
