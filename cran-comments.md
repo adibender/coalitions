@@ -20,4 +20,7 @@
 
 ## Reverse dependencies
 
-There are no reverse dependencie
+There are no reverse dependencies
+
+## Additional notes
+* Fixed CRAN "incoming" issues
