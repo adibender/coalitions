@@ -126,3 +126,9 @@ survey %>% get_probabilities(nsim=1e4) %>% unnest()
     ## 4 allensbach 2018-02-23 spd                  0
     ## 5 allensbach 2018-02-23 left_spd             0
     ## 6 allensbach 2018-02-23 greens_left_spd      0
+
+
+## References
+Bauer, Alexander, Andreas Bender, André Klima, and Helmut Küchenhoff. 2019. “KOALA: A New Paradigm for Election Coverage.” AStA Advances in Statistical Analysis, June. https://doi.org/10.1007/s10182-019-00352-6.
+
+Bender, Andreas, and Alexander Bauer. 2018. “Coalitions: Coalition Probabilities in Multi-Party Democracies,” March. https://doi.org/10.21105/joss.00606.
