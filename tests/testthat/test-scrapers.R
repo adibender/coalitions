@@ -86,3 +86,16 @@ test_that("GMS tables correct", {
   expect_false(any(is.na(gms$percent)))
 
 })
+
+
+context("Austria scraper")
+test_that("Austria scrapper works", {
+  austria <- scrape_austria() %>%
+    unnest() %>%
+    filter(date == as.Date("2019-07-06"))
+  expect_data_frame(austria, nrow = 1, ncol = 6)
+  expect_equal(austria$respondents, 1002)
+  expect_data_frame(austria$survey[[1]], nrow = 7, ncol = 3)
+  expect_equal(austria$survey[[1]]$percent, c(37, 22, 18, 11, 8, 2, 2))
+  expect_equal(sum(austria$survey[[1]]$percent), 100)
+})
