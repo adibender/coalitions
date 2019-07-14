@@ -14,8 +14,8 @@
 
 0 errors | 0 warnings | 2 notes
 
-* Maintainer email changed
-* Rd line width > 90 characters due to URL length
+* I am still the same maintainer, but I changed the Email as my institutional Email will expire
+* Rd line width > 90 characters due to URL length, nothing I can do about it.
 
 
 ## Reverse dependencies
@@ -23,4 +23,4 @@
 There are no reverse dependencies
 
 ## Additional notes
-* Fixed CRAN "incoming" issues
+* Adressed more CRAN "incoming" issues
