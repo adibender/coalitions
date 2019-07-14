@@ -81,7 +81,7 @@ sanitize_colnames <- function(df) {
 
 }
 
-#' Scrape surveys from wahlrecht.de
+#' Scrape surveys for German general election
 #'
 #' Scrapes survey tables and performs sanitation to output tidy data
 #' @rdname scrape

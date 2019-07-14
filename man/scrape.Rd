@@ -4,7 +4,7 @@
 \alias{scrape_wahlrecht}
 \alias{scrape_by}
 \alias{scrape_ltw}
-\title{Scrape surveys from wahlrecht.de}
+\title{Scrape surveys for German general election}
 \usage{
 
   scrape_wahlrecht(address = "https://www.wahlrecht.de/umfragen/emnid.htm",
