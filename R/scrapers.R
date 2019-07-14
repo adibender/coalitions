@@ -252,10 +252,7 @@ scrape_by <- function(
 
 }
 
-#' Obtain (nested) Bavaria surveys object
-#'
-#' Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
-#'
+
 #' @rdname get_surveys
 #' @importFrom tidyr nest
 #' @export

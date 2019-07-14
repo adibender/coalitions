@@ -44,9 +44,8 @@ A short overview is presented below.
 ### Scrape surveys
 
 The wrapper `get_surveys()` which takes no arguments, downloads all
-surveys currently available at
-[wahlrecht.de](https://www.wahlrecht.de/umfragen) and stores them in a
-nested `tibble`:
+surveys currently available at [wahlrecht](https://www.wahlrecht.de/umfragen)
+and stores them in a nested `tibble`:
 
 ``` r
 library(coalitions)

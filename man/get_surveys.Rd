@@ -35,8 +35,6 @@ otherwise calls \code{\link{get_surveys}}.}
 be searched for. Defaults to \code{Sys.Date}.}
 }
 \description{
-Scrapes data from \url{wahlrecht.de} and performs some sanitizing.
-
 Given a specific date, extract the survey from this date or the last one
 before this date.
 }
