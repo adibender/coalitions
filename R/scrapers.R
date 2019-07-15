@@ -384,8 +384,11 @@ get_surveys_thuringen <- function() {
 
 #' Import Austrian survey results
 #'
-#' Reads JSON file from neuwal.com
-#' @param address URL of the JSON file
+#' Reads JSON file from neuwal.com and performs some preprocessing to bring
+#' data into standardized format. Returns a nested tibble.
+#'
+#'
+#' @param address URL of the JSON file.
 #' @import dplyr
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr map map_dfr flatten_dfc

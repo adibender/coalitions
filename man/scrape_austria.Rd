@@ -5,11 +5,13 @@
 \title{Import Austrian survey results}
 \usage{
 
-  scrape_austria(address = "https://neuwal.com/wahlumfragen/data/neuwal-wahlumfragen-user.json")
+  scrape_austria(address =
+    "https://neuwal.com/wahlumfragen/data/neuwal-wahlumfragen-user.json")
 }
 \arguments{
-\item{address}{URL of the JSON file}
+\item{address}{URL of the JSON file.}
 }
 \description{
-Reads JSON file from neuwal.com
+Reads JSON file from neuwal.com and performs some preprocessing to bring
+data into standardized format. Returns a nested tibble.
 }
