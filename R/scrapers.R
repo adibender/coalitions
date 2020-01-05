@@ -123,8 +123,9 @@ scrape_wahlrecht <- function(
   atab           <- atab[ind_row_remove, ]
   atab           <- atab[-nrow(atab), ]
   colnames(atab) <- c("Datum", colnames(atab)[-1])
-  ind.empty      <- sapply(atab, function(z) all(z == "")) |
-    sapply(colnames(atab), function(z) z == "")
+  ind.empty      <- sapply(atab, function(z) { all(z == "") | all(is.na(z)) } ) |
+    sapply(colnames(atab), function(z) z == "") |
+    sapply(colnames(atab), function(z) is.na(z))
   atab           <- atab[, !ind.empty]
 
   atab    <- sanitize_colnames(atab)
