@@ -4,10 +4,16 @@
 \alias{get_probabilities}
 \title{Wrapper for calculation of coalition probabilities from survey}
 \usage{
-get_probabilities(x, coalitions = list(c("cdu"), c("cdu", "fdp"),
-  c("cdu", "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left",
-  "greens")), nsim = 1e+05, distrib.fun = sls, seats_majority = 300L,
-  seed = as.numeric(now()), correction = NULL)
+get_probabilities(
+  x,
+  coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu", "fdp", "greens"), c("spd"),
+    c("spd", "left"), c("spd", "left", "greens")),
+  nsim = 1e+05,
+  distrib.fun = sls,
+  seats_majority = 300L,
+  seed = as.numeric(now()),
+  correction = NULL
+)
 }
 \arguments{
 \item{x}{A table containing one row per survey and survey information in

@@ -193,7 +193,6 @@ get_surveys <- function(country = c("DE", "AT")) {
 #' Scrape Bavarian regional polls
 #'
 #' @rdname scrape
-#' @inherit scrape_wahlrecht
 #' @export
 scrape_by <- function(
   address = "https://www.wahlrecht.de/umfragen/landtage/bayern.htm",
@@ -268,7 +267,6 @@ get_surveys_by <- function() {
 #' Scrape Lower Saxony regional polls
 #'
 #' @rdname scrape
-#' @inherit scrape_wahlrecht
 #' @param ind_row_remove Negative vector of rows that will be skipped at the beginning.
 #' @export
 #' @examples
@@ -345,7 +343,6 @@ get_surveys_nds <- function() {
 
 
 #' @rdname get_surveys
-#' @inherit get_surveys
 #' @export
 get_surveys_saxony <- function() {
 
@@ -358,7 +355,6 @@ get_surveys_saxony <- function() {
 }
 
 #' @rdname get_surveys
-#' @inherit get_surveys
 #' @export
 get_surveys_brb <- function() {
 
@@ -369,7 +365,6 @@ get_surveys_brb <- function() {
 }
 
 #' @rdname get_surveys
-#' @inherit get_surveys
 #' @export
 get_surveys_thuringen <- function() {
 

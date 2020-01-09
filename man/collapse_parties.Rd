@@ -4,13 +4,13 @@
 \alias{collapse_parties}
 \title{Transform surveys in long format}
 \usage{
-collapse_parties(surveys, parties = c("cdu", "spd", "greens", "fdp",
-  "left", "pirates", "fw", "afd", "others"))
+collapse_parties(
+  surveys,
+  parties = c("cdu", "spd", "greens", "fdp", "left", "pirates", "fw", "afd", "others")
+)
 }
 \arguments{
 \item{surveys}{A data frame with one survey per row.}
-
-\item{parties}{A character vector containing names of parties to collapse.}
 }
 \value{
 Data frame in long format

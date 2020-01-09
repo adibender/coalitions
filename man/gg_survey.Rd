@@ -4,8 +4,7 @@
 \alias{gg_survey}
 \title{Plot voter shares observed in one survey}
 \usage{
-gg_survey(data, colors = NULL, labels = NULL, annotate_bars = TRUE,
-  hurdle = 5)
+gg_survey(data, colors = NULL, labels = NULL, annotate_bars = TRUE, hurdle = 5)
 }
 \arguments{
 \item{data}{Scraped dataset containing one row per party in the column

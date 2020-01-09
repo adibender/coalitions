@@ -4,7 +4,6 @@
 #' than 5\% of votes (according to the method of Sainte-Lague/Schepers,
 #' see https://www.wahlrecht.de/verfahren/rangmasszahlen.html).
 #'
-#' @inheritParams redistribute
 #' @param votes A numeric vector giving the redistributes votes
 #' @param parties A character vector indicating the names of parties with
 #' respective \code{votes}.
@@ -14,9 +13,9 @@
 #' @import dplyr
 #' @importFrom reshape2 melt
 #' @seealso \code{\link{dHondt}}
-#' @examples 
+#' @examples
 #' library(coalitions)
-#' library(dplyr) 
+#' library(dplyr)
 #' # get the latest survey for the sample German federal election polls
 #' surveys <- get_latest(surveys_sample) %>% tidyr::unnest()
 #' # calculate the seat distribution based on Sainte-Lague/Schepers for a parliament with 300 seats

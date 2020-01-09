@@ -4,8 +4,15 @@
 \alias{get_seats}
 \title{Calculate seat distribution from draws from posterior}
 \usage{
-get_seats(dirichlet.draws, survey, distrib.fun = sls,
-  samplesize = NULL, hurdle = 0.05, others = "others", ...)
+get_seats(
+  dirichlet.draws,
+  survey,
+  distrib.fun = sls,
+  samplesize = NULL,
+  hurdle = 0.05,
+  others = "others",
+  ...
+)
 }
 \arguments{
 \item{dirichlet.draws}{Matrix containing random draws from posterior.}

@@ -4,8 +4,13 @@
 \alias{draw_from_posterior}
 \title{Draw random numbers from posterior distribution}
 \usage{
-draw_from_posterior(survey, nsim = 10000, seed = as.numeric(now()),
-  prior = NULL, correction = NULL)
+draw_from_posterior(
+  survey,
+  nsim = 10000,
+  seed = as.numeric(now()),
+  prior = NULL,
+  correction = NULL
+)
 }
 \arguments{
 \item{survey}{survey object as returned by \code{as_survey} or \code{getSurveys}}

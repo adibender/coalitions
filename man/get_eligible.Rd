@@ -4,8 +4,13 @@
 \alias{get_eligible}
 \title{Extract surveys from institutes within a specified time-window}
 \usage{
-get_eligible(surveys, pollsters, last_date = Sys.Date(), period = 14,
-  period_extended = NA)
+get_eligible(
+  surveys,
+  pollsters,
+  last_date = Sys.Date(),
+  period = 14,
+  period_extended = NA
+)
 }
 \arguments{
 \item{surveys}{A \code{tibble} containing survey results for multiple

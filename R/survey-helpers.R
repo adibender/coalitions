@@ -20,7 +20,6 @@ get_meta <- function(surveys_df) {
 #' Given a data frame containing multiple surveys (one row per survey), transforms
 #' the data into long format with one row per party.
 #'
-#' @inheritParams scrape_wahlrecht
 #' @param surveys A data frame with one survey per row.
 #' @import checkmate magrittr dplyr
 #' @importFrom tidyr gather nest
