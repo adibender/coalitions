@@ -1,7 +1,7 @@
 Package: coalitions
 Type: Package
 Title: Bayesian "Now-Cast" Estimation of Event Probabilities in Multi-Party Democracies
-Version: 0.6.10
+Version: 0.6.11
 Authors@R: c(
     person("Andreas", "Bender", , "bender.at.R@gmail.com", role = c("aut", "cre"), comment=c(ORCID = "0000-0001-5628-8611")),
     person("Alexander", "Bauer", , "alexander.bauer@stat.uni-muenchen.de", role=c("aut"), comment=c(ORCID = "0000-0003-3495-5131")))
@@ -38,6 +38,6 @@ Encoding: UTF-8
 License: MIT + file LICENSE
 URL: http://adibender.github.io/coalitions/
 BugReports: https://github.com/adibender/coalitions/issues
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 LazyData: true
