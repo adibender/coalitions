@@ -54,7 +54,7 @@ test_that("Drawing from posterior works", {
 context("helper functions")
 test_that("Prettify function works correctly", {
 
-  x <- colnames(tidyr::unnest(.survey_sample))
+  x <- colnames(tidyr::unnest(.survey_sample, "surveys"))
   trans <- prettify_strings(x, new = .trans_df$german_pretty)
   expect_equal(trans, c("Institut", "Datum", "Beginn", "Ende", "Befragte",
     "Umfrage"))

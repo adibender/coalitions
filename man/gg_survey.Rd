@@ -35,7 +35,7 @@ library(dplyr)
 library(coalitions)
 
 survey <- scrape_wahlrecht() \%>\% collapse_parties() \%>\%
-  slice(1) \%>\% select(survey) \%>\% unnest()
+  slice(1) \%>\% select(survey) \%>\% unnest("survey")
 
 gg_survey(survey)
 }

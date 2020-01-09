@@ -36,7 +36,7 @@ renaming/translation of survey column names and by using internal object
 library(coalitions)
 library(dplyr)
 # look at sample German federal election polls
-surveys <- surveys_sample \%>\% tidyr::unnest() \%>\% group_by(pollster) \%>\% slice(1)
+surveys <- surveys_sample \%>\% tidyr::unnest("surveys") \%>\% group_by(pollster) \%>\% slice(1)
 # prettify the polling agency names
 prettify_strings(surveys$pollster)
 prettify_en(surveys$pollster)

@@ -14,7 +14,7 @@ expect_data_frame(head(scrape_wahlrecht(hp.vec[1])), ncols = 11, nrows = 6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[2])), ncols = 11, nrows = 6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[3])), ncols = 11, nrows = 6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[4])), ncols = 11, nrows = 6)
-expect_data_frame(head(scrape_wahlrecht(hp.vec[5])), ncols = 13, nrows = 6)
+expect_data_frame(head(scrape_wahlrecht(hp.vec[5])), ncols = 11, nrows = 6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[6])), ncols = 11, nrows = 6)
 
 survey <- scrape_wahlrecht(
@@ -78,9 +78,9 @@ test_that("GMS tables correct", {
 
   gms <- .survey_sample %>%
     filter(pollster == "gms") %>%
-    unnest() %>%
+    unnest("surveys") %>%
     filter(date == "2017-06-01") %>%
-    unnest()
+    unnest("survey")
 
   expect_identical(sum(gms$percent), 100)
   expect_false(any(is.na(gms$percent)))
@@ -91,7 +91,7 @@ test_that("GMS tables correct", {
 context("Austria scraper")
 test_that("Austria scrapper works", {
   austria <- scrape_austria() %>%
-    unnest() %>%
+    unnest("surveys") %>%
     filter(date == as.Date("2019-07-06"))
   expect_data_frame(austria, nrow = 1, ncol = 6)
   expect_equal(austria$respondents, 1002)

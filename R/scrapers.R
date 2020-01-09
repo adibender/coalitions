@@ -261,7 +261,7 @@ get_surveys_by <- function() {
   by <- scrape_by()
   by %>%
     collapse_parties(parties = c("csu","spd","greens","fdp","left","pirates","fw","afd","others")) %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
@@ -338,7 +338,7 @@ get_surveys_nds <- function() {
   nds <- scrape_ltw()
   nds %>%
     collapse_parties() %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
@@ -351,7 +351,7 @@ get_surveys_saxony <- function() {
     "https://www.wahlrecht.de/umfragen/landtage/sachsen.htm",
     ind_row_remove = -1)
   saxony %>% collapse_parties() %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
@@ -361,7 +361,7 @@ get_surveys_brb <- function() {
 
   brb <- scrape_ltw("https://www.wahlrecht.de/umfragen/landtage/brandenburg.htm")
   brb %>% collapse_parties() %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
@@ -373,7 +373,7 @@ get_surveys_thuringen <- function() {
     "https://www.wahlrecht.de/umfragen/landtage/thueringen.htm",
     ind_row_remove = -1)
   thuringen %>% collapse_parties() %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
@@ -407,22 +407,23 @@ scrape_austria <- function(
     gather("key", "party", contains("Party")) %>%
     arrange(desc(.data$id)) %>%
     select(-.data$key)
-  party <- party %>% nest(.data$party) %>%
+  party <- party %>%
+    nest(data = .data$party) %>%
     mutate(data = map(.data$data, ~rbind(.x, data.frame(party = "Others")))) %>%
-    unnest()
+    unnest("data")
   percent <- out_df %>%
     select(one_of(c("id", "n")), contains("Value")) %>%
     gather("key", "percent", contains("Value")) %>%
     arrange(desc(.data$id)) %>%
     mutate(percent = as.numeric(.data$percent)) %>%
     select(-one_of("key"))
-  percent <- percent %>% nest(.data$percent) %>%
+  percent <- percent %>% nest(data = .data$percent) %>%
     mutate(data = map(.data$data, ~rbind(.x, data.frame(percent = 100 - sum(.x$percent))))) %>%
-    unnest() %>%
+    unnest("data") %>%
     mutate(votes   = .data$n * .data$percent / 100) %>%
     select(-n)
   pp <- cbind(party, percent[, -1]) %>%
-    nest(-.data$id, .key = "survey")
+    nest(survey = -.data$id)
 
   out_df <- out_df %>%
     select(one_of(c("id", "institut", "n", "datum"))) %>%
@@ -434,6 +435,6 @@ scrape_austria <- function(
       start = .data$date,
       end   = .data$date) %>%
     select(one_of(c("pollster", "date", "start", "end", "respondents", "survey"))) %>%
-    nest(-.data$pollster, .key = "surveys")
+    nest(surveys = -.data$pollster)
 
   }

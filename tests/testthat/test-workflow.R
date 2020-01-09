@@ -12,20 +12,21 @@ test_that("workflow stable", {
 
 	## collapse
 	survey <- coalitions:::.survey_sample %>%
-		filter(pollster=="insa") %>%
-		unnest() %>%
+		filter(pollster == "insa") %>%
+		unnest(cols = "surveys") %>%
 		filter(date == as.Date("2017-08-29"))
-	expect_data_frame(survey, nrows = 1, ncols=6)
+	expect_data_frame(survey, nrows = 1, ncols = 6)
 	expect_equal(colnames(survey),
 		c("pollster", "date", "start", "end", "respondents", "survey"))
-	expect_data_frame(survey$survey[[1]], nrows=7, ncols=3)
+	expect_data_frame(survey$survey[[1]], nrows = 7, ncols = 3)
 	expect_equal(colnames(survey$survey[[1]]), c("party", "percent", "votes"))
 
 	## add draws
 	# system.time({
-	survey <- survey %>% mutate(draws = map(survey, draw_from_posterior, nsim=10, seed=123))
+	survey <- survey %>%
+		 mutate(draws = map(survey, draw_from_posterior, nsim = 10, seed = 123))
 	# })
-	expect_data_frame(survey, nrows =	 1, ncols=7)
+	expect_data_frame(survey, nrows =	 1, ncols = 7)
 	expect_equal(
 		colnames(survey),
 		c("pollster", "date", "start", "end", "respondents", "survey", "draws"))

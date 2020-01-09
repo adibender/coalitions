@@ -93,12 +93,12 @@ get_eligible <- function(
   first_date <- last_date - ifelse(!is.na(period_extended), period_extended, period)
 
   surveys %>% filter(.data$pollster %in% pollsters) %>%
-    unnest(surveys) %>%
+    unnest("surveys") %>%
     filter(date >= first_date & date <= last_date) %>%
-    unnest() %>%
+    unnest("survey") %>%
     mutate(respondents = .data$respondents * ifelse(date >= last_date - period, 1, 0.5),
            votes = .data$votes * ifelse(date >= last_date - period, 1, 0.5)) %>%
-    nest(-one_of("pollster", "date", "start", "end", "respondents")) %>%
+    nest(data = -one_of("pollster", "date", "start", "end", "respondents")) %>%
     group_by(.data$pollster) %>%
     filter(date == max(date)) %>%
     filter(row_number() == 1)
@@ -142,7 +142,7 @@ get_pooled <- function(
       last_date       = last_date,
       period          = period,
       period_extended = period_extended) %>%
-    unnest()
+    unnest("data")
 
   elg_udf %>%
     filter(!is.na(.data$percent)) %>%
@@ -203,7 +203,7 @@ pool_surveys <- function(
       last_date       = last_date,
       period          = period,
       period_extended = period_extended) %>%
-    unnest() %>%
+    unnest("data") %>%
     filter(!is.na(.data$percent))
   nall <- get_n(elg_udf)
 

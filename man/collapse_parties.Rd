@@ -11,6 +11,8 @@ collapse_parties(
 }
 \arguments{
 \item{surveys}{A data frame with one survey per row.}
+
+\item{parties}{A character vector containing names of parties to collapse.}
 }
 \value{
 Data frame in long format

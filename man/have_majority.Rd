@@ -30,7 +30,7 @@ Do coalitions have a majority
 }
 \examples{
 library(coalitions)
-library(dplyr) 
+library(dplyr)
 library(purrr)
 # get the latest survey for the sample German federal election polls
 surveys <- get_latest(surveys_sample)

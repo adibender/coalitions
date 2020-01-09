@@ -30,7 +30,7 @@ has_majority <- function(
 #' @importFrom dplyr bind_cols
 #' @examples
 #' library(coalitions)
-#' library(dplyr) 
+#' library(dplyr)
 #' library(purrr)
 #' # get the latest survey for the sample German federal election polls
 #' surveys <- get_latest(surveys_sample)
@@ -246,7 +246,7 @@ get_superior <- function(
 #'                            coalitions = list(c("cdu", "fdp"),
 #'                                              c("spd", "left", "greens")),
 #'                            nsim = 100) # ensure fast runtime with only 100 simulations
-#' probs %>% tidyr::unnest()
+#' probs %>% tidyr::unnest("probabilities")
 #' @export
 get_probabilities <- function(
   x,
