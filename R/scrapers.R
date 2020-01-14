@@ -85,7 +85,7 @@ sanitize_colnames <- function(df) {
 #' 
 #' @param url http-address that should be scraped.
 #' @importFrom xml2 read_html
-try_htmlSource <- function(url) {
+try_readHTML <- function(url) {
   
   html_source <- tryCatch({
     read_html(url)
@@ -122,7 +122,7 @@ scrape_wahlrecht <- function(
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
     "SONSTIGE")) {
 
-  atab <- try_htmlSource(address) %>%
+  atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
@@ -216,7 +216,7 @@ scrape_by <- function(
   parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
               "SONSTIGE")) {
 
-  atab <- try_htmlSource(address) %>%
+  atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
@@ -299,7 +299,7 @@ scrape_ltw <- function(
     "SONSTIGE"),
   ind_row_remove = -c(1:2)) {
 
-  atab <- try_htmlSource(address) %>%
+  atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
