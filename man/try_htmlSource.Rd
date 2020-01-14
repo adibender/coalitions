@@ -6,6 +6,9 @@
 \usage{
 try_htmlSource(url)
 }
+\arguments{
+\item{url}{http-address that should be scraped.}
+}
 \description{
 Try call of read_html that throws an error if the url cannot be resolved
 }

@@ -83,6 +83,7 @@ sanitize_colnames <- function(df) {
 
 #' Try call of read_html that throws an error if the url cannot be resolved
 #' 
+#' @param url http-address that should be scraped.
 #' @importFrom xml2 read_html
 try_htmlSource <- function(url) {
   
