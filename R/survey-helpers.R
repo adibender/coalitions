@@ -27,8 +27,10 @@ get_meta <- function(surveys_df) {
 #' @importFrom purrr compose
 #' @return Data frame in long format
 #' @examples
+#' \dontrun{
 #' emnid <- scrape_wahlrecht()
 #' emnid.long <- collapse_parties(emnid)
+#' }
 #' @export
 collapse_parties <- function(
   surveys,

@@ -46,7 +46,7 @@ by default excluding superior coalitions first
 \examples{
 library(coalitions)
 library(dplyr)
-# get the latest survey for the sample German federal election polls
+# get the latest survey for a sample of German federal election polls
 surveys <- get_latest(surveys_sample)
 # calculate probabilities for two coalitions
 probs <- get_probabilities(surveys,

@@ -22,6 +22,8 @@ Given a data frame containing multiple surveys (one row per survey), transforms
 the data into long format with one row per party.
 }
 \examples{
+\dontrun{
 emnid <- scrape_wahlrecht()
 emnid.long <- collapse_parties(emnid)
+}
 }

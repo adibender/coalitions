@@ -82,11 +82,11 @@ sanitize_colnames <- function(df) {
 }
 
 #' Try call of read_html that throws an error if the url cannot be resolved
-#' 
+#'
 #' @param url http-address that should be scraped.
 #' @importFrom xml2 read_html
 try_readHTML <- function(url) {
-  
+
   html_source <- tryCatch({
     read_html(url)
   }, error = function(cond) {
@@ -94,7 +94,7 @@ try_readHTML <- function(url) {
     message("Here's the original error message:")
     stop(cond)
   })
-  
+
   return(html_source)
 }
 
@@ -109,6 +109,7 @@ try_readHTML <- function(url) {
 #' @importFrom stringr str_sub
 #' @importFrom rlang .data
 #' @examples
+#' \dontrun{
 #' library(coalitions)
 #' library(dplyr)
 #' # select a polling agency from .pollster_df that should be scraped ...
@@ -116,6 +117,7 @@ try_readHTML <- function(url) {
 #' # ... here we choose Forsa
 #' address <- coalitions:::.pollster_df %>% filter(pollster == "forsa") %>% pull(address)
 #' scrape_wahlrecht(address = address) %>% slice(1:5)
+#' }
 #' @export
 scrape_wahlrecht <- function(
   address = "https://www.wahlrecht.de/umfragen/emnid.htm",
@@ -184,9 +186,11 @@ scrape_wahlrecht <- function(
 #' @import dplyr
 #' @importFrom purrr map
 #' @examples
+#' \dontrun{
 #' library(coalitions)
 #' # scrape data for the German federal election
 #' # get_surveys()
+#' }
 #' @export
 get_surveys <- function(country = c("DE", "AT")) {
 
@@ -287,11 +291,13 @@ get_surveys_by <- function() {
 #' @param ind_row_remove Negative vector of rows that will be skipped at the beginning.
 #' @export
 #' @examples
+#' \dontrun{
 #' # Niedersachsen
 #' scrape_ltw() %>% slice(1:5)
 #' # Hessen
 #' scrape_ltw("http://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1)) %>%
 #'  slice(1:5)
+#' }
 scrape_ltw <- function(
   address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",

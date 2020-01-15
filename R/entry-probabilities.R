@@ -8,8 +8,8 @@
 #' @keywords internal
 #' @examples
 #' library(coalitions)
-#' library(dplyr) 
-#' # get the latest survey for the sample German federal election polls
+#' library(dplyr)
+#' # get the latest survey for a sample of German federal election polls
 #' surveys <- get_latest(surveys_sample)
 #' # use 100 simulations for a fast runtime
 #' surveys <- surveys %>% mutate(draws = purrr::map(survey, draw_from_posterior, nsim = 100),

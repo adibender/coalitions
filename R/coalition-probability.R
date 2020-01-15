@@ -32,7 +32,7 @@ has_majority <- function(
 #' library(coalitions)
 #' library(dplyr)
 #' library(purrr)
-#' # get the latest survey for the sample German federal election polls
+#' # get the latest survey for a sample of German federal election polls
 #' surveys <- get_latest(surveys_sample)
 #' # check for majorities of two coalitions
 #' coals <- list(c("cdu", "fdp"),
@@ -239,7 +239,7 @@ get_superior <- function(
 #' @examples
 #' library(coalitions)
 #' library(dplyr)
-#' # get the latest survey for the sample German federal election polls
+#' # get the latest survey for a sample of German federal election polls
 #' surveys <- get_latest(surveys_sample)
 #' # calculate probabilities for two coalitions
 #' probs <- get_probabilities(surveys,

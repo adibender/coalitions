@@ -42,8 +42,8 @@ Calculate seat distribution from draws from posterior
 }
 \examples{
 library(coalitions)
-library(dplyr) 
-# get the latest survey for the sample German federal election polls
+library(dplyr)
+# get the latest survey for a sample of German federal election polls
 surveys <- get_latest(surveys_sample)
 # simulate 100 seat distributions
 surveys <- surveys \%>\% mutate(draws = purrr::map(survey, draw_from_posterior, nsim = 100),

@@ -11,12 +11,12 @@
 #' parties.
 #' @return A numeric vector giving the number of seats each party obtained.
 #' @import dplyr
-#' @importFrom reshape2 melt
+#' @importFrom tidyr gather
 #' @seealso \code{\link{dHondt}}
 #' @examples
 #' library(coalitions)
 #' library(dplyr)
-#' # get the latest survey for the sample German federal election polls
+#' # get the latest survey for a sample of German federal election polls
 #' surveys <- get_latest(surveys_sample) %>% tidyr::unnest("survey")
 #' # calculate the seat distribution based on Sainte-Lague/Schepers for a parliament with 300 seats
 #' sls(surveys$votes, surveys$party, n_seats = 300)
@@ -29,10 +29,10 @@ sls <- function(
   # attention: .div_mat is an internal object. see data_raw/internals.R
   divisor.mat <- sum(votes) / t(.div_mat[seq_along(votes), ] * votes)
   colnames(divisor.mat) <- parties
-
-  m.mat     <- melt(divisor.mat, as.is = TRUE, value.name = "seats")
+  m.mat <- tidyr::gather(as.data.frame(divisor.mat), key="name", value="seats",
+    everything())
   m.mat     <- m.mat[rank(m.mat$seats, ties.method = "random") <= n_seats, ]
-  rle.seats <- rle(m.mat$Var2)
+  rle.seats <- rle(m.mat$name)
 
   if (sum(rle.seats$length) != n_seats)
     stop(paste("Number of seats distributed not equal to", n_seats))
