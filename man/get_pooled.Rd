@@ -4,10 +4,16 @@
 \alias{get_pooled}
 \title{Extract effective sample size for pooled sample}
 \usage{
-get_pooled(surveys, last_date = Sys.Date(), pollsters = c("allensbach",
-  "emnid", "forsa", "fgw", "gms", "infratest", "dimap", "infratestdimap",
-  "insa"), period = 14, period_extended = NA, corr = 0.5,
-  weights = NULL)
+get_pooled(
+  surveys,
+  last_date = Sys.Date(),
+  pollsters = c("allensbach", "emnid", "forsa", "fgw", "gms", "infratest", "dimap",
+    "infratestdimap", "insa"),
+  period = 14,
+  period_extended = NA,
+  corr = 0.5,
+  weights = NULL
+)
 }
 \arguments{
 \item{surveys}{A \code{tibble} containing survey results for multiple

@@ -4,8 +4,7 @@
 \alias{gg_survey}
 \title{Plot voter shares observed in one survey}
 \usage{
-gg_survey(data, colors = NULL, labels = NULL, annotate_bars = TRUE,
-  hurdle = 5)
+gg_survey(data, colors = NULL, labels = NULL, annotate_bars = TRUE, hurdle = 5)
 }
 \arguments{
 \item{data}{Scraped dataset containing one row per party in the column
@@ -35,8 +34,7 @@ library(tidyr)
 library(dplyr)
 library(coalitions)
 
-survey <- scrape_wahlrecht() \%>\% collapse_parties() \%>\%
-  slice(1) \%>\% select(survey) \%>\% unnest()
+survey <- surveys_sample$surveys[[1]]$survey[[1]]
 
 gg_survey(survey)
 }

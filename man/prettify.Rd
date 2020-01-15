@@ -6,8 +6,11 @@
 \alias{prettify_en}
 \title{Replace/prettify matching words/terms in one vector by another}
 \usage{
-prettify_strings(x, current = .trans_df$english,
-  new = .trans_df$english_pretty)
+prettify_strings(
+  x,
+  current = .trans_df$english,
+  new = .trans_df$english_pretty
+)
 
 prettify_de(x)
 
@@ -31,9 +34,9 @@ renaming/translation of survey column names and by using internal object
 }
 \examples{
 library(coalitions)
-library(dplyr) 
+library(dplyr)
 # look at sample German federal election polls
-surveys <- surveys_sample \%>\% tidyr::unnest() \%>\% group_by(pollster) \%>\% slice(1)
+surveys <- surveys_sample \%>\% tidyr::unnest("surveys") \%>\% group_by(pollster) \%>\% slice(1)
 # prettify the polling agency names
 prettify_strings(surveys$pollster)
 prettify_en(surveys$pollster)

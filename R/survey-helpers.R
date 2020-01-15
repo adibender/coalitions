@@ -9,7 +9,7 @@
 get_meta <- function(surveys_df) {
 
   surveys_df %>%
-    unnest() %>%
+    unnest("surveys") %>%
     select(one_of(c("pollster", "date", "start", "end", "respondents")))
 
 }
@@ -20,15 +20,17 @@ get_meta <- function(surveys_df) {
 #' Given a data frame containing multiple surveys (one row per survey), transforms
 #' the data into long format with one row per party.
 #'
-#' @inheritParams scrape_wahlrecht
 #' @param surveys A data frame with one survey per row.
+#' @inheritParams scrape_wahlrecht
 #' @import checkmate magrittr dplyr
 #' @importFrom tidyr gather nest
 #' @importFrom purrr compose
 #' @return Data frame in long format
 #' @examples
+#' \dontrun{
 #' emnid <- scrape_wahlrecht()
 #' emnid.long <- collapse_parties(emnid)
+#' }
 #' @export
 collapse_parties <- function(
   surveys,
@@ -41,13 +43,13 @@ collapse_parties <- function(
   surveys <- surveys %>% select_if(compose("!", all, is.na))
   av.parties <- colnames(surveys)[colnames(surveys) %in% parties]
   surveys <- gather(surveys, "party", "percent",
-      select_vars(names(surveys), one_of(av.parties))) %>%
+      intersect(names(surveys), av.parties)) %>%
     arrange(desc(date))
 
   surveys %>% mutate(votes = .data$percent / 100 * .data$respondents) %>%
     filter(!is.na(.data$percent)) %>%
     as_tibble() %>%
-    nest(one_of(c("party", "percent", "votes")), .key = "survey")
+    nest(survey = one_of(c("party", "percent", "votes")))
 
 }
 
@@ -79,7 +81,7 @@ get_latest <- function(
   }
 
   surveys %>%
-    unnest() %>%
+    unnest("surveys") %>%
     filter(date <= as.Date(max_date)) %>%
     filter(date == max(date))
 

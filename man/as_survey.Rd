@@ -4,8 +4,13 @@
 \alias{as_survey}
 \title{Creates basic survey table from votes in percent}
 \usage{
-as_survey(percent, samplesize, parties = c("cdu", "spd", "gruene", "fdp",
-  "linke", "piraten", "afd", "fw", "sonstige"), epsilon = 1e-05)
+as_survey(
+  percent,
+  samplesize,
+  parties = c("cdu", "spd", "gruene", "fdp", "linke", "piraten", "afd", "fw",
+    "sonstige"),
+  epsilon = 1e-05
+)
 }
 \arguments{
 \item{percent}{Votes in percent each party received in the survey

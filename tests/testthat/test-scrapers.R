@@ -1,6 +1,9 @@
 context("scrapers")
 
 test_that("State wide german scrapers work", {
+
+  skip_on_cran()
+
 hp.vec <- c(
   "allensbach"     = "https://www.wahlrecht.de/umfragen/allensbach.htm",
   "emnid"          = "https://www.wahlrecht.de/umfragen/emnid.htm",
@@ -14,7 +17,7 @@ expect_data_frame(head(scrape_wahlrecht(hp.vec[1])), ncols = 11, nrows = 6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[2])), ncols = 11, nrows = 6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[3])), ncols = 11, nrows = 6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[4])), ncols = 11, nrows = 6)
-expect_data_frame(head(scrape_wahlrecht(hp.vec[5])), ncols = 13, nrows = 6)
+expect_data_frame(head(scrape_wahlrecht(hp.vec[5])), ncols = 11, nrows = 6)
 expect_data_frame(head(scrape_wahlrecht(hp.vec[6])), ncols = 11, nrows = 6)
 
 survey <- scrape_wahlrecht(
@@ -36,6 +39,9 @@ expect_equal(survey2$respondents, 1403)
 })
 
 test_that("Federal german scrapers work", {
+
+  skip_on_cran()
+
   # Bayern
   by <- scrape_by() %>% filter(date == as.Date("2018-02-12"))
   expect_data_frame(by, nrows = 1, ncols = 13)
@@ -68,6 +74,9 @@ test_that("Federal german scrapers work", {
 
 context("Transform to long format")
 test_that("Collapse parties works correctly", {
+
+  skip_on_cran()
+
   surveys <- scrape_wahlrecht("https://www.wahlrecht.de/umfragen/gms.htm")[1,]
   surveys[, 5] <- NA
   expect_data_frame(cp <- collapse_parties(surveys), nrows = 1, ncols = 5)
@@ -76,11 +85,13 @@ test_that("Collapse parties works correctly", {
 context("No missing values in percent columns")
 test_that("GMS tables correct", {
 
+  skip_on_cran()
+
   gms <- .survey_sample %>%
     filter(pollster == "gms") %>%
-    unnest() %>%
+    unnest("surveys") %>%
     filter(date == "2017-06-01") %>%
-    unnest()
+    unnest("survey")
 
   expect_identical(sum(gms$percent), 100)
   expect_false(any(is.na(gms$percent)))
@@ -90,12 +101,16 @@ test_that("GMS tables correct", {
 
 context("Austria scraper")
 test_that("Austria scrapper works", {
+
+  skip_on_cran()
+
   austria <- scrape_austria() %>%
-    unnest() %>%
+    unnest("surveys") %>%
     filter(date == as.Date("2019-07-06"))
   expect_data_frame(austria, nrow = 1, ncol = 6)
   expect_equal(austria$respondents, 1002)
   expect_data_frame(austria$survey[[1]], nrow = 7, ncol = 3)
   expect_equal(austria$survey[[1]]$percent, c(37, 22, 18, 11, 8, 2, 2))
   expect_equal(sum(austria$survey[[1]]$percent), 100)
+
 })

@@ -39,9 +39,11 @@ Given a specific date, extract the survey from this date or the last one
 before this date.
 }
 \examples{
+\dontrun{
 library(coalitions)
 # scrape data for the German federal election
 # get_surveys()
+}
 library(coalitions)
 ### Scrape the newest poll for the German federal election
 # Possibility 1: Calling get_latest without arguments scrapes surveys from the web

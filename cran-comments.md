@@ -1,10 +1,11 @@
 ## Release summary
-* Added scrappers for German fedral election
-* Fixed scrapper for Austrian general election
-* Documentation and README updates
+* Fixes CRAN failures
+* Internet based tests are skipped on CRAN
+* All functions that depend on internet resources fail gracefully if resources not available
+* removed reshape2 dependency
 
 ## Test environments
-* local ubuntu install, R 3.6.0
+* local ubuntu install, R 3.6.1
 * travis (devel and release)
 * appveyor (devel and patch)
 * win_builder
@@ -12,9 +13,7 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 notes
-
-* I am still the same maintainer, but I changed the Email as my institutional Email will expire
+0 errors | 0 warnings | 0 notes
 
 ## Reverse dependencies
 

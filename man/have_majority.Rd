@@ -4,9 +4,13 @@
 \alias{have_majority}
 \title{Do coalitions have a majority}
 \usage{
-have_majority(seats_tab, coalitions = list(c("cdu"), c("cdu", "fdp"),
-  c("cdu", "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left",
-  "greens")), seats_majority = 300L, collapse = "_")
+have_majority(
+  seats_tab,
+  coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu", "fdp", "greens"), c("spd"),
+    c("spd", "left"), c("spd", "left", "greens")),
+  seats_majority = 300L,
+  collapse = "_"
+)
 }
 \arguments{
 \item{seats_tab}{A data frame containing number of seats obtained by a party.
@@ -19,16 +23,16 @@ need to correspond to the names in \code{majority_df}.}
 \item{seats_majority}{The number of seats needed to obtain majority.}
 
 \item{collapse}{an optional character string to separate the results.  Not
-    \code{\link{NA_character_}}.}
+    \code{\link[base]{NA_character_}}.}
 }
 \description{
 Do coalitions have a majority
 }
 \examples{
 library(coalitions)
-library(dplyr) 
+library(dplyr)
 library(purrr)
-# get the latest survey for the sample German federal election polls
+# get the latest survey for a sample of German federal election polls
 surveys <- get_latest(surveys_sample)
 # check for majorities of two coalitions
 coals <- list(c("cdu", "fdp"),

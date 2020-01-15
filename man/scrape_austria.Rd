@@ -4,9 +4,9 @@
 \alias{scrape_austria}
 \title{Import Austrian survey results}
 \usage{
-
-  scrape_austria(address =
-    "https://neuwal.com/wahlumfragen/data/neuwal-wahlumfragen-user.json")
+scrape_austria(
+  address = "https://neuwal.com/wahlumfragen/data/neuwal-wahlumfragen-user.json"
+)
 }
 \arguments{
 \item{address}{URL of the JSON file.}

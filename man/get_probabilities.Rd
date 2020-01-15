@@ -4,10 +4,16 @@
 \alias{get_probabilities}
 \title{Wrapper for calculation of coalition probabilities from survey}
 \usage{
-get_probabilities(x, coalitions = list(c("cdu"), c("cdu", "fdp"),
-  c("cdu", "fdp", "greens"), c("spd"), c("spd", "left"), c("spd", "left",
-  "greens")), nsim = 1e+05, distrib.fun = sls, seats_majority = 300L,
-  seed = as.numeric(now()), correction = NULL)
+get_probabilities(
+  x,
+  coalitions = list(c("cdu"), c("cdu", "fdp"), c("cdu", "fdp", "greens"), c("spd"),
+    c("spd", "left"), c("spd", "left", "greens")),
+  nsim = 1e+05,
+  distrib.fun = sls,
+  seats_majority = 300L,
+  seed = as.numeric(now()),
+  correction = NULL
+)
 }
 \arguments{
 \item{x}{A table containing one row per survey and survey information in
@@ -40,14 +46,14 @@ by default excluding superior coalitions first
 \examples{
 library(coalitions)
 library(dplyr)
-# get the latest survey for the sample German federal election polls
+# get the latest survey for a sample of German federal election polls
 surveys <- get_latest(surveys_sample)
 # calculate probabilities for two coalitions
 probs <- get_probabilities(surveys,
                            coalitions = list(c("cdu", "fdp"),
                                              c("spd", "left", "greens")),
                            nsim = 100) # ensure fast runtime with only 100 simulations
-probs \%>\% tidyr::unnest()
+probs \%>\% tidyr::unnest("probabilities")
 }
 \seealso{
 \code{\link[coalitions]{calculate_prob}}

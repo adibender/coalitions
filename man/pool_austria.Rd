@@ -4,8 +4,11 @@
 \alias{pool_austria}
 \title{Pool surveys from different pollsters}
 \usage{
-pool_austria(..., pollsters = c("Market", "Research Affairs",
-  "Unique Research", "OGM", "IMAS", "Hajek", "Gallup", "Karmasin"))
+pool_austria(
+  ...,
+  pollsters = c("Market", "Research Affairs", "Unique Research", "OGM", "IMAS", "Hajek",
+    "Gallup", "Karmasin")
+)
 }
 \arguments{
 \item{pollsters}{Character vector of pollsters that should be considered

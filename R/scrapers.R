@@ -81,6 +81,23 @@ sanitize_colnames <- function(df) {
 
 }
 
+#' Try call of read_html that throws an error if the url cannot be resolved
+#'
+#' @param url http-address that should be scraped.
+#' @importFrom xml2 read_html
+try_readHTML <- function(url) {
+
+  html_source <- tryCatch({
+    read_html(url)
+  }, error = function(cond) {
+    message(paste("The URL could not be resolved:", url))
+    message("Here's the original error message:")
+    stop(cond)
+  })
+
+  return(html_source)
+}
+
 #' Scrape surveys for German general election
 #'
 #' Scrapes survey tables and performs sanitation to output tidy data
@@ -89,10 +106,10 @@ sanitize_colnames <- function(df) {
 #' @param parties A character vector containing names of parties to collapse.
 #' @import rvest dplyr
 #' @importFrom lubridate dmy
-#' @importFrom xml2 read_html
 #' @importFrom stringr str_sub
 #' @importFrom rlang .data
 #' @examples
+#' \dontrun{
 #' library(coalitions)
 #' library(dplyr)
 #' # select a polling agency from .pollster_df that should be scraped ...
@@ -100,13 +117,14 @@ sanitize_colnames <- function(df) {
 #' # ... here we choose Forsa
 #' address <- coalitions:::.pollster_df %>% filter(pollster == "forsa") %>% pull(address)
 #' scrape_wahlrecht(address = address) %>% slice(1:5)
+#' }
 #' @export
 scrape_wahlrecht <- function(
   address = "https://www.wahlrecht.de/umfragen/emnid.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
     "SONSTIGE")) {
 
-  atab <- read_html(address) %>%
+  atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
@@ -123,8 +141,9 @@ scrape_wahlrecht <- function(
   atab           <- atab[ind_row_remove, ]
   atab           <- atab[-nrow(atab), ]
   colnames(atab) <- c("Datum", colnames(atab)[-1])
-  ind.empty      <- sapply(atab, function(z) all(z == "")) |
-    sapply(colnames(atab), function(z) z == "")
+  ind.empty      <- sapply(atab, function(z) { all(z == "") | all(is.na(z)) } ) |
+    sapply(colnames(atab), function(z) z == "") |
+    sapply(colnames(atab), function(z) is.na(z))
   atab           <- atab[, !ind.empty]
 
   atab    <- sanitize_colnames(atab)
@@ -167,9 +186,11 @@ scrape_wahlrecht <- function(
 #' @import dplyr
 #' @importFrom purrr map
 #' @examples
+#' \dontrun{
 #' library(coalitions)
 #' # scrape data for the German federal election
 #' # get_surveys()
+#' }
 #' @export
 get_surveys <- function(country = c("DE", "AT")) {
 
@@ -193,14 +214,13 @@ get_surveys <- function(country = c("DE", "AT")) {
 #' Scrape Bavarian regional polls
 #'
 #' @rdname scrape
-#' @inherit scrape_wahlrecht
 #' @export
 scrape_by <- function(
   address = "https://www.wahlrecht.de/umfragen/landtage/bayern.htm",
   parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
               "SONSTIGE")) {
 
-  atab <- read_html(address) %>%
+  atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
@@ -261,29 +281,30 @@ get_surveys_by <- function() {
   by <- scrape_by()
   by %>%
     collapse_parties(parties = c("csu","spd","greens","fdp","left","pirates","fw","afd","others")) %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
 #' Scrape Lower Saxony regional polls
 #'
 #' @rdname scrape
-#' @inherit scrape_wahlrecht
 #' @param ind_row_remove Negative vector of rows that will be skipped at the beginning.
 #' @export
 #' @examples
+#' \dontrun{
 #' # Niedersachsen
 #' scrape_ltw() %>% slice(1:5)
 #' # Hessen
 #' scrape_ltw("http://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1)) %>%
 #'  slice(1:5)
+#' }
 scrape_ltw <- function(
   address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
     "SONSTIGE"),
   ind_row_remove = -c(1:2)) {
 
-  atab <- read_html(address) %>%
+  atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
@@ -339,13 +360,12 @@ get_surveys_nds <- function() {
   nds <- scrape_ltw()
   nds %>%
     collapse_parties() %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
 
 #' @rdname get_surveys
-#' @inherit get_surveys
 #' @export
 get_surveys_saxony <- function() {
 
@@ -353,23 +373,21 @@ get_surveys_saxony <- function() {
     "https://www.wahlrecht.de/umfragen/landtage/sachsen.htm",
     ind_row_remove = -1)
   saxony %>% collapse_parties() %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
 #' @rdname get_surveys
-#' @inherit get_surveys
 #' @export
 get_surveys_brb <- function() {
 
   brb <- scrape_ltw("https://www.wahlrecht.de/umfragen/landtage/brandenburg.htm")
   brb %>% collapse_parties() %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
 #' @rdname get_surveys
-#' @inherit get_surveys
 #' @export
 get_surveys_thuringen <- function() {
 
@@ -377,7 +395,7 @@ get_surveys_thuringen <- function() {
     "https://www.wahlrecht.de/umfragen/landtage/thueringen.htm",
     ind_row_remove = -1)
   thuringen %>% collapse_parties() %>%
-    nest(-one_of("pollster"), .key = "surveys")
+    nest(surveys = -one_of("pollster"))
 
 }
 
@@ -411,22 +429,23 @@ scrape_austria <- function(
     gather("key", "party", contains("Party")) %>%
     arrange(desc(.data$id)) %>%
     select(-.data$key)
-  party <- party %>% nest(.data$party) %>%
+  party <- party %>%
+    nest(data = .data$party) %>%
     mutate(data = map(.data$data, ~rbind(.x, data.frame(party = "Others")))) %>%
-    unnest()
+    unnest("data")
   percent <- out_df %>%
     select(one_of(c("id", "n")), contains("Value")) %>%
     gather("key", "percent", contains("Value")) %>%
     arrange(desc(.data$id)) %>%
     mutate(percent = as.numeric(.data$percent)) %>%
     select(-one_of("key"))
-  percent <- percent %>% nest(.data$percent) %>%
+  percent <- percent %>% nest(data = .data$percent) %>%
     mutate(data = map(.data$data, ~rbind(.x, data.frame(percent = 100 - sum(.x$percent))))) %>%
-    unnest() %>%
+    unnest("data") %>%
     mutate(votes   = .data$n * .data$percent / 100) %>%
     select(-n)
   pp <- cbind(party, percent[, -1]) %>%
-    nest(-.data$id, .key = "survey")
+    nest(survey = -.data$id)
 
   out_df <- out_df %>%
     select(one_of(c("id", "institut", "n", "datum"))) %>%
@@ -438,6 +457,6 @@ scrape_austria <- function(
       start = .data$date,
       end   = .data$date) %>%
     select(one_of(c("pollster", "date", "start", "end", "respondents", "survey"))) %>%
-    nest(-.data$pollster, .key = "surveys")
+    nest(surveys = -.data$pollster)
 
   }

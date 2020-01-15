@@ -17,10 +17,10 @@
 #' @keywords seat distribution
 #' @seealso \code{\link{draw_from_posterior}}, \code{\link{sls}},
 #' \code{\link{dHondt}}
-#' @examples 
+#' @examples
 #' library(coalitions)
-#' library(dplyr) 
-#' # get the latest survey for the sample German federal election polls
+#' library(dplyr)
+#' # get the latest survey for a sample of German federal election polls
 #' surveys <- get_latest(surveys_sample)
 #' # simulate 100 seat distributions
 #' surveys <- surveys %>% mutate(draws = purrr::map(survey, draw_from_posterior, nsim = 100),
@@ -67,8 +67,8 @@ get_seats <- function(
 #' @seealso \code{\link{get_seats}}, \code{\link{sls}}
 #' @examples
 #' library(coalitions)
-#' library(dplyr) 
-#' # get the latest survey for the sample German federal election polls
+#' library(dplyr)
+#' # get the latest survey for a sample of German federal election polls
 #' surveys <- get_latest(surveys_sample)
 #' # redistribute the shares of 'others' parties and parties with a share of under 5\%
 #' surveys <- surveys %>% mutate(survey_redist = purrr::map(survey, redistribute))

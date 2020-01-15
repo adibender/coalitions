@@ -71,7 +71,7 @@ stored in a long format in a separate column (see `?tidyr::nest`):
 ```{r}
 elong <- collapse_parties(emnid)
 head(elong)
-elong %>% slice(1) %>% select(survey) %>% unnest()
+elong %>% slice(1) %>% select(survey) %>% unnest("survey")
 ```
 
 ## Simulate elections
@@ -85,7 +85,7 @@ elong <- elong %>%
   mutate(draws = map(survey, draw_from_posterior, nsim=10, correction=0.005))
 elong %>% select(date, survey, draws)
 # each row is one election simulation
-elong %>% slice(1) %>% select(draws) %>% unnest()
+elong %>% slice(1) %>% select(draws) %>% unnest("draws")
 ```
 
 
@@ -107,11 +107,11 @@ elong <- elong %>%
   mutate(seats = map2(draws, survey, get_seats, distrib.fun=sls))
 elong %>% select(date, survey, draws, seats)
 ## sim column indicates simulated elections (rows in draws column)
-elong %>% slice(1) %>% select(seats) %>% unnest()
+elong %>% slice(1) %>% select(seats) %>% unnest("seats")
 ```
 
-In the above example, given the latest survey, CDU/CSU would have `r elong %>% slice(1) %>% select(seats) %>% unnest() %>% filter(party == "cdu" & sim == 1) %>% pull(seats)` seats
-in the first simulation, `r elong %>% slice(1) %>% select(seats) %>% unnest() %>% filter(party == "cdu" & sim == 2) %>% pull(seats)` seats in the second simulation, etc.
+In the above example, given the latest survey, CDU/CSU would have `r elong %>% slice(1) %>% select(seats) %>% unnest("seats") %>% filter(party == "cdu" & sim == 1) %>% pull(seats)` seats
+in the first simulation, `r elong %>% slice(1) %>% select(seats) %>% unnest("seats") %>% filter(party == "cdu" & sim == 2) %>% pull(seats)` seats in the second simulation, etc.
 
 
 ## Calculate majorities
@@ -136,11 +136,11 @@ coalitions <- list(
 
 
 elong <- elong %>%
-	mutate(majorities = map(seats, have_majority, coalitions=coalitions))
+	mutate(majorities = map(seats, have_majority, coalitions = coalitions))
 elong %>% select(date, draws, seats, majorities)
 # The majorities table for each date will have 1 row per simulation
 # and one column per coalition
-elong %>% slice(1) %>% select(majorities) %>% unnest()
+elong %>% slice(1) %>% select(majorities) %>% unnest("majorities")
 ```
 
 
@@ -157,7 +157,7 @@ elong <- elong %>%
 		probabilities = map(majorities, calculate_probs, coalitions=coalitions))
 elong %>% select(date, majorities, probabilities)
 # one row per coalition
-elong %>% slice(1) %>% select(probabilities) %>% unnest()
+elong %>% slice(1) %>% select(probabilities) %>% unnest("probabilities")
 ```
 
 
@@ -166,5 +166,5 @@ There is a wrapper function that directly returns probabilities:
 
 ```{r}
 elong <- collapse_parties(emnid)
-elong %>% get_probabilities(., nsim=10) %>% unnest()
+elong %>% get_probabilities(., nsim=10) %>% unnest("probabilities")
 ```

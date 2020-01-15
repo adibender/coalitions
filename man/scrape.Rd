@@ -6,20 +6,24 @@
 \alias{scrape_ltw}
 \title{Scrape surveys for German general election}
 \usage{
+scrape_wahlrecht(
+  address = "https://www.wahlrecht.de/umfragen/emnid.htm",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+    "SONSTIGE")
+)
 
-  scrape_wahlrecht(address = "https://www.wahlrecht.de/umfragen/emnid.htm",
-  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW",
-  "AFD", "SONSTIGE"))
+scrape_by(
+  address = "https://www.wahlrecht.de/umfragen/landtage/bayern.htm",
+  parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+    "SONSTIGE")
+)
 
-
-  scrape_by(address = "https://www.wahlrecht.de/umfragen/landtage/bayern.htm",
-  parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW",
-  "AFD", "SONSTIGE"))
-
-
-  scrape_ltw(address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
-  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW",
-  "AFD", "SONSTIGE"), ind_row_remove = -c(1:2))
+scrape_ltw(
+  address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+    "SONSTIGE"),
+  ind_row_remove = -c(1:2)
+)
 }
 \arguments{
 \item{address}{http-address from which tables should be scraped.}
@@ -32,6 +36,7 @@
 Scrapes survey tables and performs sanitation to output tidy data
 }
 \examples{
+\dontrun{
 library(coalitions)
 library(dplyr)
 # select a polling agency from .pollster_df that should be scraped ...
@@ -39,9 +44,12 @@ coalitions:::.pollster_df
 # ... here we choose Forsa
 address <- coalitions:::.pollster_df \%>\% filter(pollster == "forsa") \%>\% pull(address)
 scrape_wahlrecht(address = address) \%>\% slice(1:5)
+}
+\dontrun{
 # Niedersachsen
 scrape_ltw() \%>\% slice(1:5)
 # Hessen
 scrape_ltw("http://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1)) \%>\%
  slice(1:5)
+}
 }

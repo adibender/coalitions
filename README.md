@@ -4,7 +4,6 @@
 [![Travis-CI Build Status](https://travis-ci.org/adibender/coalitions.svg?branch=master)](https://travis-ci.org/adibender/coalitions)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/adibender/coalitions?branch=master&svg=true)](https://ci.appveyor.com/project/adibender/coalitions)
 [![Coverage Status](https://codecov.io/github/adibender/coalitions/master.svg)](https://codecov.io/github/adibender/coalitions?branch=master)
-[![DOI](https://joss.theoj.org/papers/10.21105/joss.00606/status.svg)](https://doi.org/10.21105/joss.00606)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/coalitions)](https://cran.r-project.org/package=coalitions)
 [![](https://cranlogs.r-pkg.org/badges/coalitions)](https://cran.r-project.org/package=coalitions)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
@@ -12,7 +11,7 @@
 ## Overview
 
 The `coalitions` package implements a Bayesian framework for the estimation of
-event probabilities in multi-party electoral systems (Bauer et al., 2019) like Germany, Austria etc.
+event probabilities in multi-party electoral systems (Bauer and others, 2019).
 To support estimation the package also implements scrappers that
 obtain data for German federal and general elections as well as Austrian
 general election. The implementation can be extended to support other elections.

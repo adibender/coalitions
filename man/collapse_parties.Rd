@@ -4,8 +4,10 @@
 \alias{collapse_parties}
 \title{Transform surveys in long format}
 \usage{
-collapse_parties(surveys, parties = c("cdu", "spd", "greens", "fdp",
-  "left", "pirates", "fw", "afd", "others"))
+collapse_parties(
+  surveys,
+  parties = c("cdu", "spd", "greens", "fdp", "left", "pirates", "fw", "afd", "others")
+)
 }
 \arguments{
 \item{surveys}{A data frame with one survey per row.}
@@ -20,6 +22,8 @@ Given a data frame containing multiple surveys (one row per survey), transforms
 the data into long format with one row per party.
 }
 \examples{
+\dontrun{
 emnid <- scrape_wahlrecht()
 emnid.long <- collapse_parties(emnid)
+}
 }
