@@ -1,4 +1,4 @@
-# coaltions 0.6.11
+# coaltions 0.6.12
 - fixes CRAN errors [#119](https://github.com/adibender/coalitions/issues/119) (see also #118)
 - fixes scrapper function for GMS table [#118](https://github.com/adibender/coalitions/issues/118)
 - changes `nest`/`unnest` usage to new `tidyr` syntax

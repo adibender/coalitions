@@ -2,6 +2,7 @@
 * Fixes CRAN failures
 * Internet based tests are skipped on CRAN
 * All functions that depend on internet resources fail gracefully if resources not available
+* Examples that require internet connection are wrapped in \dontrun{}
 * removed reshape2 dependency
 
 ## Test environments
