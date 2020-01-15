@@ -81,6 +81,23 @@ sanitize_colnames <- function(df) {
 
 }
 
+#' Try call of read_html that throws an error if the url cannot be resolved
+#' 
+#' @param url http-address that should be scraped.
+#' @importFrom xml2 read_html
+try_readHTML <- function(url) {
+  
+  html_source <- tryCatch({
+    read_html(url)
+  }, error = function(cond) {
+    message(paste("The URL could not be resolved:", url))
+    message("Here's the original error message:")
+    stop(cond)
+  })
+  
+  return(html_source)
+}
+
 #' Scrape surveys for German general election
 #'
 #' Scrapes survey tables and performs sanitation to output tidy data
@@ -89,7 +106,6 @@ sanitize_colnames <- function(df) {
 #' @param parties A character vector containing names of parties to collapse.
 #' @import rvest dplyr
 #' @importFrom lubridate dmy
-#' @importFrom xml2 read_html
 #' @importFrom stringr str_sub
 #' @importFrom rlang .data
 #' @examples
@@ -106,7 +122,7 @@ scrape_wahlrecht <- function(
   parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
     "SONSTIGE")) {
 
-  atab <- read_html(address) %>%
+  atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
@@ -200,7 +216,7 @@ scrape_by <- function(
   parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
               "SONSTIGE")) {
 
-  atab <- read_html(address) %>%
+  atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
@@ -282,7 +298,7 @@ scrape_ltw <- function(
     "SONSTIGE"),
   ind_row_remove = -c(1:2)) {
 
-  atab <- read_html(address) %>%
+  atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
 
