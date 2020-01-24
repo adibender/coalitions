@@ -412,7 +412,6 @@ get_surveys_thuringen <- function() {
 #' @importFrom purrr map map_dfr flatten_dfc
 #' @importFrom jsonlite fromJSON
 #' @importFrom RCurl getURL
-#' @importFrom forcats fct_collapse
 #' @importFrom lubridate dmy
 #' @importFrom rlang UQS syms .data
 #' @importFrom stringr str_replace
