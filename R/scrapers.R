@@ -419,8 +419,9 @@ get_surveys_thuringen <- function() {
 scrape_austria <- function(
   address = "https://neuwal.com/wahlumfragen/data/neuwal-wahlumfragen-user.json") {
 
-  aut_list <- fromJSON(getURL(address) %>%
-    str_replace('\\"\\"(.*)\\"\\",', "\"'\\1'\",")) # fix for double double-quote bug
+  raw_input <- getURL(address)
+  raw_input <- str_replace(raw_input, '\\"\\"(.*)\\"\\",', "\"'\\1'\",") # fix for double double-quote bug
+  aut_list <- fromJSON(raw_input)
   out_df <- as_tibble(aut_list[[1]]) %>%
     filter(.data$regionID == 1)
   party <- out_df %>%

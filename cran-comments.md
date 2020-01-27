@@ -1,9 +1,9 @@
 ## Release summary
 * Fixes CRAN failures
-* Internet based tests are skipped on CRAN
+* Internet based tests are skipped if offline
 * All functions that depend on internet resources fail gracefully if resources not available
 * Examples that require internet connection are wrapped in \dontrun{}
-* removed reshape2 dependency
+* removed reshape2 and forcats dependencies
 
 ## Test environments
 * local ubuntu install, R 3.6.1
@@ -21,4 +21,4 @@
 There are no reverse dependencies
 
 ## Additional notes
-* Adressed "incoming" Rd line width issue
+* Re-release after package was archived on CRAN
