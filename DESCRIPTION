@@ -21,7 +21,6 @@ Imports:
     rlang,
     magrittr,
     lubridate,
-    forcats,
     stringr,
     tidyr (>= 1.0.0),
     purrr (> 0.2.2),

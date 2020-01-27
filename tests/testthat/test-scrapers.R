@@ -2,7 +2,7 @@ context("scrapers")
 
 test_that("State wide german scrapers work", {
 
-  skip_on_cran()
+  skip_if_offline()
 
 hp.vec <- c(
   "allensbach"     = "https://www.wahlrecht.de/umfragen/allensbach.htm",
@@ -40,7 +40,7 @@ expect_equal(survey2$respondents, 1403)
 
 test_that("Federal german scrapers work", {
 
-  skip_on_cran()
+  skip_if_offline()
 
   # Bayern
   by <- scrape_by() %>% filter(date == as.Date("2018-02-12"))
@@ -75,7 +75,7 @@ test_that("Federal german scrapers work", {
 context("Transform to long format")
 test_that("Collapse parties works correctly", {
 
-  skip_on_cran()
+  skip_if_offline()
 
   surveys <- scrape_wahlrecht("https://www.wahlrecht.de/umfragen/gms.htm")[1,]
   surveys[, 5] <- NA
@@ -85,7 +85,7 @@ test_that("Collapse parties works correctly", {
 context("No missing values in percent columns")
 test_that("GMS tables correct", {
 
-  skip_on_cran()
+  skip_if_offline()
 
   gms <- .survey_sample %>%
     filter(pollster == "gms") %>%
@@ -102,7 +102,7 @@ test_that("GMS tables correct", {
 context("Austria scraper")
 test_that("Austria scrapper works", {
 
-  skip_on_cran()
+  skip_if_offline()
 
   austria <- scrape_austria() %>%
     unnest("surveys") %>%
