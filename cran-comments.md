@@ -6,11 +6,11 @@
 * removed reshape2 and forcats dependencies
 
 ## Test environments
-* local ubuntu install, R 3.6.1
+* local ubuntu 18.04 install, R 3.6.2
 * travis (devel and release)
 * appveyor (devel and patch)
-* win_builder
-* rhub
+* win_builder (release and devel)
+* rhub (Ubuntu Linux 16.04 LTS, R-release, GCC; Fedora Linux, R-devel, clang, gfortran)
 
 ## R CMD check results
 
