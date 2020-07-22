@@ -34,6 +34,21 @@ otherwise calls \code{\link{get_surveys}}.}
 \item{max_date}{Specifies the date, relative to which latest survey will
 be searched for. Defaults to \code{Sys.Date}.}
 }
+\value{
+Nested tibble. When fully unnested, the dataset contains the following
+columns:
+\describe{
+  \item{pollster}{Character name of the polling institute.}
+  \item{date}{Publication date of the poll.}
+  \item{start, end}{Start and end date of the field period, i.e. the dates
+  during which the poll was conducted.}
+  \item{respondents}{Number of respondents in the poll.}
+  \item{party}{Character name of an individual party.}
+  \item{percent}{Percentage of respondents that chose the party. Given in
+  percentage points, i.e. \code{38\%} is given as \code{38}.}
+  \item{votes}{Number of respondents that chose the party.}
+}
+}
 \description{
 Given a specific date, extract the survey from this date or the last one
 before this date.
