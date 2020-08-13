@@ -25,7 +25,8 @@ Imports:
     tidyr (>= 1.0.0),
     purrr (> 0.2.2),
     dplyr (> 0.5.0),
-    ggplot2
+    ggplot2, 
+    tibble (>= 3.0.0)
 Suggests:
     testthat,
     covr,
@@ -36,6 +37,6 @@ Encoding: UTF-8
 License: MIT + file LICENSE
 URL: http://adibender.github.io/coalitions/
 BugReports: https://github.com/adibender/coalitions/issues
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 LazyData: true
