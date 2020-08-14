@@ -11,7 +11,7 @@
 #' results (or add an additional source of variation in general).
 #'
 #' @importFrom gtools rdirichlet
-#' @importFrom dplyr tbl_df
+#' @importFrom tibble as_tibble
 #' @importFrom lubridate now
 #' @importFrom stats runif
 #' @return \code{data.frame} containing random draws from Dirichlet distribution
@@ -69,6 +69,6 @@ draw_from_posterior <- function(
   }
 
   colnames(draws) <- survey$party
-  tbl_df(draws)
+  as_tibble(draws)
 
 }
