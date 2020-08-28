@@ -22,8 +22,7 @@ need to correspond to the names in \code{majority_df}.}
 
 \item{seats_majority}{The number of seats needed to obtain majority.}
 
-\item{collapse}{an optional character string to separate the results.  Not
-    \code{\link[base]{NA_character_}}.}
+\item{collapse.}{Character string passed to \code{base::paste}.}
 }
 \description{
 Do coalitions have a majority

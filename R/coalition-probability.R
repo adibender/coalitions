@@ -11,11 +11,13 @@ has_majority <- function(
   coalition,
   seats_majority = 300L) {
 
+  suppressMessages({
   seats_tab %>%
     filter(.data$party %in% coalition) %>%
     group_by(.data$sim) %>%
     summarize(majority = sum(.data$seats) >= seats_majority) %>%
     select(one_of("majority"))
+  })
 
 }
 
@@ -24,6 +26,7 @@ has_majority <- function(
 #' @inheritParams has_majority
 #' @inheritParams paste_coalitions
 #' @inheritParams calculate_probs
+#' @param collapse. Character string passed to \code{base::paste}.
 #' @param seats_tab A data frame containing number of seats obtained by a party.
 #' Must have columns \code{party} and \code{seats}.
 #' @importFrom purrr map
@@ -72,11 +75,13 @@ have_majority <- function(
 
   coalitions <- coalitions %>% map(sort)
 
+  suppressMessages({
   majority_df <- map(
     coalitions,
     has_majority,
     seats_tab = seats_tab,
     seats_majority  = seats_majority) %>% bind_cols()
+  })
   colnames(majority_df) <- paste_coalitions(coalitions, collapse = collapse)
 
   majority_df
@@ -86,7 +91,7 @@ have_majority <- function(
 #' Transform list of coalitions to vector by combining party names
 #'
 #' @inheritParams calculate_probs
-#' @inheritParams base::paste
+#' @inheritParams have_majority
 #' @importFrom purrr map
 #' @keywords internal
 paste_coalitions <- function(coalitions, collapse="_") {

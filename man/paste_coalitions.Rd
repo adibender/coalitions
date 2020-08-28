@@ -10,9 +10,6 @@ paste_coalitions(coalitions, collapse = "_")
 \item{coalitions}{A list of coalitions for which coalition probabilities should
 be calculated. Each list entry must be a vector of party names. Those names
 need to correspond to the names in \code{majority_df}.}
-
-\item{collapse}{an optional character string to separate the results.  Not
-    \code{\link[base]{NA_character_}}.}
 }
 \description{
 Transform list of coalitions to vector by combining party names

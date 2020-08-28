@@ -4,9 +4,8 @@ author: "Alexander Bauer"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{pooling}
+  %\VignetteIndexEntry{Pooling}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 
