@@ -208,10 +208,10 @@ filter_superior <- function(majority_df, coalition, ...) {
 
 #' Extract superior coalitions from coalition string or vector
 #'
-#' @inheritParams stringr::str_split
+#' @param stirng A character.
+#' @param pattern Pattern to look for (regular expression).
 #' @param collapse string that will be used to concatenate multiple elements
 #' obtained by splitting \code{string} to one string.
-#' @importFrom magrittr "%>%"
 #' @importFrom purrr flatten map map_chr
 #' @importFrom utils combn
 #' @importFrom stringr str_split
