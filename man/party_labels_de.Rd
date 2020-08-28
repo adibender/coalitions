@@ -4,8 +4,10 @@
 \name{party_labels_de}
 \alias{party_labels_de}
 \title{Labels for German parties}
-\format{A named character vector. Names indicate parties. Values contain
-  party names suitable for plot labels.}
+\format{
+A named character vector. Names indicate parties. Values contain
+  party names suitable for plot labels.
+}
 \usage{
 party_labels_de
 }

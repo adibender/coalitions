@@ -6,8 +6,8 @@
 \usage{
 pool_austria(
   ...,
-  pollsters = c("Market", "Research Affairs", "Unique Research", "OGM", "IMAS", "Hajek",
-    "Gallup", "Karmasin")
+  pollsters = c("Market", "Research Affairs", "Unique Research", "OGM", "IMAS",
+    "Hajek", "Gallup", "Karmasin")
 )
 }
 \arguments{

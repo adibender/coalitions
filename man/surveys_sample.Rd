@@ -4,11 +4,13 @@
 \name{surveys_sample}
 \alias{surveys_sample}
 \title{Sample of selected surveys}
-\format{A nested data frame with 7 rows and 2 columns:
+\format{
+A nested data frame with 7 rows and 2 columns:
 \describe{
   \item{institute}{name of the pollster}
   \item{surveys}{a list of data frames, each containing one survey}
-}}
+}
+}
 \source{
 \url{https://www.wahlrecht.de/}
 }

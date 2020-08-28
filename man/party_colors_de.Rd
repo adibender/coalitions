@@ -4,8 +4,10 @@
 \name{party_colors_de}
 \alias{party_colors_de}
 \title{Colors for German parties}
-\format{A named character vector. Names indicate parties. Values contain
-color strings for the respective parties}
+\format{
+A named character vector. Names indicate parties. Values contain
+color strings for the respective parties
+}
 \usage{
 party_colors_de
 }
