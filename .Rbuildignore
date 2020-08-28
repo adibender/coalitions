@@ -14,7 +14,7 @@
 ^CODE_OF_CONDUCT\.md$
 ^README\.Rmd$
 ^_pkgdown\.yml$
-^vignettes/$
+^vignettes$
 ^LICENSE\.md$
 ^paper$
 ^cran-comments\.md$

@@ -49,7 +49,7 @@ scrape_wahlrecht(address = address) \%>\% slice(1:5)
 # Niedersachsen
 scrape_ltw() \%>\% slice(1:5)
 # Hessen
-scrape_ltw("http://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1)) \%>\%
+scrape_ltw("https://www.wahlrecht.de/umfragen/landtage/hessen.htm", ind_row_remove=-c(1)) \%>\%
  slice(1:5)
 }
 }

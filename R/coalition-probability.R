@@ -26,7 +26,7 @@ has_majority <- function(
 #' @inheritParams has_majority
 #' @inheritParams paste_coalitions
 #' @inheritParams calculate_probs
-#' @param collapse. Character string passed to \code{base::paste}.
+#' @param collapse Character string passed to \code{base::paste}.
 #' @param seats_tab A data frame containing number of seats obtained by a party.
 #' Must have columns \code{party} and \code{seats}.
 #' @importFrom purrr map

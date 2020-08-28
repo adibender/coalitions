@@ -62,7 +62,7 @@ test_that("Federal german scrapers work", {
 
   # Hessen
   he <- scrape_ltw(
-    address = "http://www.wahlrecht.de/umfragen/landtage/hessen.htm",
+    address = "https://www.wahlrecht.de/umfragen/landtage/hessen.htm",
     ind_row_remove = -1) %>%
     filter(date <= as.Date("2018-09-07"))
   expect_data_frame(he, nrows = 15, ncols = 12)
