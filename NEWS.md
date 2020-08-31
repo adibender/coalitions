@@ -1,4 +1,4 @@
-# coalitoins 0.6.14
+# coalitoins 0.6.15
 - fixes CRAN errors
 
 # coaltions 0.6.12
@@ -29,9 +29,9 @@
 
 # coalitions 0.6.1
 
-- Minor fixes after [JOSS review](http://joss.theoj.org/), thx to Reviewer
+- Minor fixes after [JOSS review](https://joss.theoj.org/), thx to Reviewer
 [@fsolt](https://github.com/fsolt)
-- Updated homepage (via [`pkgdown`](http://pkgdown.r-lib.org/articles/pkgdown.html) )
+- Updated homepage (via [`pkgdown`](https://pkgdown.r-lib.org/articles/pkgdown.html) )
 - Added current JOSS badge
 
 # coalitions 0.6.0 (2018-03)

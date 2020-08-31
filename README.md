@@ -18,7 +18,7 @@ general election. The implementation can be extended to support other elections.
 
   - To get started, see our [workflow vignette](https://adibender.github.io/coalitions/articles/workflow.html)
 
-  - Check out our [interactive shiny app](http://koala.stat.uni-muenchen.de/) on
+  - Check out our [interactive shiny app](https://koala.stat.uni-muenchen.de/) on
   German (state and federal) elections/surveys
 
   - Updates are available from our [KOALA_LMU twitter account](https://twitter.com/KOALA_LMU)!
@@ -43,7 +43,7 @@ A short overview is presented below.
 ### Scrape surveys
 
 The wrapper `get_surveys()` which takes no arguments, downloads all
-surveys currently available at [wahlrecht](https://www.wahlrecht.de/umfragen)
+surveys currently available at [wahlrecht](https://www.wahlrecht.de/umfragen/)
 and stores them in a nested `tibble`:
 
 ``` r
