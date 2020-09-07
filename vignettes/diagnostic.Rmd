@@ -28,19 +28,16 @@ library(ggplot2)
 theme_set(theme_bw())
 ```
 
-```{r}
-temp <- scrape_wahlrecht() %>% slice(1) %>% collapse_parties() %>% unnest("survey")
-temp <- temp %>%
-	mutate(
-		respondents = 1000L,
-		percent  = c(36, 28, 7, 6, 9, 9, 5),
-		votes    = respondents * percent/100) %>%
-	nest(survey = party:votes)
+```{r, warning = FALSE}
+# load latest emnid data
+temp <- scrape_wahlrecht() %>% slice(1) %>% collapse_parties()
+temp %>% unnest("survey")
 
+# draw 10k samples from posterior
 set.seed(29072017)
 draws <- map(temp$survey, draw_from_posterior, nsim=1e4, correction=0.01) %>%
 	flatten_df()
-	draws_long <- gather(draws, party, percent, cdu:others) %>%
+draws_long <- gather(draws, party, percent, cdu:others) %>%
 		group_by(party) %>%
 		mutate(sim = row_number()) %>% ungroup()
 ```
