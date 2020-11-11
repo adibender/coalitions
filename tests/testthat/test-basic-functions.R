@@ -33,6 +33,7 @@ test_that("Sainte-Lague/Scheppers works correctly", {
 })
 test_that("dHondt workds correctly", {
   expect_equal(dHondt(c(4160, 3380, 2460), LETTERS[1:3], 10), c(4, 4, 2))
+  expect_equal(dHondt(c(4160, 7, 2460), LETTERS[1:3], 10), c(6, 0, 4))
 })
 
 
