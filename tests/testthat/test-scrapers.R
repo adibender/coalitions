@@ -67,7 +67,7 @@ test_that("Federal german scrapers work", {
     filter(date <= as.Date("2018-09-07"))
   expect_data_frame(he, nrows = 15, ncols = 12)
   expect_identical(he$respondents[4], 1067)
-  expect_identical(he[he$date == as.Date("2018-09-07"), "others"], 4)
+  expect_identical(he$others[he$date == as.Date("2018-09-07")], 4)
 
 })
 
