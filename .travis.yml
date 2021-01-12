@@ -2,6 +2,9 @@ language: r
 sudo: false
 cache: packages
 
+before_install:
+  - sudo apt-get -y install libharfbuzz-dev libfribidi-dev
+
 r:
   - devel
   - release
