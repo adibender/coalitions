@@ -15,12 +15,12 @@ dHondt(votes, parties, n_seats = 183)
 Austrian parliament).}
 }
 \value{
-A \code{data.frame} containing parties above the hurdle and the respective
-seats/percentages after redistribution via D'Hondt
+A numeric vector containing the seats of all parties after
+redistribution via D'Hondt
 }
 \description{
-Calculates number of seats for the respective parties that have received more
-than \code{hurdle} percent of votes (according to the method of D'Hondt)
+Calculates number of seats for the respective parties according to the
+method of d'Hondt.
 }
 \examples{
 library(coalitions)

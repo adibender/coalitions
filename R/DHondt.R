@@ -1,7 +1,7 @@
 #' Seat Distribution by D'Hondt
 #'
-#' Calculates number of seats for the respective parties that have received more
-#' than \code{hurdle} percent of votes (according to the method of D'Hondt)
+#' Calculates number of seats for the respective parties according to the
+#' method of d'Hondt.
 #'
 #' @param votes Number of votes per party.
 #' @param parties Names of parties (must be same length as votes).
@@ -9,8 +9,8 @@
 #' Austrian parliament).
 #' @seealso \code{\link{sls}}
 #' @importFrom tidyr gather
-#' @return A \code{data.frame} containing parties above the hurdle and the respective
-#' seats/percentages after redistribution via D'Hondt
+#' @return A numeric vector containing the seats of all parties after
+#' redistribution via D'Hondt
 #' @examples
 #' library(coalitions)
 #' library(dplyr)
@@ -32,6 +32,19 @@ dHondt <- function(votes, parties, n_seats = 183) {
   if (sum(rle.seats$length) != n_seats)
     stop(paste("Number of seats distributed not equal to", n_seats))
 
+  # fill up the vector with parties that got no seats
+  if (any(!(parties %in% rle.seats$values))) {
+    # add parties
+    missing_parties <- parties[!(parties %in% rle.seats$values)]
+    for (party in missing_parties) {
+      rle.seats$lengths <- c(rle.seats$lengths, 0)
+      rle.seats$values  <- c(rle.seats$values, party)
+    }
+    # sort results
+    rle.seats$lengths <- rle.seats$lengths[match(parties, rle.seats$values)]
+    rle.seats$values  <- rle.seats$values[match(parties, rle.seats$values)]
+  }
+  
   rle.seats$length
 
 }
