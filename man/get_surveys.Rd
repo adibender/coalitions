@@ -3,6 +3,7 @@
 \name{get_surveys}
 \alias{get_surveys}
 \alias{get_surveys_by}
+\alias{get_surveys_rp}
 \alias{get_surveys_nds}
 \alias{get_surveys_saxony}
 \alias{get_surveys_brb}
@@ -13,6 +14,8 @@
 get_surveys(country = c("DE", "AT"))
 
 get_surveys_by()
+
+get_surveys_rp()
 
 get_surveys_nds()
 

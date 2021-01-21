@@ -3,6 +3,7 @@
 \name{scrape_wahlrecht}
 \alias{scrape_wahlrecht}
 \alias{scrape_by}
+\alias{scrape_rp}
 \alias{scrape_ltw}
 \title{Scrape surveys for German general election}
 \usage{
@@ -16,6 +17,13 @@ scrape_by(
   address = "https://www.wahlrecht.de/umfragen/landtage/bayern.htm",
   parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
     "SONSTIGE")
+)
+
+scrape_rp(
+  address = "https://www.wahlrecht.de/umfragen/landtage/rheinland-pfalz.htm",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+    "SONSTIGE"),
+  ind_row_remove = -c(1:2)
 )
 
 scrape_ltw(

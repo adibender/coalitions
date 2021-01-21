@@ -1,7 +1,7 @@
 Package: coalitions
 Type: Package
 Title: Bayesian "Now-Cast" Estimation of Event Probabilities in Multi-Party Democracies
-Version: 0.6.16
+Version: 0.6.17
 Date: 2020-08-28
 Authors@R: c(
     person("Andreas", "Bender", , "bender.at.R@gmail.com", role = c("aut", "cre"), comment=c(ORCID = "0000-0001-5628-8611")),
