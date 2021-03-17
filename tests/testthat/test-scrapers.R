@@ -58,7 +58,7 @@ test_that("Federal german scrapers work", {
   expect_equal(nds$respondents, 1001)
 
   surveys_nds <- get_surveys_nds()
-  expect_data_frame(surveys_nds, nrows = 6, ncols = 2)
+  expect_data_frame(surveys_nds, nrows = 7, ncols = 2)
 
   # Hessen
   he <- scrape_ltw(
