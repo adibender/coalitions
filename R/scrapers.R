@@ -306,25 +306,23 @@ get_surveys_by <- function() {
 #' @export
 scrape_rp <- function(
   address = "https://www.wahlrecht.de/umfragen/landtage/rheinland-pfalz.htm",
-  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
-              "SONSTIGE"),
-  ind_row_remove = -c(1:2)) {
-  
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "AFD", "FW", "SONSTIGE"),
+  ind_row_remove = -c(1:3)) {
+
   atab <- try_readHTML(address) %>%
     html_nodes("table") %>% .[[2]] %>%
     html_table(fill = TRUE)
-  
+
   atab <- atab[ind_row_remove, ]
   atab <- atab[-nrow(atab), ]
   atab <- atab[, -2]
   atab <- atab[, -ncol(atab)] # delete last column (completely NA)
-  atab <- atab[, -which(names(atab) == "PIRATEN")] # no data in most recent polls
-  
+
   atab$Befragte <- sanitize_befragte(atab$Befragte)
   ind.empty     <- sapply(atab, function(z) all(z == "")) |
     sapply(colnames(atab), function(z) z == "")
   atab          <- atab[, !ind.empty]
-  
+
   atab    <- sanitize_colnames(atab)
   parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
   # transform percentage string to numerics
@@ -332,7 +330,7 @@ scrape_rp <- function(
     mutate(sonstige = sanitize_sonstige(.data$sonstige)) %>%
     mutate_at(c(parties), extract_num) %>%
     mutate_at("befragte", extract_num, decimal = FALSE)
-  
+
   atab <- atab %>%
     mutate(
       datum = dmy(.data$datum)) %>%
@@ -349,26 +347,26 @@ scrape_rp <- function(
       pollster = case_when(
         .data$pollster == "forschungs-gruppe wahlen" ~ "fgw",
         TRUE                                         ~ .data$pollster))
-  
+
   colnames(atab) <- prettify_strings(
     colnames(atab),
     current = .trans_df$german,
     new     = .trans_df$english)
-  
+
   return(atab)
-  
+
 }
 
 #' @rdname get_surveys
 #' @importFrom tidyr nest
 #' @export
 get_surveys_rp <- function() {
-  
+
   rp <- scrape_rp()
   rp %>%
     collapse_parties() %>%
     nest(surveys = -one_of("pollster"))
-  
+
 }
 
 
