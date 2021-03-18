@@ -19,4 +19,3 @@ There are no reverse dependencies
 
 
 ## Additional comment
-there appears to be an issue with utf8 not being available for windows on R devel
