@@ -1,3 +1,8 @@
+# coalitions 0.6.18
+- fix CRAN errors
+- fixes error introduced by dependencies (see [#132](https://github.com/adibender/coalitions/pull/132))
+- fixed a Bug in `dHondt` function (see [#130](https://github.com/adibender/coalitions/issues/130))
+
 # coalitoins 0.6.15
 - fixes CRAN errors
 

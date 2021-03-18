@@ -21,9 +21,8 @@ scrape_by(
 
 scrape_rp(
   address = "https://www.wahlrecht.de/umfragen/landtage/rheinland-pfalz.htm",
-  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
-    "SONSTIGE"),
-  ind_row_remove = -c(1:2)
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "AFD", "FW", "SONSTIGE"),
+  ind_row_remove = -c(1:3)
 )
 
 scrape_ltw(
