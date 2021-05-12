@@ -168,7 +168,11 @@ scrape_wahlrecht <- function(
     mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
     filter(.data$total == 100, !is.na(.data$befragte), !is.na(.data$datum)) %>%
     select(one_of(c("datum", "start", "end", parties, "befragte")))
-
+  
+  # remove potential duplicate entries
+  atab <- atab %>%
+    group_by(.data$datum) %>% slice(1) %>% ungroup()
+  
   colnames(atab) <- prettify_strings(
     colnames(atab),
     current = .trans_df$german,
