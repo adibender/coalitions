@@ -154,7 +154,12 @@ scrape_wahlrecht <- function(
     mutate_at("befragte", extract_num, decimal = FALSE)
 
   atab <- mutate(atab, datum = dmy(.data$datum))
+  atab <- mutate(atab, zeitraum = case_when(nchar(zeitraum) == 6 ~ paste0(zeitraum, "-", zeitraum),
+                                            TRUE                 ~ zeitraum))
+  
   atab <- atab %>%
+    filter(.data$zeitraum != "Bundestagswahl",
+           !grepl("\\?", .data$zeitraum)) %>%
     mutate(
       start = dmy(paste0(str_sub(.data$zeitraum, 1, 6),
         str_sub(.data$datum, 1, 4))),
