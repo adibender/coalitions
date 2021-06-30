@@ -31,10 +31,10 @@ expect_equal(survey$respondents, 2046)
 
 survey2 <- scrape_wahlrecht(
     address = "https://www.wahlrecht.de/umfragen/allensbach.htm") %>%
-  filter(date == as.Date("2017-07-18"))
+  filter(date == as.Date("2021-05-19"))
 expect_data_frame(survey2, nrows = 1, ncols = 11)
-expect_equal(survey2$cdu, 39.5)
-expect_equal(survey2$respondents, 1403)
+expect_equal(survey2$cdu, 27.5)
+expect_equal(survey2$respondents, 1027)
 
 })
 
