@@ -1,3 +1,6 @@
+# coalitions 0.6.20
+- fixes CRAN errors (due to change in data structure at wahlrecht.de)
+
 # coalitions 0.6.18
 - fix CRAN errors
 - fixes error introduced by dependencies (see [#132](https://github.com/adibender/coalitions/pull/132))

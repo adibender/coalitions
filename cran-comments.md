@@ -3,10 +3,9 @@
 
 
 ## Test environments
-* local ubuntu 18.04 install, R 4.0.2
+* local ubuntu 20.04 install, R 4.0.3
 * travis (devel and release)
-* appveyor (patch)
-* win_builder (release and devel)
+* win_builder (devel)
 * rhub (Ubuntu Linux 16.04 LTS, R-release, GCC; Fedora Linux, R-devel, clang, gfortran)
 
 ## R CMD check results
@@ -16,6 +15,3 @@
 ## Reverse dependencies
 
 There are no reverse dependencies
-
-
-## Additional comment
