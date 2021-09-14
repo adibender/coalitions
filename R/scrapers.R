@@ -142,7 +142,7 @@ scrape_wahlrecht <- function(
   atab           <- atab[-nrow(atab), ]
   colnames(atab) <- c("Datum", colnames(atab)[-1])
   
-  if (address == "https://www.wahlrecht.de/umfragen/politbarometer.htm") {
+  if (any(nchar(atab$Sonstige) > 6)) {
     # correct the 'Sonstige' column if it contains information on
     # one party + other parties (see issue #138)
     weird_rows <- which(nchar(atab$Sonstige) > 6)
