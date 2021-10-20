@@ -150,8 +150,9 @@ scrape_wahlrecht <- function(
       for (row in weird_rows) {
         entry  <- atab$Sonstige[row] %>% 
           gsub(pattern = ",", replacement = ".")
-        shares <- entry %>% 
-          gsub(pattern = "\\.", replacement = "0") %>% # just s.t. gregexpr correctly finds the beginning of each decimal number
+        # include '0' instead of decimal commas s.t. gregexpr correctly finds the beginning of each decimal number
+        entry_gregexpr <- gsub(atab$Sonstige[row], pattern = ",", replacement = ".")
+        shares <- entry_gregexpr %>% 
           gregexpr("[[:digit:]]+", .) %>% 
           regmatches(entry, .) %>% 
           unlist() %>% 
