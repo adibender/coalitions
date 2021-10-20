@@ -148,9 +148,12 @@ scrape_wahlrecht <- function(
     weird_rows <- which(nchar(atab$Sonstige) > 6)
     if (length(weird_rows) > 0) {
       for (row in weird_rows) {
-        shares <- atab$Sonstige[row] %>% 
+        entry  <- atab$Sonstige[row] %>% 
+          gsub(pattern = ",", replacement = ".")
+        shares <- entry %>% 
+          gsub(pattern = "\\.", replacement = "0") %>% # just s.t. gregexpr correctly finds the beginning of each decimal number
           gregexpr("[[:digit:]]+", .) %>% 
-          regmatches(atab$Sonstige[row], .) %>% 
+          regmatches(entry, .) %>% 
           unlist() %>% 
           as.numeric()
         atab$Sonstige[row] <- paste(sum(shares), "%")
