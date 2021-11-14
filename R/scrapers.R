@@ -480,6 +480,63 @@ get_surveys_nds <- function() {
 }
 
 
+#' @rdname scrape
+#' @param ind_row_remove Negative vector of rows that will be skipped at the beginning.
+#' @export
+scrape_sl <- function(
+  address = "https://www.wahlrecht.de/umfragen/landtage/saarland.htm",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "AFD", "SONSTIGE"),
+  ind_row_remove = -1) {
+  
+  atab <- try_readHTML(address) %>%
+    html_nodes("table") %>% .[[2]] %>%
+    html_table(fill = TRUE)
+  
+  atab <- atab[ind_row_remove, ]
+  atab <- atab[-grep("^Landtagswahl*", atab$Institut), ]
+  atab <- atab[, -5] # row 5 contains only NAs
+  
+  atab$Befragte <- sanitize_befragte(atab$Befragte)
+  ind.empty     <- sapply(atab, function(z) all(z == "")) |
+    sapply(colnames(atab), function(z) z == "")
+  atab          <- atab[, !ind.empty]
+  
+  atab    <- sanitize_colnames(atab)
+  parties <- colnames(atab)[colnames(atab) %in% tolower(parties)]
+  # transform percentage string to numerics
+  atab <- atab %>%
+    mutate(sonstige = sanitize_sonstige(.data$sonstige)) %>%
+    mutate_at(c(parties), extract_num) %>%
+    mutate_at("befragte", extract_num, decimal = FALSE)
+  
+  atab <- atab %>%
+    mutate(
+      datum = dmy(.data$datum)) %>%
+    mutate(
+      start = .data$datum,
+      end   = .data$datum)
+  atab <- atab %>%
+    mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
+    filter(.data$total == 100, !is.na(.data$befragte), !is.na(.data$datum)) %>%
+    select(one_of(c("institut", "datum", "start", "end", parties, "befragte"))) %>%
+    rename(pollster = "institut") %>%
+    mutate(
+      pollster = tolower(.data$pollster),
+      pollster = case_when(
+        .data$pollster == "forschungs-gruppe wahlen" ~ "fgw",
+        TRUE                                         ~ .data$pollster))
+  
+  colnames(atab) <- prettify_strings(
+    colnames(atab),
+    current = .trans_df$german,
+    new     = .trans_df$english)
+  
+  return(atab)
+  
+}
+
+
+
 #' @rdname get_surveys
 #' @export
 get_surveys_saxony <- function() {
