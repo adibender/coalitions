@@ -35,6 +35,38 @@ test_that("dHondt workds correctly", {
   expect_equal(dHondt(c(4160, 3380, 2460), LETTERS[1:3], 10), c(4, 4, 2))
   expect_equal(dHondt(c(4160, 7, 2460), LETTERS[1:3], 10), c(6, 0, 4))
 })
+test_that("get_seats excludes SSW-party from hurdle", {
+  expect_equal(get_seats(tibble(A = c(0.625, 0.691, 0.667),
+                       B = c(0.343, 0.297, 0.283),
+                       ssw = c(0.032, 0.012, 0.050)),
+            tibble(pollster = rep("test", 3),
+                   date = as.Date(rep("2022-04-13", 3)),
+                   start = as.Date(rep("2022-04-13", 3)),
+                   end = as.Date(rep("2022-04-13", 3)),
+                   respondents = rep(200, 3),
+                   party = c("A", "B", "ssw"),
+                   percent = c(65, 32, 3),
+                   votes = c(130, 64, 6))),
+            tibble(sim = rep(1:3, each = 3),
+                   party = rep(c("A", "B", "ssw"), 3),
+                   seats = c(374L, 205L, 19L, 413L, 178L, 7L, 399L, 169L, 30L)))
+})
+test_that("the hurdle in get_seats works for every party except SSW", {
+  expect_equal(get_seats(tibble(A = c(0.625, 0.691, 0.667),
+                                B = c(0.343, 0.297, 0.283),
+                                C = c(0.032, 0.012, 0.050)),
+                         tibble(pollster = rep("test", 3),
+                                date = as.Date(rep("2022-04-13", 3)),
+                                start = as.Date(rep("2022-04-13", 3)),
+                                end = as.Date(rep("2022-04-13", 3)),
+                                respondents = rep(200, 3),
+                                party = c("A", "B", "C"),
+                                percent = c(65, 32, 3),
+                                votes = c(130, 64, 6))),
+               tibble(sim = c(1L, 1L, 2L, 2L, 3L, 3L, 3L),
+                      party = c("A", "B", "A", "B", "A", "B", "C"),
+                      seats = c(386L, 212L, 418L, 180L, 399L, 169L, 30L)))
+})
 
 
 context("Draw from posterior")
