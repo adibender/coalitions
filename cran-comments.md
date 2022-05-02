@@ -1,12 +1,11 @@
 ## Release summary
-* Fixes CRAN failures
+* Added more scrappers for German state elections
 
 
 ## Test environments
-* local ubuntu 20.04 install, R 4.0.3
-* travis (devel and release)
+* local ubuntu 20.04 install, R 4.1.3
 * win_builder (devel)
-* rhub (Ubuntu Linux 16.04 LTS, R-release, GCC; Fedora Linux, R-devel, clang, gfortran)
+* rhub
 
 ## R CMD check results
 
