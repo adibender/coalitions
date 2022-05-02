@@ -1,3 +1,6 @@
+# coalitions 0.6.23
+Added/fixed scrappers for German state elections
+
 # coalitions 0.6.20
 - fixes CRAN errors (due to change in data structure at wahlrecht.de)
 
