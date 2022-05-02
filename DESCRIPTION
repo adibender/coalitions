@@ -1,11 +1,12 @@
 Package: coalitions
 Type: Package
 Title: Bayesian "Now-Cast" Estimation of Event Probabilities in Multi-Party Democracies
-Version: 0.6.22
-Date: 2021-06-21
+Version: 0.6.23
+Date: 2022-05-01
 Authors@R: c(
     person("Andreas", "Bender", , "bender.at.R@gmail.com", role = c("aut", "cre"), comment=c(ORCID = "0000-0001-5628-8611")),
-    person("Alexander", "Bauer", , "alexander.bauer@stat.uni-muenchen.de", role=c("aut"), comment=c(ORCID = "0000-0003-3495-5131")))
+    person("Alexander", "Bauer", , "alexander.bauer@stat.uni-muenchen.de", role=c("aut"), comment=c(ORCID = "0000-0003-3495-5131")),
+    person("Rebekka", "Schade", , "rebekka.schade@stablab.stat.uni-muenchen.de", role=c("ctb")))
 Maintainer: Andreas Bender <bender.at.R@gmail.com>
 Description: An implementation of a Bayesian framework for the opinion poll
     based estimation of event probabilities in multi-party electoral systems

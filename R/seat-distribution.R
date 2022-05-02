@@ -7,7 +7,7 @@
 #' \code{\link{sls}} (Sainte-Lague/Schepers).
 #' @param samplesize Number of individuals participating in the \code{survey}.
 #' @param hurdle The percentage threshold which has to be reached by a party
-#' to enter the parliament.
+#' to enter the parliament. Any party called "ssw" will be exempt from the hurdle.
 #' @param others A string indicating the name under which parties not listed
 #' explicitly are subsumed.
 #' @param ... Further arguments passed to \code{distrib.fun}.
@@ -50,7 +50,7 @@ get_seats <- function(
     gather("party", "percent", -.data$sim) %>%
     arrange(.data$sim) %>%
     mutate(votes = .data$percent * samplesize) %>%
-    filter(.data$party != others & .data$percent >= hurdle) %>%
+    filter(.data$party != others & (.data$percent >= hurdle | .data$party == "ssw")) %>%
     group_by(.data$sim) %>%
     mutate(seats = distrib.fun(.data$votes, .data$party, ...)) %>%
     ungroup() %>%
