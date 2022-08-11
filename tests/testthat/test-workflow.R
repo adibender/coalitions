@@ -34,7 +34,7 @@ test_that("workflow stable", {
 	expect_equal(colnames(survey$draws[[1]]), survey$survey[[1]]$party)
 
 	if(capabilities("long.double")) {
-		expect_warning(drp <- draw_from_posterior(survey$survey[[1]], nsim=10, correction=.1))
+		expect_warning(drp <- draw_from_posterior(survey$survey[[1]], nsim=10, correction=.1, seed = 2022))
 	}
 
 	entry_probs <- get_entryprobability(survey$draws[[1]])
