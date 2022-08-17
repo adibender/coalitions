@@ -1,3 +1,6 @@
+# coalitions 0.6.24
+Minor test fix
+
 # coalitions 0.6.23
 Added/fixed scrappers for German state elections
 

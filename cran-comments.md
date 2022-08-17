@@ -1,9 +1,9 @@
 ## Release summary
-* Added more scrappers for German state elections
+minor test fix
 
 
 ## Test environments
-* local ubuntu 20.04 install, R 4.1.3
+* local ubuntu 20.04 install, R 4.2.1
 * win_builder (devel)
 * rhub
 
