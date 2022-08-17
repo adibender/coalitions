@@ -12,7 +12,7 @@ redistribute(survey, hurdle = 0.05, others = "others", epsilon = 1e-05)
 were based on.}
 
 \item{hurdle}{The percentage threshold which has to be reached by a party
-to enter the parliament.}
+to enter the parliament. Any party called "ssw" will be exempt from the hurdle.}
 
 \item{others}{A string indicating the name under which parties not listed
 explicitly are subsumed.}

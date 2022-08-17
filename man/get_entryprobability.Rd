@@ -11,7 +11,7 @@ get_entryprobability(dirichlet.draws, hurdle = 0.05)
 the posterior (see \code{\link{draw_from_posterior}}).}
 
 \item{hurdle}{The percentage threshold which has to be reached by a party
-to enter the parliament.}
+to enter the parliament. Any party called "ssw" will be exempt from the hurdle.}
 }
 \value{
 Vector of (named) entry probabilities.
