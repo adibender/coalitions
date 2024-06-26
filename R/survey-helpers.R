@@ -34,7 +34,7 @@ get_meta <- function(surveys_df) {
 #' @export
 collapse_parties <- function(
   surveys,
-  parties = c("cdu", "spd", "greens", "fdp", "left", "pirates", "fw", "afd",
+  parties = c("cdu", "spd", "greens", "fdp", "left", "pirates", "fw", "afd", "bsw",
     "others")) {
 
   assert_data_frame(surveys, min.rows = 1, min.cols = 3)

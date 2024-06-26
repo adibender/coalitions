@@ -121,7 +121,7 @@ try_readHTML <- function(url) {
 #' @export
 scrape_wahlrecht <- function(
   address = "https://www.wahlrecht.de/umfragen/emnid.htm",
-  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD", "BSW",
     "SONSTIGE")) {
 
   atab <- try_readHTML(address) %>%
@@ -415,7 +415,7 @@ get_surveys_rp <- function() {
 #' }
 scrape_ltw <- function(
   address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
-  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD", "BSW",
     "SONSTIGE"),
   ind_row_remove = -c(1:2)) {
 
