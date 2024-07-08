@@ -9,7 +9,8 @@ library(dplyr)
     "fgw",
     "gms",
     "infratest",
-    "insa"),
+    "insa",
+    "yougov"),
   address = c(
     "https://www.wahlrecht.de/umfragen/allensbach.htm",
     "https://www.wahlrecht.de/umfragen/emnid.htm",
@@ -17,7 +18,8 @@ library(dplyr)
     "https://www.wahlrecht.de/umfragen/politbarometer.htm",
     "https://www.wahlrecht.de/umfragen/gms.htm",
     "https://www.wahlrecht.de/umfragen/dimap.htm",
-    "https://www.wahlrecht.de/umfragen/insa.htm"))
+    "https://www.wahlrecht.de/umfragen/insa.htm",
+    "https://www.wahlrecht.de/umfragen/yougov.htm"))
 
 
 ## .div_mat is used when calculating seat distributions
@@ -43,6 +45,7 @@ div_vec <- 0.5:(598 + 0.5)
   "gms"              , "GMS"                          , "gms"             , "GMS"                       ,
   "infratest"        , "Infratest dimap"              , "infratest"       , "Infratest dimap"           ,
   "INSA"             , "INSA"                         , "insa"            , "INSA"                      ,
+  "yougov"           , "Yougov"                       , "yougov"          , "Yougov"                    ,
   "start"            , "Beginn"                       , "start"           , "start"                     ,
   "end"              , "Ende"                         , "end"             , "end"                       ,
   "survey"           , "Umfrage"                      , "survey"          , "survey"                    ,
@@ -56,6 +59,7 @@ div_vec <- 0.5:(598 + 0.5)
   "linke"            , "Die Linke"                    , "left"            , "The Left"                  ,
   "piraten"          , "Piraten"                      , "pirates"         , "Pirates"                   ,
   "afd"              , "AfD"                          , "afd"             , "AfD"                       ,
+  "bsw"              , "BSW"                          , "bsw"             , "BSW"                       ,
   "sonstige"         , "Sonstige"                     , "others"          , "Others"                    ,
   "cdu_spd"          , "Union - SPD"                  , "cdu_spd"         , "Union - SPD"               ,
   "cdu_fdp"          , "Union - FDP"                  , "cdu_fdp"         , "Union - FDP"               ,
@@ -72,6 +76,7 @@ party_labels_de <- c(
   "fdp"    = "FDP",
   "left"   = "Left",
   "afd"    = "AfD",
+  "bsw"    = "BSW",
   "others" = "Others"
 )
 
@@ -83,6 +88,7 @@ party_labels_de <- c(
   "left"    = "#cd1076",
   "pirates" = "brown",
   "afd"     = "skyblue",
+  "bsw"     = "#6d1f99",
   "others"  = "grey")
 
 .btw13 <- tibble::tibble(
