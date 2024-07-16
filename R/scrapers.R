@@ -121,7 +121,7 @@ try_readHTML <- function(url) {
 #' @export
 scrape_wahlrecht <- function(
   address = "https://www.wahlrecht.de/umfragen/emnid.htm",
-  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD", "BSW",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "AFD", "BSW",
     "SONSTIGE")) {
 
   atab <- try_readHTML(address) %>%
@@ -189,7 +189,19 @@ scrape_wahlrecht <- function(
       end   = case_when(
         is.na(end) ~ start,
         TRUE ~ end))
-
+  
+  # if present add FW to others
+  if ("fw" %in% colnames(atab)) {
+      atab <- atab %>%
+      mutate_at("fw", extract_num)
+    if (any(!is.na(atab$fw))) {
+      atab <- atab %>%
+        mutate(
+          fw = replace_na(fw, 0),
+          sonstige = sonstige + fw)
+    }
+  }
+  
   atab <- atab %>%
     mutate(total = rowSums(atab[, parties], na.rm = TRUE)) %>%
     filter(.data$total == 100, !is.na(.data$befragte), !is.na(.data$datum)) %>%
@@ -243,7 +255,8 @@ get_surveys <- function(country = c("DE", "AT")) {
     surveys <- .pollster_df %>%
     mutate(
       surveys = map(.data$address, scrape_wahlrecht),
-      surveys = map(.x = surveys, collapse_parties)) %>%
+      surveys = map(.x = surveys, collapse_parties,
+                    parties = c("cdu", "spd", "greens", "fdp", "left", "pirates", "afd", "bsw", "others"))) %>%
     select(-one_of("address"))
   }
   if (country == "AT") {
