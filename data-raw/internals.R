@@ -9,8 +9,7 @@ library(dplyr)
     "fgw",
     "gms",
     "infratest",
-    "insa",
-    "yougov"),
+    "insa"),
   address = c(
     "https://www.wahlrecht.de/umfragen/allensbach.htm",
     "https://www.wahlrecht.de/umfragen/emnid.htm",
@@ -18,8 +17,7 @@ library(dplyr)
     "https://www.wahlrecht.de/umfragen/politbarometer.htm",
     "https://www.wahlrecht.de/umfragen/gms.htm",
     "https://www.wahlrecht.de/umfragen/dimap.htm",
-    "https://www.wahlrecht.de/umfragen/insa.htm",
-    "https://www.wahlrecht.de/umfragen/yougov.htm"))
+    "https://www.wahlrecht.de/umfragen/insa.htm"))
 
 
 ## .div_mat is used when calculating seat distributions
@@ -45,7 +43,6 @@ div_vec <- 0.5:(598 + 0.5)
   "gms"              , "GMS"                          , "gms"             , "GMS"                       ,
   "infratest"        , "Infratest dimap"              , "infratest"       , "Infratest dimap"           ,
   "INSA"             , "INSA"                         , "insa"            , "INSA"                      ,
-  "yougov"           , "Yougov"                       , "yougov"          , "Yougov"                    ,
   "start"            , "Beginn"                       , "start"           , "start"                     ,
   "end"              , "Ende"                         , "end"             , "end"                       ,
   "survey"           , "Umfrage"                      , "survey"          , "survey"                    ,
