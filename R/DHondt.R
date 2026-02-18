@@ -8,14 +8,14 @@
 #' @param n_seats Number of seats in parliament. Defaults to 183 (seats in
 #' Austrian parliament).
 #' @seealso \code{\link{sls}}
-#' @importFrom tidyr gather
+#' @importFrom tidyr pivot_longer
 #' @return A numeric vector containing the seats of all parties after
 #' redistribution via D'Hondt
 #' @examples
 #' library(coalitions)
 #' library(dplyr)
 #' # get the latest survey for a sample of German federal election polls
-#' surveys <- get_latest(surveys_sample) %>% tidyr::unnest("survey")
+#' surveys <- get_latest(surveys_sample) %>% ungroup() %>% slice(1) %>% tidyr::unnest("survey")
 #' # calculate the seat distribution based on D'Hondt for a parliament with 300 seats
 #' dHondt(surveys$votes, surveys$party, n_seats = 300)
 #' @export
@@ -24,9 +24,10 @@ dHondt <- function(votes, parties, n_seats = 183) {
   divisor.mat           <- sum(votes) / sapply(votes, "/", seq(1, n_seats, 1))
   colnames(divisor.mat) <- parties
 
-  m.mat     <- tidyr::gather(as.data.frame(divisor.mat), key="name", value="value",
-    everything())
+  m.mat     <- tidyr::pivot_longer(as.data.frame(divisor.mat), cols = everything(),
+    names_to = "name", values_to = "value")
   m.mat     <- m.mat[rank(m.mat$value, ties.method = "random") <= n_seats, ]
+  m.mat     <- m.mat[order(m.mat$name), ]
   rle.seats <- rle(as.character(m.mat$name))
 
   if (sum(rle.seats$length) != n_seats)

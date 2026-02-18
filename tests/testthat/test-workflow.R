@@ -12,9 +12,9 @@ test_that("workflow stable", {
 
 	## collapse
 	survey <- coalitions:::.survey_sample %>%
-		filter(pollster == "insa") %>%
+		filter(pollster == "emnid") %>%
 		unnest(cols = "surveys") %>%
-		filter(date == as.Date("2017-08-29"))
+		filter(date == as.Date("2017-09-02"))
 	expect_data_frame(survey, nrows = 1, ncols = 6)
 	expect_equal(colnames(survey),
 		c("pollster", "date", "start", "end", "respondents", "survey"))

@@ -16,7 +16,7 @@ has_majority <- function(
     filter(.data$party %in% coalition) %>%
     group_by(.data$sim) %>%
     summarize(majority = sum(.data$seats) >= seats_majority) %>%
-    select(one_of("majority"))
+    select(any_of("majority"))
   })
 
 }
@@ -36,7 +36,7 @@ has_majority <- function(
 #' library(dplyr)
 #' library(purrr)
 #' # get the latest survey for a sample of German federal election polls
-#' surveys <- get_latest(surveys_sample)
+#' surveys <- get_latest(surveys_sample) %>% ungroup() %>% slice(1)
 #' # check for majorities of two coalitions
 #' coals <- list(c("cdu", "fdp"),
 #'               c("spd", "left", "greens"))
@@ -143,7 +143,7 @@ calculate_prob <- function(
     majority_df <- majority_df %>% filter_superior(coalition, ...)
   }
 
-  majority_df %>% summarize_at(coalition, ~sum(.) / n_all * 100)
+  majority_df %>% summarize(across(all_of(coalition), ~sum(.) / n_all * 100))
 
 }
 
@@ -155,7 +155,7 @@ calculate_prob <- function(
 #' need to correspond to the names in \code{majority_df}.
 #' @importFrom dplyr bind_cols
 #' @importFrom purrr map
-#' @importFrom tidyr gather
+#' @importFrom tidyr pivot_longer
 #' @seealso \code{\link[coalitions]{calculate_prob}}
 #' @examples
 #' test_df <- data.frame(
@@ -182,7 +182,7 @@ calculate_probs <- function(
       majority_df      = majority_df,
       exclude_superior = exclude_superior, ...) %>%
     bind_cols() %>%
-    gather("coalition", "probability", one_of(coalitions))
+    pivot_longer(cols = any_of(coalitions), names_to = "coalition", values_to = "probability")
 
 }
 
@@ -198,7 +198,7 @@ filter_superior <- function(majority_df, coalition, ...) {
     superior_names <- intersect(superior, names(majority_df))
 
     if (length(superior_names) > 0) {
-      majority_df %>% filter_at(superior_names, all_vars(!.))
+      majority_df %>% filter(if_all(all_of(superior_names), ~!.))
     } else {
       majority_df
     }
@@ -208,7 +208,7 @@ filter_superior <- function(majority_df, coalition, ...) {
 
 #' Extract superior coalitions from coalition string or vector
 #'
-#' @param stirng A character.
+#' @param string A character.
 #' @param pattern Pattern to look for (regular expression).
 #' @param collapse string that will be used to concatenate multiple elements
 #' obtained by splitting \code{string} to one string.
@@ -245,7 +245,7 @@ get_superior <- function(
 #' library(coalitions)
 #' library(dplyr)
 #' # get the latest survey for a sample of German federal election polls
-#' surveys <- get_latest(surveys_sample)
+#' surveys <- get_latest(surveys_sample) %>% ungroup() %>% slice(1)
 #' # calculate probabilities for two coalitions
 #' probs <- get_probabilities(surveys,
 #'                            coalitions = list(c("cdu", "fdp"),
@@ -279,6 +279,6 @@ get_probabilities <- function(
         coalitions     = coalitions,
         seats_majority = seats_majority),
       probabilities = map(.data$majority, calculate_probs, coalitions = coalitions)) %>%
-    select(-one_of("draws", "seats", "majority", "survey", "start", "end", "respondents"))
+    select(-any_of(c("draws", "seats", "majority", "survey", "start", "end", "respondents")))
 
 }

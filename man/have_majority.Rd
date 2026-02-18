@@ -32,7 +32,7 @@ library(coalitions)
 library(dplyr)
 library(purrr)
 # get the latest survey for a sample of German federal election polls
-surveys <- get_latest(surveys_sample)
+surveys <- get_latest(surveys_sample) \%>\% ungroup() \%>\% slice(1)
 # check for majorities of two coalitions
 coals <- list(c("cdu", "fdp"),
               c("spd", "left", "greens"))

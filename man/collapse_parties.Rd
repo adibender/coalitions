@@ -6,7 +6,8 @@
 \usage{
 collapse_parties(
   surveys,
-  parties = c("cdu", "spd", "greens", "fdp", "left", "pirates", "fw", "afd", "others")
+  parties = c("cdu", "spd", "greens", "fdp", "left", "pirates", "fw", "afd", "bsw",
+    "others")
 )
 }
 \arguments{
