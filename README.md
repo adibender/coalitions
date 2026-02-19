@@ -1,8 +1,6 @@
 # coalitions <img src="man/figures/logo.png" align="right" />
 
-[![Travis-CI Build Status](https://travis-ci.org/adibender/coalitions.svg?branch=master)](https://travis-ci.org/adibender/coalitions)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/adibender/coalitions?branch=master&svg=true)](https://ci.appveyor.com/project/adibender/coalitions)
-[![Coverage Status](https://codecov.io/github/adibender/coalitions/master.svg)](https://codecov.io/github/adibender/coalitions?branch=master)
+[![Coverage Status](https://app.codecov.io/github/adibender/coalitions/master.svg)](https://app.codecov.io/github/adibender/coalitions?branch=master)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/coalitions)](https://cran.r-project.org/package=coalitions)
 [![](https://cranlogs.r-pkg.org/badges/coalitions)](https://cran.r-project.org/package=coalitions)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
@@ -12,15 +10,12 @@
 The `coalitions` package implements a Bayesian framework for the estimation of
 event probabilities in multi-party electoral systems (Bauer and others, 2019).
 To support estimation the package also implements scrappers that
-obtain data for German federal and general elections as well as Austrian
-general election. The implementation can be extended to support other elections.
+obtain data for German federal and state elections.
+The implementation can be extended to support other elections.
 
   - To get started, see our [workflow vignette](https://adibender.github.io/coalitions/articles/workflow.html)
 
-  - Check out our [interactive shiny app](https://koala.stat.uni-muenchen.de/) on
-  German (state and federal) elections/surveys
-
-  - Updates are available from our [KOALA_LMU twitter account](https://twitter.com/KOALA_LMU)!
+  - Check out our [KOALA_LMU account on X](https://x.com/KOALA_LMU) for updates!
 ## Installation
 
 ```r
@@ -71,7 +66,7 @@ different time-points:
 ``` r
 surveys %>%
     filter(pollster == "allensbach") %>%
-    unnest()
+    unnest(surveys)
 ```
 
     ## # A tibble: 42 x 6
@@ -90,8 +85,8 @@ surveys %>%
     ## # ... with 32 more rows
 
 ``` r
-survey <- surveys %>% unnest() %>% slice(1)
-survey %>% unnest()
+survey <- surveys %>% unnest(surveys) %>% slice(1)
+survey %>% unnest(survey)
 ```
 
     ## # A tibble: 7 x 8
@@ -111,7 +106,7 @@ survey %>% unnest()
 For each survey (row) we can calculate the coalition probabilities
 
 ``` r
-survey %>% get_probabilities(nsim=1e4) %>% unnest()
+survey %>% get_probabilities(nsim=1e4) %>% unnest(probabilities)
 ```
 
     ## # A tibble: 6 x 4
