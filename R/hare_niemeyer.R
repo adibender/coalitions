@@ -14,7 +14,7 @@
 #' library(coalitions)
 #' library(dplyr)
 #' # get the latest survey for a sample of German federal election polls
-#' surveys <- get_latest(surveys_sample) %>% tidyr::unnest("survey")
+#' surveys <- get_latest(surveys_sample) %>% ungroup() %>% slice(1) %>% tidyr::unnest("survey")
 #' # calculate the seat distribution based on Hare/Niemeyer for a parliament with 300 seats
 #' hare_niemeyer(surveys$votes, surveys$party, n_seats = 300)
 #' @export

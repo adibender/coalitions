@@ -36,8 +36,9 @@ temp %>% unnest("survey")
 # draw 10k samples from posterior
 set.seed(29072017)
 draws <- map(temp$survey, draw_from_posterior, nsim=1e4, correction=0.01) %>%
-	flatten_df()
-draws_long <- gather(draws, party, percent, cdu:others) %>%
+	bind_rows()
+draws_long <- pivot_longer(draws, cols = everything(),
+    names_to = "party", values_to = "percent") %>%
 		group_by(party) %>%
 		mutate(sim = row_number()) %>% ungroup()
 ```

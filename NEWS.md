@@ -1,3 +1,13 @@
+# coalitions 0.6.25
+- Removed deprecated `scrape_austria()` function and Austria-related dependencies (RCurl, jsonlite)
+- Replaced deprecated `one_of()` with `any_of()` throughout
+- Replaced deprecated `gather()` with `pivot_longer()`
+- Replaced deprecated `mutate_at()`, `summarize_at()`, `filter_at()` with `across()`/`if_all()`
+- Replaced deprecated `select_if()` with `where()`
+- Fixed documentation typo in `get_superior()` (`stirng` -> `string`)
+- Fixed diagnostic vignette (`flatten_df()` -> `bind_rows()`)
+- Fixed pooling vignette (bare `unnest()` -> explicit column spec)
+
 # coalitions 0.6.24
 Minor test fix
 

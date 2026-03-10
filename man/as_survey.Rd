@@ -7,8 +7,7 @@
 as_survey(
   percent,
   samplesize,
-  parties = c("cdu", "spd", "gruene", "fdp", "linke", "piraten", "afd", "fw",
-    "sonstige"),
+  parties = c("cdu", "spd", "gruene", "fdp", "linke", "piraten", "afd", "fw", "sonstige"),
   epsilon = 1e-05
 )
 }

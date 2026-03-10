@@ -21,3 +21,6 @@
 ^pkgdown$
 ^CRAN-RELEASE$
 ^coalitions\.Rproj$
+^CRAN-SUBMISSION$
+^\.claude$
+^\.github$

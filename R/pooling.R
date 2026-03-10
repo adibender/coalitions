@@ -98,7 +98,7 @@ get_eligible <- function(
     unnest("survey") %>%
     mutate(respondents = .data$respondents * ifelse(date >= last_date - period, 1, 0.5),
            votes = .data$votes * ifelse(date >= last_date - period, 1, 0.5)) %>%
-    nest(data = -one_of("pollster", "date", "start", "end", "respondents")) %>%
+    nest(data = -any_of(c("pollster", "date", "start", "end", "respondents"))) %>%
     group_by(.data$pollster) %>%
     filter(date == max(date)) %>%
     filter(row_number() == 1)
@@ -230,8 +230,8 @@ pool_surveys <- function(
       respondents = Neff,
       percent     = .data$votes / nall * 100,
       votes       = .data$percent / 100 * Neff) %>%
-    select(one_of("pollster", "date", "start", "end", "respondents", "party",
-      "percent", "votes"))
+    select(any_of(c("pollster", "date", "start", "end", "respondents", "party",
+      "percent", "votes")))
 
 }
 
@@ -252,18 +252,3 @@ get_n <- function(eligible_df) {
 
 }
 
-
-#' Pool surveys from different pollsters
-#'
-#' @inherit pool_surveys
-#' @keywords internal
-#' @seealso pool_surveys
-#' @export
-pool_austria <- function(
-  ...,
-  pollsters=c("Market", "Research Affairs", "Unique Research", "OGM", "IMAS",
-    "Hajek", "Gallup", "Karmasin")) {
-
-  pool_surveys(..., pollsters = pollsters)
-
-}

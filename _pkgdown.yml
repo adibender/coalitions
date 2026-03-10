@@ -17,7 +17,6 @@ reference:
     contents:
       - scrape_wahlrecht
       - scrape_by
-      - scrape_austria
       - scrape_ltw
   - title: "Workflow"
     desc: "Get data, perform simulation, redistribute seats, calculate probabilities."

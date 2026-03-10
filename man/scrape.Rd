@@ -9,14 +9,13 @@
 \usage{
 scrape_wahlrecht(
   address = "https://www.wahlrecht.de/umfragen/emnid.htm",
-  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "AFD", "BSW",
     "SONSTIGE")
 )
 
 scrape_by(
   address = "https://www.wahlrecht.de/umfragen/landtage/bayern.htm",
-  parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
-    "SONSTIGE")
+  parties = c("CSU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD", "SONSTIGE")
 )
 
 scrape_rp(
@@ -27,7 +26,7 @@ scrape_rp(
 
 scrape_ltw(
   address = "https://www.wahlrecht.de/umfragen/landtage/niedersachsen.htm",
-  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD",
+  parties = c("CDU", "SPD", "GRUENE", "FDP", "LINKE", "PIRATEN", "FW", "AFD", "BSW",
     "SONSTIGE"),
   ind_row_remove = -c(1:2)
 )
