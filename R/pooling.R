@@ -9,6 +9,8 @@
 #' @param corr Assumed correlation between surveys (of different pollsters).
 #' Defaults to 0.5.
 #' @param weights Additional weights for individual surveys.
+#' @return A single numeric value: the effective sample size of the pooled
+#' sample accounting for the correlation between pollsters.
 #' @keywords internal
 effective_samplesize <- function(
   size,
@@ -74,6 +76,8 @@ effective_samplesize <- function(
 #' from \code{last_date} - period_extended to \code{last_date} - period will
 #' also be considered for each pollster, but only after down-weighting them by
 #' halving their true sample size.
+#' @return A tibble with one row per pollster containing the most recent survey
+#' within the specified time window, filtered and down-weighted as appropriate.
 #' @import dplyr checkmate
 #' @keywords internal
 get_eligible <- function(
@@ -113,6 +117,9 @@ get_eligible <- function(
 #'
 #' @inherit get_eligible
 #' @inheritParams effective_samplesize
+#' @return A tibble with one row per party containing columns \code{party},
+#' \code{from}, \code{to}, \code{Neff} (effective sample size), and
+#' \code{pollsters} (comma-separated names of pollsters used).
 #' @importFrom tidyr unnest
 #' @importFrom rlang .data
 #' @keywords internal
@@ -168,6 +175,10 @@ get_pooled <- function(
 #' is used.
 #'
 #' @inherit get_pooled
+#' @return A data frame with one row per party containing columns
+#' \code{pollster} (set to \code{"pooled"}), \code{date}, \code{start},
+#' \code{end}, \code{respondents} (effective sample size), \code{party},
+#' \code{percent}, and \code{votes}.
 #' @importFrom tidyr unnest
 #' @examples
 #' library(coalitions)
@@ -239,6 +250,8 @@ pool_surveys <- function(
 #'
 #' @param eligible_df A data frame containing surveys that should be used for
 #' pooling as returned by \code{get_eligible}.
+#' @return A single numeric value: the total number of respondents across all
+#' eligible surveys (one survey per pollster, after down-weighting).
 #' @keywords internal
 get_n <- function(eligible_df) {
 

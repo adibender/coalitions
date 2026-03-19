@@ -15,6 +15,10 @@ will be obtained by \code{\link[coalitions]{get_superior}}.}
 
 \item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}
 }
+\value{
+A data frame with the same structure as \code{majority_df} but with
+rows removed where any superior coalition also has a majority.
+}
 \description{
 Given a table with simulations in the rows and coalitions in the columns,
 this function returns the coalition probabilities for a specified coalition,

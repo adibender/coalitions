@@ -64,6 +64,8 @@ get_seats <- function(
 #' @inheritParams get_seats
 #' @param epsilon Percentages should add up to 1. If they do not, within accuracy
 #' of \code{epsilon}, an error is thrown.
+#' @return A data frame with the same structure as \code{survey} but with
+#' parties below the hurdle removed and vote percentages renormalized.
 #' @seealso \code{\link{get_seats}}, \code{\link{sls}}
 #' @examples
 #' library(coalitions)

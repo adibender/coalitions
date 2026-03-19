@@ -20,6 +20,10 @@ Usually it makes sense to exclude superior coalitions.}
 
 \item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}
 }
+\value{
+A data frame with columns \code{coalition} (character) and
+\code{probability} (numeric, 0--100), one row per coalition.
+}
 \description{
 Given a table with simulations in the rows and coalitions in the columns,
 this function returns the coalition probabilities for a specified coalition,

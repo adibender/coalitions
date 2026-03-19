@@ -14,6 +14,10 @@ get_superior(string, pattern = "_", collapse = "_")
 \item{collapse}{string that will be used to concatenate multiple elements
 obtained by splitting \code{string} to one string.}
 }
+\value{
+A character vector of all proper subsets (superior coalitions) of
+the parties in \code{string}.
+}
 \description{
 Extract superior coalitions from coalition string or vector
 }

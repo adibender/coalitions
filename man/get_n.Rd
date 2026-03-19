@@ -10,6 +10,10 @@ get_n(eligible_df)
 \item{eligible_df}{A data frame containing surveys that should be used for
 pooling as returned by \code{get_eligible}.}
 }
+\value{
+A single numeric value: the total number of respondents across all
+eligible surveys (one survey per pollster, after down-weighting).
+}
 \description{
 Total number of survey participants from surveys eligible for pooling.
 }

@@ -2,6 +2,8 @@
 #'
 #' Substitute all German "Umlaute"
 #' @param x A character vector.
+#' @return A character vector with German umlauts replaced by their ASCII
+#' equivalents (e.g. "oe" for "ö").
 #' @keywords internal
 sanitize_strings <- function(x) {
 
@@ -51,6 +53,7 @@ sanitize_sonstige <- function(x) {
 #' Removes all characters that are not in [0-9].
 #' @param x A character vector.
 #' @param decimal Logical flag, indicating if x has a decimal separator
+#' @return A numeric vector with non-numeric characters removed.
 #' @keywords internal
 extract_num <- function(x, decimal=TRUE) {
 
@@ -67,6 +70,8 @@ extract_num <- function(x, decimal=TRUE) {
 #'
 #' @param df A data frame with party names with special characters that need
 #' to be sanitized.
+#' @return The input data frame with column names converted to lowercase ASCII
+#' and party name abbreviations standardized.
 #' @keywords internal
 sanitize_colnames <- function(df) {
 
@@ -84,6 +89,7 @@ sanitize_colnames <- function(df) {
 #' Try call of read_html that throws an error if the url cannot be resolved
 #'
 #' @param url http-address that should be scraped.
+#' @return An \code{xml_document} object as returned by \code{xml2::read_html}.
 #' @importFrom xml2 read_html
 try_readHTML <- function(url) {
 
@@ -104,19 +110,17 @@ try_readHTML <- function(url) {
 #' @rdname scrape
 #' @param address http-address from which tables should be scraped.
 #' @param parties A character vector containing names of parties to collapse.
+#' @return A tibble with one row per survey date and columns for date,
+#' respondents, and one column per party containing the percentage of votes.
 #' @import rvest dplyr
 #' @importFrom lubridate dmy
 #' @importFrom stringr str_sub
 #' @importFrom rlang .data
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(coalitions)
 #' library(dplyr)
-#' # select a polling agency from .pollster_df that should be scraped ...
-#' coalitions:::.pollster_df
-#' # ... here we choose Forsa
-#' address <- coalitions:::.pollster_df %>% filter(pollster == "forsa") %>% pull(address)
-#' scrape_wahlrecht(address = address) %>% slice(1:5)
+#' scrape_wahlrecht() %>% slice(1:5)
 #' }
 #' @export
 scrape_wahlrecht <- function(

@@ -10,6 +10,10 @@ get_meta(surveys_df)
 \item{surveys_df}{A data frame containing surveys from different survey
 institutes as returned by \code{\link{get_surveys}}.}
 }
+\value{
+A tibble with columns \code{pollster}, \code{date}, \code{start},
+\code{end}, and \code{respondents} (one row per survey).
+}
 \description{
 Extract "meta" information from survey data base
 }

@@ -23,6 +23,9 @@ respective vote share (percentage).}
 for '5\%'. If set to NULL no horizontal line is plotted.
 The horizontal line can be suppressed using \code{NULL}.}
 }
+\value{
+A \code{ggplot} object displaying voter shares as a bar chart.
+}
 \description{
 Bar chart of the raw voter shares observed in one survey.
 Additionally to plotting positive voter shares,

@@ -9,6 +9,10 @@ sanitize_strings(x)
 \arguments{
 \item{x}{A character vector.}
 }
+\value{
+A character vector with German umlauts replaced by their ASCII
+equivalents (e.g. "oe" for "ö").
+}
 \description{
 Substitute all German "Umlaute"
 }

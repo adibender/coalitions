@@ -15,6 +15,10 @@ will be obtained by \code{\link[coalitions]{get_superior}}.}
 
 \item{seats_majority}{The number of seats needed to obtain majority.}
 }
+\value{
+A data frame with one logical column \code{majority} indicating
+whether the coalition obtained a majority in each simulation.
+}
 \description{
 Does a coalition have a majority
 }

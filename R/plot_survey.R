@@ -16,6 +16,7 @@
 #' @param hurdle Hurdle for single parties to get into the parliament, e.g. '5'
 #' for '5\%'. If set to NULL no horizontal line is plotted.
 #' The horizontal line can be suppressed using \code{NULL}.
+#' @return A \code{ggplot} object displaying voter shares as a bar chart.
 #' @import ggplot2
 #' @importFrom checkmate assert_data_frame assert_character assert_number assert_flag assert_subset
 #' @export

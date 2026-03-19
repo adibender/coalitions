@@ -19,6 +19,11 @@ Usually it makes sense to exclude superior coalitions.}
 
 \item{...}{Further arguments passed to \code{\link[coalitions]{get_superior}}}
 }
+\value{
+A data frame with one numeric column giving the coalition probability
+(percentage of simulations in which the coalition obtained a majority, after
+optionally excluding superior coalitions).
+}
 \description{
 Given a table with simulations in the rows and coalitions in the columns,
 this function returns the coalition probabilities for a specified coalition,

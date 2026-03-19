@@ -38,18 +38,18 @@ scrape_ltw(
 
 \item{ind_row_remove}{Negative vector of rows that will be skipped at the beginning.}
 }
+\value{
+A tibble with one row per survey date and columns for date,
+respondents, and one column per party containing the percentage of votes.
+}
 \description{
 Scrapes survey tables and performs sanitation to output tidy data
 }
 \examples{
-\dontrun{
+\donttest{
 library(coalitions)
 library(dplyr)
-# select a polling agency from .pollster_df that should be scraped ...
-coalitions:::.pollster_df
-# ... here we choose Forsa
-address <- coalitions:::.pollster_df \%>\% filter(pollster == "forsa") \%>\% pull(address)
-scrape_wahlrecht(address = address) \%>\% slice(1:5)
+scrape_wahlrecht() \%>\% slice(1:5)
 }
 \dontrun{
 # Niedersachsen

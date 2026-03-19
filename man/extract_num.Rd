@@ -11,6 +11,9 @@ extract_num(x, decimal = TRUE)
 
 \item{decimal}{Logical flag, indicating if x has a decimal separator}
 }
+\value{
+A numeric vector with non-numeric characters removed.
+}
 \description{
 Removes all characters that are not in [0-9].
 }

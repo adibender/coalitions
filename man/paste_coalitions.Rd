@@ -13,6 +13,10 @@ need to correspond to the names in \code{majority_df}.}
 
 \item{collapse}{Character string passed to \code{base::paste}.}
 }
+\value{
+A character vector of coalition names formed by concatenating party
+names with \code{collapse}.
+}
 \description{
 Transform list of coalitions to vector by combining party names
 }

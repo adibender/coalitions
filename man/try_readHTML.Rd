@@ -9,6 +9,9 @@ try_readHTML(url)
 \arguments{
 \item{url}{http-address that should be scraped.}
 }
+\value{
+An \code{xml_document} object as returned by \code{xml2::read_html}.
+}
 \description{
 Try call of read_html that throws an error if the url cannot be resolved
 }

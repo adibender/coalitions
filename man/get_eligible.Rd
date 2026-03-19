@@ -30,6 +30,10 @@ from \code{last_date} - period_extended to \code{last_date} - period will
 also be considered for each pollster, but only after down-weighting them by
 halving their true sample size.}
 }
+\value{
+A tibble with one row per pollster containing the most recent survey
+within the specified time window, filtered and down-weighted as appropriate.
+}
 \description{
 Extract surveys from institutes within a specified time-window
 }

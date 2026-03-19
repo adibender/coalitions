@@ -24,6 +24,10 @@ need to correspond to the names in \code{majority_df}.}
 
 \item{collapse}{Character string passed to \code{base::paste}.}
 }
+\value{
+A data frame with one column per coalition. Each column is logical
+indicating whether the coalition obtained a majority in each simulation row.
+}
 \description{
 Do coalitions have a majority
 }

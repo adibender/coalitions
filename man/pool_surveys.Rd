@@ -38,6 +38,12 @@ Defaults to 0.5.}
 
 \item{weights}{Additional weights for individual surveys.}
 }
+\value{
+A data frame with one row per party containing columns
+\code{pollster} (set to \code{"pooled"}), \code{date}, \code{start},
+\code{end}, \code{respondents} (effective sample size), \code{party},
+\code{percent}, and \code{votes}.
+}
 \description{
 Per default, pools surveys starting from current date and going 14 days back.
 For each pollster within the defined time-frame, only the most recent survey

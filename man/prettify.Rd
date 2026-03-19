@@ -26,6 +26,10 @@ according to entries in \code{new}.}
 \item{new}{A vector of characters that will replace entries in \code{x} which
 have matches in \code{current}.}
 }
+\value{
+A character vector (or factor, if input was factor) with matched
+entries replaced by the corresponding values in \code{new}.
+}
 \description{
 The function searches for \code{x} values, that occur in \code{current}
 and replaces them with entries in \code{new}. Useful for quick

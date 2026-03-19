@@ -4,6 +4,8 @@
 #' obtained.
 #' @inheritParams calculate_prob
 #' @param seats_majority The number of seats needed to obtain majority.
+#' @return A data frame with one logical column \code{majority} indicating
+#' whether the coalition obtained a majority in each simulation.
 #' @importFrom rlang .data
 #' @keywords internal
 has_majority <- function(
@@ -29,6 +31,8 @@ has_majority <- function(
 #' @param collapse Character string passed to \code{base::paste}.
 #' @param seats_tab A data frame containing number of seats obtained by a party.
 #' Must have columns \code{party} and \code{seats}.
+#' @return A data frame with one column per coalition. Each column is logical
+#' indicating whether the coalition obtained a majority in each simulation row.
 #' @importFrom purrr map
 #' @importFrom dplyr bind_cols
 #' @examples
@@ -92,6 +96,8 @@ have_majority <- function(
 #'
 #' @inheritParams calculate_probs
 #' @inheritParams have_majority
+#' @return A character vector of coalition names formed by concatenating party
+#' names with \code{collapse}.
 #' @importFrom purrr map
 #' @keywords internal
 paste_coalitions <- function(coalitions, collapse="_") {
@@ -118,6 +124,9 @@ paste_coalitions <- function(coalitions, collapse="_") {
 #' be excluded, otherwise total coalition probabilities will be returned.
 #' Usually it makes sense to exclude superior coalitions.
 #' @param ... Further arguments passed to \code{\link[coalitions]{get_superior}}
+#' @return A data frame with one numeric column giving the coalition probability
+#' (percentage of simulations in which the coalition obtained a majority, after
+#' optionally excluding superior coalitions).
 #' @import dplyr checkmate
 #' @examples
 #'test_df <- data.frame(
@@ -156,6 +165,8 @@ calculate_prob <- function(
 #' @importFrom dplyr bind_cols
 #' @importFrom purrr map
 #' @importFrom tidyr pivot_longer
+#' @return A data frame with columns \code{coalition} (character) and
+#' \code{probability} (numeric, 0--100), one row per coalition.
 #' @seealso \code{\link[coalitions]{calculate_prob}}
 #' @examples
 #' test_df <- data.frame(
@@ -190,6 +201,8 @@ calculate_probs <- function(
 #' Remove rows from table for which superior coalitions are possible
 #'
 #' @inherit calculate_prob
+#' @return A data frame with the same structure as \code{majority_df} but with
+#' rows removed where any superior coalition also has a majority.
 #' @seealso \code{\link[coalitions]{get_superior}}
 #' @keywords internal
 filter_superior <- function(majority_df, coalition, ...) {
@@ -212,6 +225,8 @@ filter_superior <- function(majority_df, coalition, ...) {
 #' @param pattern Pattern to look for (regular expression).
 #' @param collapse string that will be used to concatenate multiple elements
 #' obtained by splitting \code{string} to one string.
+#' @return A character vector of all proper subsets (superior coalitions) of
+#' the parties in \code{string}.
 #' @importFrom purrr flatten map map_chr
 #' @importFrom utils combn
 #' @importFrom stringr str_split
@@ -238,6 +253,9 @@ get_superior <- function(
 #' @inherit calculate_probs
 #' @param x A table containing one row per survey and survey information in
 #' long format in a separate column named \code{survey}.
+#' @return A tibble with the same rows as \code{x} (one per survey) and an
+#' additional list-column \code{probabilities} containing a data frame of
+#' coalition names and their probabilities (0--100) for each survey.
 #' @importFrom purrr map map2
 #' @importFrom lubridate now
 #' @importFrom rlang .data

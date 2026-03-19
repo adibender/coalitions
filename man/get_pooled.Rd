@@ -38,6 +38,11 @@ Defaults to 0.5.}
 
 \item{weights}{Additional weights for individual surveys.}
 }
+\value{
+A tibble with one row per party containing columns \code{party},
+\code{from}, \code{to}, \code{Neff} (effective sample size), and
+\code{pollsters} (comma-separated names of pollsters used).
+}
 \description{
 Given a specified time window (defaults to current day - 14 days).
 calculate the effective sample size of the pooled sample over multiple

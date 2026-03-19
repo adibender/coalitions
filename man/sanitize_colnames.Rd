@@ -10,6 +10,10 @@ sanitize_colnames(df)
 \item{df}{A data frame with party names with special characters that need
 to be sanitized.}
 }
+\value{
+The input data frame with column names converted to lowercase ASCII
+and party name abbreviations standardized.
+}
 \description{
 Sanitize column names
 }

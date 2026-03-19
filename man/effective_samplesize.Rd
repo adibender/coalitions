@@ -17,6 +17,10 @@ Defaults to 0.5.}
 
 \item{weights}{Additional weights for individual surveys.}
 }
+\value{
+A single numeric value: the effective sample size of the pooled
+sample accounting for the correlation between pollsters.
+}
 \description{
 This is the work horse function that calculates the effective sample size.
 Should usually not be called by the user directly.

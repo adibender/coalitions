@@ -12,6 +12,8 @@
 #' according to entries in \code{new}.
 #' @param new A vector of characters that will replace entries in \code{x} which
 #' have matches in \code{current}.
+#' @return A character vector (or factor, if input was factor) with matched
+#' entries replaced by the corresponding values in \code{new}.
 #' @importFrom purrr map2
 #' @keywords internal
 #' @examples

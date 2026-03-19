@@ -2,6 +2,8 @@
 #'
 #' @param surveys_df A data frame containing surveys from different survey
 #' institutes as returned by \code{\link{get_surveys}}.
+#' @return A tibble with columns \code{pollster}, \code{date}, \code{start},
+#' \code{end}, and \code{respondents} (one row per survey).
 #' @importFrom dplyr select
 #' @importFrom tidyr unnest
 #' @keywords internal
@@ -26,7 +28,7 @@ get_meta <- function(surveys_df) {
 #' @importFrom tidyr pivot_longer nest
 #' @return Data frame in long format
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' emnid <- scrape_wahlrecht()
 #' emnid.long <- collapse_parties(emnid)
 #' }
