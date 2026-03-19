@@ -9,8 +9,12 @@
 #' Austrian parliament).
 #' @seealso \code{\link{sls}}
 #' @importFrom tidyr pivot_longer
-#' @return A numeric vector containing the seats of all parties after
-#' redistribution via D'Hondt
+#' @return A named integer vector of seat counts, one entry per party,
+#' in the same order as \code{parties}. The vector has a logical attribute
+#' \code{ties}: \code{TRUE} if two or more parties had equal claim to the last
+#' seat (i.e. the result is not uniquely determined and was resolved randomly),
+#' \code{FALSE} otherwise. When \code{ties = TRUE}, re-running with a different
+#' random seed may produce a different but equally valid seat distribution.
 #' @examples
 #' library(coalitions)
 #' library(dplyr)
@@ -26,6 +30,11 @@ dHondt <- function(votes, parties, n_seats = 183) {
 
   m.mat     <- tidyr::pivot_longer(as.data.frame(divisor.mat), cols = everything(),
     names_to = "name", values_to = "value")
+
+  sorted_vals <- sort(m.mat$value, decreasing = TRUE)
+  has_ties <- length(sorted_vals) > n_seats &&
+    sorted_vals[n_seats] == sorted_vals[n_seats + 1L]
+
   m.mat     <- m.mat[rank(m.mat$value, ties.method = "random") <= n_seats, ]
   m.mat     <- m.mat[order(m.mat$name), ]
   rle.seats <- rle(as.character(m.mat$name))
@@ -45,7 +54,9 @@ dHondt <- function(votes, parties, n_seats = 183) {
     rle.seats$lengths <- rle.seats$lengths[match(parties, rle.seats$values)]
     rle.seats$values  <- rle.seats$values[match(parties, rle.seats$values)]
   }
-  
-  rle.seats$length
+
+  result <- rle.seats$length
+  attr(result, "ties") <- has_ties
+  result
 
 }

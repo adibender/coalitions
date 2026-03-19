@@ -28,12 +28,21 @@ test_that("Redistritubion works correctly", {
 
 context("Seat distribution functions")
 test_that("Sainte-Lague/Scheppers works correctly", {
-  expect_equal(sls(c(4.160, 3.380, 2.460), LETTERS[1:3], 10), c(4, 3, 3))
-
+  result <- sls(c(4.160, 3.380, 2.460), LETTERS[1:3], 10)
+  expect_equal(as.vector(result), c(4, 3, 3))
+  expect_false(attr(result, "ties"))
 })
-test_that("dHondt workds correctly", {
-  expect_equal(dHondt(c(4160, 3380, 2460), LETTERS[1:3], 10), c(4, 4, 2))
-  expect_equal(dHondt(c(4160, 7, 2460), LETTERS[1:3], 10), c(6, 0, 4))
+test_that("dHondt works correctly", {
+  result1 <- dHondt(c(4160, 3380, 2460), LETTERS[1:3], 10)
+  expect_equal(as.vector(result1), c(4, 4, 2))
+  expect_false(attr(result1, "ties"))
+  result2 <- dHondt(c(4160, 7, 2460), LETTERS[1:3], 10)
+  expect_equal(as.vector(result2), c(6, 0, 4))
+  expect_false(attr(result2, "ties"))
+  # ties case: 360 vs 280 with 15 seats — last seat is tied
+  set.seed(1)
+  result3 <- dHondt(c(360, 280), c("A", "B"), n_seats = 15)
+  expect_true(attr(result3, "ties"))
 })
 
 test_that("get_seats excludes SSW-party from hurdle", {

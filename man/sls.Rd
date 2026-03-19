@@ -16,7 +16,12 @@ respective \code{votes}.}
 parties.}
 }
 \value{
-A numeric vector giving the number of seats each party obtained.
+A named integer vector of seat counts, one entry per party,
+in the same order as \code{parties}. The vector has a logical attribute
+\code{ties}: \code{TRUE} if two or more parties had equal claim to the last
+seat (i.e. the result is not uniquely determined and was resolved randomly),
+\code{FALSE} otherwise. When \code{ties = TRUE}, re-running with a different
+random seed may produce a different but equally valid seat distribution.
 }
 \description{
 Calculates number of seats for the respective parties that have received more
