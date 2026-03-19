@@ -1,3 +1,10 @@
+# coalitions 0.6.26
+- Added `\value` documentation to all functions missing return value descriptions
+- Updated `inst/CITATION` to use `bibentry()` / `c(person())` (replacing deprecated `citEntry()` / `personList()`)
+- Fixed `scrape_wahlrecht()` example to not use internal `:::` accessor
+- Replaced `\dontrun{}` with `\donttest{}` in examples requiring internet access
+- Fixed redirected and broken URLs in README
+
 # coalitions 0.6.25
 - Removed deprecated `scrape_austria()` function and Austria-related dependencies (RCurl, jsonlite)
 - Replaced deprecated `one_of()` with `any_of()` throughout
