@@ -1,5 +1,6 @@
 # coalitions <img src="man/figures/logo.png" align="right" />
 
+[![R-CMD-check](https://github.com/adibender/coalitions/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/adibender/coalitions/actions/workflows/R-CMD-check.yaml)
 [![Coverage Status](https://app.codecov.io/github/adibender/coalitions/master.svg)](https://app.codecov.io/github/adibender/coalitions?branch=master)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/coalitions)](https://cran.r-project.org/package=coalitions)
 [![](https://cranlogs.r-pkg.org/badges/coalitions)](https://cran.r-project.org/package=coalitions)
