@@ -6,13 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Workflow • coalitions</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -20,8 +19,6 @@
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Workflow">
-<meta property="og:description" content="coalitions">
-<meta property="og:image" content="https://adibender.github.io/coalitions/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -34,6 +31,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -46,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">coalitions</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.19</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.26</span>
       </span>
     </div>
 
@@ -56,9 +55,9 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -79,9 +78,9 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/adibender/coalitions">
-    <span class="fas fa-github fa-lg"></span>
-     
+  <a href="https://github.com/adibender/coalitions" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
+
   </a>
 </li>
       </ul>
@@ -90,7 +89,7 @@
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
       </form>
-      
+
     </div>
 <!--/.nav-collapse -->
   </div>
@@ -98,17 +97,18 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Workflow</h1>
-                        <h4 class="author">Andreas Bender</h4>
+                        <h4 data-toc-skip class="author">Andreas
+Bender</h4>
             
-            <h4 class="date">2021-05-12</h4>
+            <h4 data-toc-skip class="date">2026-03-20</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/adibender/coalitions/blob/master/vignettes/workflow.Rmd"><code>vignettes/workflow.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/adibender/coalitions/blob/master/vignettes/workflow.Rmd" class="external-link"><code>vignettes/workflow.Rmd</code></a></small>
       <div class="hidden name"><code>workflow.Rmd</code></div>
 
     </div>
@@ -116,276 +116,311 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://adibender.github.io/coalitions/">coalitions</a></span><span class="op">)</span></code></pre></div>
-<p>In this vignette we demonstrate the basic workflow using the most recent <em>Emnid</em> survey.</p>
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
-<p>This package calculates coalition probabilities in multi-party systems. To this end we provide some convenience functions, the most important of which are listed below:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://adibender.github.io/coalitions/">coalitions</a></span><span class="op">)</span></span></code></pre></div>
+<p>In this vignette we demonstrate the basic workflow using the most
+recent <em>Emnid</em> survey.</p>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p>This package calculates coalition probabilities in multi-party
+systems. To this end we provide some convenience functions, the most
+important of which are listed below:</p>
 <ol style="list-style-type: decimal">
-<li><p><code>scrape_wahlrecht</code>: A wrapper function that download the most current survey results from <a href="https://www.wahlrecht.de/" class="uri">https://www.wahlrecht.de/</a></p></li>
-<li><p><code>collapse_parties</code>: Transforms information on percentages received by individual parties in long format and stores them inside a nested tibble (see <code><a href="https://tidyr.tidyverse.org/reference/nest.html">tidyr::nest</a></code>)</p></li>
-<li><p><code>draw_from_posterior</code>: Draws <code>nsim</code> samples from the posterior distribution (i.e. <code>nsim</code> simulated election results based on provided survey)</p></li>
-<li><p><code>get_seats</code>: Obtain seat distributions for each simulation (see also <code><a href="../reference/sls.html">?sls</a></code>)</p></li>
-<li><p><code>have_majority</code>: Given a list of coalitions of interest, calculates if the respective coalition would have enough seats for a majority</p></li>
-<li><p><code>calculate_probs</code>: Given majority tables obtained from <code>have_majority</code>, calculates the probabilities for the respective coalitions to have enough seats for a majority</p></li>
+<li><p><code>scrape_wahlrecht</code>: A wrapper function that download
+the most current survey results from <a href="https://www.wahlrecht.de/" class="external-link uri">https://www.wahlrecht.de/</a></p></li>
+<li><p><code>collapse_parties</code>: Transforms information on
+percentages received by individual parties in long format and stores
+them inside a nested tibble (see <code><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">tidyr::nest</a></code>)</p></li>
+<li><p><code>draw_from_posterior</code>: Draws <code>nsim</code> samples
+from the posterior distribution (i.e. <code>nsim</code> simulated
+election results based on provided survey)</p></li>
+<li><p><code>get_seats</code>: Obtain seat distributions for each
+simulation (see also <code><a href="../reference/sls.html">?sls</a></code>)</p></li>
+<li><p><code>have_majority</code>: Given a list of coalitions of
+interest, calculates if the respective coalition would have enough seats
+for a majority</p></li>
+<li><p><code>calculate_probs</code>: Given majority tables obtained from
+<code>have_majority</code>, calculates the probabilities for the
+respective coalitions to have enough seats for a majority</p></li>
 </ol>
 </div>
-<div id="read-in-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#read-in-data" class="anchor"></a>Read in data</h2>
+<div class="section level2">
+<h2 id="read-in-data">Read in data<a class="anchor" aria-label="anchor" href="#read-in-data"></a>
+</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># one line per survey (party information in wide format)</span>
-<span class="va">emnid</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scrape_wahlrecht.html">scrape_wahlrecht</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>
-<span class="va">emnid</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">start</span>, <span class="op">-</span><span class="va">end</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 9
-##   date         cdu   spd greens   fdp  left   afd others respondents
-##   &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
-## 1 2013-09-29    43    26      7     3     9     6      6        1382
-## 2 2013-10-06    42    25      8     4     9     6      6        1849
-## 3 2013-10-13    42    25      9     3    10     6      5        1833
-## 4 2013-10-20    42    25      9     3    10     5      6        2334
-## 5 2013-10-27    41    26     10     3     9     5      6        3219
-## 6 2013-11-03    42    25      9     3     9     5      7        2768</code></pre>
+<code class="sourceCode R"><span><span class="co"># one line per survey (party information in wide format)</span></span>
+<span><span class="va">emnid</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scrape.html">scrape_wahlrecht</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">emnid</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">start</span>, <span class="op">-</span><span class="va">end</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 10</span></span></span>
+<span><span class="co">##   date         cdu   spd greens   fdp  left   afd   bsw others respondents</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> 2013-09-29    43    26      7     3     9     6    <span style="color: #BB0000;">NA</span>      6        <span style="text-decoration: underline;">1</span>382</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> 2013-10-06    42    25      8     4     9     6    <span style="color: #BB0000;">NA</span>      6        <span style="text-decoration: underline;">1</span>849</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> 2013-10-13    42    25      9     3    10     6    <span style="color: #BB0000;">NA</span>      5        <span style="text-decoration: underline;">1</span>833</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> 2013-10-20    42    25      9     3    10     5    <span style="color: #BB0000;">NA</span>      6        <span style="text-decoration: underline;">2</span>334</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> 2013-10-27    41    26     10     3     9     5    <span style="color: #BB0000;">NA</span>      6        <span style="text-decoration: underline;">3</span>219</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> 2013-11-03    42    25      9     3     9     5    <span style="color: #BB0000;">NA</span>      7        <span style="text-decoration: underline;">2</span>768</span></span></code></pre>
 </div>
-<div id="collapse-survey-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#collapse-survey-data" class="anchor"></a>Collapse survey data</h2>
-<p>After applying <code>collapse_parties</code> we still have one row per survey, but information on parties and percentage of votes they received is stored in a long format in a separate column (see <code><a href="https://tidyr.tidyverse.org/reference/nest.html">?tidyr::nest</a></code>):</p>
+<div class="section level2">
+<h2 id="collapse-survey-data">Collapse survey data<a class="anchor" aria-label="anchor" href="#collapse-survey-data"></a>
+</h2>
+<p>After applying <code>collapse_parties</code> we still have one row
+per survey, but information on parties and percentage of votes they
+received is stored in a long format in a separate column (see
+<code><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">?tidyr::nest</a></code>):</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">elong</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collapse_parties.html">collapse_parties</a></span><span class="op">(</span><span class="va">emnid</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">elong</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##   date       start      end        respondents survey              
-##   &lt;date&gt;     &lt;date&gt;     &lt;date&gt;           &lt;dbl&gt; &lt;list&gt;              
-## 1 2013-11-03 2013-10-24 2013-10-30        2768 &lt;tibble[,3] [7 × 3]&gt;
-## 2 2013-10-27 2013-10-17 2013-10-23        3219 &lt;tibble[,3] [7 × 3]&gt;
-## 3 2013-10-20 2013-10-10 2013-10-16        2334 &lt;tibble[,3] [7 × 3]&gt;
-## 4 2013-10-13 2013-10-04 2013-10-09        1833 &lt;tibble[,3] [7 × 3]&gt;
-## 5 2013-10-06 2013-09-26 2013-10-01        1849 &lt;tibble[,3] [7 × 3]&gt;
-## 6 2013-09-29 2013-09-24 2013-09-26        1382 &lt;tibble[,3] [7 × 3]&gt;</code></pre>
+<code class="sourceCode R"><span><span class="va">elong</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collapse_parties.html">collapse_parties</a></span><span class="op">(</span><span class="va">emnid</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">elong</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 5</span></span></span>
+<span><span class="co">##   date       start      end        respondents survey          </span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>          </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> 2013-11-03 2013-10-24 2013-10-30        <span style="text-decoration: underline;">2</span>768 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> 2013-10-27 2013-10-17 2013-10-23        <span style="text-decoration: underline;">3</span>219 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> 2013-10-20 2013-10-10 2013-10-16        <span style="text-decoration: underline;">2</span>334 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> 2013-10-13 2013-10-04 2013-10-09        <span style="text-decoration: underline;">1</span>833 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> 2013-10-06 2013-09-26 2013-10-01        <span style="text-decoration: underline;">1</span>849 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> 2013-09-29 2013-09-24 2013-09-26        <span style="text-decoration: underline;">1</span>382 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span></span></span></code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">survey</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="st">"survey"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 7 x 3
-##   party  percent  votes
-##   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
-## 1 cdu         42 1163. 
-## 2 spd         25  692  
-## 3 greens       9  249. 
-## 4 fdp          3   83.0
-## 5 left         9  249. 
-## 6 afd          5  138. 
-## 7 others       7  194.</code></pre>
+<code class="sourceCode R"><span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">survey</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="st">"survey"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 7 × 3</span></span></span>
+<span><span class="co">##   party  percent  votes</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> cdu         42 <span style="text-decoration: underline;">1</span>163. </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> spd         25  692  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> greens       9  249. </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> fdp          3   83.0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> left         9  249. </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> afd          5  138. </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">7</span> others       7  194.</span></span></code></pre>
 </div>
-<div id="simulate-elections" class="section level2">
-<h2 class="hasAnchor">
-<a href="#simulate-elections" class="anchor"></a>Simulate elections</h2>
-<p>Based on each survey we can now simulate <code>nsim</code> elections by drawing from the Dirichlet distribution</p>
+<div class="section level2">
+<h2 id="simulate-elections">Simulate elections<a class="anchor" aria-label="anchor" href="#simulate-elections"></a>
+</h2>
+<p>Based on each survey we can now simulate <code>nsim</code> elections
+by drawing from the Dirichlet distribution</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>     <span class="co"># for reproducibility</span>
-
-<span class="va">elong</span> <span class="op">&lt;-</span> <span class="va">elong</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>draws <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">survey</span>, <span class="va">draw_from_posterior</span>, nsim<span class="op">=</span><span class="fl">10</span>, correction<span class="op">=</span><span class="fl">0.005</span><span class="op">)</span><span class="op">)</span>
-<span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">survey</span>, <span class="va">draws</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   date       survey               draws                
-##   &lt;date&gt;     &lt;list&gt;               &lt;list&gt;               
-## 1 2013-11-03 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt;
-## 2 2013-10-27 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt;
-## 3 2013-10-20 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt;
-## 4 2013-10-13 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt;
-## 5 2013-10-06 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt;
-## 6 2013-09-29 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt;</code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>     <span class="co"># for reproducibility</span></span>
+<span></span>
+<span><span class="va">elong</span> <span class="op">&lt;-</span> <span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>draws <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">survey</span>, <span class="va">draw_from_posterior</span>, nsim<span class="op">=</span><span class="fl">10</span>, correction<span class="op">=</span><span class="fl">0.005</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">survey</span>, <span class="va">draws</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
+<span><span class="co">##   date       survey           draws            </span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> 2013-11-03 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> 2013-10-27 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> 2013-10-20 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> 2013-10-13 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> 2013-10-06 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> 2013-09-29 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span></span></span></code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># each row is one election simulation</span>
-<span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">draws</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="st">"draws"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 10 x 7
-##      cdu   spd greens    fdp   left    afd others
-##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 0.422 0.256 0.0799 0.0292 0.0920 0.0518 0.0696
-##  2 0.404 0.249 0.0940 0.0247 0.0991 0.0593 0.0693
-##  3 0.432 0.245 0.0887 0.0378 0.0888 0.0382 0.0697
-##  4 0.418 0.259 0.0877 0.0293 0.0862 0.0527 0.0673
-##  5 0.412 0.251 0.0873 0.0282 0.0786 0.0595 0.0832
-##  6 0.430 0.250 0.0810 0.0343 0.0862 0.0484 0.0702
-##  7 0.436 0.245 0.0842 0.0351 0.0800 0.0521 0.0668
-##  8 0.423 0.249 0.0935 0.0269 0.0918 0.0490 0.0670
-##  9 0.423 0.244 0.0932 0.0368 0.0931 0.0471 0.0623
-## 10 0.430 0.243 0.0949 0.0231 0.0905 0.0505 0.0675</code></pre>
+<code class="sourceCode R"><span><span class="co"># each row is one election simulation</span></span>
+<span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">draws</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="st">"draws"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 10 × 7</span></span></span>
+<span><span class="co">##      cdu   spd greens    fdp   left    afd others</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> 0.420 0.242 0.091<span style="text-decoration: underline;">2</span> 0.029<span style="text-decoration: underline;">3</span> 0.089<span style="text-decoration: underline;">3</span> 0.050<span style="text-decoration: underline;">8</span> 0.077<span style="text-decoration: underline;">2</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> 0.408 0.261 0.096<span style="text-decoration: underline;">6</span> 0.026<span style="text-decoration: underline;">6</span> 0.089<span style="text-decoration: underline;">9</span> 0.048<span style="text-decoration: underline;">1</span> 0.069<span style="text-decoration: underline;">4</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> 0.408 0.267 0.101  0.026<span style="text-decoration: underline;">4</span> 0.091<span style="text-decoration: underline;">7</span> 0.045<span style="text-decoration: underline;">4</span> 0.061<span style="text-decoration: underline;">1</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> 0.406 0.259 0.095<span style="text-decoration: underline;">9</span> 0.031<span style="text-decoration: underline;">3</span> 0.089<span style="text-decoration: underline;">4</span> 0.051<span style="text-decoration: underline;">1</span> 0.067<span style="text-decoration: underline;">5</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> 0.411 0.260 0.087<span style="text-decoration: underline;">5</span> 0.027<span style="text-decoration: underline;">2</span> 0.088<span style="text-decoration: underline;">6</span> 0.053<span style="text-decoration: underline;">6</span> 0.072<span style="text-decoration: underline;">8</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> 0.420 0.257 0.095<span style="text-decoration: underline;">5</span> 0.030<span style="text-decoration: underline;">2</span> 0.088<span style="text-decoration: underline;">0</span> 0.042<span style="text-decoration: underline;">8</span> 0.066<span style="text-decoration: underline;">5</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> 0.393 0.257 0.104  0.029<span style="text-decoration: underline;">6</span> 0.095<span style="text-decoration: underline;">7</span> 0.048<span style="text-decoration: underline;">7</span> 0.072<span style="text-decoration: underline;">6</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> 0.425 0.244 0.093<span style="text-decoration: underline;">0</span> 0.034<span style="text-decoration: underline;">2</span> 0.080<span style="text-decoration: underline;">6</span> 0.049<span style="text-decoration: underline;">2</span> 0.073<span style="text-decoration: underline;">9</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> 0.420 0.242 0.085<span style="text-decoration: underline;">0</span> 0.029<span style="text-decoration: underline;">5</span> 0.098<span style="text-decoration: underline;">4</span> 0.050<span style="text-decoration: underline;">5</span> 0.074<span style="text-decoration: underline;">8</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> 0.406 0.247 0.081<span style="text-decoration: underline;">6</span> 0.029<span style="text-decoration: underline;">2</span> 0.092<span style="text-decoration: underline;">6</span> 0.064<span style="text-decoration: underline;">6</span> 0.078<span style="text-decoration: underline;">6</span></span></span></code></pre>
 </div>
-<div id="calculate-seat-distribution" class="section level2">
-<h2 class="hasAnchor">
-<a href="#calculate-seat-distribution" class="anchor"></a>Calculate seat distribution</h2>
-<p>Given the simulated elections, we can calculate the number of seats each party obtained. To do so we need to have a function that knows how to redistribute seats for the particular election. In Germany for example, seats are distributed according to the system of <em>Sainte-Lague-Scheppers</em>, which is implemented in <code><a href="../reference/sls.html">?sls</a></code>.</p>
-<p>This makes this package easily extensible to other multi-party systems, as you only need to provide a function that redistributes seats based on percentages obtained by the various parties and provide that function to the <code>distrib.fun</code> argument of the <code>get_seats</code> function:</p>
+<div class="section level2">
+<h2 id="calculate-seat-distribution">Calculate seat distribution<a class="anchor" aria-label="anchor" href="#calculate-seat-distribution"></a>
+</h2>
+<p>Given the simulated elections, we can calculate the number of seats
+each party obtained. To do so we need to have a function that knows how
+to redistribute seats for the particular election. In Germany for
+example, seats are distributed according to the system of
+<em>Sainte-Lague-Scheppers</em>, which is implemented in
+<code><a href="../reference/sls.html">?sls</a></code>.</p>
+<p>This makes this package easily extensible to other multi-party
+systems, as you only need to provide a function that redistributes seats
+based on percentages obtained by the various parties and provide that
+function to the <code>distrib.fun</code> argument of the
+<code>get_seats</code> function:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">elong</span> <span class="op">&lt;-</span> <span class="va">elong</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>seats <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">map2</a></span><span class="op">(</span><span class="va">draws</span>, <span class="va">survey</span>, <span class="va">get_seats</span>, distrib.fun<span class="op">=</span><span class="va">sls</span><span class="op">)</span><span class="op">)</span>
-<span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">survey</span>, <span class="va">draws</span>, <span class="va">seats</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   date       survey               draws                 seats                
-##   &lt;date&gt;     &lt;list&gt;               &lt;list&gt;                &lt;list&gt;               
-## 1 2013-11-03 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [46 × 3]&gt;
-## 2 2013-10-27 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [46 × 3]&gt;
-## 3 2013-10-20 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [46 × 3]&gt;
-## 4 2013-10-13 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [49 × 3]&gt;
-## 5 2013-10-06 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [49 × 3]&gt;
-## 6 2013-09-29 &lt;tibble[,3] [7 × 3]&gt; &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [49 × 3]&gt;</code></pre>
+<code class="sourceCode R"><span><span class="va">elong</span> <span class="op">&lt;-</span> <span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>seats <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html" class="external-link">map2</a></span><span class="op">(</span><span class="va">draws</span>, <span class="va">survey</span>, <span class="va">get_seats</span>, distrib.fun<span class="op">=</span><span class="va">sls</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">survey</span>, <span class="va">draws</span>, <span class="va">seats</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
+<span><span class="co">##   date       survey           draws             seats            </span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> 2013-11-03 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [45 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> 2013-10-27 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [45 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> 2013-10-20 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [45 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> 2013-10-13 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [50 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> 2013-10-06 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [50 × 3]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> 2013-09-29 <span style="color: #949494;">&lt;tibble [7 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [49 × 3]&gt;</span></span></span></code></pre>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## sim column indicates simulated elections (rows in draws column)</span>
-<span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">seats</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="st">"seats"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 46 x 3
-##      sim party  seats
-##    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
-##  1     1 cdu      280
-##  2     1 spd      170
-##  3     1 greens    53
-##  4     1 left      61
-##  5     1 afd       34
-##  6     2 cdu      267
-##  7     2 spd      165
-##  8     2 greens    62
-##  9     2 left      65
-## 10     2 afd       39
-## # … with 36 more rows</code></pre>
-<p>In the above example, given the latest survey, CDU/CSU would have 280 seats in the first simulation, 267 seats in the second simulation, etc.</p>
+<code class="sourceCode R"><span><span class="co">## sim column indicates simulated elections (rows in draws column)</span></span>
+<span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">seats</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="st">"seats"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 45 × 3</span></span></span>
+<span><span class="co">##      sim party  seats</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 cdu       34</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     1 spd      281</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     1 greens    61</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     1 left      60</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     1 afd      162</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     2 cdu      285</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     2 spd       68</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     2 greens    63</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     2 left     182</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>     3 cdu      282</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 35 more rows</span></span></span></code></pre>
+<p>In the above example, given the latest survey, CDU/CSU would have 34
+seats in the first simulation, 285 seats in the second simulation,
+etc.</p>
 </div>
-<div id="calculate-majorities" class="section level2">
-<h2 class="hasAnchor">
-<a href="#calculate-majorities" class="anchor"></a>Calculate majorities</h2>
-<p>The next step is to define coalitions of interest, then calculate in what percentage of the simulations the coalition would obtain enough seats for a majority.</p>
-<p>Below, each list element defines one coalition of interest (one party could potentially obtain absolute majority on their own):</p>
+<div class="section level2">
+<h2 id="calculate-majorities">Calculate majorities<a class="anchor" aria-label="anchor" href="#calculate-majorities"></a>
+</h2>
+<p>The next step is to define coalitions of interest, then calculate in
+what percentage of the simulations the coalition would obtain enough
+seats for a majority.</p>
+<p>Below, each list element defines one coalition of interest (one party
+could potentially obtain absolute majority on their own):</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">coalitions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cdu"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cdu"</span>, <span class="st">"fdp"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cdu"</span>, <span class="st">"greens"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cdu"</span>, <span class="st">"fdp"</span>, <span class="st">"greens"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"spd"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"spd"</span>, <span class="st">"left"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"spd"</span>, <span class="st">"greens"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"spd"</span>, <span class="st">"left"</span>, <span class="st">"greens"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cdu"</span>, <span class="st">"spd"</span><span class="op">)</span><span class="op">)</span>
-
-
-<span class="va">elong</span> <span class="op">&lt;-</span> <span class="va">elong</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>majorities <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">seats</span>, <span class="va">have_majority</span>, coalitions <span class="op">=</span> <span class="va">coalitions</span><span class="op">)</span><span class="op">)</span>
-<span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">draws</span>, <span class="va">seats</span>, <span class="va">majorities</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   date       draws                 seats                 majorities           
-##   &lt;date&gt;     &lt;list&gt;                &lt;list&gt;                &lt;list&gt;               
-## 1 2013-11-03 &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [46 × 3]&gt; &lt;tibble[,9] [10 × 9]&gt;
-## 2 2013-10-27 &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [46 × 3]&gt; &lt;tibble[,9] [10 × 9]&gt;
-## 3 2013-10-20 &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [46 × 3]&gt; &lt;tibble[,9] [10 × 9]&gt;
-## 4 2013-10-13 &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [49 × 3]&gt; &lt;tibble[,9] [10 × 9]&gt;
-## 5 2013-10-06 &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [49 × 3]&gt; &lt;tibble[,9] [10 × 9]&gt;
-## 6 2013-09-29 &lt;tibble[,7] [10 × 7]&gt; &lt;tibble[,3] [49 × 3]&gt; &lt;tibble[,9] [10 × 9]&gt;</code></pre>
+<code class="sourceCode R"><span><span class="va">coalitions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cdu"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cdu"</span>, <span class="st">"fdp"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cdu"</span>, <span class="st">"greens"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cdu"</span>, <span class="st">"fdp"</span>, <span class="st">"greens"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"spd"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"spd"</span>, <span class="st">"left"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"spd"</span>, <span class="st">"greens"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"spd"</span>, <span class="st">"left"</span>, <span class="st">"greens"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cdu"</span>, <span class="st">"spd"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">elong</span> <span class="op">&lt;-</span> <span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>majorities <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">seats</span>, <span class="va">have_majority</span>, coalitions <span class="op">=</span> <span class="va">coalitions</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">draws</span>, <span class="va">seats</span>, <span class="va">majorities</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
+<span><span class="co">##   date       draws             seats             majorities       </span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> 2013-11-03 <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [45 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> 2013-10-27 <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [45 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> 2013-10-20 <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [45 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> 2013-10-13 <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [50 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> 2013-10-06 <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [50 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> 2013-09-29 <span style="color: #949494;">&lt;tibble [10 × 7]&gt;</span> <span style="color: #949494;">&lt;tibble [49 × 3]&gt;</span> <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span></span></span></code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># The majorities table for each date will have 1 row per simulation</span>
-<span class="co"># and one column per coalition</span>
-<span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">majorities</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="st">"majorities"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 10 x 9
-##    cdu   cdu_fdp cdu_greens cdu_fdp_greens spd   left_spd greens_spd
-##    &lt;lgl&gt; &lt;lgl&gt;   &lt;lgl&gt;      &lt;lgl&gt;          &lt;lgl&gt; &lt;lgl&gt;    &lt;lgl&gt;     
-##  1 FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     
-##  2 FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     
-##  3 TRUE  TRUE    TRUE       TRUE           FALSE FALSE    FALSE     
-##  4 FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     
-##  5 FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     
-##  6 TRUE  TRUE    TRUE       TRUE           FALSE FALSE    FALSE     
-##  7 FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     
-##  8 FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     
-##  9 FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     
-## 10 FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     
-## # … with 2 more variables: greens_left_spd &lt;lgl&gt;, cdu_spd &lt;lgl&gt;</code></pre>
+<code class="sourceCode R"><span><span class="co"># The majorities table for each date will have 1 row per simulation</span></span>
+<span><span class="co"># and one column per coalition</span></span>
+<span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">majorities</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="st">"majorities"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 10 × 9</span></span></span>
+<span><span class="co">##    cdu   cdu_fdp cdu_greens cdu_fdp_greens spd   left_spd greens_spd</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> FALSE FALSE   FALSE      FALSE          FALSE TRUE     TRUE      </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> FALSE FALSE   FALSE      FALSE          FALSE TRUE     TRUE      </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> FALSE FALSE   FALSE      FALSE          FALSE TRUE     TRUE      </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> FALSE FALSE   TRUE       TRUE           FALSE FALSE    FALSE     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> TRUE  TRUE    TRUE       TRUE           FALSE FALSE    FALSE     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> FALSE FALSE   FALSE      FALSE          FALSE TRUE     TRUE      </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> FALSE FALSE   FALSE      FALSE          FALSE TRUE     TRUE      </span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 2 more variables: greens_left_spd &lt;lgl&gt;, cdu_spd &lt;lgl&gt;</span></span></span></code></pre>
 </div>
-<div id="calculate-coalition-probabilities" class="section level2">
-<h2 class="hasAnchor">
-<a href="#calculate-coalition-probabilities" class="anchor"></a>Calculate coalition probabilities</h2>
-<p>The last step is to calculate the coalition probabilities (note that by default we exclude “superior” coalitions, i.e. if “cdu/csu” have a majority on their own, this simulation will not be counted to the simulation with majority for “cdu/csu” and “fdp”, see example in <code><a href="../reference/calculate_probs.html">?calculate_probs</a></code>):</p>
+<div class="section level2">
+<h2 id="calculate-coalition-probabilities">Calculate coalition probabilities<a class="anchor" aria-label="anchor" href="#calculate-coalition-probabilities"></a>
+</h2>
+<p>The last step is to calculate the coalition probabilities (note that
+by default we exclude “superior” coalitions, i.e. if “cdu/csu” have a
+majority on their own, this simulation will not be counted to the
+simulation with majority for “cdu/csu” and “fdp”, see example in
+<code><a href="../reference/calculate_probs.html">?calculate_probs</a></code>):</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">elong</span> <span class="op">&lt;-</span> <span class="va">elong</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
-        probabilities <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">majorities</span>, <span class="va">calculate_probs</span>, coalitions<span class="op">=</span><span class="va">coalitions</span><span class="op">)</span><span class="op">)</span>
-<span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">majorities</span>, <span class="va">probabilities</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   date       majorities            probabilities       
-##   &lt;date&gt;     &lt;list&gt;                &lt;list&gt;              
-## 1 2013-11-03 &lt;tibble[,9] [10 × 9]&gt; &lt;tibble[,2] [9 × 2]&gt;
-## 2 2013-10-27 &lt;tibble[,9] [10 × 9]&gt; &lt;tibble[,2] [9 × 2]&gt;
-## 3 2013-10-20 &lt;tibble[,9] [10 × 9]&gt; &lt;tibble[,2] [9 × 2]&gt;
-## 4 2013-10-13 &lt;tibble[,9] [10 × 9]&gt; &lt;tibble[,2] [9 × 2]&gt;
-## 5 2013-10-06 &lt;tibble[,9] [10 × 9]&gt; &lt;tibble[,2] [9 × 2]&gt;
-## 6 2013-09-29 &lt;tibble[,9] [10 × 9]&gt; &lt;tibble[,2] [9 × 2]&gt;</code></pre>
+<code class="sourceCode R"><span><span class="va">elong</span> <span class="op">&lt;-</span> <span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>        probabilities <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">majorities</span>, <span class="va">calculate_probs</span>, coalitions<span class="op">=</span><span class="va">coalitions</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">majorities</span>, <span class="va">probabilities</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
+<span><span class="co">##   date       majorities        probabilities   </span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>          </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> 2013-11-03 <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [9 × 2]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> 2013-10-27 <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [9 × 2]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> 2013-10-20 <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [9 × 2]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> 2013-10-13 <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [9 × 2]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> 2013-10-06 <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [9 × 2]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> 2013-09-29 <span style="color: #949494;">&lt;tibble [10 × 9]&gt;</span> <span style="color: #949494;">&lt;tibble [9 × 2]&gt;</span></span></span></code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># one row per coalition</span>
-<span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">probabilities</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="st">"probabilities"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 2
-##   coalition       probability
-##   &lt;chr&gt;                 &lt;dbl&gt;
-## 1 cdu                      20
-## 2 cdu_fdp                   0
-## 3 cdu_greens               80
-## 4 cdu_fdp_greens            0
-## 5 spd                       0
-## 6 left_spd                  0
-## 7 greens_spd                0
-## 8 greens_left_spd          20
-## 9 cdu_spd                  80</code></pre>
+<code class="sourceCode R"><span><span class="co"># one row per coalition</span></span>
+<span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">probabilities</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="st">"probabilities"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 9 × 2</span></span></span>
+<span><span class="co">##   coalition       probability</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> cdu                      10</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> cdu_fdp                   0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> cdu_greens               40</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> cdu_fdp_greens            0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> spd                       0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> left_spd                 50</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">7</span> greens_spd               50</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">8</span> greens_left_spd          40</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">9</span> cdu_spd                  90</span></span></code></pre>
 </div>
-<div id="wrapper" class="section level2">
-<h2 class="hasAnchor">
-<a href="#wrapper" class="anchor"></a>Wrapper</h2>
+<div class="section level2">
+<h2 id="wrapper">Wrapper<a class="anchor" aria-label="anchor" href="#wrapper"></a>
+</h2>
 <p>There is a wrapper function that directly returns probabilities:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">elong</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collapse_parties.html">collapse_parties</a></span><span class="op">(</span><span class="va">emnid</span><span class="op">)</span>
-<span class="va">elong</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/get_probabilities.html">get_probabilities</a></span><span class="op">(</span><span class="va">.</span>, nsim<span class="op">=</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="st">"probabilities"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 36 x 3
-##    date       coalition       probability
-##    &lt;date&gt;     &lt;chr&gt;                 &lt;dbl&gt;
-##  1 2013-11-03 cdu                      20
-##  2 2013-11-03 cdu_fdp                   0
-##  3 2013-11-03 cdu_fdp_greens           80
-##  4 2013-11-03 spd                       0
-##  5 2013-11-03 left_spd                  0
-##  6 2013-11-03 greens_left_spd          40
-##  7 2013-10-27 cdu                       0
-##  8 2013-10-27 cdu_fdp                   0
-##  9 2013-10-27 cdu_fdp_greens          100
-## 10 2013-10-27 spd                       0
-## # … with 26 more rows</code></pre>
+<code class="sourceCode R"><span><span class="va">elong</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/collapse_parties.html">collapse_parties</a></span><span class="op">(</span><span class="va">emnid</span><span class="op">)</span></span>
+<span><span class="va">elong</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/get_probabilities.html">get_probabilities</a></span><span class="op">(</span><span class="va">.</span>, nsim<span class="op">=</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="st">"probabilities"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 36 × 3</span></span></span>
+<span><span class="co">##    date       coalition       probability</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> 2013-11-03 cdu                      20</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> 2013-11-03 cdu_fdp                   0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> 2013-11-03 cdu_fdp_greens           30</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> 2013-11-03 spd                       0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> 2013-11-03 left_spd                 50</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> 2013-11-03 greens_left_spd          30</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> 2013-10-27 cdu                       0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> 2013-10-27 cdu_fdp                   0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> 2013-10-27 cdu_fdp_greens           50</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> 2013-10-27 spd                       0</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 26 more rows</span></span></span></code></pre>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
 
 
       <footer><div class="copyright">
-  <p>Developed by Andreas Bender, Alexander Bauer.</p>
+  <p></p>
+<p>Developed by Andreas Bender, Alexander Bauer.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
 </div>
 
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
   docsearch({
-    
-    
+
+
     apiKey: 'b07f33bbc5aa2eddd7d63f5c8473e333',
     indexName: 'coalitions',
     inputSelector: 'input#search-input.form-control',
