@@ -18,6 +18,7 @@ reference:
       - scrape_wahlrecht
       - scrape_by
       - scrape_ltw
+      - collapse_parties
   - title: "Workflow"
     desc: "Get data, perform simulation, redistribute seats, calculate probabilities."
     contents:
@@ -28,12 +29,25 @@ reference:
       - have_majority
       - get_seats
       - get_probabilities
+      - calculate_prob
+      - calculate_probs
+      - gg_survey
   - title: "Seat distribution"
     desc: "Methods used to distribute seats across parties based on voting percentages."
     contents:
       - dHondt
       - sls
       - hare_niemeyer
+  - title: "Data"
+    desc: "Built-in datasets and lookup tables."
+    contents:
+      - surveys_sample
+      - party_colors_de
+      - party_labels_de
+  - title: "Internal"
+    desc: "Internal helper functions."
+    contents:
+      - try_readHTML
 
 navbar:
   type: default
